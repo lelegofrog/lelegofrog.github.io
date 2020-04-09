@@ -1,0 +1,14 @@
+body {
+	background-image: url("bsnbg.jpg");
+	background-color: #0000aa;
+	text-align: center;
+	font-family: Comic Sans MS;
+	color: white;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+a {
+	color: #aaaaff;
+}
