@@ -4,7 +4,7 @@ body {
 	text-align: center;
 	font-family: Comic Sans MS;
 	color: white;
-	cursor:  progress;
+	cursor:all-scroll;
 }
 table {
 	border-color: white;
