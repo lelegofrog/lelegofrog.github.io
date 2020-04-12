@@ -4,6 +4,7 @@ body {
 	text-align: center;
 	font-family: Comic Sans MS;
 	color: white;
+	cursor:  progress;
 }
 table {
 	border-color: white;
