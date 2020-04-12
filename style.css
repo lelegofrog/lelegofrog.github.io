@@ -3,7 +3,7 @@ body {
 	background-color: #0000aa;
 	text-align: center;
 	font-family: Comic Sans MS;
-	color: white;
+	cursor: url('3976.ico'), default;
 }
 table {
 	border-color: white;
