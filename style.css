@@ -4,7 +4,6 @@ body {
 	text-align: center;
 	font-family: Comic Sans MS;
 	color: white;
-	cursor:all-scroll;
 }
 table {
 	border-color: white;
@@ -12,4 +11,5 @@ table {
 }
 a {
 	color: #aaaaff;
+	cursor:all-scroll;
 }
