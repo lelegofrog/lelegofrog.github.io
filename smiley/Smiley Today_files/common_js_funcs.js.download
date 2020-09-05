@@ -1,0 +1,2700 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+//
+//Code will be consolidated in the order it originally appeared on the page
+//
+
+
+//BEGIN CORE JS
+function getElem(a) { return document.getElementById(a); }
+var sPOS = 0;
+var sParentPartnerForPage = false;
+
+
+function init(){
+	//Speed up getOverallPartner();
+	var sParentPartnerForPage = getParentPartnerForPage();
+	if(sParentPartnerForPage){
+		getOverallPartner = function(pid){return sParentPartnerForPage;};
+	}else{
+		getOverallPartner = function(pid){return pid;};
+	}
+
+	if (typeof(showSystemMessage) == "function"){showSystemMessage();}
+}
+
+
+function getOverallPartner(pid){
+	//it would be nice to have this run once, but we'd have to do a body onload, which we won't do yet
+	var sParentPartnerForPage = getParentPartnerForPage();
+	if(sParentPartnerForPage){
+		return sParentPartnerForPage;
+	}else{
+		return pid;
+	}
+	
+}
+function addParentPartner(zeb,pid){
+	var overallPid = getOverallPartner(pid);
+	if(overallPid){
+		return zeb + "_" + overallPid;
+	}else{
+		return zeb;
+	}	
+}
+
+function getParentPartnerForPage(){
+	//Intended to append parent from url or toolbar, in that order
+    try{
+		var strParentPartner = false;
+
+		//Set Partner ID from url
+		var rePartnerFromUrl = /partner=([a-zA-Z0-9]+)(_[a-zA-Z0-9]+)?/ig
+		var arrPartnerFromUrl = rePartnerFromUrl.exec(window.location.search);
+		if(arrPartnerFromUrl){
+			//Set partner to either parent or childless parent
+			if(arrPartnerFromUrl.length > 1){
+				//try the parent
+				strParentPartner = arrPartnerFromUrl[2].substring(1);
+
+				//try childless parent
+				if(!strParentPartner){
+					strParentPartner = arrPartnerFromUrl[1];
+				}
+			}
+		}
+
+		//If there's no partner in the url, take from the toolbar
+		if(!strParentPartner){
+			if (typeof(oToolbarController.sPartnerID)!='undefined' && oToolbarController.sPartnerID!=null){
+				var tmpArray = oToolbarController.sPartnerID.split('_');
+				//Take the last item in array, either the parent in a child_parent or the parent in a childless parent.
+				strParentPartner = tmpArray[tmpArray.length-1];
+			}
+		
+		}
+		return strParentPartner;
+    }catch(e){
+        return false;
+    }
+}
+
+function addPartnerToAnchor(a,pid){
+	try{
+		a.href = addPartnerToUrl(a.href,pid);
+		return false;
+	}catch(e){
+		return false;
+	}
+}
+function addPartnerToUrl(url,pid){
+		var overallPid = getOverallPartner(pid);
+		if(overallPid){
+			//Append to url
+    	    return (url.indexOf("?") > -1 ) ? (url + "&partner=" + overallPid) : (url + "?partner=" + overallPid) ;
+		}else{
+			return url;
+		}
+
+		//Apparently pt isn't needed?
+        //if(url.toLowerCase().indexOf("gallery.popularscreensavers") > -1){return (url.indexOf("?") > -1 ) ? (url + "&tp=" + pid) : (url + "?tp=" + pid) ;
+        
+}
+
+function addZebPartnerToUrl(url,pid){
+	if(pid){
+		return (url.indexOf("?") > -1 ) ? (url + "&partner=" + pid) : (url + "?partner=" + pid) ;
+	}else{
+		return url;
+	}
+}
+
+//##parse ("includes/XMLRPC_JS.vm")
+
+
+// Container for all objects on the page
+function Universe() 
+{
+	// Array of modules, indexed by modID.  e.g. this.modules['HO']
+	this.modules = new Array();
+	this.modLayout = new Array();
+}
+
+// Create a new module, and add it to the list of modules
+Universe.prototype.addModule = function(modID, compID) 
+{
+	this.modules[modID] = new Module(modID, compID);
+	return this.modules[modID];
+}
+Universe.prototype.getCount = function() 
+{
+	return (this.modules.length-1);
+}
+Universe.prototype.getLayout = function() 
+{
+	
+	return "layoutstring here";
+}
+
+// Module Object
+function Module(modID, compID, bEditable, bPreview) 
+{
+	if (bEditable == null || bEditable == '') bEditable = 0;
+	if (bPreview == null) bPreview = 0;
+	this.modID = modID;
+	this.compID = compID;
+	this.bEditable = bEditable;
+	this.xmlReq;	// Object for requesting new data for the module
+	this.popupDiv;
+	this.anotherPopupDiv;
+	this.bPreview = bPreview;
+}
+
+// Wrappers for getState
+Module.prototype.doEdit = function(args, callback) {
+	this.getState('doEdit', args, callback);
+}
+Module.prototype.doView = function(args, callback) {
+	this.getState('doView', args, callback);
+}
+//TODO: minimize/max
+//TODO: close
+
+// Get new content for a module
+Module.prototype.getState = function(state, args, callback){
+	currentModule = this;
+	if (callback == null) callback = this.redrawFromXML;
+	if (state == null) state = 'doView';
+	var url = 'component.htm?COMPID=' + this.compID + '&ACTION=' + state;
+	
+	if (this.modID != "tempModule") {
+		url += '&MODID=' + this.modID;
+	}
+	if (args!= null && args.length > 1) {
+		if (args.indexOf('NOSPLIT') < 0) {
+			args = args.split(',');
+			for (var i = 0; i < args.length; i+=2) {
+			  url += '&' + args[i] + '=' + args[i+1];
+			}
+		} else {
+		    url += args.substring(7,args.length);
+		}
+	}	
+	if (this.compID == 'tempModule' || (this.bPreview) ) {
+		url += '&preview=true';
+	}
+	//##BELOW FOR LOGGING PURPOSES
+	if (typeof(oToolbarController.sPartnerID)!='undefined' && oToolbarController.sPartnerID!=null) url += "&partner=" + oToolbarController.sPartnerID;
+	if (typeof(oToolbarController.sUID)!='undefined' && oToolbarController.sUID!=null) url += "&uid=" + oToolbarController.sUID;
+	if (typeof(oToolbarController.sVersion)!='undefined' && oToolbarController.sVersion!=null) url += "&version=" + oToolbarController.sVersion;
+	
+	this.xmlReq = new XMLRequest(url, callback);
+	this.xmlReq.getData();
+}
+
+//for saving min/max state
+Module.prototype.minMax = function(state) {
+  var url = 'persist.htm?COMPID='+this.compID+'&MODID='+this.modID+'&MODSTATE='+((state==1)?'MAX':'MIN');
+  //##BELOW FOR LOGGING PURPOSES
+  if (typeof(oToolbarController.sPartnerID)!='undefined' && oToolbarController.sPartnerID!=null) url += "&partner=" + oToolbarController.sPartnerID;
+  if (typeof(oToolbarController.sUID)!='undefined' && oToolbarController.sUID!=null) url += "&uid=" + oToolbarController.sUID;
+  if (typeof(oToolbarController.sVersion)!='undefined' && oToolbarController.sVersion!=null) url += "&version=" + oToolbarController.sVersion;
+  
+  currentModule = this;
+  this.xmlReq = new XMLRequest(url, z);
+  currentModule.xmlReq.getData();
+};
+
+//##for when something in a module triggers the registration dialog
+Module.prototype.tooMany = function() {	
+	this.popWin();	
+	var p = this.popupDiv;
+	if(typeof(closeHTML)!='undefined'){
+		p.innerHTML='<div style="padding:6px;border:1px solid #AAA;background-color:#F2F2F2;">'+closeHTML+getRegHTML('tml')+'</div>';
+	}else{		
+		p.innerHTML = getRegHTML('tml');
+	}
+	var p = p.style;
+	p.top = mouseY-100;
+	p.left = mouseX-100;
+	p.width='400px';
+	p.display='inline';
+}
+
+Module.prototype.evalJS = function(moduleContents){	
+
+	if (moduleContents.indexOf("<!--end js-->") > -1) {
+		var s = moduleContents.split('<!--end js-->');
+		s[0] = s[0].replace(/<.+?cript[^>]*>/ig,"");
+		eval(s[0]);
+		moduleContents = s[1];
+	}
+	if (moduleContents.indexOf("<!--start js-->") > -1) {
+		var s = moduleContents.split('<!--start js-->');
+		s[1] = s[1].replace(/<[\/a-z]+?cript[^>]*>/ig,"");
+		eval(s[1]);
+		moduleContents = s[0];
+	}
+	return moduleContents;
+}
+
+//##new code
+Module.prototype.redraw = function(moduleContents) 
+{
+
+  var c = document.getElementById(this.modID);
+  var js1;
+
+    if (moduleContents.indexOf("<!--start js-->") > -1) {
+	  var s = moduleContents.split('<!--start js-->');
+	  s[1] = s[1].replace(/<[\/a-z]+?cript[^>]*>/ig,"");
+	  js1 = s[1];
+	  retHTML = s[0];
+    } else {
+  	  retHTML = moduleContents;
+    }
+    if (retHTML.indexOf("<!--end js-->") > -1) {
+	  var s = retHTML.split('<!--end js-->');
+	  s[0] = s[0].replace(/<.+?cript[^>]*>/ig,"");
+	  eval(s[0]);
+	  retHTML = s[1];
+    }    
+
+  if (navigator.appName.indexOf('xplorer') > -1) {
+	c.outerHTML = retHTML;
+	eval(js1);
+  } else {
+	if(!this.bPreview){  	 		
+	  c.id = 'temp';
+	  var l = true;
+
+	  while (l) {
+	  	c = c.parentNode;
+		if (c.id.indexOf('col')>-1)
+		 l = false;
+	  }
+
+	  var t = '';
+	  t = c.innerHTML.replace(/<div (.*?)temp./ig, retHTML + '<div id=temp ');
+	  c.innerHTML = t;
+  
+      var d = getElem('temp');
+      d.parentNode.removeChild(d);
+	}else{
+		mouseY-=50;
+		createAddToPreview("<table style='width:100%;'><tr><td>&nbsp;</td><td style='text-align:center;' onclick='addPreview();' >&nbsp;<img class='greyx'  src='"+imgPath+"/addTo.gif' /> <span class='addTo' style='position:relative;top:-3px;'>Add to my page</span></td><td style='text-align:right;'><img class='greyx'  src='"+imgPath+"/btn_close_small.gif' alt='Close' onclick='hideEle(this.parentNode.parentNode.parentNode.parentNode.parentNode);' /></td></tr></table>"+moduleContents);
+    }
+  }
+  eval(js1);
+}
+//##end new code
+
+// Redraw from the RPC response
+Module.prototype.redrawFromXML = function() 
+{
+	currentModule.redraw(currentModule.xmlReq.req.responseText);
+}
+
+// Create the Universe
+var g = new Universe();
+
+//TODO: g.prototype.getLayout()
+
+//##new div creator
+var mouseX;
+var mouseY;
+
+function createDiv() {
+	var nd;
+		nd=document.createElement("DIV");
+		nd.style.display="inline";
+		nd.style.position="absolute";
+		nd.style.paddingBottom="0px";
+		nd.innerHTML='<div style="text-align:center;background-color:#fff;" class="stTip"><br/>Loading...<br/><img src="http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/funwebproducts/whiptones/progress_anim_01.gif" /><br/><br/></div>';
+		//##setPosOnScreen(nd);
+		document.body.appendChild(nd)
+	return nd;
+}
+function setEvents(e) {
+    evt = nn6?e:event;
+	mouseX = (nn6?evt.pageX:evt.clientX+document.body.scrollLeft);
+	mouseY = (nn6?evt.pageY:evt.clientY+document.body.scrollTop);
+}
+function genX(x,w) {
+	var d = document.body.clientWidth - (x+w);
+	if (d < 0) x = x+d-20; 
+	return x;
+}
+function genY(y) {
+	return y;
+}
+
+//##generic popHeader (for use with JS pop functions)
+function popHeader(title,modID) {
+	if (!modID)
+		modID = 99;
+		
+	if (!title){title='';for(var i=0;i<20;i++)title += '&nbsp;';}
+	
+	return '<div id=m'+modID+'_pop class=module style="position:relative;" onmousedown = "isPo=true"><table class=modWrp cellspacing=0 cellpadding=0><tr onmouseover=showEdit(\'m99_pop\') onmouseout=hideEdit(\'m99_pop\')><td class=modLeft><img src=http://ak.imgfarm.com/images/spacer.gif width=8 height=1></td><td class=modTitle id=m_m'+modID+'_pop_h>'+title+'</td><td class=modEdit id=edit_m'+modID+'_pop align=right><span class="modButton" onclick="setEvents(event);_del(\'m'+modID+'_pop\');sPOS=0;currentModule.popupDiv=null;void(0);">&nbsp;X&nbsp;</span></td>			<td class=modRight><img src=http://ak.imgfarm.com/images/spacer.gif width=8 height=1></td></tr></table><font size=-1><div id=m'+modID+'_pop_body>';
+}
+
+//##popup div creator
+var p,po; //##p = popup window; po=popup open
+Module.prototype.doPopView = function(args) {
+	this.popWin();
+	this.doView(args, this.redrawPopFromXML);	
+}
+Module.prototype.popWin = function(arg) {	
+	if (!this.popupDiv){
+		this.popupDiv = createDiv();	
+	}else{
+		if(arg){			
+			isPo = false;
+			sPOS=0;
+			//HACK -- module needs to be REMOVED, not just blanked out
+			this.popupDiv.innerHTML='';
+			//END HACK
+			this.popupDiv=null;
+			this.popupDiv = createDiv();	
+		}	
+	}
+	currentModule = this;
+}
+Module.prototype.redrawPopFromXML = function () {
+	currentModule.fillPopWin(currentModule.xmlReq.req.responseText);
+}
+
+//##new code
+Module.prototype.popY = 0;
+Module.prototype.popX = 0;
+Module.prototype.origpopX = 0;
+Module.prototype.origpopY = 0;
+
+Module.prototype.anotherPopY = 0;
+Module.prototype.anotherPopX = 0;
+Module.prototype.origAnotherPopX = 0;
+Module.prototype.origAnotherPopY = 0;
+
+
+Module.prototype.fillPopWin = function(html) {
+//##  	//alert('pop');
+//##  	//alert(currentModule.popupDiv.style.left) 
+//##  	//alert(currentModule.popupDiv.innerHTML);
+//##  	//benben
+//##  	//alert(currentModule.popupDiv.innerHTML);
+	
+	
+//##  	//alert(currentModule.popupDiv.style.left) 
+//##  	//alert('pop');
+//##  	//alert(!currentModule.popupDiv.style.top);
+//##  	//alert(currentModule.popupDiv.style.top);	
+	
+	currentModule.popupDiv.innerHTML = currentModule.evalJS(html);	
+//##	var bSetPos = false;
+	if (!currentModule.popupDiv.style.top) {
+		currentModule.popupDiv.style.top=mouseY; 		
+		currentModule.popupDiv.style.left=mouseX;	
+		currentModule.origpopY = mouseY;
+		currentModule.origpopX = mouseX;		
+		bSetPos = true;
+	} else {
+//##		currentModule.popupDiv.parentNode.removeChild(currentModule.popupDiv);
+//##		currentModule.popupDiv = createDiv();
+		p = currentModule.popupDiv;
+		var p = this.popupDiv;
+		var p = p.style;
+		//##alert(origpopX + '\n' + mouseX + '\n' + popX + '\n\n\n' + origpopY + '\n' + mouseY + '\n' + popY);
+		p.top = currentModule.origpopY + currentModule.popY;
+		p.left = currentModule.origpopX + currentModule.popX;
+		currentModule.origpopY += currentModule.popY;
+		currentModule.origpopX += currentModule.popX;
+		p.display='inline';
+		currentModule.popX = 0;
+		currentModule.popY = 0;
+	}
+	if (sPOS < 1)//## && bSetPos)
+		setPosOnScreen(currentModule.popupDiv);	
+	currentModule.popupDiv.style.display='inline';
+}
+//##end new code
+
+//##  Module.prototype.fillPopWin = function(html) {
+//##  	currentModule.popupDiv.innerHTML = currentModule.evalJS(html);
+	
+//##  	if (!currentModule.popupDiv.style.top) {
+//##  		currentModule.popupDiv.style.top=mouseY; //##make this smarter 	
+//##  		currentModule.popupDiv.style.left=mouseX;//##make this smarter
+//##  	}
+//##  	currentModule.popupDiv.style.display='inline';
+//##  }
+
+Module.prototype.doAnotherPopView = function(args) {
+	this.popAnotherWin();
+	this.doView(args, this.redrawAnotherPopFromXML);	
+}
+Module.prototype.popAnotherWin = function() {
+	if (!this.anotherPopupDiv)
+		this.anotherPopupDiv = createDiv();	
+}
+Module.prototype.redrawAnotherPopFromXML = function () {
+	currentModule.fillAnotherPopWin(currentModule.xmlReq.req.responseText);
+}
+Module.prototype.fillAnotherPopWin = function(html) {
+	
+	var bSetPos = false;
+	if (!currentModule.anotherPopupDiv.style.top) {
+		currentModule.anotherPopupDiv.style.top=mouseY; 		
+		currentModule.anotherPopupDiv.style.left=mouseX;	
+		currentModule.origAnotherPopY = mouseY;
+		currentModule.origAnotherPopX = mouseX;		
+		bSetPos = true;
+	} else {
+//##		currentModule.anotherPopupDiv.parentNode.removeChild(currentModule.anotherPopupDiv);
+//##		currentModule.anotherPopupDiv = createDiv();
+//##		p = currentModule.anotherPopupDiv;
+//##		var p = this.anotherPopupDiv;
+//##		var p = p.style;
+//##		//##alert(origpopX + '\n' + mouseX + '\n' + popX + '\n\n\n' + origpopY + '\n' + mouseY + '\n' + popY);
+//##		p.top = currentModule.origAnotherPopY + currentModule.anotherPopY;
+//##		p.left = currentModule.origAnotherPopX + currentModule.anotherPopX;
+//##		currentModule.origpopY += currentModule.anotherPopY;
+//##		currentModule.origpopX += currentModule.anotherPopX;
+//##		p.display='inline';
+//##		currentModule.anotherPopX = 0;
+//##		currentModule.anotherPopY = 0;
+	}	
+	
+	currentModule.anotherPopupDiv.innerHTML = currentModule.evalJS(html);
+	currentModule.anotherPopupDiv.zIndex=10;
+	if (bSetPos)
+		setPosOnScreen(currentModule.anotherPopupDiv);	
+	currentModule.anotherPopupDiv.style.display='inline';
+}
+//END CORE JS
+
+//BEGIN LAYOUT.JS
+/***********************************************
+* Disable select-text script- ? Dynamic Drive (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+var isPo = false; //is it a popup div?
+
+//form tags to omit in NS6+:
+var omitformtags=["input", "textarea", "select"]
+
+omitformtags=omitformtags.join("|")
+
+function disableselect(e){
+if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1)
+return false
+}
+
+function reEnable(){
+return true
+}
+
+if (typeof document.onselectstart!="undefined")
+document.onselectstart=checkSelect;
+else{
+document.onmouseup=reEnable
+}
+
+//only selectable elements are elements whose ids begin with 'd_'
+function checkSelect() {
+	var t = event.srcElement.id;
+	if(t.indexOf('d_')<0)
+		return false;
+}
+
+/**
+ * BEGIN REAL LAYOUT SCRIPT
+ **/
+
+document.onmousemove=movemouse;
+ 
+var x,y;		// original mouse position of drag begin
+var tx, ty;		// original left, top position of module at drag begin
+
+var debug = false;
+var debug_level1 = true;
+
+var ie			=	document.all;
+var nn6			=	document.getElementById&&!document.all;
+var isdrag		=	false;
+var nw			=	null;		// reference to the copy of the module floating with the mouse
+var origModule	=	null;		// another reference to the original module being dragged
+var indicator 	= 	null;		// reference to the indicator module div
+// Moved to main.vm to set to true when $context.layoutType == 2Col after refresh or return visit
+//var layout_2col =	false;		// flag for whether or not in 2 column layout mode
+var lastClosest =	null;		// last closest node to the node being dragged
+var lastClosestSign = null;		// whether or not the dragged module was above or below the closest module
+
+/**
+  * Creates a div element that makes the box
+  * to indicate where the module would be dropped
+  * if the user let go of mouse
+  **/
+function createIndicator( height ) {
+
+	indicator = document.createElement("div");
+	indicator.id = "indicator";
+	indicator.style.width = "100%";
+	indicator.style.height = height +"px";
+	indicator.style.marginBottom = "20px";
+	indicator.style.border = "1px solid #000000";
+	indicator.innerHTML = "&nbsp;";
+	document.body.appendChild( indicator );
+	
+	return indicator;
+}
+
+function movemouse(e)
+{
+	if (isdrag) {	// make sure the user has click on a module header
+		target = nn6?e.target:event.srcElement;
+		evt = nn6?e:event;
+		cX = (nn6?evt.pageX:evt.clientX+document.body.scrollLeft);
+		cY = (nn6?evt.pageY:evt.clientY+document.body.scrollTop);
+		
+		// set the floating(dragging) module's position, relative to where the mouse is
+		if (isPo) {		
+			if(currentModule==null){currentModule=nn6?e.target:event.srcElement;}
+			currentModule.popX = nw.style.left = nn6 ? tx + e.pageX - x : tx + cX - x;
+	    	currentModule.popY = nw.style.top  = nn6 ? ty + e.pageY - y : ty + cY - y;
+		} else {
+			nw.style.left = nn6 ? tx + e.pageX - x : tx + cX - x;
+	    	nw.style.top  = nn6 ? ty + e.pageY - y : ty + cY - y;
+	    }
+    
+		// find out what column we are in after this mouse move
+		newCol = getNewCol( target, evt );
+	
+		// retrive the actual node reference to the new column
+		myCol = document.getElementById(newCol);
+		closestNode = null;
+		closestDist = 10000000000;
+		
+		// if target column has no children, insert indicator
+		if (myCol.childNodes.length == 0) {
+			myCol.insertBefore( indicator, null );
+		} else {
+			// loop through each module in the column and find the one that is closest to the 
+			// dragged module
+			for( var i = 0; i < myCol.childNodes.length; i++ ) {
+				dist = Math.sqrt( Math.pow( cX-myCol.childNodes[i].offsetLeft, 2) + Math.pow( cY-myCol.childNodes[i].offsetTop, 2) );
+				if( dist < closestDist ) {
+					closestDist = dist;
+					closestNode = myCol.childNodes[i];
+				}
+			}
+			
+			// now move the indicator node to the appropriate spot in the column
+			if (!isPo) {
+				if( closestNode != null && origModule.nextSibling != closestNode ) {
+					
+					if( cY > closestNode.offsetTop ) {	// if floating module is above it's closest node
+						// make sure the closest node isn't the same closest node from the last mouse move
+						// if it is the same node, however, see if we've moved from below the closest
+						// node to above the closest node
+						if( closestNode != lastClosest || ( closestNode == lastClosest && lastClosestSign == -1) ) {
+							next = closestNode.nextSibling;
+							if( next ) {
+								next.parentNode.insertBefore( indicator, next );
+							
+							}
+							else {
+								// indicator to be placed at bottom
+								closestNode.parentNode.insertBefore( indicator, null );
+								
+							}
+						}
+						lastClosestSign = 1;
+					} else {
+						// make sure the closest node isn't the same closest node from the last mouse move
+						// if it is the same node, however, see if we've moved from above the closest node
+						// to below the closest node
+						if( closestNode != lastClosest || ( closestNode == lastClosest && lastClosestSign == 1 ) ) {
+							closestNode.parentNode.insertBefore( indicator, closestNode );
+							lastClosestSign = -1;
+							
+						}
+					}
+					lastClosest = closestNode;
+				}
+			}
+		} // END if (myCol.childNodes.length == 0)
+
+    return false;
+	}
+}
+
+function selectmouse(e) 
+{
+  evt = nn6?e:event;
+  setEvents(evt);
+  
+  origModule     = nn6 ? e.target : event.srcElement;
+  var topelement = nn6 ? "HTML" : "BODY";
+  var goodToGo = false;
+  lastClosest = null;
+  lastClosestSign = 0;
+  
+  // make sure we've clicked on the write class of div
+  while (origModule.tagName != topelement && (origModule.className != "module" && origModule.className != "moduleEdit") && origModule.className != "modEdit")
+  {
+  	 if( origModule.className == "modTitle" || origModule.className == "modLeft" || origModule.className == "modEdit" || origModule.className == "modRight" ) goodToGo = true;
+    origModule = nn6 ? origModule.parentNode : origModule.parentElement;
+  }
+  
+  // if the event target is a module and the event target is the top node of the module (ie. not modEdit yada yada)
+  if ((origModule.className == "module" || origModule.className == "moduleEdit") && goodToGo && origModule.id != "temp" && origModule.id != "tempModule" && origModule.id != "SystemMessageModule" )
+  {
+
+	isdrag = true;
+	if (!isPo) {
+	  createIndicator(origModule.offsetHeight);		// create the indicator node
+	  createCopy( origModule );						// create a copy of the node to follow the mouse during dragging
+	  origModule.parentNode.insertBefore( indicator, origModule.nextSibling );
+	  origModule.parentNode.removeChild( origModule );
+	} else {
+	  nw = origModule;
+	}
+	
+    tx = parseInt(nw.offsetLeft);	// record the original x,y position of the module
+    ty = parseInt(nw.offsetTop);
+    
+    x = nn6 ? e.pageX : event.clientX+document.body.scrollLeft;	// record original x position of mouse event
+    y = nn6 ? e.pageY : event.clientY+document.body.scrollTop;	// record original y position of mouse event
+    
+    return false;	// who knows why i put this here. if i were you though, i wouldn't touch it
+  }
+}
+
+/**
+  * creates a copy of the module to follow the mouse around
+  * the screen
+  **/
+function createCopy( obj ) {
+	if( !nw ) {
+		
+		nw = document.createElement("div");
+		nw.style.display = "block";
+		nw.style.position = "absolute";
+		nw.style.cursor = "move";
+		nw.style.paddingBottom = "0px";
+		nw.style.left = obj.offsetLeft;
+		nw.style.top = obj.offsetTop;
+		nw.style.height = obj.offsetHeight;
+		nw.style.width = obj.offsetWidth;
+		nw.innerHTML = '<div class=module>' + obj.innerHTML + '</div>';
+		
+		document.body.appendChild( nw );
+
+	}
+}
+
+// not used
+function calculateOffsets( bottom, isLeft ) {
+	var retVal = 0;
+	while( bottom != null ) {
+		retVal += bottom["offset"+(isLeft?"Left":"Top")]
+		bottom = bottom.offsetParent;
+	}
+	return retVal;
+} // calculateOffsets
+
+/**
+  * method to find out where we need to put our original module
+  **/
+function mouseup(e) {
+	target = nn6?e.target:event.srcElement;
+	evt = nn6?e:event;
+	if( isdrag ) {		// make sure we're actually dragging a module
+		isdrag = false;
+		goodToGo = false;
+		
+		if(!isPo) {
+			indicator.parentNode.insertBefore( origModule, indicator );
+		}
+		
+		// clean up settings for use with next drag event
+		if (!isPo) {
+		  nw.style.display = "none";
+		  nw.parentNode.removeChild(nw);
+		  indicator.style.display = "none";
+		  indicator.parentNode.removeChild(indicator);
+		  saveLayout();
+		} else {
+		  isPo = false;
+		}
+		nw = null;
+		origModule = null;
+		lastClosest = null;
+		lastClosestSign = 0;
+	} else {
+		// incase we get here, just hide the copy of some module if it happens to be defined
+		if( nw != null ) {
+			nw.style.display = "none";
+		}
+	}
+	
+}
+
+/**
+  * method to find out if the mouse has moved the module into a new column.
+  * I think this might need some work to deal with when the addContent pane is open.
+  **/
+function getNewCol( target, evt ) {
+	retVal = null;
+	cX = (nn6?evt.pageX:evt.clientX+document.body.scrollLeft);
+	cY = (nn6?evt.pageY:evt.clientY+document.body.scrollTop);
+	
+	if( cX < (getElem("colB").offsetLeft+getElem('cpnl').offsetWidth) ) { // in column A
+		retVal = "colA";
+		
+		if(debug) document.getElementById("debug").innerHTML += "<br>colA " + target.offsetLeft;
+	} else if( (cX >= getElem("colB").offsetLeft && layout_2col) || cX < (document.getElementById("colC").offsetLeft+getElem('cpnl').offsetWidth) ) { // in column b
+		retVal = "colB";
+		
+		if(debug) document.getElementById("debug").innerHTML += "<br>colB " + target.offsetLeft;
+	} else if( cX >= getElem("colC").offsetLeft ) { // in column c
+		retVal = "colC";
+		
+		if(debug) document.getElementById("debug").innerHTML += "<br>colC " + target.offsetLeft;
+	} 
+
+	return retVal;
+}
+
+// this is useful for when the elements directly under colA,colB,colC arent always divs
+function getFirstDiv( nArray ) {
+	for( var i = 0; i < nArray.length; i++ ) {
+		if( nArray[i].nodeName == "DIV" ) return nArray[i];
+	
+	}
+	return null;
+}
+
+document.onmousedown=selectmouse;
+document.onmouseup=mouseup;
+
+// stuff to manage recording the positions of everything on the page
+// this code will be useful when you need to save the module positions to
+// the personalization server.
+var mods_A = new Array();
+var mods_B = new Array();
+var mods_C = new Array();
+var orig_layout_2col,layout_backed;
+
+var save_mods_A = new Array();
+var save_mods_B = new Array();
+var save_mods_C = new Array();
+
+/**
+ *  Call this when the user changes their layout
+ *  preference in the addContent panel
+ **/
+function backupLayout() {
+	orig_layout_2col = layout_2col;
+	layout_backed = true;
+	mods_A = new Array();
+	mods_B = new Array();
+	mods_C = new Array();
+	
+	// store column A's modules
+	aCol = getElem("colA");
+	var dStr = "";
+	if( typeof(aCol) != undefined ) {
+		aNodes = aCol.childNodes;
+		for( i = 0; i < aNodes.length; i++ ) {
+			if(aNodes[i].nodeName == "DIV") {
+				mods_A.push( aNodes[i].id );
+			}
+		}
+	}
+	
+	// store column B's modules
+	bCol = getElem("colB");
+	if( typeof(bCol) != undefined ) {
+		bNodes = bCol.childNodes;
+		for( i = 0; i < bNodes.length; i++ ) {
+			if(bNodes[i].nodeName == "DIV") {
+				mods_B.push( bNodes[i].id );
+			}
+		}
+	}
+	
+	// store column C's modules
+	cCol = getElem("colC");
+	if( typeof(cCol) != undefined ) {
+		cNodes = cCol.childNodes;
+		for( i = 0; i < cNodes.length; i++ ) {
+			if(cNodes[i].nodeName == "DIV") {
+				mods_C.push( cNodes[i].id );
+			}
+		}
+	}
+}
+
+function setUpLayout() {
+	save_mods_A = new Array();
+	save_mods_B = new Array();
+	save_mods_C = new Array();
+	
+	// store column A's modules
+	aCol = getElem("colA");
+	var dStr = "";
+	if( typeof(aCol) != undefined ) {
+		aNodes = aCol.childNodes;
+		for( i = 0; i < aNodes.length; i++ ) {
+			if(aNodes[i].nodeName == "DIV") {
+				save_mods_A.push( aNodes[i].id );
+			}
+		}
+	}
+	
+	// store column B's modules
+	bCol = getElem("colB");
+	if( typeof(bCol) != undefined ) {
+		bNodes = bCol.childNodes;
+		for( i = 0; i < bNodes.length; i++ ) {
+			if(bNodes[i].nodeName == "DIV") {
+				save_mods_B.push( bNodes[i].id );
+			}
+		}
+	}
+	
+	// store column C's modules
+	cCol = getElem("colC");
+	if( typeof(cCol) != undefined ) {
+		cNodes = cCol.childNodes;
+		for( i = 0; i < cNodes.length; i++ ) {
+			if(cNodes[i].nodeName == "DIV") {
+				save_mods_C.push( cNodes[i].id );
+			}
+		}
+	}
+}
+
+function saveLayout() {
+  setUpLayout(); //this puts the modules into three arrays - one for each col
+  var url = 'persist.htm?COMPID=PAGE&MODID=m0';
+
+  var a = new Array('A','B','C');
+  var b = null;
+
+  for (var j = 0; j < a.length; j++) {
+	eval("b = save_mods_" + a[j]);
+	if (b) {
+	  var c = j+1;
+	  url+='&COL'+c+'=';
+	  for (var i = 0; i < b.length; i++) {
+		url+=(i>0?',':'')+b[i];
+	  }
+	}
+  }
+
+  url=url.replace(/indicator,/ig,""); //just in case -- possibly safe to kill
+  
+  if (typeof(oToolbarController.sPartnerID)!='undefined' && oToolbarController.sPartnerID!=null) url += "&partner=" + oToolbarController.sPartnerID;
+  if (typeof(oToolbarController.sUID)!='undefined' && oToolbarController.sUID!=null) url += "&uid=" + oToolbarController.sUID;
+  if (typeof(oToolbarController.sVersion)!='undefined' && oToolbarController.sVersion!=null) url += "&version=" + oToolbarController.sVersion;
+  
+  currentModule = g.m0Module;
+  g.m0Module.xmlReq = new XMLRequest(url, z);
+  g.m0Module.xmlReq.getData();
+}
+
+function z() { }
+
+function restoreLayout() {
+	var ca = getElem('colA');
+	var cb = getElem('colB');
+	var cc = getElem('colC');
+	
+	if( mods_A.length <= 0 & mods_B.length <= 0) return;
+	if( orig_layout_2col ) {
+		cc.style.display="none";
+		cc.style.width="1%";
+		cb.style.width='49%';
+		ca.style.width='50%';
+		
+		// insert original modules into column A
+		for( i = 0; i < mods_A.length; i++ ) {
+			ca.insertBefore( getElem( mods_A[i] ), null );
+		}
+		
+		// insert original modules into column B
+		for( i = 0; i < mods_B.length; i++ ) {
+			cb.insertBefore( getElem( mods_B[i] ), null );
+		}
+		
+		layout_2col = true;
+	
+	} else {
+		cc.style.display = "block";
+		cb.style.width='33%';
+		ca.style.width='33%';
+		cc.style.width='100%';
+		
+		// insert original modules into column A
+		for( i = 0; i < mods_A.length; i++ ) {
+			ca.insertBefore( getElem( mods_A[i] ), null );
+		}
+		// insert original modules into column B
+		for( i = 0; i < mods_B.length; i++ ) {
+			cb.insertBefore( getElem( mods_B[i] ), null );
+		}
+		// insert original modules into column C
+		for( i = 0; i < mods_C.length; i++ ) {
+			cc.insertBefore( getElem( mods_C[i] ), null );
+		}
+		
+		layout_2col = false;
+	}
+}
+/**
+ *  Call this when the addContent window is closed
+ *  or cancel is hit
+ **/
+function clearBackup() {
+	layout_backed = false;
+	mods_A = new Array();
+	mods_B = new Array();
+	mods_C = new Array();
+}
+
+function twocols() {
+	if(layout_backed && orig_layout_2col ) {
+		restoreLayout();
+		clearBackup();
+	} else {
+		backupLayout();
+		layout_2col = true;
+		var ca = document.getElementById('colA');
+		var cb = document.getElementById('colB');
+		var cc = document.getElementById('colC');
+		cb.innerHTML += cc.innerHTML;
+		cc.innerHTML = "";
+		cc.style.display="none";
+		cc.style.width="1%";
+		cb.style.width='49%';
+		ca.style.width='50%';
+	}
+	saveLayout();
+}
+
+function threecols() {
+	if( layout_backed && !orig_layout_2col ) {
+		restoreLayout();
+		clearBackup();
+	} else {
+		backupLayout();
+		layout_2col = false;
+		var ca = document.getElementById('colA');
+		var cb = document.getElementById('colB');
+		var cc = document.getElementById('colC');
+		
+		// Move last module in col B to col C
+		// Need to upgrade this to handle special cases (0 or 1 module in col B, etc.)
+		var tempArr = mods_B;
+		cc.appendChild(getElem(tempArr.pop()));
+		
+		cc.style.display = "block";
+		cb.style.width='33%';
+		ca.style.width='33%';
+		cc.style.width='100%';
+	}
+	saveLayout();
+}
+//END LAYOUT.JS
+
+document.onclick = setEvents;
+
+function getElem(a){return document.getElementById?document.getElementById(a):null}
+function getElemTag(a){return document.getElementsByTagName?document.getElementsByTagName(a):new Array()}
+
+function trim(a){return a.replace(/^\s*|\s*$/g,"")}
+function fEscape(a){return window.encodeURIComponent?encodeURIComponent(a):escape(a)}
+function fEscapeTag(a){return a.replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+
+function fixFonts(a,b) {
+	for (var i = 1; i < 999; i++) {
+		if (getElem(a+''+i) == null) break;
+		getElem(a+''+i).style.fontWeight = ((i==b)?'bold':'normal');
+	}
+}
+
+function showEdit(a) {
+	if(!isdrag) getElem("edit_"+a).childNodes[0].style.display = "inline";
+}
+function hideEdit(a) {
+	if(!isdrag) getElem("edit_"+a).childNodes[0].style.display = "none";
+}
+
+function openWin(url) {
+	var features="";
+	window.open(url, "_blank", features);
+}
+
+function pageViewPixel() {
+	setUpLayout(); //This defines: save_mods_A, save_mods_B and save_mods_C arrays
+
+	var pixelURL = "http://web.archive.org/web/20110728064318/http://img.smileycentral.com/images/nocache/nc/pw.gif";
+
+	var a = new Array('A','B','C');
+	var b = null;
+
+	pixelURL+="?l=";
+	for (var j = 0; j < a.length; j++) {
+		eval("b = save_mods_" + a[j]);
+		if (b) {
+			var c = j+1;
+			pixelURL+='COL'+c+':';
+			for (var i = 0; i < b.length; i++) {
+				pixelURL+=(i>0?',':'')+g.modules[b[i]].compID;
+			}
+		}
+		pixelURL+=(j<a.length-1?'|':'');
+	}
+	
+      	if (typeof(oToolbarController.sPartnerID)!='undefined' && oToolbarController.sPartnerID!=null) { pixelURL+="&b="+oToolbarController.sPartnerID; }
+	document.write('<img src="'+pixelURL+'" width="1" height="1" alt="" border="0" />');
+}
+
+function trackClick(action, val, compID, modID,kw) {
+	var url = "http://web.archive.org/web/20110728064318/http://img.smileycentral.com/images/nocache/nc/c.gif?a="+action;
+	if(val){ url+="&v="+val; }
+	if(compID){ url+="&c="+compID; }
+	if(modID){ url+="&m="+modID; }
+	if(kw){ url+="&k="+kw; }
+	if (typeof(oToolbarController.sPartnerID)!='undefined' && oToolbarController.sPartnerID!=null) { url+="&b="+oToolbarController.sPartnerID; }
+	var tempIMG = new Image();
+	tempIMG.src=url;
+}
+
+
+// BEGIN COMMON SMILEY FUNCTIONS
+var sOopsSmileyIMG = '<img src="http://web.archive.org/web/20110728064318/http://smileys.smileycentral.com/cat/11/11_9_10.gif" width="83" height="83" alt="" border="0" hspace="4" />';
+
+function isTalkingSmiley(sSmiley) {
+	return sSmiley.indexOf("F") == 0;
+}
+
+// BEGIN SMILEY GRAM AND SMILEY MOBILE
+function submitSmileyGram(msg) {
+	if (! validateEmail(document.SmileyGramForm.from.value)) {
+		document.getElementById("RequiredFieldFromSG").innerHTML = "*valid email required";
+		return false;
+	}
+	document.getElementById("RequiredFieldFromSG").innerHTML = "";
+	
+	var addrs = document.SmileyGramForm.to.value.split(",");
+	for ( t=0;t < addrs.length; t++ ){
+		if (! validateEmail(addrs[t])) {
+			document.getElementById("RequiredFieldToSG").innerHTML = "*valid email required";
+			return false;
+		}//end if
+	}//end for
+	document.getElementById("RequiredFieldToSG").innerHTML = "";
+	
+	var formObj = document.getElementById("SmileyGramForm");
+	var smileyhtml = unescape(document.SmileyGramForm.smileyhtml.value);
+	if ( getSmileyResolution(formObj) == 'high' ){
+		smileyhtml = smileyhtml.replace(".gif","h.gif");
+	}//end if
+	
+	var sGramURL = 'http://web.archive.org/web/20110728064318/http://www.smileycentral.com/';
+	switch(currentModule.compID){
+		//var pid = addParentPartner("ZCzeb008","ZCxdm811")
+
+		case 'SOTD': sGramURL = addZebPartnerToUrl(sGramURL,addParentPartner("ZSzeb091","ZNxpt153"));break;
+		case 'MPC' : sGramURL = addZebPartnerToUrl(sGramURL,addParentPartner("ZSzeb091",'ZNxpt152'));break;
+		case 'WIN' :	sGramURL = addZebPartnerToUrl(sGramURL,addParentPartner("ZSzeb091",'ZNxpt151')); break;
+		default : sGramURL = addZebPartnerToUrl(sGramURL,addParentPartner("ZSzeb091",""));break;
+	}
+
+	
+	smileyhtml = '<a href="'+sGramURL+'">' + smileyhtml + '</a>';
+	var sEmailHTML = "<ht"+"ml><body bgcolor=#FFF8DD><table cellpadding=6 cellspacing=0 border=0 width=100% bgcolor=#FFF8DD><tr><td align=center><br><br><font face=verdana,sans-serif size=3><b>Your friend has sent you a free Smiley Gram!<br><br></b></font><table cellpadding=4 cellspacing=0 border=0 width=365 bgcolor=#FFFFFF><tr><td align=center>"+smileyhtml+"</td></tr><tr><td><font face=verdana,arial size=3 color=#000000>"+document.SmileyGramForm.note.value+"</font></td></tr></table><br><br><img src='http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/smileycentral/brought2u_155x37.gif' width=155 height=37 alt='Brought to you by SmileyCentral.com' border=0><br><br><font face=verdana,sans-serif size=1>"+"<b>Don't have Smiley Central?</b><br><a href="+sGramURL+">Click here</a> to get 10,000 free IM and email smileys!"+"</td></tr></table></body></ht"+"ml>";
+	document.SmileyGramForm.html_blurb.value = sEmailHTML;
+
+	trackClick("smiley_gram_sent",document.SmileyGramForm.sSmileyCode.value);
+	
+	document.SmileyGramForm.submit();
+	currentModule.popupDiv.innerHTML = "";
+	currentModule.popupDiv = null;
+}
+
+function returnTalkingHTML(talkIMG, imgCode, altTxt){
+	var talkUrl = "http://web.archive.org/web/20110728064318/http://smiley.smileycentral.com/download/talking_preview.jhtml";
+	switch(currentModule.compID){
+		case 'SOTD': talkUrl = addPartnerToUrl(talkUrl,'ZNxpt153');break;
+		case 'MPC' : talkUrl = addPartnerToUrl(talkUrl,'ZNxpt152');break;
+		case 'WIN' :	talkUrl = addPartnerToUrl(talkUrl,'ZNxpt151'); break;
+		default : talkUrl = addPartnerToUrl(talkUrl,false);break;
+	}
+	var talkHtml='<span contentEditable="false" unselectable><table border="0" cellpadding="0" cellspacing="0"><tr><td align="center"><a href="' + talkUrl + '&i=' + imgCode + '" target="_blank"><img src="' + talkIMG + '" border="0" alt="' + unescape(altTxt) + '"></a></td></tr><tr><td><a href="' + talkUrl + '&i=' + imgCode + '" target="_blank" style="text-decoration:none;">';
+	talkHtml += '<img src="http://web.archive.org/web/20110728064318/http://imgfarm.com/images/smileycentral/imbuddy/hear_me_talk.gif" border="0">';
+	talkHtml += '</a></td></tr></table></span>';
+	return talkHtml;
+}//end function
+
+function showSmileyGram(sID,sImgSrc) {
+	trackClick("smiley_gram_load");
+	var sImgHTML = "<img src='"+sImgSrc+"' border='0'>";
+	
+	if ( isTalkingSmiley(sID) ){
+		sImgHTML = returnTalkingHTML(sImgSrc,sID,'hear me talk');
+	} else {
+		sImgHTML = "<img src='"+sImgSrc+"' border='0'>";
+	}//end if
+	
+	var imgHtmlEscaped = escape(unescape(sImgHTML));
+	
+	var sGramHtml = popHeader();
+	sGramHtml += '<div style="width:100%;overflow:auto;background-color:#FFF8DD;padding:0;"><p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 10px 0 0 0;"><b>Send this smiley to a friend using the form below!</b></p><form name=SmileyGramForm id=SmileyGramForm action="http://web.archive.org/web/20110728064318/http://www.smileycentral.com/spreadtheword/emailme.jsp" method=post onSubmit="submitSmileyGram();return false;" target="_blank" style="padding:0px;margin:0px;"><input type=hidden name="html_blurb" value=""><input type=hidden name="subject" value="Smiley Gram!"><input type=hidden name="redirect" value="http://web.archive.org/web/20110728064318/http://www.smileycentral.com/SmileyGramSent.html"><input type=hidden name="smileyhtml" value="'+imgHtmlEscaped+'"><input type=hidden name="sSmileyCode" value="'+sID+'">';
+	sGramHtml += '<p style="text-align:center;padding:0px;margin: 10px 0 10px 0;"><img src="'+unescape(sImgSrc)+'" border="0"></p><input type="hidden" name="resolution" value="low">';
+	sGramHtml += '<div align="center" style="width:100%;margin:0;padding:0;"><table border=0 cellpadding=6 cellspacing=0 width=380 bgcolor=#FFF8DD><tr><td align><font class=norm><b>From: </b></font></td><td><input type=text name="from" value="" size=47> <span id="RequiredFieldFromSG" class="missingRequired"></span></td></tr><tr><td><font class=norm><b>To: </b></font></td><td><input type=text name="to" value="" size=47> <span id="RequiredFieldToSG" class="missingRequired"></span></td></tr><tr><td>&nbsp;</td><td><font class=sm>(i.e., recipient@domain.com)<br>Separate each address with a comma</font></td></tr><tr><td><font class=norm><b>Add a<br>note: </b></font></td><td><textarea name="note" cols=36 rows=2></textarea></td></tr><tr><td></td><td align=center><input type=button value="Send Email" onClick="submitSmileyGram()"></td></tr></table></div></div>';
+	sGramHtml += '</div>';
+
+	if(!currentModule.popupDiv.childNodes[0].id)
+		currentModule.fillPopWin(sGramHtml);
+	else
+		currentModule.popupDiv.innerHTML = sGramHtml;
+	currentModule.popupDiv.style.width = 420;
+	setPosOnScreen(currentModule.popupDiv);
+	return false;
+}
+
+// BEGIN: ADD SMILEY TO MY - SMILEY OF THE DAY
+var sMyFolderName = 'My Folder';
+var iMaxFavs = 10;
+var aFavFolderNames = new Array();
+var aFavFolderData = new Array();
+var aFavFolderDataCount = new Array();
+var aFavParams = new Array(108, 109, 110);
+	
+function readSmileyFavs() {
+	for (i=0;i<aFavParams.length;i++) {
+		var regData = oToolbarController.oHtmlMenuCtl.GetParameter(aFavParams[i]);
+		if (regData == null || regData == "") {
+			regData=sMyFolderName+" "+(i+1)+"|";
+			//oToolbarController.oHtmlMenuCtl.SetParameter(aFavParams[i], regData);
+		}
+		var tmpArray = regData.split('|');
+		aFavFolderNames[aFavFolderNames.length] = tmpArray[0];
+		for (k=0;k<tmpArray.length-1;k++) {
+			tmpArray[k] = tmpArray[k+1];
+		}
+		tmpArray.length--;
+		aFavFolderData[i] = tmpArray.join('|');
+		aFavFolderDataCount[i] = tmpArray.length-1;
+	}
+}
+function addSmileyToFav(sSmiley,i) {
+	if (aFavFolderDataCount[i] >= iMaxFavs) return false;
+	aFavFolderData[i] = aFavFolderData[i]+unescape(sSmiley)+'|';
+	aFavFolderDataCount[i]++;
+	var regData = aFavFolderNames[i]+'|'+aFavFolderData[i];
+	oToolbarController.oHtmlMenuCtl.SetParameter(aFavParams[i],regData);
+	return true;
+}
+function addSmileyToMy(sSmileyCode,sImgSrc) {
+	var sImgHTML = "<img src='"+sImgSrc+"' border='0'>";
+	
+	//	var sHTML = '<div id=mAddToMy class=module style="position:relative" onmousedown="isPo=true"><table class=modWrp cellspacing=0 cellpadding=0><tr onmouseover=showEdit(\'mAddToMy\') onmouseout=hideEdit(\'mAddToMy\')><td class=modLeft><img src=http://ak.imgfarm.com/images/spacer.gif width=8 height=1></td><td class=modTitle width=100%>&nbsp;</td><td class=modEdit id=edit_mAddToMy align=right><span class="modButton" onclick="_del(\'mAddToMy\')">&nbsp;X&nbsp;</span></td><td class=modRight><img src=http://ak.imgfarm.com/images/spacer.gif width=8 height=1></td></tr></table>';
+	var sHTML = popHeader();
+	sHTML += '<div style="width:100%;overflow:auto;background-color:#FFF8DD;padding:0;"><table border=0 cellpadding=6 cellspacing=0 width=100%><tr><td>';
+	
+	if (! oToolbarController.bInstalled) {
+		var newUrl = 'http://web.archive.org/web/20110728064318/http://smiley.smileycentral.com/download/index.jhtml'
+		switch(currentModule.compID){
+			case 'SOTD': newUrl = addPartnerToUrl(newUrl,'ZNxpt156');break;
+			case 'MPC' : newUrl = addPartnerToUrl(newUrl,'ZNxpt155');break;
+			case 'WIN' :	newUrl = addPartnerToUrl(newUrl,'ZNxpt154'); break;
+			default : newUrl = addPartnerToUrl(newUrl,false);break;
+		}
+	
+		sHTML += '<table cellpadding=0 cellspacing=0 border=0><tr valign="top"><td>'+sOopsSmileyIMG+'</td><td width="100%"><p class="med" style="font-weight:bold;text-align:left;padding:0px;margin: 10px 0 0 0;"><b>Oops! Please download Smiley Central to use this feature - and more!</b></p></td></tr></table>';
+		sHTML += '<p class="sm" style="text-align:left;padding:0px;margin: 10px 0 0 0;">Once you do, we&#039;ll add a Smiley button to your browser and IM. Then you can:';
+		sHTML += '<ul><li>Add smileys to your "My Smileys" folders!</li><li>Access thousands of smileys and share them in emails and IMs!</li></ul></p>';
+		sHTML += '<p class="med" style="text-align:center;padding:0px;margin: 10px 0 0 0;"><b><a href="'+newUrl+'">Click here - it&#039;s free!</a></b><br><br></p>';	
+	} else if (oToolbarController.bUpgradeRequired) {
+		sHTML += '<table cellpadding=0 cellspacing=0 border=0><tr valign="top"><td>'+sOopsSmileyIMG+'</td><td width="100%"><p class="med" style="font-weight:bold;text-align:left;padding:0px;margin: 10px 0 0 0;"><b>Oops! Please upgrade to the latest version of Smiley Central.</b></p></td></tr></table>';
+		sHTML += '<p class="sm" style="text-align:left;padding:0px;margin: 10px 0 0 0;">Once you do, you can add this smiley to your "My Smileys" folders!</p>';
+		sHTML += '<p class="med" style="text-align:center;padding:0px;margin: 10px 0 0 0;"><b><a href="http://web.archive.org/web/20110728064318/http://smiley.smileycentral.com/download/upgrade.jhtml">Click here - it&#039;s free!</a></b><br><br></p>';
+	} else {
+		readSmileyFavs();
+		
+		var bSuccess=false;
+		var sFolderName="";
+		for (i=0;i<aFavParams.length;i++) {
+			if (addSmileyToFav(sSmileyCode,i)) {
+				bSuccess=true;
+				sFolderName=aFavFolderNames[i];
+				break;
+			}
+		}
+	
+		if (bSuccess) {
+			sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 4px 0 0 0;"><b>Smiley Added to <i>'+sFolderName+'</i></b></p>';
+			sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 10px 0 0 0;">'+sImgHTML+'</p>';
+			sHTML += '<p class="sm" style="text-align:left;padding:0px;margin: 10px 0 0 0;"><br>To find this smiley later, click the Smiley Central button on your browser, then click "My Smileys". You will find the smiley in <i>'+sFolderName+'</i>.</p>';
+			trackClick('smiley_add_to_folder',sSmileyCode);
+		} else {
+			sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 4px 0 0 0;"><b>Oops - we experienced an error while attempting to add this smiley to your folder!</b></p>';
+			sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 10px 0 0 0;">'+sImgHTML+'</p>';
+			sHTML += '<p class="sm" style="font-weight:bold;text-align:center;padding:0px;margin: 4px 0 0 0;"><br>Your Smiley folders may be full. Please delete some smileys first, then try again.</p>';
+		}
+	}
+
+	sHTML += '</div></div>';
+
+	if(!currentModule.popupDiv.childNodes[0].id)
+		currentModule.fillPopWin(sHTML);
+	else
+		currentModule.popupDiv.innerHTML = sHTML;
+	currentModule.popupDiv.style.width = 280;
+	setPosOnScreen(currentModule.popupDiv);
+	return false;
+}
+
+function showMoreSmileys() {
+	var sHTML = '<div id=mGeneric class="module" style="position:relative"><table class=modWrp cellspacing="0" cellpadding="0"><tr><td class="modLeft"><img src="http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/spacer.gif" width="8" height="1"></td><td class="modEdit" id="edit_mGeneric" align="right"><span class="modButton" onclick="_del(\'mGeneric\')">&nbsp;X&nbsp;</span></td><td class="modRight"><img src="http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/spacer.gif" width="8" height="1"></td></tr></table>';
+	sHTML += '<div style="width:100%;overflow:auto;background-color:#FFF8DD;padding:0;"><table border="0" cellpadding=6 cellspacing="0" width="100%"><tr><td>';
+	if (oToolbarController.bInstalled) {
+		sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 4px 0 0 0;"><b>Launch Smiley UI</b></p>';
+	} else {
+		var newUrl = addPartnerToUrl('http://web.archive.org/web/20110728064318/http://smiley.smileycentral.com/download/index.jhtml','ZNxpt157');
+		sHTML += '<p class="med" style="font-weight:bold;text-align:left;padding:0px;margin: 10px 0 0 0;"><b>Oops! You need to download Smiley Central.</b></p>';
+		sHTML += '<p class="sm" style="text-align:left;padding:0px;margin: 10px 0 0 0;">Once you do, you can add browse all 13,000 smileys!</p>';
+		sHTML += '<p class="med" style="text-align:center;padding:0px;margin: 10px 0 0 0;"><b><a href="'+newUrl+'">Click here - it&#039;s free!</a></b><br /><br /></p>';
+	}
+
+	sHTML += '</div></div>';
+
+	if(!currentModule.popupDiv.childNodes[0].id){
+		currentModule.fillPopWin(sHTML);
+	}else{
+		currentModule.popupDiv.innerHTML = sHTML;
+	}
+	currentModule.popupDiv.style.width = 280;
+	setPosOnScreen(currentModule.popupDiv);
+	return false;
+}
+
+function showMoreScreensavers() {
+	openWin(addPartnerToUrl("http://web.archive.org/web/20110728064318/http://gallery.popularscreensavers.com/splash.jsp",'ZRxdm605'));
+}
+
+// END: ADD SMILEY TO MY - SMILEY OF THE DAY
+
+// BEGIN: ADD CURSOR TO MY - CURSOR OF THE DAY
+var iDefCursorID=206;
+var sCursorImgPath='http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/cursormania/files/';
+var sCursorFilePath='http://web.archive.org/web/20110728064318/http://i1img.com/images/cursormania/files/';
+var sMyFolderNameCursors = 'My Folder';
+var iMaxFavsCursors = 12;
+var aFavFolderNamesCursors = new Array();
+var aFavFolderDataCursors = new Array();
+var aFavFolderDataCountCursors = new Array();
+var aFavParamsCursors = new Array(126,127,128);
+
+function returnCursorURL(cur,bIMG) {
+	var tmpArray = cur.split('/');
+	cur = tmpArray[tmpArray.length-1];
+	var dir = Math.floor(cur.replace("a","")/500);
+	if (bIMG) {
+		var rVal=sCursorImgPath+dir+"/"+cur+".gif";
+	} else if (isAnimCur(cur)) {
+		var rVal=sCursorFilePath+dir+"/"+cur+".ani";
+	} else {
+		var rVal=sCursorFilePath+dir+"/"+cur+".cur";
+	}
+	return rVal;
+}
+function isAnimCur(cur) {
+    return cur.indexOf('a') != -1 && cur != iDefCursorID;
+}
+function updateCursorMRU(i,altTxt) {
+	var tmpArray = i.split('/');
+	i = tmpArray[tmpArray.length-1];
+	var iMAX_MRU_LEN = 20;
+	var iPARAM_MRU = 129;
+	var sMRUList = oToolbarController.oHtmlMenuCtl.GetParameter(iPARAM_MRU);
+	var s = i + '~' + unescape(altTxt);
+	if (sMRUList != null && sMRUList != '') {
+		var a = sMRUList.split('|');
+		var n = a.length;
+		if (n >= iMAX_MRU_LEN) n = iMAX_MRU_LEN - 1;
+		for (j = 0; j < n; j++) {
+			var aTmpArr=a[j].split('~');
+			if (aTmpArr[0] != i)
+				s += '|' + a[j];
+			else if (n < a.length)
+				n++;
+		}
+	}
+	sMRUList = s;
+	oToolbarController.oHtmlMenuCtl.SetParameter(iPARAM_MRU, sMRUList);
+}
+function readCursorFavs() {
+	for (i=0;i<aFavParamsCursors.length;i++) {
+		var regData = oToolbarController.oHtmlMenuCtl.GetParameter(aFavParamsCursors[i]);
+		if (regData == null || regData == "") {
+			regData=sMyFolderNameCursors+" "+(i+1)+"|";
+		}
+		var tmpArray = regData.split('|');
+		aFavFolderNamesCursors[aFavFolderNamesCursors.length] = tmpArray[0];
+		for (k=0;k<tmpArray.length-1;k++) {
+			tmpArray[k] = tmpArray[k+1];
+		}
+		tmpArray.length--;
+		aFavFolderDataCursors[i] = tmpArray.join('|');
+		aFavFolderDataCountCursors[i] = tmpArray.length-1;
+	}
+}
+function addCursorToFav(sID,i) {
+	if (aFavFolderDataCountCursors[i] >= iMaxFavsCursors) return false;
+	aFavFolderDataCursors[i] = aFavFolderDataCursors[i]+unescape(sID)+'|';
+	aFavFolderDataCountCursors[i]++;
+	var regData = aFavFolderNamesCursors[i]+'|'+aFavFolderDataCursors[i];
+	oToolbarController.oHtmlMenuCtl.SetParameter(aFavParamsCursors[i],regData);
+	return true;
+}
+function addCursorToMy(sID,sImgSrc) {
+	var sImgHTML = "<img src='"+sImgSrc+"' border='0'>";
+	var sHTML = popHeader();
+	sHTML += '<div style="width:100%;overflow:auto;background-color:#FFF8DD;padding:0;"><table border=0 cellpadding=6 cellspacing=0 width=100%><tr><td>';
+	if (! oToolbarController.bInstalled) {
+		var newUrl = 'http://web.archive.org/web/20110728064318/http://cursormania.smileycentral.com/download/index.jhtml'
+		switch(currentModule.compID){
+			case 'CUOTD': newUrl = addPartnerToUrl(newUrl,'ZCxdm777');break;
+			case 'MPC' : newUrl = addPartnerToUrl(newUrl,'ZCxdm776');break;
+			case 'WIN' :	newUrl = addPartnerToUrl(newUrl,'ZCxdm775'); break;
+			default : newUrl = addPartnerToUrl(newUrl,false);break;
+		}
+			
+		sHTML += '<table cellpadding=0 cellspacing=0 border=0><tr valign="top"><td>'+sOopsSmileyIMG+'</td><td width="100%"><p class="med" style="font-weight:bold;text-align:left;padding:0px;margin: 10px 0 0 0;"><b>Oops! Please download Cursor Mania to enjoy this feature - and more!</b></p></td></tr></table>';
+		sHTML += '<p class="sm" style="text-align:left;padding:0px;margin: 10px 0 0 0;">Once you do, we&#039;ll add a Cursor button to your browser. Then you can:';
+		sHTML += '<ul><li>Change your cursor directly from this page!</li>';
+		sHTML += '<li>Access thousands of free cursors from your browser!</li>';
+		sHTML += '<li>Add cursors to your "My Cursors" folders!</li></ul></p>';
+		
+		sHTML += '<p class="med" style="text-align:center;padding:0px;margin: 10px 0 0 0;"><b><a href="'+newUrl+'">Click here - it&#039;s free!</a></b><br><br></p>';
+	} else if (oToolbarController.bUpgradeRequired) {
+		sHTML += '<table cellpadding=0 cellspacing=0 border=0><tr valign="top"><td>'+sOopsSmileyIMG+'</td><td width="100%"><p class="med" style="font-weight:bold;text-align:left;padding:0px;margin: 10px 0 0 0;"><b>Oops! Please upgrade to the latest version of Cursor Mania.</b></p></td></tr></table>';
+		sHTML += '<p class="sm" style="text-align:left;padding:0px;margin: 10px 0 0 0;">Once you do, you can add this cursor to your "My Cursors" folders!</p>';
+		sHTML += '<p class="med" style="text-align:center;padding:0px;margin: 10px 0 0 0;"><b><a href="http://web.archive.org/web/20110728064318/http://cursormania.smileycentral.com/download/upgrade.jhtml">Click here - it&#039;s free!</a></b><br><br></p>';
+	} else {
+		readCursorFavs();
+		
+		var bSuccess=false;
+		var sFolderName="";
+		for (i=0;i<aFavParamsCursors.length;i++) {
+			if (addCursorToFav(sID,i)) {
+				bSuccess=true;
+				sFolderName=aFavFolderNamesCursors[i];
+				break;
+			}
+		}
+	
+		if (bSuccess) {
+			sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 4px 0 0 0;"><b>Cursor Added to <i>'+sFolderName+'</i></b></p>';
+			sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 10px 0 0 0;">'+sImgHTML+'</p>';
+			sHTML += '<p class="sm" style="text-align:left;padding:0px;margin: 10px 0 0 0;"><br>To find this cursor later, click the Cursor Mania button on your browser, then click "My Cursors". You will find the cursor in <i>'+sFolderName+'</i>.</p>';
+			trackClick('cursor_add_to_folder',sID);
+		} else {
+			sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 4px 0 0 0;"><b>Oops - we experienced an error while attempting to add this cursor to your folder!</b></p>';
+			sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 10px 0 0 0;">'+sImgHTML+'</p>';
+			sHTML += '<p class="sm" style="font-weight:bold;text-align:center;padding:0px;margin: 4px 0 0 0;"><br>Your Cursor folders may be full. Please delete some cursors first, then try again.</p>';
+		}
+	}
+
+	sHTML += '</div></div>';
+
+	if(!currentModule.popupDiv.childNodes[0].id)
+		currentModule.fillPopWin(sHTML);
+	else
+		currentModule.popupDiv.innerHTML = sHTML;
+	currentModule.popupDiv.style.width = 280;
+	setPosOnScreen(currentModule.popupDiv);
+	return false;
+}
+function defaultCursor() {
+	changeCursor(iDefCursorID,'');
+}
+function changeCursor(sID,sImgSrc) {
+	var sImgHTML = "<img src='"+sImgSrc+"' border='0'>";
+	
+	var sHTML = popHeader();
+	sHTML += '<div style="width:100%;overflow:auto;background-color:#FFF8DD;padding:0;"><table border=0 cellpadding=6 cellspacing=0 width=100%><tr><td>';
+	
+	if (! oToolbarController.bInstalled) {
+		var newUrl = 'http://web.archive.org/web/20110728064318/http://cursormania.smileycentral.com/download/index.jhtml'
+		if(sID == iDefCursorID){
+			newUrl = addPartnerToUrl(newUrl,'ZCxdm781');
+		}else{
+			switch(currentModule.compID){
+				case 'CUOTD': newUrl = addPartnerToUrl(newUrl,'ZCxdm780');break;
+				case 'MPC' : newUrl = addPartnerToUrl(newUrl,'ZCxdm779');break;
+				case 'WIN' : newUrl = addPartnerToUrl(newUrl,'ZCxdm778'); break;
+				default : newUrl = addPartnerToUrl(newUrl,false);break;
+			}
+		}
+	
+		sHTML += '<table cellpadding=0 cellspacing=0 border=0><tr valign="top"><td>'+sOopsSmileyIMG+'</td><td width="100%"><p class="med" style="font-weight:bold;text-align:left;padding:0px;margin: 10px 0 0 0;"><b>Oops! Please download Cursor Mania to enjoy this feature - and more!</b></p></td></tr></table>';
+		sHTML += '<p class="sm" style="text-align:left;padding:0px;margin: 10px 0 0 0;">Once you do, we&#039;ll add a Cursor button to your browser. Then you can:';
+		sHTML += '<ul><li>Change your cursor directly from this page!</li>';
+		sHTML += '<li>Access thousands of free cursors from your browser!</li>';
+		sHTML += '<li>Add cursors to your "My Cursors" folders!</li></ul></p>';
+		sHTML += '<p class="med" style="text-align:center;padding:0px;margin: 10px 0 0 0;"><b><a href="'+newUrl+'">Click here - it&#039;s free!</a></b><br><br></p>';
+	} else if (oToolbarController.bUpgradeRequired) {
+		sHTML += '<table cellpadding=0 cellspacing=0 border=0><tr valign="top"><td>'+sOopsSmileyIMG+'</td><td width="100%"><p class="med" style="font-weight:bold;text-align:left;padding:0px;margin: 10px 0 0 0;"><b>Oops! Please upgrade to the latest version of Cursor Mania.</b></p></td></tr></table>';
+		sHTML += '<p class="sm" style="text-align:left;padding:0px;margin: 10px 0 0 0;">Once you do, you can change your cursor directly from this page!</p>';
+		sHTML += '<p class="med" style="text-align:center;padding:0px;margin: 10px 0 0 0;"><b><a href="http://web.archive.org/web/20110728064318/http://cursormania.smileycentral.com/download/upgrade.jhtml">Click here - it&#039;s free!</a></b><br><br></p>';
+	} else {
+		var url="";
+		if (sID!=iDefCursorID) {
+			if (isAnimCur(sID)) oToolbarController.oHtmlMenuCtl.InstallCursor('http://web.archive.org/web/20110728064318/http://i1img.com/images/cursormania/loading.ani');
+			url=returnCursorURL(sID,false);
+			updateCursorMRU(sID,'');
+		}
+		oToolbarController.oHtmlMenuCtl.InstallCursor(url);
+		
+		if (sID==iDefCursorID) {
+			sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 4px 0 0 0;"><b>Default Cursor Restored</b></p>';
+			sHTML += '<p class="sm" style="text-align:left;padding:0px;margin: 10px 0 0 0;">You can change your cursor at any time from this module, or from the Cursor Mania button on your browser.</p>';
+			trackClick('cursor_default');
+		} else {
+			sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 4px 0 0 0;"><b>Cursor Changed!</b></p>';
+			sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 10px 0 0 0;">'+sImgHTML+'</p>';
+			sHTML += '<p class="sm" style="text-align:right;padding:0px;margin: 10px 0 0 0;"><a onClick="defaultCursor();">Back to default cursor</a></p>';
+			trackClick('cursor_changed',sID);
+		}	
+	}
+	
+	sHTML += '</div></div>';
+
+	if(!currentModule.popupDiv.childNodes[0].id)
+		currentModule.fillPopWin(sHTML);
+	else
+		currentModule.popupDiv.innerHTML = sHTML;
+	currentModule.popupDiv.style.width = 280;
+	setPosOnScreen(currentModule.popupDiv);
+	return false;
+}
+function myspaceCode(sCursor){
+	var pid = addParentPartner("ZCzeb008","ZCxdm811")
+	return '<a href="http://web.archive.org/web/20110728064318/http://plugin.smileycentral.com/http%253A%252F%252Fcursormania%252Esmileycentral%252Ecom%252Fdownload%252Findex%252Ejhtml%253Fpartner%253D'+pid+'%2526spu%253D1%2526feat%253Dprof/page.html" style="position:absolute;top:50px;left:0px;"><img src="http://web.archive.org/web/20110728064318/http://plugin.smileycentral.com/http%253A%252F%252Fplugin%252Esmileycentral%252Ecom%252Fassetserver%252Fcursor%252Ejhtml/image.gif" border="0"/></a><style type="text/css">body{cursor:url("http://web.archive.org/web/20110728064318/http://plugin.smileycentral.com/http%253A%252F%252Fplugin%252Esmileycentral%252Ecom%252Fassetserver%252Fcursor%252Ejhtml%253Fcur%253D1%2526i%253D'+sCursor+'/image.gif") !important;}</style>';
+}
+function copyCursorCodeToClip(cursorId){
+	//setting this var seems to be needed
+	var html=document.getElementById(cursorId).value;
+	window.clipboardData.setData("Text",html);
+
+	document.getElementById('statusCursorCode').style.visibility="visible";
+	setTimeout("fadeCursorCode()",2000)
+}
+function fadeCursorCode(){
+		//Try catch, in case the popup has been closed. Maybe should be tracking the timerid, to stop on popup close?
+        try{document.getElementById('statusCursorCode').style.visibility="hidden";}catch(e){}
+}
+
+function helpText(id){
+	document.getElementById("COTDhelpText").innerHTML = document.getElementById("COTDhelpText"+id).innerHTML;
+}
+function copyCursorCode(sID,sImgSrc) {
+	var sImgHTML = "<img src='"+sImgSrc+"' border='0'>";
+	var code = myspaceCode(sID);
+	
+	var sHTML = popHeader();
+	sHTML += '<div style="width:100%;overflow:auto;background-color:#FFF8DD;padding:0;"><table border=0 cellpadding=6 cellspacing=0 width=100%><tr><td>';
+	sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 4px 0 0 0;"><b>Grab the Code!</b></p>';
+	sHTML += '<p class="sm" style="text-align:center;padding:0px;margin: 10px 0 0 0;">Add this cursor to your blog, profile or other page.</p>';
+	sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 10px 0 0 0;">'+sImgHTML+'</p>';
+	sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 10px 0 0 0;"><input id="d_inputCursor'+sID+'" name="text" type="text" value=\''+code+'\'  onclick="this.focus();this.select()" readonly style="border:1px solid #c0c0ff;"/></p>';
+if(window.clipboardData){
+	sHTML += '<p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 10px 0 0 0;">';
+	sHTML += '<button onclick="copyCursorCodeToClip(\'d_inputCursor'+sID+'\')">Copy the Code</button>';
+	sHTML += '<div id="statusCursorCode" style="visibility:hidden;text-align:center;color:#ff0000;font-weight:bold;font-size:11px;font-family:Arial;">Copied to Clipboard</div>';
+	sHTML += '</p>';
+}
+	//sHTML += '<p class="sm" style="text-align:center;padding:0px;margin: 10px 0 0 0;">Help to add a cursor to: MySpace, Xanga, Hi5, <a href="#">Blogger</a></p>';
+	sHTML += '<p class="sm" style="text-align:center;padding:0px;margin: 5px 0 0 0;">Help to add a cursor to: <a onclick="helpText(\'MySpace\')">MySpace</a>, <a onclick="helpText(\'Xanga\')">Xanga</a>, <a onclick="helpText(\'Hi5\')">Hi5</a>, <a onclick="helpText(\'Blogger\')">Blogger</a></p>';
+	sHTML += '<div class="sm" style="text-align:left;padding:0px;margin: 10px 0 0 0;" id="COTDhelpText"></div>';
+	sHTML += '<div style="display:none;" id="COTDhelpTextMySpace" ><b>To add a cursor to your My Space page:</b><ul style="margin:0 0 0 18px;padding:0;"> <li>Click the "Copy Code" button above </li> <li>Log in to your My Space page, and click on the "Edit Profile" link in your account information box. </li> <li>Paste the code into one of the text fields (such as "About Me" or "Interests") on the page. </li> <li>Click on the "Save All Changes" button on the page.</li> <li>That\'s it! Visitors to your My Space page will now see the cursor you have selected. </li> </ul></div>';
+	sHTML += '<div style="display:none;" id="COTDhelpTextXanga" ><b>To add a cursor to your Xanga page: </b><ul style="margin:0 0 0 18px;padding:0;"> <li>Click the "Copy Code" button above </li> <li>Log in to your Xanga account. </li> <li>Click on the "Look and Feel" link at the top of the page. </li> <li>Paste the code into the text entry field named "Website Stats".</li> <li>That\'s it! Visitors to your Xanga page will now see the cursor you have selected. </li></ul></div>';
+	sHTML += '<div style="display:none;" id="COTDhelpTextHi5" ><b>To add a cursor to your Hi5 page: </b><ul style="margin:0 0 0 18px;padding:0;"> <li>Click the "Copy Code" button above </li> <li>Log in to your Hi5 page, and click on the "Edit My Profile" link beneath your photo box. </li> <li>Click on the "Personalize" tab and paste the code into the text entry box underneath "Style:" </li> <li>Click on the "Save Profile" button on the page.</li> <li>That\'s it! Visitors to your Hi5 page will now see the cursor you have selected. </li></ul></div>';
+	sHTML += '<div style="display:none;" id="COTDhelpTextBlogger" ><b>To add a cursor to your Blogger or TypePad blog: </b><ul style="margin:0 0 0 18px;padding:0;"> <li>Click the "Copy Code" button above </li> <li>Log into your Blogger or Type Pad account. </li> <li>Click on the link to create a new post for your blog. </li> <li>Click on the "Edit HTML" tab and paste the code into the text entry field.</li> <li>That\'s it! Visitors to your Blogger or TypePad page will now see the cursor you have selected. </li></ul></div>';
+
+
+	sHTML += '</div></div>';
+
+	trackClick('cursor_code',sID);	
+
+	if(!currentModule.popupDiv.childNodes[0].id){
+		currentModule.fillPopWin(sHTML);
+	}else{
+		currentModule.popupDiv.innerHTML = sHTML;
+	}
+	currentModule.popupDiv.style.width = 280;
+	setPosOnScreen(currentModule.popupDiv);
+	return false;
+}
+
+// BEGIN: SEND MFC TO A FRIEND
+// Function of module
+Module.prototype.sendMFC = function(sURLCard) {
+	var newUrl = sURLCard;
+	switch(this.compID){
+		case 'EOTD': newUrl = addPartnerToUrl(newUrl,'ZUxdm401');break;
+		case 'WIN' :	newUrl = addPartnerToUrl(newUrl,'ZUxdm400'); break;
+		default : newUrl = addPartnerToUrl(newUrl,false);break;
+	}
+	trackClick('mfc_send',escape(newUrl));
+	openWin(newUrl);
+}
+
+function showMoreCards() {
+	if (oToolbarController.bInstalled) {
+		openWin("http://web.archive.org/web/20110728064318/http://ecards.myfuncards.com/myfuncards/splash.jsp");
+	} else {
+		var newUrl = 'http://web.archive.org/web/20110728064318/http://myfuncards.smileycentral.com/download/index.jhtml';
+		switch(currentModule.compID){
+			case 'EOTD': newUrl = addPartnerToUrl(newUrl,'ZUxdm403');break;
+			case 'WIN' :	newUrl = addPartnerToUrl(newUrl,'ZUxdm402'); break;
+			default : newUrl = addPartnerToUrl(newUrl,false);break;
+		}
+		var sHTML = '<div id=mGeneric class="module" style="position:relative"><table class=modWrp cellspacing="0" cellpadding="0"><tr><td class="modLeft"><img src="http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/spacer.gif" width="8" height="1"></td><td class="modEdit" id="edit_mGeneric" align="right"><span class="modButton" onclick="_del(\'mGeneric\')">&nbsp;X&nbsp;</span></td><td class="modRight"><img src="http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/spacer.gif" width="8" height="1"></td></tr></table>';
+		sHTML += '<div style="width:100%;overflow:auto;background-color:#FFF8DD;padding:0;"><table border="0" cellpadding=6 cellspacing="0" width="100%"><tr><td>';
+		sHTML += '<p class="med" style="font-weight:bold;text-align:left;padding:0px;margin: 10px 0 0 0;"><b>Oops! You need to download MyFunCards.</b></p>';
+		sHTML += '<p class="sm" style="text-align:left;padding:0px;margin: 10px 0 0 0;">Once you do, you can send free eCards to your friends and family!</p>';
+		sHTML += '<p class="med" style="text-align:center;padding:0px;margin: 10px 0 0 0;"><b><a href="'+newUrl+'">Click here - it&#039;s free!</a></b><br /><br /></p>';
+		sHTML += '</div></div>';
+
+		if(!currentModule.popupDiv.childNodes[0].id)
+			currentModule.fillPopWin(sHTML);
+		else
+			currentModule.popupDiv.innerHTML = sHTML;
+		currentModule.popupDiv.style.width = 280;
+		setPosOnScreen(currentModule.popupDiv);
+		return false;
+	}
+}
+
+/*
+	BEGIN: NEW CODE FOR MOBILE CARRIERS
+*/
+
+var mobile;
+var carrierSelect;
+
+function initCarriers(){
+	//showDebug = false;
+	mobile = new Carriers();
+	
+	//add US carriers
+	mobile.add("att","AT&amp;T","mmode.com","us");
+	mobile.add("cellularone","Cellular One","mycellone.net","us");
+	mobile.add("cellularsouth","Cellular South","csouth1.com","us");
+	mobile.add("cingular","Cingular","cingularME.com","us");
+	mobile.add("cricket","Cricket","mms.mycricket.com","us");
+	mobile.add("metropcs","Metro PCS","mymetropcs.com","us");
+	mobile.add("nextel","Nextel","page.nextel.com","us");
+	mobile.add("sprint","Sprint","messaging.sprintpcs.com","us");
+	mobile.add("surewest","SureWest","mobile.surewest.com","us");
+	mobile.add("tmobile","T-mobile","tmomail.net","us");
+	mobile.add("uscell","U.S. Cellular","mms.uscc.net","us");
+	mobile.add("vzw","Verizon Wireless","vtext.com","us");
+	mobile.add("virginmobile","Virgin Mobile","vmobl.com","us");
+	mobile.add("westcentral","West Central","sms.wcc.net","us");
+	//add canadian carriers
+	mobile.add("aliant","Aliant","chat.wirefree.ca","ca");
+	mobile.add("bell","Bell","txt.bellmobility.ca","ca");
+	mobile.add("fido","Fido","fido.ca","ca");
+	mobile.add("mts","MTS","text.mts.net","ca");
+	mobile.add("rogers","Rogers","pcs.rogers.com","ca");
+	mobile.add("sasktel","Sasktel Mobility","pcs.sasktelmobility.com","ca");
+	mobile.add("telus","Telus","msg.telus.com","ca");
+}//end function initCarriers
+
+function MobileCountry(key,name){
+	this.key = key;
+	this.name = name;
+}//end function Country
+
+function MobileCarrier(key,name,smsDom,country){
+	this.key = key;
+	this.name = name;
+	this.smsDom = smsDom;
+	this.country = country;
+}//end function MobileCarrier
+
+function Carriers(){
+	this.carrierList = new Array();
+	this.countryList = new Array();
+	this.countryList.push(new MobileCountry("us","United States"));
+	this.countryList.push(new MobileCountry("ca","Canada"));
+}//end function Carriers
+
+//begin class method definitions for Carriers
+Carriers.prototype = {
+	add: function(key,name,smsDom,country){
+		this.carrierList.push(new MobileCarrier(key,name,smsDom,country));
+	},
+	
+	get: function(cKey){
+		var i=0;
+		for ( i=0; i < this.carrierList.length; i++ ){
+			if ( this.carrierList[i].key == cKey ){
+				return i;
+			}//end if
+		}//end for
+	},
+	
+	send: function(cKey,phone){
+		var carrierIdx = this.get(cKey);
+		var toEmail = "";
+		if ( cKey.substring(0,8) == 'country_' ){
+			var cCode = cKey.substring(8);
+			toEmail = this.sendToCountry(phone,cCode);
+			if ( cCode.toLowerCase() == 'us' ){
+				trackClick("smiley_mobile_carrier_dontknow");
+			} else {
+				trackClick("smiley_mobile_carrier_dontknow_" + cCode);
+			}//end if
+		} else {
+			toEmail = phone + "@" + this.getAddress(carrierIdx);
+			trackClick("smiley_mobile_carrier_" + cKey);
+		}//end if
+		return toEmail;
+	},
+	
+	htmlOptions: function(){
+		var idx = 0;
+		var html = "";
+		var country = "";
+		var countryIdx;
+		for ( idx=0; idx < this.carrierList.length; idx++ ){
+			if ( this.carrierList[idx].country != country ){
+				countryIdx = this.getCountry(this.carrierList[idx].country);
+				if ( idx > 0 ){
+					html += "<option value=\"country_" + country + "\">&nbsp;&nbsp; I don\'t know</option>";
+				}//end if
+				html += "<option value=\"none\">&gt;&gt; " + this.countryList[countryIdx].name + " &lt;&lt;</option>";
+				country = this.carrierList[idx].country;
+			}//end if
+			html += "<option value=\"" + this.carrierList[idx].key + "\">&nbsp;&nbsp; " + this.carrierList[idx].name + "</option>";
+			if ( (idx+1) == this.carrierList.length ){
+				html += "<option value=\"country_" + country + "\">&nbsp;&nbsp; I don\'t know</option>";
+			}//end if
+		}//end for
+		return html;
+	},
+	
+	sendToCountry: function(phone,country){
+		var mailto = new Array();
+		var idx = 0;
+		for ( idx=0; idx < this.carrierList.length; idx++ ){
+			if ( this.carrierList[idx].country == country ){
+				mailto.push(phone + "@" + this.getAddress(idx));
+			}//end if
+		}//end for
+		return mailto.join(",");
+	},
+	
+	getAddress: function(idx){
+		return this.carrierList[idx].smsDom;
+	},
+	
+	getCountry: function(key){
+		var idx = 0;
+		for ( idx in this.countryList ){
+			if ( this.countryList[idx].key == key ){
+				return idx;
+			}//end if
+		}//end for
+	}
+};
+//end class method definitions for Carriers
+
+/*
+	END: NEW CODE FOR MOBILE CARRIERS
+*/
+
+function getSmileyResolution(formObj){
+	var loop = 0;
+	var max = formObj.resolution.length;
+	for ( loop=0; loop < max; loop++ ){
+		if ( formObj.resolution[loop].checked ){
+			return formObj.resolution[loop].value;
+		}//end if
+	}//end for
+}//end function getSmileyResolution
+
+function submitSmileyMobile() {
+	var phoneNumError = 0;
+	formObj = document.getElementById("SmileyMobileForm");
+	reqToObj = document.getElementById("RequiredFieldToSM");
+	reqFromObj = document.getElementById("RequiredFieldFromSM");
+	
+	reqToObj.style.display = "none";
+	reqFromObj.style.display = "none";
+
+	var phoneNum = formObj.phoneNum.value;
+	if ( mobileNetwork == "domestic" ){
+		if ( phoneNum == "" || !parseInt(phoneNum,10) || phoneNum.length < 10 ){
+			reqToObj.style.display = "block";
+			reqToObj.innerHTML = "phone number is incomplete or not numeric";
+			return;
+		} else if ( phoneNum.length > 0 ){
+			var i=0;
+			var num = 0;
+			for ( i=0; i < phoneNum.length; i++ ){
+				num = phoneNum.charAt(i);
+				if ( num > 0 && !parseInt(num,10) ){
+					phoneNumError++;
+					break;
+				}//end if
+				if ( isNaN(num) || num < 0 ){
+					phoneNumError++;
+					break;
+				}//end if
+			}//end for
+			if ( phoneNumError > 0 ){
+				reqToObj.style.display = "block";
+				reqToObj.innerHTML = "must be numbers only";
+				phoneNumError = 0;
+				return;
+			} else {
+				reqToObj.style.display = "none";
+				reqToObj.innerHTML = "";
+			}//end if
+		}//end if
+		
+		//check to see if a carrier was selected
+		var carrier = formObj.carrier.selectedIndex;
+		if ( formObj.carrier.options[carrier].value == "none" ){
+			reqToObj.style.display = "block";
+			reqToObj.innerHTML = "please select a carrier network or select &quot;I don\'t know&quot; if you dont know.";
+			return false;
+		}//end if
+		//validate from address
+		var fromField = formObj.from.value;
+		var addrs = fromField.split(",");
+		for ( t=0;t < addrs.length; t++ ){
+			if (! validateEmail(addrs[t])) {
+				reqFromObj.style.display = "block";
+				reqFromObj.innerHTML = "*valid email required";
+				return false;
+			}//end if
+		}//end for
+		
+		//addresses to send to
+		var sendTo = "";
+		sendTo = mobile.send(formObj.carrier.options[carrier].value,phoneNum);
+		formObj.to.value = sendTo;
+	} else {
+		var toField = formObj.toEmail.value;
+		var addrs = toField.split(",");
+		for ( t=0;t < addrs.length; t++ ){
+			if (! validateEmail(addrs[t])) {
+				reqToObj.style.display = "block";
+				reqToObj.innerHTML = "*valid email required";
+				return false;
+			}//end if
+		}//end for
+		
+		//validate from address
+		var fromField = formObj.from.value;
+	    addrs = fromField.split(",");
+		for ( t=0;t < addrs.length; t++ ){
+			if (! validateEmail(addrs[t])) {
+				reqFromObj.style.display = "block";
+				reqFromObj.innerHTML = "*valid email required";
+				return false;
+			}//end if
+		}//end for
+		
+		formObj.to.value = formObj.toEmail.value;
+	}//end if
+
+	
+	var imgUrl = unescape(formObj.smileyimgurl.value);
+	if ( getSmileyResolution(formObj) == 'high' ){
+		imgUrl = imgUrl.replace(".gif","h.gif");
+	}//end if
+	var smsText = imgUrl + "\n" +
+				  "Send free smileys from Smileycentral.com\n" +
+				  document.SmileyMobileForm.note.value;
+	
+	document.SmileyMobileForm.blurb.value = smsText;
+	document.SmileyMobileForm.smileyhtml.value = "";
+	
+	trackClick("smiley_mobile_sent",escape(imgUrl));
+	
+	document.SmileyMobileForm.submit();
+	currentModule.popupDiv.innerHTML = "";
+	currentModule.popupDiv = null;
+}
+
+var mobileNetwork = "domestic";
+function mobileNtwkToggle(){
+	toFieldInputObj = document.getElementById("toFieldInput");
+	phoneFieldInputObj = document.getElementById("phoneFieldInput");
+	toFieldLabelObj = document.getElementById("toFieldLabel");
+	networkTextLinkObj = document.getElementById("networkTextLink");
+	emailnoteObj = document.getElementById("emailnote");
+	RequiredFieldToObj = document.getElementById("RequiredFieldToSM");
+	reqToObj = document.getElementById("RequiredFieldToSM");
+	reqFromObj = document.getElementById("RequiredFieldFromSM");
+	
+	if ( mobileNetwork == "domestic" ){
+		toFieldInputObj.style.display = "block";
+		phoneFieldInputObj.style.display = "none";
+		toFieldLabelObj.innerHTML = "To:";
+		networkTextLinkObj.innerHTML = "<a href=\"#\" onclick=\"mobileNtwkToggle();return false;\">U.S. Domestic Network?</a>";
+		emailnoteObj.innerHTML = "(i.e., recipient@mobilecarrier.com)";
+		RequiredFieldToObj.innerHTML = "";
+		mobileNetwork = "international";
+	} else {
+		toFieldInputObj.style.display = "none";
+		phoneFieldInputObj.style.display = "block";
+		toFieldLabelObj.innerHTML = "Phone Number:";
+		networkTextLinkObj.innerHTML = "<a href=\"#\" onclick=\"mobileNtwkToggle();return false;\">International Network?</a>";
+		emailnoteObj.innerHTML = "(i.e., 9145551234)";
+		RequiredFieldToObj.innerHTML = "";
+		mobileNetwork = "domestic";
+	}//end if
+}//end function
+
+function checkSmsChars(txtObj){
+	var maxChars = 60;
+	var strlen = txtObj.value.length;
+	if ( strlen >= maxChars ){
+		txtObj.value = txtObj.value.substr(0, maxChars);
+	}//end if
+}//end function
+
+function showSmileyMobile(sID,sImgSrc){
+	trackClick("smiley_mobile_load");
+	var sImgHTML = "<img src='"+sImgSrc+"' border='0'>";
+	mobileNetwork = "domestic";
+	
+	//check to see if mobile object and carrier list exist already
+	//if not, create them.
+	if ( typeof(mobile) == null || typeof(mobile) == 'undefined' ){
+		initCarriers();
+		carrierSelect = "<select name=\"carrier\" style=\"margin-left:3px;\">";
+		carrierSelect += "<option value=\"none\" selected>Choose a Network</option>";
+		carrierSelect += mobile.htmlOptions();
+		carrierSelect += "</select>";
+	}//end if
+	
+	//	var mobileHtml = '<div id=mSM class=module style="position:relative" onmousedown="isPo=true"><table class=modWrp cellspacing=0 cellpadding=0><tr onmouseover=showEdit(\'mSM\') onmouseout=hideEdit(\'mSM\')><td class=modLeft><img src=http://ak.imgfarm.com/images/spacer.gif width=8 height=1></td><td class=modTitle width=100%>&nbsp;</td><td class=modEdit id=edit_mSM align=right><span class="modButton" onclick="_del(\'mSM\')">&nbsp;X&nbsp;</span></td><td class=modRight><img src=http://ak.imgfarm.com/images/spacer.gif width=8 height=1></td></tr></table>';
+	var mobileHtml = popHeader();
+	mobileHtml += '<div style="width:100%;overflow:auto;background-color:#FFF8DD;padding:0"><p class="med" style="font-weight:bold;text-align:center;padding:0px;margin: 10px 0 0 0;">Send this smiley to a mobile phone!</p><form action="http://web.archive.org/web/20110728064318/http://www.smileycentral.com/spreadtheword/emailme.jsp" method="post" name="SmileyMobileForm" id="SmileyMobileForm" target="_blank" onSubmit="submitSmileyMobile();return false;" style="padding:0px;margin:0px;"><input type=hidden name="blurb" value=""><input type=hidden name="pm" value=""><input type=hidden name="subject" value=""><input type=hidden name="redirect" value="http://web.archive.org/web/20110728064318/http://www.smileycentral.com/SmileyMobileSent.html"><input type=hidden name="smileyhtml" value="'+sImgHTML+'"><input type=hidden name="smileyimgurl" value="'+sImgSrc+'"><input type=hidden name="to" value="">';
+	mobileHtml += '<p style="text-align:center;border:0px dotted #990000;padding:0px;margin: 10px 0 10px 0;"><img src="'+unescape(sImgSrc)+'" border="0"></p><input type="hidden" name="resolution" value="low">';
+	mobileHtml += '<div align="center" style="width:100%margin:0;padding:0;"><table border="0" cellspacing="0" cellpadding="0" class="mobileFormTable" style="border:0px dashed #990000;"><tr><td id="toFieldLabel" class="mobileLeftCell norm" style="height:30px;">Phone Number:</td><td class="mobileRightCell" style="height:30px;"><p id="toFieldInput" style="display:none;margin:0;padding:0;"><input type=text name="toEmail" value="" style="width: 150px;"></p><p id="phoneFieldInput" style="display:block;margin:0;padding:0;"><input type=text name="phoneNum" id="phoneNum" value="" maxlength="10" style="width:80px;">' + carrierSelect + '<img src="http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/smileycentral/smiley_mobile-uscaonly.gif" align="top" border="0" style="margin-left:2px;"></p><span id="RequiredFieldToSM" class="missingRequired" style=""></span></td></tr><tr><td id="toFieldLabel" class="mobileLeftCell sm" style="height:14px;padding-bottom:3px;">&nbsp;</td><td class="mobileRightCell sm" style="height:14px;padding-bottom:3px;"><span id="emailnote">(i.e., 9145551234)</span></td></tr><tr><td class="mobileLeftCell norm" style="">From:</td><td class="mobileRightCell" style=""><input type=text name="from" value="" style="width:150px;"><span class="sm" id="networkTextLink" style="white-space: nowrap;margin-left:10px;"><a href="#" onclick="mobileNtwkToggle();return false;">International Network?</a></span><span id="RequiredFieldFromSM" class="missingRequired"></span></td></tr><tr><td class="mobileLeftCell sm" style="height:14px;padding-bottom:3px;">&nbsp;</td><td class="mobileRightCell sm" style="height:14px;padding-bottom:3px;">(i.e., recipient@domain.com)</td></tr><tr><td class="mobileLeftCell norm" style="width: 65px;font-weight:bold;">Add a note:</td><td class="mobileRightCell" style=""><textarea name="note" cols=36 rows=2 onkeypress="checkSmsChars(this);" onchange="checkSmsChars(this);" onpaste="checkSmsChars(this);"></textarea></td></tr><tr><td colspan=2 style="text-align:center;"><input type=button value="Send to Mobile" onClick="submitSmileyMobile();" style="margin-top:5px;"></td></tr></table></div></form><div align="center" style="border:1px solid #FFF8DD;margin: 5px 0 5px 0;"><p class="sm" style="text-align:center;font-style:italic;width: 95%;">Disclaimer: We do not store or collect any information about you. The information entered above will only be used in sending this message.</p></div></div>';
+	mobileHtml += '</div>';
+	
+	if(!currentModule.popupDiv.childNodes[0].id)
+		currentModule.fillPopWin(mobileHtml);
+	else
+		currentModule.popupDiv.innerHTML = mobileHtml;
+	currentModule.popupDiv.style.width = 420;
+	setPosOnScreen(currentModule.popupDiv);
+	return false;
+}//end function
+
+function validateEmail(emailAddress) {
+    var validEmail = /^(\w|\w\-*\w)(\w|\w\-*\w|\.?\w)*@(\w|\w\-*\w)(\w|\w\-*\w|\.?\w)*\.(\w|\w\-*\w|\.?\w)+$/;
+    return validEmail.test(emailAddress);
+}
+// END SMILEY GRAM AND SMILEY MOBILE
+
+function getNumModules(){
+	var numMods = 0;
+	var divList = document.getElementsByTagName("div");
+	for(i=0;i<divList.length;i++){
+		if(divList[i].className=='module' && divList[i].id != 'tempModule'){
+			numMods++
+		}
+	}
+	return numMods;
+}
+
+function setPosOnScreen(obj,xOff,yOff){	
+	var n,w,cWidth,cHeight,quad,sTop,objLeft,objTop,objWidth,objHeight,newTopTall,newTopShort;
+
+	sTop = document.body.scrollTop;
+	
+	if(document.all){
+		cWidth=document.body.clientWidth;
+		cHeight=document.body.clientHeight;
+	}else{
+		cWidth=window.innerWidth;
+		cHeight=window.innerHeight;
+	}	
+
+	objLeft = obj.offsetLeft;
+	objTop = obj.offsetTop;
+	objWidth = obj.offsetWidth;
+	objHeight = obj.offsetHeight;
+	
+	w = cWidth/2;
+	n = cHeight/2;
+	
+	//figure out where it launched
+	if (mouseY < n) {
+		if (mouseX < w) {
+			quad=1;
+		} else {
+			quad=2;
+		}	
+	} else {
+		if (mouseX < w) {
+			quad=3;
+		} else {
+			quad=4;
+		}		
+	}
+	
+	newTopShort = mouseY-objHeight;
+	newTopTall = objTop-(cHeight-(cHeight-mouseY))+sTop;
+	newLeftShort = objLeft-objWidth;
+	newLeftWide = objLeft-mouseX;
+	
+	switch(quad) {
+		case 1:
+			if ((mouseY+objHeight) > cHeight) 
+				obj.style.top = currentModule.origpopY = newTopTall;
+			if (mouseX+objWidth > cWidth)
+				obj.style.left = currentModule.origpopX = newLeftWide;
+			break;
+		case 2:
+			obj.style.left = currentModule.origpopX = newLeftShort;
+			if ((mouseY+objHeight) > cHeight) 
+				obj.style.top = currentModule.origpopY = newTopTall;
+			break;
+		case 3:
+			if ((mouseY-objHeight) > sTop)
+				obj.style.top = currentModule.origpopY = newTopShort;
+			else 
+				obj.style.top = currentModule.origpopY = newTopTall;
+			if (mouseX+objWidth > cWidth)
+				obj.style.left = currentModule.origpopX = newLeftWide;
+			break;
+		case 4:
+			obj.style.left = currentModule.origpopX = newLeftShort;
+			if ((mouseY-objHeight) > sTop)
+				obj.style.top = currentModule.origpopY = newTopShort;
+			else 
+				obj.style.top = currentModule.origpopY = newTopTall;
+			break;
+	}
+}
+
+// Start search rollovers
+if (document.images) {
+	AJ_on = new Image(); AJ_on.src = "http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/fwp/smileytoday/search/search_ask_on.gif";
+	GG_on = new Image(); GG_on.src = "http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/fwp/smileytoday/search/search_google_on.gif";
+	AW_on = new Image(); AW_on.src = "http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/fwp/smileytoday/search/search_yahoo_on.gif";
+	//LS_on = new Image(); LS_on.src = "http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/fwp/smileytoday/search/search_looksmart_on.gif";
+
+	AJ_default = new Image(); AJ_default.src = "http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/fwp/smileytoday/search/search_ask_default.gif";
+	GG_default = new Image(); GG_default.src = "http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/fwp/smileytoday/search/search_google_default.gif";
+	AW_default = new Image(); AW_default.src = "http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/fwp/smileytoday/search/search_yahoo_default.gif";
+	//LS_default = new Image(); LS_default.src = "http://web.archive.org/web/20110728064318/http://ak.imgfarm.com/images/fwp/smileytoday/search/search_looksmart_default.gif";
+}
+
+var sSearchAJ = "AJ";
+var sSearchGG = "GG";
+var sSearchAW = "AW";
+//var sSearchLS = "LS";
+
+function over(imgname) {
+	if (document.images) {
+		if (imgname != globProv) {
+			document[imgname].src = eval(imgname + "_on.src");
+		}
+	}
+}
+
+function out(imgname) {
+	if (document.images) {
+		if (imgname != globProv) {
+			document[imgname].src = eval(imgname + "_default.src");
+		}
+	}
+}
+
+// Start search type/provider code
+var globProv = sSearchAJ;
+var globSearchType = "web";
+
+function changeSrchType(radbttn, prov) {
+	var formAction = "http://web.archive.org/web/20110728064318/http://search.mywebsearch.com/mywebsearch/" + prov;
+	if (radbttn.value == "w") {
+		formAction += "main.jhtml";
+		globSearchType = "web";
+	} else if (radbttn.value == "i") {
+		formAction += "image.jhtml";
+		globSearchType = "images";
+	} else if (radbttn.value == "n") {
+		if (prov == "AW") {
+			formAction += "nws.jhtml";
+		} else {
+			formAction += "news.jhtml";
+		}
+		globSearchType = "news";
+	}
+	document.smileytoday.action = formAction;
+}
+
+function changeSrchProv(prov) {
+	document[globProv].src = eval(globProv + "_default.src");
+	globProv = prov;
+	document[globProv].src = eval(globProv + "_on.src");
+	document.smileytoday.type[0].checked = true;
+	globSearchType = "web";
+	var formAction = "http://web.archive.org/web/20110728064318/http://search.mywebsearch.com/mywebsearch/" + globProv + "main.jhtml";
+	
+	if ((globProv == "AJ") || (globProv == "AW")) {
+		document.getElementById("iRadCell").style.display = "";
+		document.getElementById("iTxtCell").style.display = "";
+		document.getElementById("nRadCell").style.display = "";
+		document.getElementById("nTxtCell").style.display = "";
+	} else if (globProv == "GG") {
+		document.getElementById("iRadCell").style.display = "";
+		document.getElementById("iTxtCell").style.display = "";
+		document.getElementById("nRadCell").style.display = "none";
+		document.getElementById("nTxtCell").style.display = "none";
+	/*
+	} else if (globProv == "LS") {
+		document.getElementById("iRadCell").style.display = "none";
+		document.getElementById("iTxtCell").style.display = "none";
+		document.getElementById("nRadCell").style.display = "none";
+		document.getElementById("nTxtCell").style.display = "none";
+	*/
+	}
+	
+	document.smileytoday.action = formAction;
+}
+
+function doSearch() {
+	var srchForm = document.smileytoday;
+	var srchStr = srchForm.searchfor.value;
+	//Setting a pseudo module id and name for search tracking
+    trackSearch('search',globProv,globSearchType,srchStr,'Header Search Box','HSB');
+
+	location.href = srchForm.action + "?searchfor=" + escape(srchStr);
+	return false;
+}
+
+function doModSearch(formObj)
+{
+	var keywords = "";
+	var modName = "";
+	var modId = "";
+	var href = "";
+	var prov = "AJ";
+	
+	try {
+		keywords = formObj.elements['searchTxt'].value;
+		href = formObj.elements['url'].value + "?searchfor=" + escape(keywords);
+		if (href.indexOf('AW') != -1) prov = "AW";
+	} catch (E) {}
+	
+	//module details
+	try {
+		modName = escape(formObj.elements['modName'].value);
+		modId = escape(formObj.elements['modId'].value);
+	} catch (E) {}
+	
+	trackSearch('search',prov,'news',keywords,modName,modId);
+
+	location.href = href;
+	return false;
+}//end function doModSearch
+
+function doImageSearch(strTerms,strType,strModName,strModId) {
+	if(strTerms.length>0){
+		while(strTerms.indexOf(" and ")!=-1 || strTerms.indexOf("&")!=-1 || strTerms.indexOf(",")!=-1){
+	    	strTerms = strTerms.replace(" and ","|"); 
+	    	strTerms = strTerms.replace("&","|"); 
+	    	strTerms = strTerms.replace(",","|"); 
+		}
+	    arrTerms = strTerms.split("|"); 
+		var strTerms='';
+		for(i=0;i<arrTerms.length;i++){
+			if(trim(arrTerms[i]) != ""){
+	           strTerms+="%22"+trim(arrTerms[i])+"%22"; 
+	           if(i+1<arrTerms.length){ 
+	                strTerms+=" OR "; 
+	           }
+	    	}
+      	}
+		trackSearch(strType,'AJ','images',strTerms,strModName,strModId);
+      	
+		openWin('http://web.archive.org/web/20110728064318/http://search.mywebsearch.com/mywebsearch/AJimage.jhtml?searchfor='+strTerms);
+	}else{
+		return false;
+	}	
+}
+
+function doMainSearch(strTerms,strType,strModName,strModId){
+	if(strTerms.length>0){
+		while(strTerms.indexOf("and")!=-1 || strTerms.indexOf("&")!=-1 || strTerms.indexOf(",")!=-1){
+	    	strTerms = strTerms.replace("and","|"); 
+	    	strTerms = strTerms.replace("&","|"); 
+	    	strTerms = strTerms.replace(",","|"); 
+		}
+	    arrTerms = strTerms.split("|"); 
+		var strTerms='';
+		for(i=0;i<arrTerms.length;i++){
+			if(trim(arrTerms[i]) != ""){
+	           strTerms+="%22"+trim(arrTerms[i])+"%22"; 
+	           if(i+1<arrTerms.length){ 
+	                strTerms+=" "; 
+	           }
+	    	}
+      	}
+      	
+		trackSearch(strType,'AJ','web',strTerms,strModName,strModId);
+      	
+		openWin('http://web.archive.org/web/20110728064318/http://search.mywebsearch.com/mywebsearch/AJmain.jhtml?searchfor='+strTerms);
+	}else{
+		return false;
+	}
+}
+function trackSearch(a,p,t,k,strModName,strModId){
+	if(k){k = escape(k);}else{k='null';}
+	if(!a){a = "search";}
+
+  	var url = "http://web.archive.org/web/20110728064318/http://img.smileycentral.com/images/nocache/nc/c.gif?a="+a+"&p="+p+"&t="+t+"&k="+k;
+
+	url += "&modname=" + strModName + "&modid=" + strModId;
+
+	//Toolbar PartnerID
+	if (typeof(oToolbarController.sPartnerID)!='undefined' && oToolbarController.sPartnerID!=null){
+		url+="&b="+oToolbarController.sPartnerID;
+	}
+
+	//Toolbar details
+	if(oToolbarController.bInstalled){
+		url += "&i=true&v="+oToolbarController.sVersion;
+	}else{
+		url += "&i=false&v=null";
+	}
+
+	var tempIMG = new Image();
+	tempIMG.src=url;
+}
+function trackLink(anchorObj,strModName,strModId){
+	//Tracks the clicks on an anchor object.
+
+	//http://search.mywebsearch.com/mywebsearch/GGmain.jhtml?searchfor=Blowing+Bubblegum+Bubbles
+	var strHref = anchorObj.href;
+	var strTerms = '';
+	var re = /searchfor=([^&]+)/i
+	var matchArray = re.exec(strHref);
+	if (matchArray) {strTerms = matchArray[1];}
+
+	trackSearch('search','AJ','web',strTerms,strModName,strModId);
+	return true;
+}
+	
+
+var currentModule;
+
+// XML Request object
+//  - URL :  URL to request
+//  - Callback : Function to call when complete
+function XMLRequest(url, callback) {
+	this.req;
+	this.url = url;
+	this.callback = callback;
+}
+XMLRequest.prototype.checkStatus = function() {
+	if (currentModule.xmlReq.req.readyState == 4 && currentModule.xmlReq.req.status == 200) {
+		currentModule.xmlReq.callback();
+	}
+}
+
+// Perform the HTTP Request
+XMLRequest.prototype.getData = function() {
+	if (window.XMLHttpRequest) {
+		this.req = new XMLHttpRequest();
+		this.req.onreadystatechange = this.checkStatus;
+		this.req.open("POST", this.url, true);
+		this.req.send(null);
+	} else if (window.ActiveXObject) {
+		this.req = new ActiveXObject("Microsoft.XMLHTTP");
+		if (this.req) {
+			this.req.onreadystatechange = this.checkStatus;
+			this.req.open("POST", this.url, false);
+			this.req.send('');
+		}
+	}
+}
+
+//BEGIN SLIDER.JS
+//  /********************************************************************
+//                          Slider control creator
+//                   By Mark Wilton-Jones 12-13/10/2002
+//  Version 1.2 updated 13/04/2005 to protect against multi-button clicks
+//  *********************************************************************
+
+//  Please see http://www.howtocreate.co.uk/jslibs/ for details and a demo of this script
+//  Please see http://www.howtocreate.co.uk/jslibs/termsOfUse.html for terms of use
+
+//  To use:
+
+//  Inbetween the <head> tags, put:
+
+//  	<script src="PATH TO SCRIPT/slider.js" type="text/javascript" language="javascript1.2"></script>
+
+//  To create a slider put:
+
+//  	var myslider = new slider(
+//  		24,             //height of track (excluding border)
+//  		150,            //width of track (excluding border)
+//  		'#9999bb',      //colour of track
+//  		2,              //thickness of track border
+//  		'#770000',      //colour of track border
+//  		2,              //thickness of runner (in the middle of the track)
+//  		'#000000',      //colour of runner
+//  		16,             //height of button (excluding border)
+//  		16,             //width of button (excluding border)
+//  		'#dfdfdf',      //colour of button
+//  		2,              //thickness of button border (shaded to give 3D effect)
+//  		'<font size="2">&lt;&gt;</font>', //text of button (if any) - the font declaration is important - size it to suit your slider
+//  		true,           //direction of travel (true = horizontal [0 is left], false = vertical [0 is top])
+//  		'moveFunction', //the name of the function to execute as the slider moves (null if none)
+//  		'stopFunction', //the name of the function to execute when the slider stops (null if none)
+//  		                //the functions must have already been defined (or use null for none)
+//  		false           //optional, false = use default cursor over button, true = use hand cursor
+//  	);
+
+//  You can then set the position of the slider after the page has loaded using:
+
+//  	myslider.setPosition(numberBetween0and1)
+//  ___________________________________________________________________________________________*/
+
+var MWJ_slider_controls = 0;
+
+function getRefToDivNest( divID, oDoc ) {
+	//get a reference to the slider control, even through nested layers
+	if( !oDoc ) { oDoc = document; }
+	if( document.layers ) {
+		if( oDoc.layers[divID] ) { return oDoc.layers[divID]; } else {
+			for( var x = 0, y; !y && x < oDoc.layers.length; x++ ) {
+				y = getRefToDivNest(divID,oDoc.layers[x].document); }
+			return y; } }
+	if( document.getElementById ) { return document.getElementById(divID); }
+	if( document.all ) { return document.all[divID]; }
+	return document[divID];
+}
+
+function sliderMousePos(e) {
+	//get the position of the mouse
+	if( !e ) { e = window.event; } if( !e || ( typeof( e.pageX ) != 'number' && typeof( e.clientX ) != 'number' ) ) { return [0,0]; }
+	if( typeof( e.pageX ) == 'number' ) { var xcoord = e.pageX; var ycoord = e.pageY; } else {
+		var xcoord = e.clientX; var ycoord = e.clientY;
+		if( !( ( window.navigator.userAgent.indexOf( 'Opera' ) + 1 ) || ( window.ScriptEngine && ScriptEngine().indexOf( 'InScript' ) + 1 ) || window.navigator.vendor == 'KDE' ) ) {
+			if( document.documentElement && ( document.documentElement.scrollTop || document.documentElement.scrollLeft ) ) {
+				xcoord += document.documentElement.scrollLeft; ycoord += document.documentElement.scrollTop;
+			} else if( document.body && ( document.body.scrollTop || document.body.scrollLeft ) ) {
+				xcoord += document.body.scrollLeft; ycoord += document.body.scrollTop; } } }
+	return [xcoord,ycoord];
+}
+
+function slideIsDown(e) {
+	if( document.onmousemove == slideIsMove ) { return false; } //protect against multi-button click
+	//make note of starting positions and detect mouse movements
+	window.msStartCoord = sliderMousePos(e); window.lyStartCoord = this.style?[parseInt(this.style.left),parseInt(this.style.top)]:[parseInt(this.left),parseInt(this.top)];
+	if( document.captureEvents && Event.MOUSEMOVE ) { 
+		document.captureEvents(Event.MOUSEMOVE); document.captureEvents(Event.MOUSEUP); 
+	}
+	window.storeMOUSEMOVE = document.onmousemove;
+	window.storeMOUSEUP = document.onmouseup; 
+	window.storeLayer = this;
+	document.onmousemove = slideIsMove; 
+	document.onmouseup = slideIsMove; 
+	
+	return false;
+}
+
+function slideIsMove(e) {
+	//move the slider to its newest position
+	var msMvCo = sliderMousePos(e); if( !e ) { e = window.event ? window.event : ( new Object() ); }
+	var theLayer = window.storeLayer.style ? window.storeLayer.style : window.storeLayer; var oPix = document.childNodes ? 'px' : 0;
+	if( window.storeLayer.hor ) {
+		var theNewPos = window.lyStartCoord[0] + ( msMvCo[0] - window.msStartCoord[0] );
+		if( theNewPos < 0 ) { theNewPos = 0; } if( theNewPos > window.storeLayer.maxLength ) { theNewPos = window.storeLayer.maxLength; }
+		theLayer.left = theNewPos + oPix;
+	} else {
+		var theNewPos = window.lyStartCoord[1] + ( msMvCo[1] - window.msStartCoord[1] );
+		if( theNewPos < 0 ) { theNewPos = 0; } if( theNewPos > window.storeLayer.maxLength ) { theNewPos = window.storeLayer.maxLength; }
+		theLayer.top = theNewPos + oPix;
+	}
+	//run the user's functions and reset the mouse monitoring as before
+	if( e.type && e.type.toLowerCase() == 'mousemove' ) {
+		if( window.storeLayer.moveFunc ) { window.storeLayer.moveFunc(theNewPos/window.storeLayer.maxLength); }
+	} else {
+		document.onmousemove = storeMOUSEMOVE; document.onmouseup = window.storeMOUSEUP;
+		if( window.storeLayer.stopFunc ) { window.storeLayer.stopFunc(theNewPos/window.storeLayer.maxLength); }
+	}
+}
+
+function setSliderPosition(oPortion) {
+	//set the slider's position
+	if( isNaN( oPortion ) || oPortion < 0 ) { oPortion = 0; } if( oPortion > 1 ) { oPortion = 1; }
+	var theDiv = getRefToDivNest(this.id); if( theDiv.style ) { theDiv = theDiv.style; }
+	oPortion = Math.round( oPortion * this.maxLength ); var oPix = document.childNodes ? 'px' : 0;
+	if( this.align ) { theDiv.left = oPortion + oPix; } else { theDiv.top = oPortion + oPix; }
+}
+
+function slider(oThght,oTwdth,oTcol,oTBthk,oTBcol,oTRthk,oTRcol,oBhght,oBwdth,oBcol,oBthk,oBtxt,oAlgn,oMf,oSf,oCrs) {
+	//draw the slider using huge amounts of nested layers (makes the borders look normal in as many browsers as possible)
+	if( document.layers ) {
+		document.write(
+			'<ilayer left="0" top="0" height="'+(oThght+(2*oTBthk))+'" width="'+(oTwdth+(2*oTBthk))+'" bgcolor="'+oTBcol+'">'+
+			'<ilayer left="'+oTBthk+'" top="'+oTBthk+'" height="'+oThght+'" width="'+oTwdth+'" bgcolor="'+oTcol+'">'+
+			'<layer left="'+(oAlgn?0:Math.floor((oTwdth-oTRthk)/2))+'" top="'+(oAlgn?Math.floor((oThght-oTRthk)/2):0)+'" height="'+(oAlgn?oTRthk:oThght)+'" width="'+(oAlgn?oTwdth:oTRthk)+'" bgcolor="'+oTRcol+'"><\/layer>'+
+			'<layer left="'+(oAlgn?0:Math.floor((oTwdth-(oBwdth+(2*oBthk)))/2))+'" top="'+(oAlgn?Math.floor((oThght-(oBhght+(2*oBthk)))/2):0)+'" height="'+(oBhght+(2*oBthk))+'" width="'+(oBwdth+(2*oBthk))+'" bgcolor="#000000" onmouseover="this.captureEvents(Event.MOUSEDOWN);this.hor='+oAlgn+';this.maxLength='+((oAlgn?oTwdth:oThght)-((oAlgn?oBwdth:oBhght)+(2*oBthk)))+';this.moveFunc='+oMf+';this.stopFunc='+oSf+';this.onmousedown=slideIsDown;" name="MWJ_slider_controls'+MWJ_slider_controls+'">'+
+			'<layer left="0" top="0" height="'+(oBhght+oBthk)+'" width="'+(oBwdth+oBthk)+'" bgcolor="#ffffff"><\/layer>'+
+			'<layer left="'+oBthk+'" top="'+oBthk+'" height="'+oBhght+'" width="'+oBwdth+'" bgcolor="'+oBcol+'">'+
+			oBtxt+'<\/layer><\/layer><\/ilayer><\/ilayer>'
+		);
+	} else {
+		document.write(
+			'<div style="position:relative;left:0px;top:0px;height:'+(oThght+(2*oTBthk))+'px;width:'+(oTwdth+(2*oTBthk))+'px;background-color:'+oTBcol+';font-size:0px;">'+
+			'<div style="position:relative;left:'+oTBthk+'px;top:'+oTBthk+'px;height:'+oThght+'px;width:'+oTwdth+'px;background-color:'+oTcol+';font-size:0px;">'+
+			'<div style="position:absolute;left:'+(oAlgn?0:Math.floor((oTwdth-oTRthk)/2))+'px;top:'+(oAlgn?Math.floor((oThght-oTRthk)/2):0)+'px;height:'+(oAlgn?oTRthk:oThght)+'px;width:'+(oAlgn?oTwdth:oTRthk)+'px;background-color:'+oTRcol+';font-size:0px;"><\/div>'+
+			'<div style="position:absolute;left:'+(oAlgn?0:Math.floor((oTwdth-(oBwdth+(2*oBthk)))/2))+'px;top:'+(oAlgn?Math.floor((oThght-(oBhght+(2*oBthk)))/2):0)+'px;height:'+(oBhght+(2*oBthk))+'px;width:'+(oBwdth+(2*oBthk))+'px;font-size:0px;" ondragstart="return false;" onselectstart="return false;" onmouseover="this.hor='+oAlgn+';this.maxLength='+((oAlgn?oTwdth:oThght)-((oAlgn?oBwdth:oBhght)+(2*oBthk)))+';this.moveFunc='+oMf+';this.stopFunc='+oSf+';this.onmousedown=slideIsDown;" id="MWJ_slider_controls'+MWJ_slider_controls+'">'+
+			'<div style="border-top:'+oBthk+'px solid #ffffff;border-left:'+oBthk+'px solid #ffffff;border-right:'+oBthk+'px solid #000000;border-bottom:'+oBthk+'px solid #000000;">'+
+			'<div style="height:'+oBhght+'px;width:'+oBwdth+'px;font-size:0px;background-color:'+oBcol+';cursor:'+(oCrs?'pointer;cursor:hand':'default')+';">'+
+			'<span style="width:100%;text-align:center;">'+oBtxt+'<\/span><\/div><\/div><\/div><\/div><\/div>'
+		);
+	}
+	this.id = 'MWJ_slider_controls'+MWJ_slider_controls; this.maxLength = (oAlgn?oTwdth:oThght)-((oAlgn?oBwdth:oBhght)+(2*oBthk));
+	this.align = oAlgn; this.setPosition = setSliderPosition; MWJ_slider_controls++;
+}
+//END SLIDER.JS
+
+//JS FROM MAIN BELOW SCRIPT SRC INCLUDES
+var mouseX;
+var mouseY;
+function setEvents(e) {
+    evt = nn6?e:event;
+	mouseX = (nn6?evt.pageX:evt.clientX+document.body.scrollLeft);
+	mouseY = (nn6?evt.pageY:evt.clientY+document.body.scrollTop);
+}
+function genX(x,w) {
+	var d = document.body.clientWidth - (x+w);
+	if (d < 0) x = x+d-20; //if module is off right side of screen
+	return x;
+}
+function genY(y) {
+	return y;
+}
+
+function setPref(a,b,c){
+	a.action=s;
+	a.method="get";
+	createInput(a,"url",document.location);
+	createInput(a,"et",_et);
+	createInput(a,"m_"+b+"_t",c);
+	return true;
+}
+
+function styleUpdate(a,b,c){
+	if(document.styleSheets){
+		a="."+a;
+		for(var d=0;d<document.styleSheets.length;d++){
+			var e=document.styleSheets[d];
+			var f=e.rules;
+			if(!f){
+				f=e.cssRules;
+				if(!f){
+					return
+				}
+			}
+			for(var g=0;g<f.length;g++){
+				if(f[g].selectorText.toLowerCase()==a){
+					f[g].style[b]=c
+				}
+			}
+		}
+	}else{
+		var h=getElemTag("*");
+		for(var d=0;d<h.length;d++){
+			if(h[d].className==a){
+				h[d].style[b]=c
+			}
+		}
+	}
+}
+
+//delete
+function _del(a) {
+	if(a!='$MODID'){		
+		try{var b = getElem(a).parentNode.removeChild(getElem(a));}catch(e){}
+		if (a.indexOf('pop')==-1){
+			if(g.modules[a]){
+				var url = "http://web.archive.org/web/20110728064318/http://img.smileycentral.com/images/nocache/nc/mod.gif?a=delete_module&c="+g.modules[a].compID+"&m="+a;
+				if (typeof(oToolbarController.sPartnerID)!='undefined' && oToolbarController.sPartnerID!=null) { url+="&b="+oToolbarController.sPartnerID; }
+				var tempIMG = new Image();
+				tempIMG.src=url;
+			}
+
+			saveLayout();
+
+		}else{
+			isPo = false;
+		}
+		
+		//display no mod module
+		if(getNumModules()==0 ){
+			previewCompID='NOMOD';
+			addPreview();
+		}
+
+	}
+}
+//minimize
+function _min(a) {
+	if(('body_' + a) != 'body_$MODID') {
+		if (getElem('body_' + a).style.display != 'none') {
+			getElem('body_' + a).style.display = "none";
+			getElem('min_' + a).style.display = "none";
+			getElem('max_' + a).style.display = "inline";
+			//alert("calling " + "g."+a+"Module.minMax(1);");
+			eval("g."+a+"Module.minMax(0);");
+		} else {
+			getElem('body_' + a).style.display = "block";
+			getElem('min_' + a).style.display = "inline";
+			getElem('max_' + a).style.display = "none";
+			//alert("calling " + "g."+a+"Module.minMax(0);");
+			eval("g."+a+"Module.minMax(1);");
+		}
+		//save settings change here
+	}
+	saveLayout();
+}
+
+var tpFlag=true;//used somewhere
+function _tp(){
+	var ac=document.getElementById('cpnl');
+	sW=225;
+
+	if(ac.offsetWidth==1){
+		scrollOut(ac,sW);
+	}else{
+		if(typeof(confirmCC)=='function'){
+			confirmCC();//confirm users' color changes
+		}
+		scrollIn(ac,sW);
+	}
+}
+function scrollOut(sObj,sW){
+	cw=sObj.offsetWidth;
+	if(cw<sW){
+		sObj.style.width=cw+25;
+		clInt=setTimeout(function(){scrollOut(sObj,sW)},25);
+	}
+}
+function scrollIn(sObj,sW){
+	cw=sObj.offsetWidth;
+	if(cw>2){
+		sObj.style.width=cw-25;
+		clInt=setTimeout(function(){scrollIn(sObj,sW)},25);
+	}else{	
+		sObj.style.width='1px';
+	}
+}
+function toggleMenus(b) {
+	if (b) {
+		for (j=1;j<=numMenus;j++) {
+			if (dropped[j] == 0) dropMenu(j,'arrow'+j,'chgl'+j);
+		}
+	} else {
+		for (j=1;j<=numMenus;j++) {
+			if (dropped[j] == 1) dropMenu(j,'arrow'+j,'chgl'+j);
+		}
+	}
+}
+//NEXT SCRIPT BLOCK
+
+g.m0Module = g.addModule('m0', 'PAGE'); //##for saving layout
+
+//END JS FROM MAIN BELOW SCRIPT SRC INCLUDES
+
+
+function buildSmileyHtml(smileyCode,id,jslink){
+	//if (smileyCode.indexOf("FI") == 0) isInt = true;
+	var swfUrl = "http://web.archive.org/web/20110728064318/http://smileys.smileycentral.com/cat/F/transport.swf";
+	var flashvars = 'code='+smileyCode+'&cmode=2&auto=0&gui=1';
+	//JS links not supported by transport.
+	//&curl=' + escape('javascript:' + jslink)
+	
+	var html = '';
+	html += '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://web.archive.org/web/20110728064318/http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="77" height="77" id="'+id+'" align="middle">';
+	html += '<param name="allowScriptAccess" value="Always" />';
+	html += '<param name="wmode" value="transparent" />';
+	html += '<param name="movie" value="'+swfUrl+'" /><param name="flashvars" value="'+flashvars+'"><param name="loop" value="false" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />';
+	html += '<embed src="'+swfUrl+'" flashvars="'+flashvars+'" loop="false" quality="high" wmode="transparent" bgcolor="#ffffff" width="77" height="77" name="'+id+'" align="middle" allowScriptAccess="Always" type="application/x-shockwave-flash" pluginspage="http://web.archive.org/web/20110728064318/http://www.macromedia.com/go/getflashplayer" />';
+	html += '</object>';
+
+	document.write(html);
+}//end function
+
+	try{
+		if(window.ActiveXObject) {
+			new ActiveXObject('MyWebSearchToolBar.SettingsPlugin');
+			document.write("<object id='ToolbarCtlMWS' classid='clsid:07B18EAB-A523-4961-B6BB-170DE4475CCA' width=1 height=1>&nbsp;</object>");
+			oToolbarController.bInstalled = true;
+		}else{
+			if(pluginFinder("application/x-mws-mywebsearchplugin")){
+				document.write("<embed id='ToolbarCtlMWS' type='application/x-mws-mywebsearchplugin' ProgId='MyWebSearchToolBar.SettingsPlugin' width=2 height=2>&nbsp;</embed>");
+				oToolbarController.bInstalled = true;
+			}
+		}
+	}catch(e){}	
+	
+		function getCookieVal(offset){
+		  var endstr = document.cookie.indexOf (";", offset);
+		  if (endstr == -1) { endstr = document.cookie.length; }
+		  return unescape(document.cookie.substring(offset, endstr));
+		}
+		 
+		function GetCookie(name){
+		  var arg = name + "=";
+		  var alen = arg.length;
+		  var clen = document.cookie.length;
+		  var i = 0;
+		  while (i < clen) {
+		   var j = i + alen;
+		   if (document.cookie.substring(i, j) == arg) {
+		    return getCookieVal (j);
+		    }
+		   i = document.cookie.indexOf(" ", i) + 1;
+		   if (i == 0) break; 
+		   }
+		  return null;
+		}
+		function setCookie(name,value,expires,path,domain,secure){
+			document.cookie = name + "=" +escape( value ) +
+			( ( expires ) ? ";expires=" + expires.toGMTString() : "" ) + 
+			( ( path ) ? ";path=" + path : "" ) + 
+			";domain=.smileycentral.com" +
+			( ( secure ) ? ";secure" : "" );
+		}
+		function newCookieParse2(sChip,sCookVal){
+			var c = new RegExp("(?:\\&|^)"+sChip+"=(?:\\w|\.)+(\\&|$)");
+			var tmp = sCookVal;
+			var b = 0;
+			if ((tmp != null) && (tmp != "")) {	
+				var rtmp = c.exec(tmp);
+				if ((rtmp != null) && (typeof rtmp.length == 'number')){
+					b = rtmp[0];
+					if(b.indexOf("&")!=-1){//remove &
+						b=b.substring(1,(b.length-1));
+					}
+					b=b.substring(sChip.length+1);
+				}
+			}
+			return b;
+		}
+		function setCookieChip(sCookieName,sChipName,sChipVal){	
+			var sCookieVal=GetCookie(sCookieName);
+			var fSetChip=function(){
+				var s=sChipName+'='+sChipVal+'&';
+				//format if first chip or just append
+				(sCookieVal==null)?sCookieVal='&'+s:sCookieVal+=s;
+				//set
+				setCookie(sCookieName,sCookieVal,getPermDate(),'/');
+			}
+			if(sCookieVal==null){//no cookie
+				fSetChip();
+			}else{
+				var sExistChipVal=newCookieParse2(sChipName,sCookieVal);
+				if((!sExistChipVal) && (sCookieVal.indexOf(sChipName+'=')==-1)){//cookie is set, not the chip
+					fSetChip();
+				}//else its already set - we're good
+			}
+		}
+		function getPermDate(){
+			var dExp = new Date();
+			dExp.setTime(dExp.getTime() + (1825*24*60*60*1000));//5 yrs
+			return dExp;
+		}
+		function getToolbarObj(){
+			var oCntrl=document.getElementById('ToolbarCtlMWS');
+			if(oCntrl==null){//try another name
+				oCntrl=document.getElementById('SettingsControl');
+			}
+			return oCntrl;
+		}
+		
+		function testForTrkParams(){	
+			var sSHARED_COOKIE_NAME='cssP';
+			var sUID_CHIP='uid';
+			var sP_CHIP='p';
+			
+			var oCntrl=getToolbarObj();
+			//UID
+			if(oCntrl!=null && typeof(oCntrl.I)=='string'){
+				var sUID=oCntrl.I;
+				setCookieChip(sSHARED_COOKIE_NAME,sUID_CHIP,sUID);
+			}
+			//partner
+			if(oCntrl!=null && typeof(oCntrl.P)=='string'){
+				var sPartner=oCntrl.P;
+				setCookieChip(sSHARED_COOKIE_NAME,sP_CHIP,sPartner);
+			}
+		}
+		testForTrkParams();
+		
+		var uid = newCookieParse2('uid',GetCookie('cssP'));
+
+
+}
+/*
+     FILE ARCHIVED ON 06:43:18 Jul 28, 2011 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 01:18:38 Sep 05, 2020.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  RedisCDXSource: 11.692
+  captures_list: 98.357
+  exclusion.robots.policy: 0.272
+  load_resource: 767.627
+  CDXLines.iter: 26.27 (3)
+  PetaboxLoader3.datanode: 72.348 (4)
+  LoadShardBlock: 52.287 (3)
+  exclusion.robots: 0.304
+  esindex: 0.015
+  PetaboxLoader3.resolve: 461.267
+*/
