@@ -1,0 +1,432 @@
+<html>
+<head>
+<meta name="ID" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="Sesame Workshop">
+<meta name="copyright" content="1998-2000 Children's Television Workshop/Sesame Workshop">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="robots" content="index,follow">
+<title>Sesame Workshop - Sesame Street Site Map</title>
+<link rel="stylesheet" type="text/css" href="/css/cobranding.css">
+<SCRIPT LANGUAGE="JAVASCRIPT">
+
+<!--
+/**** BROWSER AND PLATFORM FLAGS ****/
+var ie = (navigator.appVersion.indexOf("MSIE") != -1) ? true : false;		// true if we're on ie
+var nn = (navigator.appName == "Netscape") ? true : false;		// true if we're on netscape
+
+var win = (navigator.appVersion.indexOf("Windows") != -1) ? true : false; // true if we're on windows
+var mac = (navigator.appVersion.indexOf("Macintosh") != -1) ? true : false; // true if we're on a mac
+
+/*** END BROWSER DETECTION ***/
+
+/**** FLASH DETECTION ****/
+/* detection is impossible in these situations 
+- internet explorer 4.5 (and lower) on a mac 
+- internet explorer 3.0 on windows 
+- any browser that does not support at least javascript 1.1 (such as netscape 2.0) 
+- any version of internet explorer on windows that has its security setting on high 
+- any browser that has javascript disabled 
+*/
+
+var requiredVersion = 4;			// version the user needs to view site (max is 5, min is 2)
+
+var flash2Installed = false;		// boolean. true if flash 2 is installed
+var flash3Installed = false;		// boolean. true if flash 3 is installed
+var flash4Installed = false;		// boolean. true if flash 4 is installed
+var flash5Installed = false;		// boolean. true if flash 5 is installed
+var flash6Installed = false;
+var maxVersion = 6;					// highest version we can actually detect
+var actualVersion = 0;				// version the user really has
+var right_version = false;		// boolean. true if it's safe to embed the flash movie in the page
+
+
+// write vbscript detection if we're not on mac.
+if(ie && win){ // don't write vbscript tags on anything but ie win
+	document.write('<SCR' + 'IPT LANGUAGE=VBScript> \n');
+	document.write('on error resume next \n');
+	document.write('flash2Installed = (IsObject(CreateObject("ShockwaveFlash.ShockwaveFlash.2"))) \n');
+	document.write('flash3Installed = (IsObject(CreateObject("ShockwaveFlash.ShockwaveFlash.3"))) \n');
+	document.write('flash4Installed = (IsObject(CreateObject("ShockwaveFlash.ShockwaveFlash.4"))) \n');
+	document.write('flash5Installed = (IsObject(CreateObject("ShockwaveFlash.ShockwaveFlash.5"))) \n');
+        document.write('flash6Installed = (IsObject(CreateObject("ShockwaveFlash.ShockwaveFlash.6"))) \n'); 
+	document.write('</SCR' + 'IPT> \n'); // break up end tag so it doesn't end our script
+}	
+
+//call this at the end of the flash detect script
+function detectFlash(){	
+
+	if (navigator.plugins){								// does navigator.plugins exist?
+		if (navigator.plugins["Shockwave Flash 2.0"] 	// yes>> then is Flash 2 
+		|| navigator.plugins["Shockwave Flash"]){		// or flash 3+ installed?
+
+			// set convenient references to flash 2 and the plugin description
+			var isVersion2 = navigator.plugins["Shockwave Flash 2.0"] ? " 2.0" : "";
+			var flashDescription = navigator.plugins["Shockwave Flash" + isVersion2].description;
+			// a flash plugin-description looks like this: Shockwave Flash 4.0 r5
+			// so we can get the major version by grabbing the character before the period
+			// note that we don't bother with minor version detection. do that in your movie with $version
+			var flashVersion = parseInt(flashDescription.charAt(flashDescription.indexOf(".") - 1));
+
+			// we know the version, now set appropriate version flags
+			flash2Installed = flashVersion == 2;		
+			flash3Installed = flashVersion == 3;
+			flash4Installed = flashVersion == 4;
+			flash5Installed = flashVersion == 5;
+			flash6Installed = flashVersion == 6;
+		}
+	}
+	
+
+	for (var i = 2; i <= maxVersion; i++) {	// loop through all versions we're checking, and set actualVersion to highest detected version
+		if (eval("flash" + i + "Installed") == true) actualVersion = i;
+	}
+	
+// uncomment next line to display flash version during testing
+	//alert("version detected: " + actualVersion);
+
+
+	if (actualVersion >= requiredVersion) { 		// user has a new enough version
+		right_version = true;						
+	} else {
+	    right_version = false;
+	}
+}
+
+detectFlash();	// call our detector now that it's safely loaded.
+
+/*** END FLASH DETECTION ***/
+
+//-->
+</SCRIPT>
+<script language="JavaScript">
+function Ad(id, linkGif, linkUrl, text, xDim, yDim, priority, html) {
+    this.id = id;
+    this.linkUrl = linkUrl;
+    this.linkGif = linkGif;
+    this.text = text;
+    this.xDim = xDim;
+    this.yDim = yDim;
+    this.priority = priority;
+    this.html = html;
+}
+
+function CreateRandomNumber(Min, Max) { 
+    var range = Max-Min+1;
+    return (Math.floor(Math.random() * 
+                       Math.pow(10,("" + range).length)) % range) + parseInt(Min);
+}
+
+var ads = new Array();
+ads[4206088] = new Ad(4206088, "/uploaded-images/4206088/ad.gif", "/bridge.php?url=http://www.pfizer-kids.com", "Pfizer Kids", "468", "60", "Medium", "");
+ads[4206089] = new Ad(4206089, "/uploaded-images/4206089/ad.gif", "/bridge.php?url=http://www.pfizer-kids.com", "Pfizer Kids", "468", "60", "Medium", "");
+ads[4206090] = new Ad(4206090, "/uploaded-images/4206090/ad.gif", "/bridge.php?url=http://www.spaghettios.com", "SpaghettiOs", "468", "60", "Medium", "");
+ads[4206091] = new Ad(4206091, "/uploaded-images/4206091/ad.gif", "/stickerworld/photo/intro.php", "Make-Your-Own Photo Sticker", "120", "90", "Medium", "");
+ads[4206092] = new Ad(4206092, "/uploaded-images/4206092/ad.gif", "/stickerworld", "Sticker World", "468", "60", "Medium", "");
+ads[4206093] = new Ad(4206093, "/uploaded-images/4206093/ad.gif", "/stickerworld", "Sticker World", "120", "60", "Medium", "");
+ads[4206094] = new Ad(4206094, "/uploaded-images/4206094/ad.gif", "/sesamestreet/games/flash.php?contentId=111822", "Dress Grover: Party!", "468", "60", "Medium", "");
+ads[4206096] = new Ad(4206096, "/uploaded-images/4206096/ad.gif", "/sesamestreet/games/flash.php?contentId=111822", "Dress Grover: Party!", "120", "60", "Medium", "");
+ads[4206097] = new Ad(4206097, "/uploaded-images/4206097/ad.gif", "/sesamestreet/games/flash.php?contentId=111824", "The Laundry Game", "468", "60", "Medium", "");
+ads[4206099] = new Ad(4206099, "/uploaded-images/4206099/ad.gif", "/sesamestreet/games/flash.php?contentId=111824", "The Laundry Game", "120", "60", "Medium", "");
+ads[4206100] = new Ad(4206100, "/uploaded-images/4206100/ad.gif", "/sesamestreet/elmosworld?contentId=111141", "Elmo's World", "468", "60", "Medium", "");
+ads[4206101] = new Ad(4206101, "/uploaded-images/4206101/ad.gif", "/sesamestreet/elmosworld?contentId=111141", "Elmo's World", "120", "60", "Medium", "");
+ads[4206102] = new Ad(4206102, "/uploaded-images/4206102/ad.gif", "/sesamestreet/elmosworld/games.php?contentId=111180", "Walking the Dogs", "468", "60", "Medium", "");
+ads[4206104] = new Ad(4206104, "/uploaded-images/4206104/ad.gif", "/sesamestreet/music/", "Music Works", "468", "60", "Medium", "");
+ads[4206105] = new Ad(4206105, "/uploaded-images/4206105/ad.gif", "/sesamestreet/music/", "Music Works", "120", "60", "Medium", "");
+ads[4206106] = new Ad(4206106, "/uploaded-images/4206106/ad.gif", "/bridge.php?url=http://www.thefabricofourlives.com", "", "120", "60", "Medium", "");
+ads[4206107] = new Ad(4206107, "/uploaded-images/4206107/ad.gif", "/bridge.php?url=http://www.thefabricofourlives.com", "", "468", "60", "Medium", "");
+ads[4206108] = new Ad(4206108, "/uploaded-images/4206108/ad.gif", "/bridge.php?url=http://www.randomhouse.com/kids/sesamebeginnings/", "Sesame Beginnings", "468", "60", "Medium", "");
+ads[4206109] = new Ad(4206109, "/uploaded-images/4206109/ad.gif", "/bridge.php?url=http://www.randomhouse.com/kids/sesamebeginnings/", "Sesame Beginnings", "468", "60", "Medium", "");
+ads[4206110] = new Ad(4206110, "/uploaded-images/4206110/ad.gif", "", "", "80", "50", "Medium", "");
+ads[4206111] = new Ad(4206111, "/uploaded-images/4206111/ad.gif", "", "", "120", "90", "Medium", "");
+ads[4206112] = new Ad(4206112, "/uploaded-images/4206112/ad.gif", "/bridge.php?url=http%3A%2F%2Fsubs.timeinc.net%2FCampaignHandler%2Fpa_sesame%3Fsource_id%3D1", "", "468", "60", "Medium", "");
+ads[4223598] = new Ad(4223598, "/uploaded-images/4223598/ad.gif", "/bridge.php?url=http://www.randomhouse.com/kids/sesamebeginnings/", "Sesame Beginnings", "120", "60", "High", "");
+ads[4384757] = new Ad(4384757, "/uploaded-images/4384757/ad.gif", "/bridge.php?url=www.fabricofourlives.com", "Fabric of Our Lives", "120", "60", "Medium", "");
+ads[4384762] = new Ad(4384762, "/uploaded-images/4384762/ad.gif", "/bridge.php?url=http://www.fabricofourlives.com/sesame", "", "120", "60", "Medium", "");
+ads[4384765] = new Ad(4384765, "/uploaded-images/4384765/ad.gif", "/bridge.php?url=http://www.fabricofourlives.com/sesame/", "Fabric of our Lives", "468", "60", "Medium", "");
+ads[4384785] = new Ad(4384785, "/uploaded-images/4384785/ad.gif", "/bridge.php?url=http://www.fabricofourlives.com/sesame/", "Fabric of our Lives", "468", "60", "Medium", "");
+ads[4385071] = new Ad(4385071, "/uploaded-images/4385071/ad.gif", "/bridge.php?url=http://www.fabricofourlives.com/sesame/", "Fabric of our LIves", "120", "60", "Medium", "");
+
+
+var adPatterns = new Array();
+adPatterns["games"] = new Array(4206106,4206107);
+adPatterns["stories"] = new Array(4206108,4206109,4223598);
+adPatterns["sesamestreet"] = new Array(4206094,4206096,4206097,4206099);
+adPatterns["health"] = new Array(4206088,4206089,4206112);
+adPatterns["celebrations"] = new Array(4206094,4206096,4206097,4206099,4206106,4206107,4206112,4384757,4384762,4384765,4384785,4385071);
+adPatterns["stickerworld"] = new Array(4206091,4206092,4206093);
+
+
+var noMatch = new Array(4206090,4206100,4206101,4206102,4206104,4206105,4206110,4206111,4206112,4384757,4384762,4384765,4384785,4385071);
+
+     
+function getAdsFromMatchList(matchList,x,y) {
+  var matches = new Array();
+  for (var i=0; i < matchList.length; i++) {
+    if (ads[matchList[i]].xDim==x && ads[matchList[i]].yDim==y) {
+      matches[matches.length]=ads[matchList[i]];
+    }
+  }
+  if (matches.length > 0) {
+    return matches;
+  }
+  else {
+    return new Array();
+  }
+}
+
+ function getMatches(x,y,page) {
+     for (pattern in adPatterns) {
+         myRe= new RegExp (pattern, "g");
+         myArray = myRe.exec(page);
+         if (myArray!=null) {
+             sizeMatches = getAdsFromMatchList(adPatterns[myArray],x,y);
+             if (sizeMatches.length>0) {
+                 return sizeMatches;
+             }
+         }
+     }
+     return getAdsFromMatchList(noMatch,x,y);
+ }
+ 
+ function getMatchesByPriority( priority, matches ) {
+     var priorityMatches = new Array();
+     for( var i=0; i<matches.length; i++ ) {
+         if ( matches[i].priority == priority ) {
+             priorityMatches[priorityMatches.length] = matches[i];
+         }
+     }
+     return priorityMatches;
+ }
+  
+ function getPriorityMatches(matches) {
+     var priorities = new Array("High","Medium","Low");
+     for( var i=0; i<priorities.length; i++ ) {
+         var priorityMatches = getMatchesByPriority( priorities[i], matches );
+         if ( priorityMatches.length > 0 ) {
+             return priorityMatches;
+         }
+     }
+     return new Array();
+ }
+ 
+ function getAdLink(x, y, page) {
+     var matches = getMatches(x,y,page);
+     matches = getPriorityMatches(matches);
+     var r = CreateRandomNumber(0, matches.length - 1);
+     tmp = "";
+     if (matches[r].html != "") {
+         tmp = matches[r].html;
+     }
+     else {
+         tmp = '<a href="/adservice/adredirector.php?contentId='+matches[r].id+'&url='+matches[r].linkUrl+'&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="'
+             +matches[r].linkGif+'" alt="'+matches[r].text+'" width="'+matches[r].xDim+'" height="'+matches[r].yDim+'" border="0"></a>';
+     }
+     return tmp + '<img width="1" height="1" src="/adservice/pixel.php?ad='+matches[r].id+'">'; 
+ }
+</script></head>
+<body marginwidth="0" marginheight="5" topmargin="5" leftmargin="0" bgcolor="#33CCFF" background="/sesamestreet/sitemap/images/clouds_wallpaper.gif" link="#CCFF33" vlink="#33FFFF">
+<!--main table---> 
+<table align="left" width="772" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<!--left column with lamp table--->
+<td width="144" valign="top"> 
+<table align="left" width="144" border="0" cellpadding="0" cellspacing="0">
+<tr><td><a href="/sesamestreet/?PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_sesame_sign.gif" width="144" height="70" border="0" alt="ss sign"></a></td></tr>
+<tr><td><img src="/sesamestreet/sitemap/images/sm_lamp_post.gif" width="144" height="246" border="0" alt=""></td></tr>
+<tr><td><a href="/?PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_workshop_home.gif" width="144" height="72" border="0" alt="Go SesameWorkshop Home Page "></a></td></tr>
+</table>
+</td>
+<!--right column with content-->
+<td valign="top" align="center"><!--table # 1-->
+<table width="630" border="0" cellspacing="0" cellpadding="0">
+<tr><td colspan="2" align="center">
+<!--#FIX# [CTW_AD_NEW /sesamestreet/sitemap 120 60] --><script language="javascript"> document.write( getAdLink(120, 60, "/sesamestreet/sitemap/index.php/") ); </script><img src="/global/images/r_hp_ad.gif" width="10" height="60" border="0"><!--#FIX# [CTW_AD_NEW /sesamestreet/sitemap] --><script language="javascript"> document.write( getAdLink(468, 60, "/sesamestreet/sitemap/index.php/") ); </script></td></tr><tr><td rowspan="2" width="163"><img src="/sesamestreet/sitemap/images/sm_bbird.gif" width="163" height="137" border="0" alt="big bird"></td>
+<td width="467" height="74">
+<img src="/sesamestreet/sitemap/images/sm_hdr.gif" width="467" height="74" border="0" alt=""></td></tr>
+<tr><td width="467" height="63">
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript">
+	<!--
+		if(!right_version) {
+			var flash_string = '<img src="/sesamestreet/sitemap/images/sm_get_flash.gif" width="467" height="63" border="0" alt="Get Flash!" usemap="#get_flash"><map name="get_flash"><area shape="rect" coords="224,41,262,56" href=" http://www.macromedia.com/go/getflashplayer/" target="_new"><area shape="rect" coords="351,13,443,47" href=" http://www.macromedia.com/go/getflashplayer/"  target="_new"></map>';
+		} else {
+			var flash_string = '<img src="/sesamestreet/sitemap/images/sm_have_flash.gif" width="467" height="63" border="0" alt="You have Flash!">';
+		}
+		document.write(flash_string);
+	//--></SCRIPT><NOSCRIPT>
+<img src="/sesamestreet/sitemap/images/sm_get_flash.gif" width="467" height="63" border="0" alt="Get Flash!" usemap="#get_flash"><map name="get_flash"><area shape="rect" coords="224,41,262,56" href=" http://www.macromedia.com/go/getflashplayer/" target="_new"><area shape="rect" coords="351,13,443,47" href=" http://www.macromedia.com/go/getflashplayer/"  target="_new"></map></NOSCRIPT></td></tr>
+<tr>
+<td colspan="2" width="630" height="28"><img src="/sesamestreet/sitemap/images/sm_anchors_top.gif" width="630" height="28" border="0" alt=""></td>
+        </tr></table>
+<!---end table # 1---->
+<!---table #2---->
+<table width="630" border="0" cellspacing="0" cellpadding="0">
+<tr> 
+<td rowspan="5" width="73" height="71" valign="top"  align="right"><img src="/sesamestreet/sitemap/images/sm_bbird_lefttop.gif" width="73" height="71" border="0" alt="hand"></td>
+<!--row 1--> 
+<td width="87" height="13" bgcolor="#FFFF66"><a href="/sesamestreet/sitemap/?sectionId=games&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_games_anchor.gif" width="87" height="13" border="0" alt="games" border="0"></a></td>
+<td rowspan="5" background="/sesamestreet/sitemap/images/sm_yellow_bg_1.gif"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="14" height="15" border="0" alt=""></td>
+<td  width="95" height="13" bgcolor="#FFFF99"><a href="/sesamestreet/sitemap/?sectionId=bert&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_bert_anchor.gif" alt="bert" border="0" height="13" width="95"></a></td>
+<td rowspan="5" background="/sesamestreet/sitemap/images/sm_yellow_bg_2.gif"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" height="14" width="14" border="0"></td>
+<td bgcolor="#FFFF66" width="96" height="13"><a href="/sesamestreet/sitemap/?sectionId=elmo&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_elmo_anchor.gif" alt="elmo" border="0" width="96" height="13"></a></td>
+<td rowspan="5" background="/sesamestreet/sitemap/images/sm_yellow_bg_1.gif"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" height="14" width="14" border="0"></td>
+<td bgcolor="#FFFF99" width="99" height="13"><a href="/sesamestreet/sitemap/?sectionId=oscar&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_oscar_anchor.gif" width="99" height="13" border="0" alt="oscar"></a></td>
+<td rowspan="5" background="/sesamestreet/sitemap/images/sm_yellow_bg_2.gif"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" height="14" width="14" border="0"></td>
+<td bgcolor="#FFFF66" width="88" height="13"><a href="/sesamestreet/sitemap/?sectionId=club&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_club_anchor.gif" width="88" height="13" border="0" alt="club"></a></td>
+<td rowspan="5"><img src="/sesamestreet/sitemap/images/sm_anchors_right.gif" height="71" width="36" border="0"></td></tr>
+<!--row 2--> 
+<tr> 
+<td width="87" bgcolor="#FFFF66"><a href="/sesamestreet/sitemap/?sectionId=stories&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_stories_anchor.gif" alt="stories" border="0" width="87" height="15"></a></td>
+<td height="15" bgcolor="#FFFF99"><a href="/sesamestreet/sitemap/?sectionId=bigbird&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_bbird_anchor.gif" alt="bbird" border="0" height="15" width="95"></a></td>
+<td bgcolor="#FFFF66" width="96" height="15"><a href="/sesamestreet/sitemap/?sectionId=ernie&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_ernie_anchor.gif" alt="ernie" border="0" width="96" height="15"></a></td>
+<td bgcolor="#FFFF99" width="99" height="15"><a href="/sesamestreet/sitemap/?sectionId=telly&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_telly_anchor.gif" width="99" height="15" border="0" alt="telly"></a></td>
+<td bgcolor="#FFFF66" width="88" height="15"><a href="/sesamestreet/sitemap/?sectionId=shop&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_shop_anchor.gif" width="88" height="15" border="0" alt="shop"></a></td>
+</tr>
+<!--row 3--> 
+<tr>
+<td width="87" height="15" bgcolor="#FFFF66"><a href="/sesamestreet/sitemap/?sectionId=art&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_art_anchor.gif" alt="art" border="0" width="87" height="15"></a></td>
+<td bgcolor="#FFFF99"><a href="/sesamestreet/sitemap/?sectionId=cookie&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_cookie_anchor.gif" alt="cookie" border="0" width="95" height="15"></a></td>
+<td bgcolor="#FFFF66" width="96" height="15"><a href="/sesamestreet/sitemap/?sectionId=grover&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_grover_anchor.gif" width="96" height="15" border="0" alt="grover"></a></td>
+<td bgcolor="#FFFF99" width="99" height="15"><a href="/sesamestreet/sitemap/?sectionId=zoe&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_zoe_anchor.gif" width="99" height="15" border="0" alt="zoe"></a></td>
+<td bgcolor="#FFFF66" width="88" height="15"><a href="/sesamestreet/sitemap/?sectionId=funtogo&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_fun_anchor.gif" width="88" height="15" border="0" alt="fun to-go"></a></td></tr>
+<!--row 4--> 
+<tr> 
+<td bgcolor="#FFFF66"><a href="/sesamestreet/sitemap/?sectionId=music&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_music_anchor.gif" alt="music" border="0" width="87" height="15"></a></td>
+<td bgcolor="#FFFF99"><a href="/sesamestreet/sitemap/?sectionId=cookie&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_monster_anchor.gif" width="95" height="15" alt="moster" border="0"></a></td>
+<td bgcolor="#FFFF66"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+<td bgcolor="#FFFF99"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+<td bgcolor="#FFFF66"><a href="/sesamestreet/sitemap/?sectionId=tv&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_tv_anchor.gif" width="88" height="15" border="0" alt="TV"></a></td>
+</tr>
+<!--row 5--> 
+<tr> 
+<td bgcolor="#FFFF66" height="13"><a href="/sesamestreet/sitemap/?sectionId=mail&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b"><img src="/sesamestreet/sitemap/images/sm_mail_anchor.gif" alt="mail" width="87" height="13" border="0"></a></td>
+<td bgcolor="#FFFF99"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+<td bgcolor="#FFFF66"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+<td bgcolor="#FFFF99"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+<td bgcolor="#FFFF66"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="10" border="0"></td>
+</tr>
+<tr> 
+<td colspan="11" valign="top" align="left"> <img src="/sesamestreet/sitemap/images/sm_hdr_full_game.gif" width="630" height="96" alt="games"></td>
+</tr>
+<!--row 6--> 
+</table>
+<table width="630" border="0" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="37"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="47" height="8"></td>
+<td bgcolor="#6666FF" width="586" colspan="2"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="341" height="10"></td>
+<td bgcolor="#6666FF"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="243" height="8"></td>
+<td><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="15" height="8"></td>
+</tr>
+<!-- Begin auto-generated output -->
+            <!--data row--->
+            <tr><td width="37"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td bgcolor="#6666FF" width="46"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <!--data cell 1--->
+            <td bgcolor="#6666FF" width="243" valign="top">
+            <blockquote><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif"><b>DOT-TO-DOT</b></FONT></blockquote></td>
+            <!--data cell 2--->
+            <td bgcolor="#6666FF" valign="top" width="243"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td></tr>
+            <!--data row--->
+            <tr><td width="37"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td bgcolor="#6666FF" width="46"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <!--data cell 1--->
+            <td bgcolor="#6666FF" width="243" valign="top"><font size="-1" face="Arial, Helvetica, sans-serif"><blockquote>
+            <a href="/sesamestreet/games/play.php?contentId=1467&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Zoe's Fishbowl</a><br><a href="/sesamestreet/games/play.php?contentId=1468&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Prairie Dawn's Favorite Toy</a><br><a href="/sesamestreet/games/play.php?contentId=1469&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Elmo Flies a Kite</a><br><a href="/sesamestreet/games/play.php?contentId=1470&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Ernie, the Artist</a><br>			</font></blockquote></td>
+            <!--data cell 2--->
+            <td bgcolor="#6666FF" valign="top" width="243"><font size="-1" face="Arial, Helvetica, sans-serif">
+            <a href="/sesamestreet/games/play.php?contentId=1471&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Sherlock Spies a Spider</a><br><a href="/sesamestreet/games/play.php?contentId=1473&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Slimey Makes a Phone Call</a><br><a href="/sesamestreet/games/play.php?contentId=3900&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Prairie Dawn Goes Fishing</a><br></font></td>
+            <td><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td></tr>
+                        <!--data row--->
+            <tr><td width="37"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td bgcolor="#6666FF" width="46"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <!--data cell 1--->
+            <td bgcolor="#6666FF" width="243" valign="top">
+            <blockquote><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif"><b>LETTERS</b></FONT></blockquote></td>
+            <!--data cell 2--->
+            <td bgcolor="#6666FF" valign="top" width="243"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td></tr>
+            <!--data row--->
+            <tr><td width="37"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td bgcolor="#6666FF" width="46"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <!--data cell 1--->
+            <td bgcolor="#6666FF" width="243" valign="top"><font size="-1" face="Arial, Helvetica, sans-serif"><blockquote>
+            <a href="/sesamestreet/games/play.php?contentId=1207&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Grover of Arabia</a><br><a href="/sesamestreet/games/play.php?contentId=1208&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Big Bird Goes Camping</a><br><a href="/sesamestreet/games/play.php?contentId=1209&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Telly's Circus Act</a><br><a href="/sesamestreet/games/play.php?contentId=1210&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Elmo at the Zoo</a><br>			</font></blockquote></td>
+            <!--data cell 2--->
+            <td bgcolor="#6666FF" valign="top" width="243"><font size="-1" face="Arial, Helvetica, sans-serif">
+            <a href="/sesamestreet/games/play.php?contentId=1211&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Ernie's Window Box</a><br><a href="/sesamestreet/games/play.php?contentId=1212&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Conductor Cookie</a><br><a href="/sesamestreet/games/play.php?contentId=1213&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Betty Lou Goes Hiking</a><br><a href="/sesamestreet/games/play.php?contentId=3946&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Baby Bear in the Car</a><br></font></td>
+            <td><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td></tr>
+                        <!--data row--->
+            <tr><td width="37"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td bgcolor="#6666FF" width="46"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <!--data cell 1--->
+            <td bgcolor="#6666FF" width="243" valign="top">
+            <blockquote><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif"><b>NUMBERS</b></FONT></blockquote></td>
+            <!--data cell 2--->
+            <td bgcolor="#6666FF" valign="top" width="243"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td></tr>
+            <!--data row--->
+            <tr><td width="37"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td bgcolor="#6666FF" width="46"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <!--data cell 1--->
+            <td bgcolor="#6666FF" width="243" valign="top"><font size="-1" face="Arial, Helvetica, sans-serif"><blockquote>
+            <a href="/sesamestreet/elmosworld/games.php?contentId=111180&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Walking the Dogs</a><br><a href="/sesamestreet/games/play.php?contentId=1137&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Kingston's Library</a><br><a href="/sesamestreet/games/play.php?contentId=1138&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Sherlock Searches for a Lost Puppy</a><br><a href="/sesamestreet/games/play.php?contentId=1139&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Hoots the Owl Plays His Saxophone</a><br>			</font></blockquote></td>
+            <!--data cell 2--->
+            <td bgcolor="#6666FF" valign="top" width="243"><font size="-1" face="Arial, Helvetica, sans-serif">
+            <a href="/sesamestreet/games/play.php?contentId=1140&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Farmer Grover</a><br><a href="/sesamestreet/games/play.php?contentId=1141&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">The Two-Headed Monster at Sea</a><br><a href="/sesamestreet/games/play.php?contentId=1142&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">On the Road With the Honkers</a><br><a href="/sesamestreet/games/play.php?contentId=3947&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Natasha in Her Car Seat</a><br></font></td>
+            <td><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td></tr>
+                        <!--data row--->
+            <tr><td width="37"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td bgcolor="#6666FF" width="46"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <!--data cell 1--->
+            <td bgcolor="#6666FF" width="243" valign="top">
+            <blockquote><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif"><b>SHAPES</b></FONT></blockquote></td>
+            <!--data cell 2--->
+            <td bgcolor="#6666FF" valign="top" width="243"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td></tr>
+            <!--data row--->
+            <tr><td width="37"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td bgcolor="#6666FF" width="46"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <!--data cell 1--->
+            <td bgcolor="#6666FF" width="243" valign="top"><font size="-1" face="Arial, Helvetica, sans-serif"><blockquote>
+            <a href="/sesamestreet/elmosworld/games.php?contentId=4095465&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Clouds</a><br><a href="/sesamestreet/games/flash.php?contentId=110241&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Make-a-Monster</a><br><a href="/sesamestreet/games/flash.php?contentId=111824&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">The Laundry Game</a><br><a href="/sesamestreet/games/play.php?contentId=1286&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Betty Lou Goes Skin Diving</a><br><a href="/sesamestreet/games/play.php?contentId=1287&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Prairie Dawn in the Science Lab</a><br><a href="/sesamestreet/games/play.php?contentId=1288&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Martians at the Market</a><br><a href="/sesamestreet/games/play.php?contentId=1289&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Slimey's Adventure in Space</a><br>			</font></blockquote></td>
+            <!--data cell 2--->
+            <td bgcolor="#6666FF" valign="top" width="243"><font size="-1" face="Arial, Helvetica, sans-serif">
+            <a href="/sesamestreet/games/play.php?contentId=1290&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Under Construction with Biff and Sully</a><br><a href="/sesamestreet/games/play.php?contentId=1291&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">The Count's Birthday Surprise</a><br><a href="/sesamestreet/games/play.php?contentId=1292&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Baby Bear Builds a Snowman</a><br><a href="/sesamestreet/games/play.php?contentId=3970&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Zoe the Rollerqueen</a><br><a href="/sesamestreet/games/shock/letsmakebreakfast?PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Let's Make Breakfast</a><br><a href="/sesamestreet/games/shock/elmosroadtrip?PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Elmo's Road Trip</a><br><a href="/sesamestreet/elmosworld/games.php?contentId=111280&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Footprints</a><br></font></td>
+            <td><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td></tr>
+                        <!--data row--->
+            <tr><td width="37"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td bgcolor="#6666FF" width="46"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <!--data cell 1--->
+            <td bgcolor="#6666FF" width="243" valign="top">
+            <blockquote><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif"><b>SORTING</b></FONT></blockquote></td>
+            <!--data cell 2--->
+            <td bgcolor="#6666FF" valign="top" width="243"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td></tr>
+            <!--data row--->
+            <tr><td width="37"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td bgcolor="#6666FF" width="46"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <!--data cell 1--->
+            <td bgcolor="#6666FF" width="243" valign="top"><font size="-1" face="Arial, Helvetica, sans-serif"><blockquote>
+            <a href="/sesamestreet/games/flash.php?contentId=112000&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Bert's Bottle Caps</a><br><a href="/sesamestreet/games/flash.php?contentId=111824&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">The Laundry Game</a><br><a href="/sesamestreet/games/flash.php?contentId=110740&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Oscar's Trash Collection</a><br><a href="/sesamestreet/games/flash.php?contentId=110880&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Check Out Cookie</a><br><a href="/sesamestreet/games/play.php?contentId=1363&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Baby Bear Draws a Picture</a><br><a href="/sesamestreet/games/play.php?contentId=1364&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Have a Ball With Telly</a><br>			</font></blockquote></td>
+            <!--data cell 2--->
+            <td bgcolor="#6666FF" valign="top" width="243"><font size="-1" face="Arial, Helvetica, sans-serif">
+            <a href="/sesamestreet/games/play.php?contentId=1365&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Toss a Salad With Cookie Monster</a><br><a href="/sesamestreet/games/play.php?contentId=1366&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Stinky and Other Growing Things</a><br><a href="/sesamestreet/games/play.php?contentId=1367&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Build With Biff and Elmo</a><br><a href="/sesamestreet/games/play.php?contentId=1368&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Up in the Air With Betty Lou</a><br><a href="/sesamestreet/games/play.php?contentId=3971&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Things in a Car</a><br></font></td>
+            <td><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td></tr>
+                        <!--data row--->
+            <tr><td width="37"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td bgcolor="#6666FF" width="46"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <!--data cell 1--->
+            <td bgcolor="#6666FF" width="243" valign="top">
+            <blockquote><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif"><b>SPECIAL</b></FONT></blockquote></td>
+            <!--data cell 2--->
+            <td bgcolor="#6666FF" valign="top" width="243"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td></tr>
+            <!--data row--->
+            <tr><td width="37"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <td bgcolor="#6666FF" width="46"><img src="/sesamestreet/sitemap/images/1x1_inv.gif" width="1" height="1" border="0"></td>
+            <!--data cell 1--->
+            <td bgcolor="#6666FF" width="243" valign="top"><font size="-1" face="Arial, Helvetica, sans-serif"><blockquote>
+            <a href="/sesamestreet/games/flash.php?contentId=4203178&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Peek-A-Boo--A Lapware Game for Parent and Baby</a><br><a href="/sesamestreet/elmosworld/games.php?contentId=4095465&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Clouds</a><br><a href="/sesamestreet/games/flash.php?contentId=112000&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Bert's Bottle Caps</a><br><a href="/sesamestreet/games/flash.php?contentId=111824&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">The Laundry Game</a><br><a href="/sesamestreet/games/flash.php?contentId=111822&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Dress Grover: Party!</a><br><a href="/sesamestreet/games/flash.php?contentId=110241&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Make-a-Monster</a><br><a href="/sesamestreet/elmosworld/games.php?contentId=111180&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Walking the Dogs</a><br><a href="/sesamestreet/elmosworld/games.php?contentId=111260&PHPSESSID=3f215b9e6e705b82242581abc23c7d9b">Make Elmo a Hat
