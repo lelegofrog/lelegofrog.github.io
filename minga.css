@@ -1,0 +1,15 @@
+body {
+	background-color: #000000;
+  background-image: url("minga2/backgroundcave-1.png.png");
+	text-align: center;
+	font-family: Comic Sans MS;
+	color: white;
+	text-shadow: 1px 1px 3px black;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+a {
+	color: #ff00ff;
+}
