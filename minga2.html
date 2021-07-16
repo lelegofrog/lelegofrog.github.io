@@ -3,18 +3,21 @@
 	<head>
 		<title>Minga and the Lemon Chamber</title>
 		<link rel="stylesheet" type="text/css" href="minga.css">
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	</head>
 
 	<body>
-<table border="1" align="center">
-    				<thead>
-       					 <tr>
-          						  <th><a href="index.html">Home</a></th>
-					          	  <th><a href="games.html">Games</a></th>
-						 	  <th><a href="Downloads.html">Downloads</a></th>
-      						  </tr>
-	</thead>
-		</table>
+			<!--Navigation bar-->
+			<div id="nav-placeholder">
+				<p>Loading navbar...</p>
+			</div>
+
+			<script>
+			$(function(){
+			  $("#nav-placeholder").load("nav.html");
+			});
+			</script>
+			<!--end of Navigation bar-->
 		<br>
 		<h1>Minga and the Lemon Chamber</h1>
 		<embed type="text/html" src="minga2/index.html" width="512" height="488">
