@@ -7,7 +7,7 @@
 	<session><scoreArray><round number="1">0</round><round number="2">0</round><round number="3">0</round><round number="4">0</round><round number="5">0</round><round number="6">0</round><round number="7">0</round><round number="8">0</round><round number="9">0</round><round number="10">0</round><round number="11">0</round><round number="12">0</round><round number="13">0</round><round number="14">0</round><round number="15">0</round></scoreArray>
 <score>0</score></session>
 <game>	<factory>
-	<shuffle>true</shuffle>
+	<shuffle>false</shuffle>
 	<firstWeek>4</firstWeek>
 	<thisWeek>4</thisWeek>
 	<gameSize>15</gameSize>
@@ -162,12 +162,12 @@
 			<clue>null</clue>
 		</question>
 		<question id="1">
-			<questionText>Monsterpiece Theater is hosted by:</questionText>
+			<questionText>There will always be someone saying you can have fun</questionText>
 			<answerCandidates>
-				<candidate number="1" isCorrect="false">Cyranose de Bergerac</candidate>
-				<candidate number="2" isCorrect="false">Alphabet Chatterley</candidate>
-				<candidate number="3" isCorrect="true">Allistair Cookie</candidate>
-				<candidate number="4" isCorrect="false">Sir John Feelgood</candidate>
+				<candidate number="1" isCorrect="false">If you like what we all like</candidate>
+				<candidate number="2" isCorrect="false">Gotta stick to a rule</candidate>
+				<candidate number="3" isCorrect="true">If you wanna be cool</candidate>
+				<candidate number="4" isCorrect="false">But that really isn't right</candidate>
 			</answerCandidates>
 			<fact>null</fact>
 			<reference>null</reference>
