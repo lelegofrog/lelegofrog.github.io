@@ -69,7 +69,7 @@
 			<questionText>This person has NEVER run Hooper's Store:</questionText>
 			<answerCandidates>
 				<candidate number="1" isCorrect="false">Mr. Hanford</candidate>
-				<candidate number="2" isCorrect="true">Mrs. Applebaum</candidate>
+				<candidate number="2" isCorrect="true">Mando</candidate>
 				<candidate number="3" isCorrect="false">Alan</candidate>
 				<candidate number="4" isCorrect="false">Mr. Hooper</candidate>
 			</answerCandidates>
