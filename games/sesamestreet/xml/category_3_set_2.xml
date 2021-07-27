@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<response>
+	<auth><ticket>9D8EF484C029B3ED596FB576241FF0F0</ticket></auth>
+	<query>
+	</query>
+	<results>
+	<session><scoreArray><round number="1">0</round><round number="2">0</round><round number="3">0</round><round number="4">0</round><round number="5">0</round><round number="6">0</round><round number="7">0</round><round number="8">0</round><round number="9">0</round><round number="10">0</round><round number="11">0</round><round number="12">0</round><round number="13">0</round><round number="14">0</round><round number="15">0</round></scoreArray>
+<score>0</score></session>
+<game>	<factory>
+	<shuffle>true</shuffle>
+	<firstWeek>4</firstWeek>
+	<thisWeek>4</thisWeek>
+	<gameSize>15</gameSize>
+	<questionSet>1</questionSet>
+	<firstQuestion>1</firstQuestion>
+	<lastQuestion>15</lastQuestion>
+</factory>
+
+	<questionList>
+		<question id="12">
+			<questionText>Who is the nasal-toned host of the Nestropolitan Opera's "Live From the Nest" series?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Placido Flamingo</candidate>
+				<candidate number="2" isCorrect="false">Allistair Cookie</candidate>
+				<candidate number="3" isCorrect="true">Phil Harmonic</candidate>
+				<candidate number="4" isCorrect="false">Beverly Windosills</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="14">
+			<questionText>Bert and Ernie are named after characters from which movie classic?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Scarface</candidate>
+				<candidate number="2" isCorrect="false">Gone with the Wind</candidate>
+				<candidate number="3" isCorrect="false">Casablanca</candidate>
+				<candidate number="4" isCorrect="true">It's a Wonderful Life</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="2">
+			<questionText>Who is the only character to be portrayed by more than one actor?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Bob</candidate>
+				<candidate number="2" isCorrect="true">Gordon</candidate>
+				<candidate number="3" isCorrect="false">Maria</candidate>
+				<candidate number="4" isCorrect="false">Mr. Hooper</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="1">
+			<questionText>Although he always seems to be hanging around on SesameStreet, Gordon actually has a job. What is it?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Sanitation Engineer</candidate>
+				<candidate number="2" isCorrect="false">Telephone Sanitizer</candidate>
+				<candidate number="3" isCorrect="true">Science Teacher</candidate>
+				<candidate number="4" isCorrect="false">Nest Inspector</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="7">
+			<questionText>This person has NEVER run Hooper's Store:</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="true">Mrs. Applebaum</candidate>
+				<candidate number="2" isCorrect="false">Mr. Hanford</candidate>
+				<candidate number="3" isCorrect="false">Alan</candidate>
+				<candidate number="4" isCorrect="false">Mr. Hooper</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="11">
+			<questionText>He helps Oscar get around:</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Larry</candidate>
+				<candidate number="2" isCorrect="false">Sully</candidate>
+				<candidate number="3" isCorrect="true">Bruno</candidate>
+				<candidate number="4" isCorrect="false">Gibson</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="5">
+			<questionText>Mr. Hooper served these to his biggest customer:</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Gummi Elk</candidate>
+				<candidate number="2" isCorrect="true">Birdseed Milkshakes</candidate>
+				<candidate number="3" isCorrect="false">Veggie Burgers</candidate>
+				<candidate number="4" isCorrect="false">Sardine Sundaes</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="6">
+			<questionText>She is the Veterinarian on Sesame Street:</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Grungetta</candidate>
+				<candidate number="2" isCorrect="true">Gina</candidate>
+				<candidate number="3" isCorrect="false">Linda</candidate>
+				<candidate number="4" isCorrect="false">Maria</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="3">
+			<questionText>One of these people is not like the others: Who is not an original cast member?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Susan</candidate>
+				<candidate number="2" isCorrect="false">Gordon</candidate>
+				<candidate number="3" isCorrect="true">Gina</candidate>
+				<candidate number="4" isCorrect="false">Bob</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="13">
+			<questionText>At which event did Slimey excel during the Worm Summer Games?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Twig Vault</candidate>
+				<candidate number="2" isCorrect="true">Low Hurdles</candidate>
+				<candidate number="3" isCorrect="false">Short Jump</candidate>
+				<candidate number="4" isCorrect="false">Leaf Munch</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="8">
+			<questionText>Who was a good friend of Bob, a librarian and taught kids sign language?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="true">Linda</candidate>
+				<candidate number="2" isCorrect="false">Olivia</candidate>
+				<candidate number="3" isCorrect="false">Buffy</candidate>
+				<candidate number="4" isCorrect="false">Patti</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="4">
+			<questionText>Susan and Gordon's son is named:</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Jean-Claude</candidate>
+				<candidate number="2" isCorrect="false">Kentaro</candidate>
+				<candidate number="3" isCorrect="true">Miles</candidate>
+				<candidate number="4" isCorrect="false">Leonardo</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="10">
+			<questionText>This is Bob's job:</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Computer programmer</candidate>
+				<candidate number="2" isCorrect="true">Music Teacher</candidate>
+				<candidate number="3" isCorrect="false">Bus Driver</candidate>
+				<candidate number="4" isCorrect="false">Lounge Singer</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="15">
+			<questionText>Who had a baby on Sesame Street in 1989?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Gina</candidate>
+				<candidate number="2" isCorrect="false">Susan</candidate>
+				<candidate number="3" isCorrect="false">Olivia</candidate>
+				<candidate number="4" isCorrect="true">Maria</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="9">
+			<questionText>She was hired by Luis to be his assistant in the Fix-It Shop.  Later, she became his business partner, and finally his bride.</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Buffy</candidate>
+				<candidate number="2" isCorrect="false">Selena</candidate>
+				<candidate number="3" isCorrect="false">Gina</candidate>
+				<candidate number="4" isCorrect="true">Maria</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+	</questionList>
+</game>
+	</results>
+</response>
