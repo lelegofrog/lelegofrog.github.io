@@ -1,0 +1,17 @@
+body {
+	background-color: #ffff00;
+	background-image: url("smileycentral/shocked_bg.jpg");
+	text-align: center;
+	font-family: Comic Sans MS;
+	color: black;
+}
+table {
+	border-color: yellow;
+	table-align: center;
+}
+a {
+	color: #aaaa00;
+}
+.void {
+	background-color: #ffffff;
+}
