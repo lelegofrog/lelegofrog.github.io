@@ -6,15 +6,6 @@
 <body bgcolor="#33196F" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"  text="#ffffff" link="#dddddd" vlink="#88dddd">
 <div id='ruffle'></div>
         <script src='https://e9x.github.io/ruffle/ruffle.js'></script>
-    <script>
-    function getNumber() {
-        var minNumber = 1; // The minimum number you want
-        var maxNumber = 8; // The maximum number you want
-        var randomnumber = Math.floor(Math.random() * (maxNumber + 1) + minNumber); // Generates random number
-        $('#myNumber').html(randomnumber); // Sets content of <div> to number
-        return false; // Returns false just to tidy everything up
-    }
-    </script>
         <script>
 var swfobject = {};
 
@@ -29,7 +20,7 @@ swfobject.embedSWF = function(url, cont, width, height){
     player.load({ url: url });
 }
 
-swfobject.embedSWF('home.swf?feature=<div id="myNumber"></div>', 'ruffle', 565, 310);
+swfobject.embedSWF('home.swf?feature=7', 'ruffle', 565, 310);
         </script>
 </body>
 </html>
