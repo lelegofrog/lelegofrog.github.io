@@ -2,6 +2,15 @@
 <head>
 <title>Oobi Home</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script>
+function getNumber() {
+    var minNumber = 1; // The minimum number you want
+    var maxNumber = 8; // The maximum number you want
+    var randomnumber = Math.floor(Math.random() * (maxNumber + 1) + minNumber); // Generates random number
+    $('#myNumber').html(randomnumber); // Sets content of <div> to number
+    return false; // Returns false just to tidy everything up
+}
+</script>
 </head>
 <body bgcolor="#33196F" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"  text="#ffffff" link="#dddddd" vlink="#88dddd">
 <div id='ruffle'></div>
@@ -20,7 +29,7 @@ swfobject.embedSWF = function(url, cont, width, height){
     player.load({ url: url });
 }
 
-swfobject.embedSWF('home.swf?feature=6', 'ruffle', 565, 310);
+swfobject.embedSWF('home.swf?feature=<div id="myNumber"></div>', 'ruffle', 565, 310);
         </script>
 </body>
 </html>
