@@ -3,7 +3,7 @@ body {
 	background-image: url("smileycentral/shocked_bg.jpg");
 	text-align: center;
 	font-family: Comic Sans MS;
-	color: black;
+	color: white;
 }
 table {
 	border-color: yellow;
@@ -14,7 +14,4 @@ a {
 }
 .void {
 	background-color: #ffffff;
-}
-.btx {
-	color: white;
 }
