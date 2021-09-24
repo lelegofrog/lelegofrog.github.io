@@ -1,16 +1,16 @@
 body {
-	background-color: #305404;
-	background-image: url("smileycentral/shocked_bg.jpg");
+	background-color: #aaaa00;
+	background-image: url("smileycentral/wallpapers/crazy_bg.jpg");
 	text-align: center;
 	font-family: Comic Sans MS;
 	color: white;
 }
 table {
-	border-color: yellow;
+	border-color: black;
 	table-align: center;
 }
 a {
-	color: #cccc00;
+	color: #0000cc;
 }
 .void {
 	background-color: #ffffff;
