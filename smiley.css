@@ -4,16 +4,38 @@ body {
 	text-align: center;
 	font-family: Comic Sans MS;
 	color: white;
-	-webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
 }
 table {
 	border-color: black;
 	table-align: center;
 }
 a {
-	color: #444400;
+	color: #000088;
 }
 .void {
 	background-color: #ffffff;
+}
+h1 {
+	-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+h2 {
+	-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+h3 {
+	-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+h4 {
+	-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+h5 {
+	-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+h6 {
+	-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
 }
