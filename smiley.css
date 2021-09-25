@@ -11,6 +11,8 @@ table {
 }
 a {
 	color: #0000aa;
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
 }
 .void {
 	background-color: #ffffff;
