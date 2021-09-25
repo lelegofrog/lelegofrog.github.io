@@ -1,10 +1,10 @@
 body {
 	background-color: #aaaa00;
-	background-image: url("smileycentral/wallpapers/crazy_bg.jpg");
+	background-image: url("smileycentral/wallpapers/happy_bg.jpg");
 	text-align: center;
 	font-family: Comic Sans MS;
 	color: white;
-	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
 }
 table {
@@ -12,7 +12,7 @@ table {
 	table-align: center;
 }
 a {
-	color: #ffff00;
+	color: #444400;
 }
 .void {
 	background-color: #ffffff;
