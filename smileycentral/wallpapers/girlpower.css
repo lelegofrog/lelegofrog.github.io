@@ -1,0 +1,18 @@
+@font-face {
+    font-family: "sansbd";
+    src: url("comicbd.ttf");
+}
+body {
+	background-color: #000000;
+	background-image: url("girlpower_bg.gif");
+	text-align: center;
+	font-family: "sansbd";
+	color: white;
+}
+a {
+	color: #0000aa;
+	font-family: "sansbd";
+}
+.void {
+	background-color: #ffffff;
+}
