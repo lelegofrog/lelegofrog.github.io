@@ -25,20 +25,32 @@ a {
 	background-color: #ffffff;
 }
 h1 {
+	-webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: black;
 	font-family: "sansbd";
 }
 h2 {
+	-webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: black;
 	font-family: "sansbd";
 }
 h3 {
+	-webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: black;
 	font-family: "sansbd";
 }
 h4 {
+	-webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: black;
 	font-family: "sansbd";
 }
 h5 {
+	-webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: black;
 	font-family: "sansbd";
 }
 h6 {
+	-webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: black;
 	font-family: "sansbd";
 }
