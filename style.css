@@ -1,8 +1,12 @@
+@font-face {
+    font-family: "sans";
+    src: url("C:/Users/Desktop/Website/fonts/Harlow_Solid_Italic.ttf");
+}
 body {
 	background-color: #000000;
 	background-image: url("Circles.png");
 	text-align: center;
-	font-family: Comic Sans MS;
+	font-family: "sans";
 	color: white;
 	text-shadow: 1px 1px 3px black;
 }

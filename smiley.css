@@ -1,8 +1,12 @@
+@font-face {
+    font-family: "sans";
+    src: url("C:/Users/Desktop/Website/fonts/Harlow_Solid_Italic.ttf");
+}
 body {
 	background-color: #aaaa00;
 	background-image: url("smileycentral/wallpapers/happy_bg.jpg");
 	text-align: center;
-	font-family: Comic Sans MS;
+	font-family: "sans";
 	color: white;
 }
 table {
