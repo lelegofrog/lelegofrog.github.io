@@ -2,6 +2,10 @@
     font-family: "sans";
     src: url("comic.ttf");
 }
+@font-face {
+    font-family: "sansbd";
+    src: url("comicbd.ttf");
+}
 body {
 	background-color: #aaaa00;
 	background-image: url("smileycentral/wallpapers/happy_bg.jpg");
@@ -15,7 +19,7 @@ table {
 }
 a {
 	color: #0000aa;
-	font-size: 12px;
+	font-family: "sansbd";
 }
 .void {
 	background-color: #ffffff;

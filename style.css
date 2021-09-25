@@ -2,6 +2,10 @@
     font-family: "sans";
     src: url("comic.ttf");
 }
+@font-face {
+    font-family: "sansbd";
+    src: url("comicbd.ttf");
+}
 body {
 	background-color: #000000;
 	background-image: url("Circles.png");
@@ -16,5 +20,5 @@ table {
 }
 a {
 	color: #ff00ff;
-	font-size: 16px;
+	font-family: "sansbd";
 }
