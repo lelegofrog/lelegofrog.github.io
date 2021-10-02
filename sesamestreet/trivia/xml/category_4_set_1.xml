@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<response>
+	<auth><ticket>F9C3BC595BC938F090BD75853E2DE8EC</ticket></auth>
+	<query>
+	</query>
+	<results>
+	<session><scoreArray><round number="1">0</round><round number="2">0</round><round number="3">0</round><round number="4">0</round><round number="5">0</round><round number="6">0</round><round number="7">0</round><round number="8">0</round><round number="9">0</round><round number="10">0</round><round number="11">0</round><round number="12">0</round><round number="13">0</round><round number="14">0</round><round number="15">0</round></scoreArray>
+<score>0</score></session>
+<game>	<factory>
+	<shuffle>true</shuffle>
+	<firstWeek>4</firstWeek>
+	<thisWeek>4</thisWeek>
+	<gameSize>15</gameSize>
+	<questionSet>1</questionSet>
+	<firstQuestion>1</firstQuestion>
+	<lastQuestion>15</lastQuestion>
+</factory>
+
+	<questionList>
+		<question id="3">
+			<questionText>What famous singer-composer joined the Sesame Street cast during the 1976-77 season along with her real baby, Cody?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="true">Buffy Sainte-Marie</candidate>
+				<candidate number="2" isCorrect="false">Joni Mitchell</candidate>
+				<candidate number="3" isCorrect="false">Joan Osbourne</candidate>
+				<candidate number="4" isCorrect="false">Carol King</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="10">
+			<questionText>Who is the largest Muppet on Sesame Street?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Big Bird</candidate>
+				<candidate number="2" isCorrect="false">Walter the Wonder Whale</candidate>
+				<candidate number="3" isCorrect="true">Snuffleupagus</candidate>
+				<candidate number="4" isCorrect="false">Barkeley the Dog</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="6">
+			<questionText>On which cooking show did Elmo appear in 1992?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">How to Boil Water</candidate>
+				<candidate number="2" isCorrect="false">Yan Can Cook</candidate>
+				<candidate number="3" isCorrect="true">The Frugal Gourmet</candidate>
+				<candidate number="4" isCorrect="false">Julia Child</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="12">
+			<questionText>Kevin Clash plays these two characters:</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Big Bird and Little Bird</candidate>
+				<candidate number="2" isCorrect="false">The Count and Elmo</candidate>
+				<candidate number="3" isCorrect="false">Guy Smiley and Cookie Monster</candidate>
+				<candidate number="4" isCorrect="true">Elmo and Baby Natasha</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="15">
+			<questionText>One of these is NOT a real International version of Sesame Street:</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="true">Rue Sesame</candidate>
+				<candidate number="2" isCorrect="false">Jharma Zie</candidate>
+				<candidate number="3" isCorrect="false">Plaza Sesamo</candidate>
+				<candidate number="4" isCorrect="false">Sesamestrasse</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="1">
+			<questionText>How many Emmys did Sesame Street win in its first season?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">1</candidate>
+				<candidate number="2" isCorrect="false">5</candidate>
+				<candidate number="3" isCorrect="true">3</candidate>
+				<candidate number="4" isCorrect="false">0</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="5">
+			<questionText>He hosted the Rose Bowl parade in 1996.</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Telly Monster</candidate>
+				<candidate number="2" isCorrect="false">Ernie</candidate>
+				<candidate number="3" isCorrect="false">Don Music</candidate>
+				<candidate number="4" isCorrect="true">Kermit the Frog</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="4">
+			<questionText>Big Bird has a cameo appearance in which Hollywood film?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Close Encounters of the Third Kind</candidate>
+				<candidate number="2" isCorrect="true">E.T.</candidate>
+				<candidate number="3" isCorrect="false">Dog Day Afternoon</candidate>
+				<candidate number="4" isCorrect="false">The Birds</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="14">
+			<questionText>Tickle-Me-Elmo was the hottest toy of this year:</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">1997</candidate>
+				<candidate number="2" isCorrect="false">1999</candidate>
+				<candidate number="3" isCorrect="true">1996</candidate>
+				<candidate number="4" isCorrect="false">1994</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="13">
+			<questionText>Frank Oz originally played these characters:</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="true">Bert and Grover</candidate>
+				<candidate number="2" isCorrect="false">Grover and Elmo</candidate>
+				<candidate number="3" isCorrect="false">Biff and Bert</candidate>
+				<candidate number="4" isCorrect="false">Oscar and Herry</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="9">
+			<questionText>What is Elmo's favorite food?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Falafel</candidate>
+				<candidate number="2" isCorrect="false">Pisgetti</candidate>
+				<candidate number="3" isCorrect="true">Pizza</candidate>
+				<candidate number="4" isCorrect="false">Cheeseburgers</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="8">
+			<questionText>What does Ernie call his bathtub?</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Scrubby</candidate>
+				<candidate number="2" isCorrect="false">Alice</candidate>
+				<candidate number="3" isCorrect="true">Rosie</candidate>
+				<candidate number="4" isCorrect="false">Bubbles</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="2">
+			<questionText>When Big Bird went to China, he took this guy with him:</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Richard Nixon</candidate>
+				<candidate number="2" isCorrect="false">Dean Martin</candidate>
+				<candidate number="3" isCorrect="false">Oscar the Grouch</candidate>
+				<candidate number="4" isCorrect="true">Bob Hope</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="11">
+			<questionText>Caroll Spinney plays...</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Bert and Sherlock Hemlock</candidate>
+				<candidate number="2" isCorrect="false">The Amazing Mumford and Snuffy</candidate>
+				<candidate number="3" isCorrect="false">Big Bird and Zoe</candidate>
+				<candidate number="4" isCorrect="true">Oscar the Grouch and Big Bird</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+		<question id="7">
+			<questionText>Kermit, Jim Henson's first Muppet, was made from his mother's green...</questionText>
+			<answerCandidates>
+				<candidate number="1" isCorrect="false">Scarf</candidate>
+				<candidate number="2" isCorrect="true">Coat</candidate>
+				<candidate number="3" isCorrect="false">Curtains</candidate>
+				<candidate number="4" isCorrect="false">Gloves</candidate>
+			</answerCandidates>
+			<fact>null</fact>
+			<reference>null</reference>
+			<clue>null</clue>
+		</question>
+	</questionList>
+</game>
+	</results>
+</response>
