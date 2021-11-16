@@ -1,5 +1,5 @@
 :root {
-  --logo: brycespixlogo.png;
+  --logo: "brycespixlogo.png";
 }
 .logo {
 	-ms-transform: scale(0.3);
