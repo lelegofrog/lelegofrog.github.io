@@ -7,7 +7,8 @@
     src: url("comicbd.ttf");
 }
 body {
-	background-color: #004D2F;
+	background-color: #33CCFF;
+	background-image: url("games/sesamestreet/clouds_wallpaper.gif");
 	text-align: center;
 	font-family: "sans";
 	color: white;
