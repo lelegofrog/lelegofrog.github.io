@@ -7,8 +7,8 @@
     src: url("comicbd.ttf");
 }
 body {
-	background-color: #33CCFF;
-	background-image: url("games/sesamestreet/clouds_wallpaper.gif");
+	background-color: #000000;
+	background-image: url("downloads/mms/mms.png");
 	text-align: center;
 	font-family: "sans";
 	color: white;
@@ -19,7 +19,7 @@ table {
 	table-align: center;
 }
 a {
-	color: #00ff00;
+	color: #ffaa00;
 	font-family: "sansbd";
 }
 h1 {
