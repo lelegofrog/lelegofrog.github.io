@@ -1,0 +1,44 @@
+@font-face {
+    font-family: "sans";
+    src: url("comic.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("comicbd.ttf");
+}
+body {
+	background-color: #2a5402;
+	background-image: url("downloads/sb/sp.jpg");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+}
+table {
+	border-color: black;
+	table-align: center;
+}
+a {
+	color: #aaaa00;
+	font-family: "sansbd";
+}
+.void {
+	background-color: #ffffff;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}
