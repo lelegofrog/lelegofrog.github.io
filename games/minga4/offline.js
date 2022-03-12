@@ -1,5 +1,5 @@
 ﻿{
-	"version": 1647062853,
+	"version": 1647098672,
 	"fileList": [
 		"data.js",
 		"c2runtime.js",
@@ -73,6 +73,7 @@
 		"images/tiledbackground90.png",
 		"images/tiledbackground91.png",
 		"images/musicmenu-sheet0.png",
+		"images/fakeground2.png",
 		"media/mingacollect.m4a",
 		"media/mingacollect.ogg",
 		"media/mingajump.m4a",
