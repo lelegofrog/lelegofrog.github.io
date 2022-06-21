@@ -7,7 +7,7 @@
     src: url("comicbd.ttf");
 }
 body {
-	background-color: #33CCFF;
+	background-color: #004477;
 	background-image: url("games/sesamestreet/clouds_wallpaper.gif");
 	text-align: center;
 	font-family: "sans";
@@ -21,6 +21,11 @@ table {
 a {
 	color: #00ff00;
 	font-family: "sansbd";
+}
+.sesamvoid {
+	background-color: #FFFFFF;
+	color: black;
+	text-shadow: 0px 0px 0px white;
 }
 h1 {
 	font-family: "sansbd";
