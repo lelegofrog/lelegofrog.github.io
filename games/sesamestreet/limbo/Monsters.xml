@@ -1,0 +1,46 @@
+
+<MONSTERS aSoundVolume="100" aRandomizeRounds="true">
+
+    <ROUND>
+        <MONSTER aInstance="iAM4"/>
+        <MONSTER aInstance="iAM5"/>
+        <MONSTER aInstance="iAM7"/>
+        <MONSTER aInstance="iAM6"/>
+    </ROUND>
+
+    <ROUND>
+        <MONSTER aInstance="iAM5"/>
+        <MONSTER aInstance="iAM7"/>
+        <MONSTER aInstance="iAM8"/>
+        <MONSTER aInstance="iAM4"/>
+    </ROUND>
+
+    <ROUND>
+        <MONSTER aInstance="iAM7"/>
+        <MONSTER aInstance="iAM6"/>
+        <MONSTER aInstance="iAM4"/>
+        <MONSTER aInstance="iAM8"/>
+    </ROUND>
+
+    <ROUND>
+        <MONSTER aInstance="iAM6"/>
+        <MONSTER aInstance="iAM5"/>
+        <MONSTER aInstance="iAM8"/>
+        <MONSTER aInstance="iAM7"/>
+    </ROUND>
+
+    <ROUND>
+        <MONSTER aInstance="iAM8"/>
+        <MONSTER aInstance="iAM4"/>
+        <MONSTER aInstance="iAM6"/>
+        <MONSTER aInstance="iAM5"/>
+    </ROUND>
+
+    <ROUND>
+        <MONSTER aInstance="iAM7"/>
+        <MONSTER aInstance="iAM4"/>
+        <MONSTER aInstance="iAM5"/>
+        <MONSTER aInstance="iAM8"/>
+    </ROUND>
+
+</MONSTERS>
