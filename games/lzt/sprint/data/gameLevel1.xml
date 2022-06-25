@@ -1,0 +1,292 @@
+<map>
+<origin x="295" y="-135"/>
+<background src="town_background_mc" context="internal" x="0" y="0"/>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="17" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- plant_mc -->
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="17" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- plant_mc -->
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="11" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="11" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="11" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="8" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- houseSteph_mc -->
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="4" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- buildingMayor_mc -->
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="11" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="10" floor="empty" item="hydrantRed_mc" walkable="" classname="" trigger="" fringe=""/>
+<cell id="2" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="4" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="4" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="5" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- lamppost_mc -->
+<cell id="4" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="5" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- lamppost_mc -->
+<cell id="4" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="5" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- lamppost_mc -->
+<cell id="2" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="6" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- houseBank_mc -->
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="9" floor="empty" item="" walkable="true" color="purple_top" classname="" trigger="com.nick.gamedev.app.iso.entity.WildCardTileOccupier" fringe=""/><!-- P WILD -->
+<cell id="6" floor="empty" item="" walkable="true" color="green" classname="" trigger="com.nick.gamedev.app.iso.entity.MiniGameLauncherGameElement" fringe=""/><!--G  MEDIA -->
+<cell id="0" floor="empty" item="sportscandy_mc" walkable="true" color="blue" classname="com.nick.gamedev.app.iso.entity.PickUpGameElement" trigger="" fringe=""/><!--B  PICKUP -->
+<cell id="6" floor="empty" item="" walkable="true" color="green" classname="" trigger="com.nick.gamedev.app.iso.entity.VideoLauncherGameElement" fringe=""/><!--G  MEDIA -->
+<cell id="0" floor="empty" item="" walkable="true" color="purple" classname="" trigger="com.nick.gamedev.app.iso.entity.WildCardTileOccupier" fringe=""/><!-- P WILD -->
+<cell id="6" floor="empty" item="town_collect_mc" walkable="true" color="blue" classname="com.nick.gamedev.app.iso.entity.PickUpGameElement" trigger="" fringe=""/><!--B  PICKUP -->
+<cell id="0" floor="empty" item="" walkable="true" color="green_right" classname="" trigger="com.nick.gamedev.app.iso.entity.MiniGameLauncherGameElement" fringe=""/><!--G  MEDIA -->
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="11" floor="empty" item="bush_mc" walkable="" classname="" trigger="" fringe=""/>
+<cell id="5" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- lamppost_mc -->
+<cell id="5" floor="empty" item="" walkable="true" color="green" classname="" trigger="com.nick.gamedev.app.iso.entity.VideoLauncherGameElement" fringe=""/><!--G  MEDIA -->
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="12" floor="empty" item="benchDown_mc" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="2" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="5" floor="empty" item="" walkable="true" color="purple" classname="" trigger="com.nick.gamedev.app.iso.entity.WildCardTileOccupier" fringe=""/><!-- P WILD -->
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="9" floor="empty" item="houseStingy_mc" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="7" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- houseBessie_mc -->
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="5" floor="empty" item="town_collect_mc" walkable="true" color="blue" classname="com.nick.gamedev.app.iso.entity.PickUpGameElement" trigger="" fringe=""/><!--B  PICKUP -->
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="5" floor="empty" item="" walkable="true" color="green" classname="" trigger="com.nick.gamedev.app.iso.entity.VideoLauncherGameElement" fringe=""/><!--G  MEDIA -->
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="11" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="11" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="19" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="5" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- lamppost_mc -->
+<cell id="5" floor="empty" item="" walkable="true" color="purple" classname="" trigger="com.nick.gamedev.app.iso.entity.WildCardTileOccupier" fringe=""/><!-- P WILD -->
+<cell id="14" floor="empty" item="benchRight_mc" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="13" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- benchLeft_mc -->
+<cell id="5" floor="empty" item="town_collect_mc" walkable="true" color="blue" classname="com.nick.gamedev.app.iso.entity.PickUpGameElement" trigger="" fringe=""/><!--B  PICKUP -->
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="17" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- plant_mc -->
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="11" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="5" floor="empty" item="sportscandy_mc" walkable="true" color="blue" classname="com.nick.gamedev.app.iso.entity.PickUpGameElement" trigger="" fringe=""/><!--B  PICKUP -->
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="building_mc" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="5" floor="empty" item="" walkable="true" color="purple" classname="" trigger="com.nick.gamedev.app.iso.entity.WildCardTileOccupier" fringe=""/><!-- P WILD -->
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="7" floor="empty" item="" walkable="true" color="green_left" classname="" trigger="com.nick.gamedev.app.iso.entity.VideoLauncherGameElement" fringe=""/><!--G  MEDIA -->
+<cell id="6" floor="empty" item="town_collect_mc" walkable="true" color="blue" classname="com.nick.gamedev.app.iso.entity.PickUpGameElement" trigger="" fringe=""/><!--B  PICKUP -->
+<cell id="8" floor="empty" item="" walkable="true" color="purple_right" classname="" trigger="com.nick.gamedev.app.iso.entity.WildCardTileOccupier" fringe=""/><!-- P WILD -->
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="9" floor="empty" item="" walkable="true" color="purple_top" classname="" trigger="com.nick.gamedev.app.iso.entity.WildCardTileOccupier" fringe=""/><!-- P WILD -->
+<cell id="6" floor="empty" item="" walkable="true" color="green" classname="" trigger="com.nick.gamedev.app.iso.entity.VideoLauncherGameElement" fringe=""/><!--G  MEDIA -->
+<cell id="10" floor="empty" item="sportscandy_mc" walkable="true" color="blue_bottom" classname="com.nick.gamedev.app.iso.entity.PickUpGameElement" trigger="" fringe=""/><!--B  PICKUP -->
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="3" floor="empty" item="ziggyHouse_mc" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="17" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- plant_mc -->
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="5" floor="empty" item="" walkable="true" color="green" classname="" trigger="com.nick.gamedev.app.iso.entity.MiniGameLauncherGameElement" fringe=""/><!--G  MEDIA -->
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="5" floor="empty" item="" walkable="true" color="green" classname="" trigger="com.nick.gamedev.app.iso.entity.MiniGameLauncherGameElement" fringe=""/><!--G  MEDIA -->
+<cell id="11" floor="empty" item="bush_mc" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="11" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="3" floor="empty" item="building_satellite_mc" walkable="" classname="" trigger="" fringe=""/>
+<cell id="5" floor="empty" item="poles_start_mc" walkable="true" classname="" trigger="" fringe="" color="blue"/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="7" floor="empty" item="sportscandy_mc" walkable="true" color="blue_left" classname="com.nick.gamedev.app.iso.entity.PickUpGameElement" trigger="" fringe=""/><!--B  PICKUP -->
+<cell id="6" floor="empty" item="poles_finish_mc" walkable="true" classname="" trigger="" fringe="" color="green"/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="3" floor="empty" item="hydrantRed_mc" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="17" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/><!-- plant_mc -->
+<cell id="12" floor="empty" item="benchDown_mc" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+<row>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="3" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+<cell id="1" floor="empty" item="" walkable="" classname="" trigger="" fringe=""/>
+</row>
+</map>
