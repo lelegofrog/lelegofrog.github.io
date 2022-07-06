@@ -7,8 +7,8 @@
     src: url("comicbd.ttf");
 }
 body {
-	background-color: #2a5402;
-	background-image: url("smileycentral/wallpapers/shocked_bg.jpg");
+	background-color: #00004e;
+	background-image: url("smileycentral/smileblue.gif");
 	text-align: center;
 	font-family: "sans";
 	color: white;
@@ -18,11 +18,14 @@ table {
 	table-align: center;
 }
 a {
-	color: #0000aa;
+	color: #ff00ff;
 	font-family: "sansbd";
 }
 .void {
 	background-color: #ffffff;
+}
+.void a {
+	color: #0000aa;
 }
 h1 {
 	font-family: "sansbd";
