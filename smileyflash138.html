@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Smiley Central Archive</title>
+		<link rel="stylesheet" type="text/css" href="smiley.css">
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	</head>
+
+	<body>
+			<!--Navigation bar-->
+			<div id="nav-placeholder">
+				<p>Loading navbar...</p>
+			</div>
+
+			<script>
+			$(function(){
+			  $("#nav-placeholder").load("nav.html");
+			});
+			</script>
+			<!--end of Navigation bar-->
+		<h1>Play with a Cat #2</h1>
+<div id='ruffle'></div>
+        <script src='/ruffle/ruffle.js'></script>
+        <script>
+var swfobject = {};
+
+swfobject.embedSWF = function(url, cont, width, height){
+    var ruffle = window.RufflePlayer.newest(),
+        player = Object.assign(document.getElementById(cont).appendChild(ruffle.createPlayer()), {
+            width: width,
+            height: height,
+            style: 'width: ' + width + 'px; height: ' + height + 'px',
+        });
+    
+    player.load({ url: url });
+}
+
+swfobject.embedSWF('smileycentral/flash/138.swf', 'ruffle', 350, 350);
+        </script>
+	</body>
+</html>
