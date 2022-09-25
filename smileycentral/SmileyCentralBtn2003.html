@@ -1,0 +1,751 @@
+  <html>
+
+<body topmargin=0 rightmargin=0 bottommargin=0 leftmargin=0 onload="init();" bgcolor="#BCDEF4" background="http://web.archive.org/web/2007im_/i1img.com/images/smileycentral/ss_bg2.gif?v=1" SCROLL="no">
+	<script language="javascript">
+var img0 = new Image();
+img0.src="http://web.archive.org/web/2007im_/i1img.com/images/smileycentral/ss_autoclose_0.gif";
+var img1 = new Image();
+img1.src="http://web.archive.org/web/2007im_/i1img.com/images/smileycentral/ss_autoclose_1.gif";
+function switchImg(obj) {
+	doAutoClose();
+	obj.src = ((obj.src=="http://web.archive.org/web/2007im_/i1img.com/images/smileycentral/ss_autoclose_1.gif")?img0.src:img1.src);
+}
+
+var mBg = "ffffff";
+var mFg = "003399";
+var SmileyCtl = window.external;
+var onPreview = false;
+
+var sIEVersion = null;
+var bIE55 = false;
+
+var iPARAM_MRU = 101;
+var iPARAM_AUTO_CLOSE = 102;
+var nCOLUMNS = 4;
+var iMAX_MRU_LEN = 20;
+
+var isSetPopupSizeAvail = false;
+var iVersionMajorMS = SmileyCtl.GetVersionMajorMS();
+var iVersionMajorLS = SmileyCtl.GetVersionMajorLS();
+var iVersionMinorMS = SmileyCtl.GetVersionMinorMS();
+var iVersionMinorLS = SmileyCtl.GetVersionMinorLS();
+var sVersion = '' + iVersionMajorMS + '.' + iVersionMajorLS + '.' + iVersionMinorMS + '.' + iVersionMinorLS;
+if (!(iVersionMajorMS == null || iVersionMajorMS == "undefined"))
+{
+var s1 = iVersionMajorMS < 10 ? '0' + iVersionMajorMS : '' + iVersionMajorMS;
+var s2 = iVersionMajorLS < 10 ? '0' + iVersionMajorLS : '' + iVersionMajorLS;
+var s3 = iVersionMinorMS < 10 ? '0' + iVersionMinorMS : '' + iVersionMinorMS;
+var s4 = iVersionMinorLS < 10 ? '0' + iVersionMinorLS : '' + iVersionMinorLS;
+var sVersion = s1 + s2 + s3 + s4;
+if (sVersion >= '01000101') isSetPopupSizeAvail = true;
+}
+var bAutoClose = SmileyCtl.GetParameter(iPARAM_AUTO_CLOSE) == '1';
+SmileyCtl.SetAutoClose(true);
+var aCategoryLists = null;
+var aListNames = null;
+var aColList = null;
+var aSigIDMap = null;
+var sMRUList = SmileyCtl.GetParameter(iPARAM_MRU);
+var sFrameName = null;
+var vFrameDoc = null;
+var sImgPath = 'http://web.archive.org/web/2007im_/smileys.smileycentral.com/cat/';
+var nSigs = 0;
+var sSigTag = 'http://web.archive.org/web/2007im_/www.smileycentral.com/sig.jsp';
+var sSig = '<a href="http://web.archive.org/web/2007im_/www.smileycentral.com/?partner=@id@"><img src="' + sSigTag + '?pc=@id@" border=0></a>';
+var iCurCat = 0;
+
+function showCat(iCat,iSubCat) {
+	if(iSubCat==null)var iSubCat=0;
+	
+	 //menu stuff
+	if( iCat != iCurCat ) {
+		mTd = eval("document.all.menu.document.all.cat"+iCat);
+		mFnt = eval("document.all.menu.document.all.fnt"+iCat);
+		mA = eval("document.all.menu.document.all.a"+iCat);
+		mTd.style.backgroundColor = mFg;
+		mTd.style.borderColor = "003399";
+		mFnt.color = mBg;
+		mA.style.textDecoration = "none";
+		mTd = eval("document.all.menu.document.all.cat"+iCurCat);
+		mFnt = eval("document.all.menu.document.all.fnt"+iCurCat);
+		mA = eval("document.all.menu.document.all.a"+iCurCat);
+		mTd.style.backgroundColor = mBg;
+		mTd.style.borderColor = "#FFFFFF";
+		mFnt.color = mFg;
+		mA.style.textDecoration = "underline";
+	}	
+	
+    iCurCat = iCat;
+	var listPad='5';
+	var s='';
+	
+	document.all.catSubMenu.innerHTML = showSubCatList(iCurCat);
+	
+	var subCatDataIni=0;
+	if (sDataCat[iCurCat][2] == 2) {
+		var subCatDataLen=iSubCat;
+		var subCatDataIni=iSubCat;
+	} else {
+		var subCatDataLen=sData[iCurCat].length;
+	}
+	for (j = subCatDataIni; j <= subCatDataLen; j++) {
+		if((typeof sData[iCurCat][j])!='undefined'){
+		    var sList = iCat == iCatForMostRecent ? sMRUList : sData[iCurCat][j][3];
+		    var a = sList.split('|');
+			catCols = sData[iCurCat][j][2];
+		
+			s += '<table border=0 cellpadding=0 cellspacing=0 width=100% bgcolor=ffffff><tr><td valign=top><a name='+j+'></a>'+showSubCatTitle([iCurCat],sData[iCurCat][j][0])+'<table border=0 cellspacing=0 cellpadding='+listPad+' width=100%>';
+			if ((iCat == iCatForMostRecent) && ((sMRUList == null || sMRUList == ''))) {
+				s += '<td><font face=Verdana,Sans-Serif size=1 style="font-size:10px"><b>What is "My Most Recent"?</b><br><br>The "My Most Recent" category displays<br>smileys you&#39;ve recently added to your<br>emails. Go ahead and add a smiley to<br>an email now. Stop back to see it<br>displayed here!<br></font></td>';
+			} else {
+				var col1 = 0;
+				var col2 = 0;
+			    for (z = 0; z < a.length; z++) {
+					var tmpArr=a[z].split('~');
+			        var iSmiley = tmpArr[0];
+					//determine if image comes from xplicit name
+					var catFileMod='';
+					if (iCat != iCatForMostRecent) {
+						if(iSmiley.indexOf('x')==0){
+							iSmiley=iSmiley.replace("x","");
+						} else {
+							var catFileMod=sDataCat[iCurCat][0]+'_'+sData[iCurCat][j][0]+'_';
+						}	
+					}			
+					//build final image name
+					imgz = new Image();
+					imgz.src = sImgPath+catFileMod+iSmiley+'.gif';
+					if (z%2 == 0) {
+						if( imgz.width > col1 ) col1 = imgz.width;
+					} else {
+						if( imgz.width > col2 ) col2 = imgz.width;
+					}
+					
+					if ((col1+col2) > 300)
+						catCols = 1;
+				}
+				for (i = 0; i < a.length; i++)
+			    {
+			        if (i % catCols == 0)
+			            s += '<tr>';
+					var tmpArr=a[i].split('~');
+			        var iSmiley = tmpArr[0];
+					var iSmileyAltTxt = tmpArr[1];
+					var iSmileyDisTxt = tmpArr[2];
+					if(iSmileyAltTxt==null)iSmileyAltTxt='Smiley Image';
+					//determine if image comes from xplicit name
+					var catFileMod='';
+					if (iCat != iCatForMostRecent) {
+						if(iSmiley.indexOf('x')==0){
+							iSmiley=iSmiley.replace("x","");
+						} else {
+							var catFileMod=sDataCat[iCurCat][0]+'_'+sData[iCurCat][j][0]+'_';
+						}
+					}
+					// handle disaplyed labels
+					if(iSmileyDisTxt==null){
+						var iSmileyDisTxtHtml='';
+					} else {
+						var iSmileyDisTxtHtml='<td align=left><font face=Verdana,Sans-Serif size=1 style="font-size:10px"><span style="padding:2px;">'+iSmileyDisTxt+'</span></font></td>';
+					}
+					// handle number display mode
+					if(sDataCat[iCurCat][1]=='Most Popular') {
+						var numLabel=i+1;
+						if(((typeof iSmileyDisTxtLast)!='undefined') && (iSmileyDisTxtLast==iSmileyDisTxt)){
+							if((typeof numLabelLast)=='undefined')var numLabelLast='';
+							var numLabelHtml=numLabelLast;
+						} else {
+							var numLabelHtml=numLabel;
+							//pack away the numLabel for possible later use
+							var numLabelLast=numLabel;
+						}
+						var numLabelHtml='<td align=right><font face=Verdana,Sans-Serif size=1 style="font-size:10px">'+numLabelHtml+'.</font></td>';
+						//pack away the iSmileyDisTxt value for later comparison
+						var iSmileyDisTxtLast=iSmileyDisTxt;
+					} else {
+						var numLabelHtml='';
+					}
+					//build final image name
+					var imgSrc=sImgPath+catFileMod+iSmiley+'.gif';
+					s += numLabelHtml+'<td align=center nowrap><img src="'+imgSrc+'" border=0 onclick=insert("'+catFileMod+iSmiley+'","'+escape(iSmileyAltTxt)+'") title="'+iSmileyAltTxt+'" align=absmiddle></td>'+iSmileyDisTxtHtml;
+	
+			        if (i % catCols == catCols - 1 || i == a.length - 1)
+			            s += '</tr>'
+			    }
+			}
+		    s += '</table></td></tr></table>';
+		}
+	}
+	
+	if((sData[iCurCat].length>1) && (sDataCat[iCurCat][2]==1))s+='<br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
+    document.all.cat.innerHTML = s;
+	document.all.cat.doScroll("top");
+	
+	//last chance to try to highlight subnav correctly
+	writeToDivSubMenu(iCat,iSubCat);
+	}
+
+function showSubCatList(iCurCat,iSelected){
+	location.hash=0;
+	if(iSelected==null)iSelected=0;
+	var rVal='';
+	if(sData[iCurCat].length>1){
+		rVal+='<table bgcolor=#FDF7D5 width=100%><tr><td align=middle><font face=Verdana,Sans-Serif size=1 style="font-size:10px">'
+		for(y=0; y < sData[iCurCat].length; y++){
+			var thisStyle='';
+			var thisFntColor='#00309C';
+			var thisLabelArr=sData[iCurCat][y][1].split('~');
+			if(thisLabelArr.length==2){
+				var thisLabelPre='<font color='+thisFntColor+'><span style="'+thisStyle+'">'+thisLabelArr[0]+':</span></font>';
+				var thisLabel=thisLabelArr[1];
+			} else {
+				var thisLabelPre='';
+				var thisLabel=thisLabelArr[0];
+			}
+			rVal+=thisLabelPre;
+			if(y==iSelected){
+				var thisStyle='text-decoration:none;background-color:#00309C;padding:2px;';
+				var thisFntColor='#ffffff';
+			}
+			// some subcats load new pages instead of linking to anchor
+			if (sDataCat[iCurCat][2] == 2) {
+				rVal+='<a href="" onClick="showCat('+iCurCat+','+y+');">';
+			} else {
+				rVal+='<a href="" onClick="writeToDivSubMenu('+iCurCat+','+y+');location.hash='+y+'">';
+			}
+			rVal+='<font color='+thisFntColor+'><span style="'+thisStyle+'">'+thisLabel+'</span></font>';
+			rVal+='</a>';
+			if(y+1<sData[iCurCat].length)rVal+='&nbsp;';
+		}
+		rVal+='</font></td></tr></table>';
+	}
+	return rVal;
+}
+function writeToDivSubMenu(iCurCat,iSelected) {
+	document.all.catSubMenu.innerHTML = showSubCatList(iCurCat,iSelected);
+}
+function showSubCatTitle(iCurCat,iSubCat){
+	var rVal='';
+	if(sData[iCurCat].length>1){
+		//reveal the submenu
+		document.all['cat'].style.top="45";
+		document.all['cat'].style.height="290";
+		rVal+='<font face=Verdana,Sans-Serif size=1 color=#808080 style="font-size:10px">'
+		for(y=0; y < sData[iCurCat].length; y++){
+			if(sData[iCurCat][y][0]==iSubCat)var isSel=true;
+			else var isSel=false;
+			if(isSel){
+				var thisLabelArr=sData[iCurCat][y][1].split('~');
+				if(thisLabelArr.length==2){
+					var thisLabel=thisLabelArr[1];
+				} else {
+					var thisLabel=thisLabelArr[0];
+				}				
+				rVal+='&nbsp;<b>'+thisLabel+'</b>';
+			}
+		}
+		rVal+='<table border=0 cellspacing=0 cellpadding=0 width=100%><tr><td bgcolor=#C0C0C0><table border=0 cellspacing=0 cellpadding=0><tr><td height=1></td></tr></table></td></tr></table>';
+	} else {
+		//cover up the submenu
+		document.all['cat'].style.top="27";
+		document.all['cat'].style.height="308";
+	}
+	return rVal;
+}
+function setData() {
+
+sDataCat=new Array();
+sData=new Array();
+iCatForMostRecent=1;
+
+
+
+
+// ~~~~~~~~~~~~ PASTE GENERATED DATA BELOW ~~~~~~~~~~~~
+
+// CATEGORY DATA
+//sDataCat[displayOrder]=new Array(ID,'TITLE',SUBCATMODE);
+
+sDataCat[0]=new Array(1,'Most Popular',2);
+sDataCat[1]=new Array(2,'My Most Recent',1);
+sDataCat[2]=new Array(3,'At Work',2);
+sDataCat[3]=new Array(4,'Emotions',2);
+sDataCat[4]=new Array(5,'Entertainment',2);
+sDataCat[5]=new Array(6,'Flags',2);
+sDataCat[6]=new Array(7,'Hobbies/Leisure',2);
+sDataCat[7]=new Array(8,'Holiday',1);
+sDataCat[8]=new Array(9,'Horoscopes',1);
+sDataCat[9]=new Array(10,'Humor',1);
+sDataCat[10]=new Array(11,'Love',1);
+sDataCat[11]=new Array(12,'Objects',2);
+sDataCat[12]=new Array(13,'Occasions',2);
+sDataCat[13]=new Array(22,'Organizations',2);
+sDataCat[14]=new Array(14,'Patriotic/Military',2);
+sDataCat[15]=new Array(15,'People',2);
+sDataCat[16]=new Array(16,'Pets/Nature',2);
+sDataCat[17]=new Array(21,'Politics',1);
+sDataCat[18]=new Array(17,'Religion',2);
+sDataCat[19]=new Array(18,'Sports',2);
+sDataCat[20]=new Array(20,'Teams',2);
+sDataCat[21]=new Array(19,'Technology',2);
+
+// IMAGE DATA
+for (x in sDataCat) sData[x]=new Array();
+
+//sData[categoryDisplayOrder][displayOrder]=new Array(ID,'TITLE',NUMofCOLUMNS,'IMAGEDATA');
+
+sData[0][0]=new Array(1,'Weekly~Top 25',2,'x18~Clappy|x2~Angel|x28~Licks|x213~Lips|x39~Yes|x1~Bouncy|x200~Beating|x15~Rolly|x37~Winky|x23~Yelling|x201~Blowing Kisses|x27~Chugger|x11_1_28~Hugs And Kisses|x9~Whoa|x10_1_9~Moony|x228~Hearts|x4_6_8~Hi|x209~Animated Hearts|x11~Malicious|x10_1_1~Alien|x66~Programmer|x212~On The Lips|x15_1_49~Breakin&#39; Smiley|x33~Way To Go|x14~Good Job');
+sData[0][1]=new Array(2,'Advancers',2,'x58~Smashy|x18~Clappy|x37~Winky|x213~Lips|x201~Blowing Kisses|x61~Sleepy|x59~Crazy|x36~Melancholy|x1096~Animated Flowers|x212~On The Lips|x4_1_9~Yes|x33~Way To Go|x4_1_6~Brows|x16~Hmm|x9~Whoa|x65~Office|x211~Flirty|x219~Single Rose|x911~Blinking Heart|x28~Licks|x210~On The Cheek|x4_2_3~Pouty|x27~Chugger|x11_1_28~Hugs And Kisses|x4_2_2~Weepy');
+sData[0][2]=new Array(3,'Decliners',1,'x14_1_27~Astronaut|x18_1_100~Hockey|x7_1_51~Basketball|x10_1_16~Spaceman|x10_1_13~Slingshot|x1004~Painter|x510~Home Run!|x156~Election Day|x12_2_1~Stop|x15_1_52~Punk 2|x18_1_102~Football 2|x513~Bowling|x1059~Haircut|x541~Red Sport|x511~Basketball 2|x517~Martial Arts|x10_1_4~Dork|x13_1_101~Bridal Shower|x407~Spacemen|x15_1_60~Grim Reaper|x1017~Ghost|x15_2_1~Britney Smiley|x1064~Pool|x15_1_66~Bagpipes|x7_1_55~Martial Arts');
+sData[1][0]=new Array(1,'',1,'data not applicable');
+sData[2][0]=new Array(1,'Office',2,'x53~Coffee|x75~Thirsty|x68~Cooler|x78~Exec|x76~Walking|x73~At Desk|x67~Tie|x58~Smashy|x61~Sleepy|x66~Programmer|x50~Boss|x64~Fired|x55~Mail|x60~Memo|x63~Pad|x51~Briefcase|x52~Money|x54~Desk|x56~Copier|x57~Gossip|x59~Crazy|x62~No Smoking|x77~Writing|x65~Office');
+sData[2][1]=new Array(2,'Other Professions',2,'1~Doctor|2~Nurse|3~Barber|x1001~Chef|x1039~Haircut|4~Accountant|5~Teacher|6~Students|7~Psychologist|8~Maid|9~Sawing|10~Hammering|11~Farmer|24~Truck Driver|x1057~Fireman|x1058~Firewoman|x1040~Policeman|x1036~Policewoman|16~Police Car|17~Police Shield|22~NYPD|18~Fire Engine|19~Fire Shield|23~FDNY|20~Ambulance');
+sData[3][0]=new Array(1,'Happy',3,'1~Bouncy|2~Clappy|3~Happy|4~Rolly|5~Smiles|100~Spinning|101~Hysterical|102~Too Funny|103~Happy Cyclops|104~Purple Smiles|105~Jump For Joy|106~Dizzy|107~Teethy|108~Too Happy|6~Brows|7~Cool|8~Good Job|9~Yes|10~Way To Go|x4_6_8~Hi|x15_1_70~Hi-Ya');
+sData[3][1]=new Array(2,'Sad/Angry',3,'x4_6_9~Miss You|x4_2_1~Wet|x4_2_2~Weepy|x4_2_3~Pouty|x4_2_4~Tears|x4_2_5~Feeling Blue|x4_2_6~Sad|100~Bang Your Head|x4_3_1~Mad|x4_3_2~Grrr|x4_3_3~No|x4_3_4~Yelling|x4_3_5~Pissed|x4_3_6~Malicious|104~Combust|101~Hot Head|102~Red Hot|103~Screamer');
+sData[3][2]=new Array(4,'Love',2,'x200~Beating|x201~Blowing Kisses|x203~Broken Heart|x205~Heart/arrow|x206~Heart/wings|x208~Heart/home|x209~Animated Hearts|x228~Hearts|x229~Teddy|x911~Blinking Heart|x221~Tuxedo Heart|x210~On The Check|x212~On The Lips|x11_1_28~Hug And Kiss|x216~Cheer Up|x213~Lips|x211~Flirty|x28~Licks|x37~Winky|x204~Cupid|x217~Cupid 2|x214~Couple|x202~Bride & Groom|x227~Couple 2|x1096~Animated Flowers|x219~Single Rose|x220~A Flower For Her|x222~Tuxedo Flower|x11_1_101~Go Out With Me|x11_1_100~Need A Hug|x11_1_102~Go Out With Me');
+sData[3][3]=new Array(5,'Signs',3,'1~Thanks|2~You Rock|3~Thirsty|4~Kewl|5~Welcome|6~Chatty|7~#*%@ Happens|8~Hello|9~Goodbye|10~Be Cool|11~Bites|12~Bomb|13~Chill Out|14~Go With The Flow|15~Don&#39;t Worry|16~Party Time');
+sData[3][4]=new Array(7,'Inspire',2,'1~Sky Is The Limit|2~Reach For The Stars|3~Never Quit|4~Dream Big|5~Achieve Your Dreams|6~United We Stand|7~Doing It|8~No Pain No Gain|9~Go Big|10~Dare To Dream|11~Follow Your Heart|12~Believe|13~Way To Go');
+sData[3][5]=new Array(6,'Other',2,'1~Shock|2~Hmm|x359~Zany|3~Huh?|4~Whoa|5~Blushy|6~Sorry|7~Thanks|10~Smarty|11~Sickened|x4_6_12~Hysterical');
+sData[4][0]=new Array(1,'Music/Dance',3,'x12_1_31~Bass Clef|x12_1_32~Treble Clef|x12_1_33~Clarinet|x12_1_34~French Horn|x12_1_16~Saxophone|x12_1_36~Trumpet|x12_1_37~Trombone|x12_1_38~Violin|x12_1_15~Harp|x12_1_14~Guitar|x97~Piano|x12_1_39~Keyboard|x12_1_40~Drums|x88~Music|x95~CD|x1055~Run DM Smiley|x15_1_49~Breakin&#39; Smiley|x1098~Wakka-wakka|x15_1_53~Daddy-o|x7_1_44~Ballerina');
+sData[4][1]=new Array(2,'Musicians',2,'x348~Guitar|x357~Violin|x103~Piano Man|x101~Entertainer|100~Mix Master|x104~Singer|x1095~Spike|x7_1_52~Band|x15_1_44~Elvis Smiley|x15_2_1~Britney Smiley|x15_2_2~Cher Smiley|x15_2_3~Elton Smiley|x15_1_105~Fab 4|x15_1_106~Yanni');
+sData[4][2]=new Array(3,'Film/Theater/Arts',3,'x85~Countdown|x80~Director|x87~Action|x90~Reel|x83~Movie Reels|x94~Popcorn|x1041~Munching|x86~Stage|x89~Theater|x99~Photographer|x1004~Painter|x1006~Sculptor');
+sData[4][3]=new Array(4,'Other',3,'x81~Magic|x91~Chess|x84~Clown|x92~Juggling|x100~Clown Jumping|x102~Videographer|x98~TV');
+sData[5][0]=new Array(1,'A-E',4,'x737~Albania|x695~Antigua|x794~Argentina|x694~Armenia|x780~Australia|x731~Austria|x693~Azerbaijan|x706~Bahamas|x692~Bahrain|x673~Bangladesh|x701~Barbados|x734~Belarus|x728~Belgium|x700~Belize|x793~Bolivia|x732~Bosnia-Herzegovina|x789~Brazil|x677~Brunei|x725~Bulgaria|x668~Cambodia|x617~Cameroon|x795~Canada|x615~Cape Verde|x614~Central African Republic|x613~Chad|x788~Chile|x671~China|x787~Colombia|x605~Congo, Republic Of The|x698~Costa Rica|x733~Croatia|x719~Cuba|x724~Cyprus|x726~Czech Republic|x730~Denmark|x611~Djibouti|x718~Dominica|x712~Dominican Republic|x792~Ecuador|x610~Egypt|x715~El Salvador|100~English|x607~Eritrea|x729~Estonia|x642~Ethiopia');
+sData[5][1]=new Array(2,'F-L',4,'x779~Fiji|x762~Finland|x708~France|x778~French Polynesia|x636~Gabon|x641~Gambia|x691~Georgia|x759~Germany|x635~Ghana|x765~Gibraltar|x758~Greece|x796~Greenland|x709~Grenada|x786~Guadeloupe|x672~Guam|x714~Guatemala|x634~Guinea|x644~Guinea-Bissau|x790~Guyana|x707~Haiti|x713~Honduras|x757~Hungary|x756~Iceland|x670~India|x690~Iran|x679~Iraq|x764~Ireland|x612~Ireland|x678~Israel|x755~Italy|x716~Jamaica|x667~Japan|x689~Jordan|x676~Kazakhstan|x640~Kenya|x768~Kiribati|x688~Kuwait|x666~Kyrgyzstan|x663~Laos|x763~Latvia|x684~Lebanon|x639~Lesotho|x643~Liberia|x638~Libya|x761~Liechtenstein|x761~Liechtenstein|x754~Lithuania|x751~Luxembourg');
+sData[5][2]=new Array(3,'M-R',4,'x675~Macau|x753~Macedonia|x637~Madagascar|x624~Malawi|x664~Malaysia|x660~Maldives|x629~Mali|x750~Malta|x776~Marshall Islands|x628~Mauritania|x659~Mauritius|x717~Mexico|x777~Micronesia|x752~Moldova|x746~Monaco|x662~Mongolia|x791~Monserrat|x627~Morocco|x631~Mozambique|x626~Namibia|x775~Nauru|x656~Nepal|x774~New Zealand|x745~Netherlands|x711~Nicaragua|x633~Nigeria|x665~North Korea|x749~Norway|x687~Oman|x657~Pakistan|x769~Palau|x769~Palau|x710~Panama|x766~Papua New Guinea|x782~Paraguay|x785~Peru|x655~Philippines|x702~Pitcairn|x748~Poland|x747~Portugal|x699~Puerto Rico|x686~Qatar|x744~Romania|x722~Russian');
+sData[5][3]=new Array(4,'S-Z',4,'x697~Saint Kitts And Nevis|x705~Saint Lucia|x704~Saint Vincent And The Grenadines|x770~Samoa|x721~San Marino|x632~Sao Tome And Principe|x683~Saudi Arabia|51~Scotland|x625~Senegal|x743~Serbia / Montenegro|x654~Seychelles|x621~Sierra Leone|x648~Singapore|x773~Solomon Islands|x608~South Africa|x661~South Korea|49~Spain|x653~Sri Lanka|101~St. David|x622~Sudan|x784~Suriname|x603~Swaziland|x742~Sweden|x682~Syria|x658~Taiwan|x650~Tajikistan|x602~Tanzania|x646~Thailand|x601~Togo|x772~Tonga|x703~Trinidad And Tobago|x620~Tunisia|x681~Turkey|x652~Turkmenistan|x771~Tuvalu|x723~Ukraine|x685~United Arab Emirates|x797~United States|x741~United Kingdom|x781~Uruguay|x651~Uzbekistan|x767~Vanuatu|x720~Vatican City ASIA|x783~Venezuela|x645~Vietnam|x696~Virgin Islands|x680~Yemen|50~Yugosolvia|x604~Zaire|x600~Zambia');
+sData[5][4]=new Array(5,'US State',4,'x420~Alabama|x421~Alaska|x422~Arizona|x423~Arkansas|x424~California|x425~Colorado|x426~Connecticut|x427~Delaware|x428~Florida|x429~Georgia|x430~Hawaii|x431~Idaho|x432~Illinois|x433~Indiana|x434~Iowa|x435~Kansas|x436~Kentucky|x437~Louisiana|x438~Maine|x439~Maryland|x440~Massachusetts|x441~Michigan|x442~Minnesota|x443~Mississippi|x444~Missouri|x445~Montana|x446~Nebraska|x447~Nevada|x448~New Hampshire|x449~New Jersey|x450~New Mexico|x451~New York|x452~North Carolina|x453~North Dakota|x454~Ohio|x455~Oklahoma|x456~Oregon|x457~Pennsylvania|x458~Rhode Island|x459~South Carolina|x460~South Dakota|x461~Tennessee|x462~Texas|x463~Utah|x464~Vermont|46~Virginia|47~West Virginia|50~Washington|48~Wisconsin|49~Wyoming');
+sData[5][5]=new Array(7,'Military',3,'1~Army|2~Navy|3~Air Force|4~Marines|5~Coast Guard|x6_5_52~POW');
+sData[5][6]=new Array(6,'Other',3,'x470~Gay Pride Flag|x1062~Jolly Roger|3~Olympic');
+sData[6][0]=new Array(1,'Indoor',2,'100~Darts|101~Ping Pong|x384~Barbell|x7_1_55~Karate|x517~Martial Arts|x7_1_44~Ballerina|x1004~Painter|x1006~Sculptor|x513~Bowling|x1064~Pool|x166~TV|x993~TV 2|x66~Programmer|x1005~Reading|x77~Writing|102~Knitting|x170~Sleeping');
+sData[6][1]=new Array(2,'Outdoor',2,'x18_1_27~Tennis|x521~Tennis 2|x1008~Vacation|x1018~Vacation 2|x382~Skiing|x902~Golfer|x520~Runner|x900~Harley|x1003~Camper|x1046~Glider|100~Hot Air Balloon|x1053~Stilts|x1052~Sleigh|x996~Gardening|x1048~Hula-hoop|x7_1_43~Snow Mobile|x7_1_45~Bike Riding|20~Horseback Riding|x7_1_49~Kite Flying|x7_1_53~Stargazing|x7_1_54~Swinging');
+sData[6][2]=new Array(3,'Water',2,'x1007~Snorkel|x7_1_48~Scuba|x1054~Tanny|x18_4_100~Swimmer|x1065~Hot Tub|x7_1_46~Jet Skiing|x7_1_47~Windsurfing|x1000~Boating|x1002~Fishing');
+sData[6][3]=new Array(4,'Food & Drink',2,'x903~Flippy|x995~Chef|x904~Brewing|x1001~Chef 2|x311~Cheers|x360~Cheers 2|x168~Feed Me|x1060~Licky|x1056~Munching|x901~Chompy');
+sData[7][0]=new Array(1,'',3,'x140~Bunny|x141~Chick|x143~Egg|x1010~Basket|x142~Reindeer|x149~Santa|x1016~Ho Ho Ho|x155~Snowman|x1013~Elf|x153~Tree|x1014~Mistletoe|x144~Pumpkin|x1009~Witch|x1017~Ghost|x1012~Dreidel|x987~Menorah|x146~Kwanzaa|x148~New Year&#39;s|x152~Turkey|x156~Election Day|x157~Ground Hog|x1015~Gift|x1011~Clover|x151~Shamrock|100~Fireworks 1|101~Fireworks 2|102~Boom!');
+sData[8][0]=new Array(1,'',4,'x180~Aquarius|x181~Aries|x182~Cancer|x183~Capricorn|x184~Gemini|x185~Leo|x186~Libra|x187~Pisces|x188~Sagittarius|x189~Scorpio|x190~Taurus|x191~Virgo|x570~Aquarius|x571~Aries|x572~Cancer|x573~Capricorn|x574~Gemini|x575~Leo|x576~Libra|x577~Pisces|x578~Sagittarius|x579~Scorpio|x580~Taurus|x581~Virgo|x593~Aquarius|x585~Aries|x584~Cancer|x590~Capricorn|x583~Gemini|x586~Leo|x589~Libra|x591~Pisces|x592~Pisces|x588~Scorpio|x582~Taurus|x587~Virgo');
+sData[9][0]=new Array(1,'',3,'1~Alien|2~Wild & Crazy|3~Hyper|4~Dork|5~Buggin|6~Cross-Eyed|x82~Eyes|7~Brows|8~Mohawk|9~Moony|10~Pirate|11~Crazy|12~Smiley Shell|13~Slingshot|14~Caveman|15~Pimp|16~Spaceman|17~Shock|18~Nuts|19~Insane|20~Wakka-Wakka|21~#*%@ Happens|22~Thirsty|23~Smashy|24~Bouncy');
+sData[10][0]=new Array(1,'',2,'x200~Beating|x201~Blowing Kisses|x203~Broken Heart|x205~Heart/arrow|x206~Heart/wings|x208~Heart/home|x209~Animated Hearts|x228~Hearts|x229~Teddy|x911~Blinking Heart|x221~Tuxedo Heart|x210~On The Check|x212~On The Lips|28~Hug And Kiss|x216~Cheer Up|x213~Lips|x211~Flirty|x28~Licks|x37~Winky|x204~Cupid|x217~Cupid 2|x214~Couple|x202~Bride & Groom|x227~Couple 2|x1096~Animated Flowers|x219~Single Rose|x220~A Flower For Her|x222~Tuxedo Flower|101~Go Out With Me|100~Need A Hug|102~Go Out With Me');
+sData[11][0]=new Array(2,'Signs',3,'1~Stop|2~Do Not Enter|3~Yield|4~!|5~Danger|6~No U Turn|7~One Way|8~Caution|9~No Parking|10~Enter|11~Exit|12~No Smoking|13~Rest Area|14~Street Light');
+sData[11][1]=new Array(4,'Food',3,'1~Beer|2~Beer 2|3~Beer 3|4~Soda|5~Soda 2|6~Soda 3|7~Soda Cup|8~3 Scoops!|9~Ice Cream|10~Ice Cream 2|11~Ice Cream 3|12~Soft Serve|13~Burger|14~Hot Dog|15~Foot Long|16~French Fries|17~Pizza|18~Sushi|19~Orange Juice|20~Milk|24~Cereal|21~Cake|22~Cookies|23~Pretzel|25~Banana|26~Bunch Of Bananas|27~Pear|28~Apple|29~Orange|30~Grape|x12_1_8~Silverware|x12_1_30~Shopping Cart|x12_1_7~Coffee');
+sData[11][2]=new Array(1,'Other',3,'x12_3_41~Queen Of Hearts|x12_3_42~King Of Diamonds|x12_3_43~Ace Of Spades|x12_3_44~Joker|x12_3_45~Clover|x12_3_46~Fingers Crossed|x12_3_47~Horseshoe|x12_3_48~Rabbit Foot|1~Vacuum|2~Power Drill|3~Scale|5~Radio|6~Light Bulb|9~Globe|10~Rainbow|11~Yin/Yang|12~Camera|13~Camera 2|17~Paper Clip|18~Mail|19~Scissors|21~Flowers & Vase|x12_3_49~Roses|x12_3_50~Daisies|22~Electric Chair|23~Exclamation Point|24~Beach Ball|25~Present|26~Mega Phone|27~Reel|28~Trophy|29~Cube');
+sData[12][0]=new Array(1,'General',1,'x300~Happy Birthday|x301~Birthday Smiley|100~RSVP|14~Surprise|x302~It&#39;s A Boy|x305~It&#39;s A Girl|x303~Congrats|x304~Get Well Soon|x306~Goodbye|103~Bon Voyage|17~Good Luck|19~Retirement|x307~Smiley University|x308~Happy Anniversary|x309~Party Smileys|x310~Bottoms Up|x311~Cheers|15~Marry Me|16~Marry Me|101~Bridal Shower|102~Bachelor Party|x1099~Go Team');
+sData[12][1]=new Array(2,'International',2,'x13_2_1~Spanish|x13_2_2~French|x13_2_3~Chinese|x13_2_4~Dutch|x13_2_5~Portuguese|x13_2_6~Farsi|x13_2_7~Korean|x13_2_8~Japanese|x13_2_9~Swedish|x13_2_10~Polish|x13_2_11~Russian|x13_2_12~Arabic|x13_2_13~Hebrew|x13_2_14~English');
+sData[13][0]=new Array(1,'Social',3,'1~Boy Scouts|2~Eagle Scouts|3~Cub Scouts|4~Girl Scouts|5~Elks|6~Free Masonry|7~Grange|8~Kiwanis|9~KOC|10~Lions Club|11~MENSA|12~Rotary|16~NAACP|13~Toast Masters|14~WWF|15~Sierra Club|17~AARP');
+sData[13][1]=new Array(2,'Greek~A',3,'xorga_001~Alpha|xorga_002~Alpha Beta Gamma|xorga_003~Alpha Beta Sigma|xorga_004~Alpha Chi|xorga_005~Alpha Chi Epsilon|xorga_006~Alpha Chi Nu|xorga_007~Alpha Chi Omega|xorga_008~Alpha Chi Omicron|xorga_009~Alpha Chi Rho|xorga_010~Alpha Chi Sigma|xorga_011~Alpha Delta|xorga_012~Alpha Delta Chi|xorga_013~Alpha Delta Epsilon|xorga_014~Alpha Delta Epsilon|xorga_015~Alpha Delta Gamma|xorga_016~Alpha Delta Omega|xorga_017~Alpha Delta Phi|xorga_018~Alpha Delta Pi|xorga_019~Alpha Delta Rho|xorga_020~Alpha Delta Theta|xorga_021~Alpha Epsilon Omega|xorga_022~Alpha Epsilon Phi|xorga_023~Alpha Epsilon Pi|xorga_024~Alpha Eta Rho|xorga_025~Alpha Gamma Chi|xorga_026~Alpha Gamma Delta|xorga_027~Alpha Gamma Epsilon|xorga_028~Alpha Gamma Nu|xorga_029~Alpha Gamma Omega|xorga_030~Alpha Gamma Pi|xorga_031~Alpha Gamma Psi|xorga_032~Alpha Gamma Rho|xorga_033~Alpha Gamma Sigma|xorga_034~Alpha Iota Omega|xorga_035~Alpha Iota Omicron|xorga_036~Alpha Kappa Alpha|xorga_037~Alpha Kappa Delta Phi|xorga_038~Alpha Kappa Lambda|xorga_039~Alpha Kappa Omicron|xorga_040~Alpha Kappa Phi|xorga_041~Alpha Kappa Psi|xorga_042~Alpha Kappa Sigma|xorga_043~Alpha Lambda Chi|xorga_044~Alpha Lambda Delta|xorga_045~Alpha Lambda Omega|xorga_046~Alpha Lambda Phi Alpha|xorga_047~Alpha Lambda Sigma|xorga_048~Alpha Lambda Tau|xorga_049~Alpha Mu Beta|xorga_050~Alpha Mu Omega|xorga_051~Alpha Nu Omega|xorga_052~Alpha Omega|xorga_053~Alpha Omega Chi|xorga_054~Alpha Omega Epsilon|xorga_055~Alpha Omega Sigma|xorga_056~Alpha Omega Zeta|xorga_057~Alpha Omicron Pi|xorga_058~Alpha Phi|xorga_059~Alpha Phi Alpha|xorga_060~Alpha Phi Delta|xorga_061~Alpha Phi Epsilon|xorga_062~Alpha Phi Gamma|xorga_063~Alpha Phi Lambda|xorga_064~Alpha Phi League|xorga_065~Alpha Phi Omega|xorga_066~Alpha Phi Sigma|xorga_067~Alpha Phi Zeta|xorga_068~Alpha Pi|xorga_069~Alpha Pi Alpha|xorga_070~Alpha Pi Chi|xorga_071~Alpha Pi Delta|xorga_072~Alpha Pi Kappa|xorga_073~Alpha Pi Lambda|xorga_074~Alpha Pi Sigma|xorga_075~Alpha Psi|xorga_076~Alpha Psi Chi|xorga_077~Alpha Psi Lambda|xorga_078~Alpha Psi Omega|xorga_079~Alpha Rho Chi|xorga_080~Alpha Rho Gamma|xorga_081~Alpha Rho Lambda|xorga_082~Alpha Rho Omega|xorga_083~Alpha Sigma|xorga_084~Alpha Sigma Alpha|xorga_085~Alpha Sigma Beta|xorga_086~Alpha Sigma Chi|xorga_087~Alpha Sigma Delta|xorga_088~Alpha Sigma Kappa|xorga_089~Alpha Sigma Lambda|xorga_090~Alpha Sigma Omega|xorga_091~Alpha Sigma Phi|xorga_092~Alpha Sigma Pi|xorga_093~Alpha Sigma Psi|xorga_094~Alpha Sigma Sigma|xorga_095~Alpha Sigma Tau|xorga_096~Alpha Sigma Theta|xorga_097~Alpha Tau Omega|xorga_098~Alpha Theta|xorga_099~Alpha Theta Chi|xorga_100~Alpha Theta Epsilon|xorga_101~Alpha Theta Omega|xorga_102~Alpha Xi Delta|xorga_103~Alpha Xi Omega|xorga_104~Alpha Zeta|xorga_105~Alpha Zeta Omega');
+sData[13][2]=new Array(3,'B-C',3,'xorga_106~Beta Alpha Omega|xorga_107~Beta Alpha Psi|xorga_108~Beta Chi Theta|xorga_109~Beta Delta Phi|xorga_110~Beta Epsilon Alpha Sigma Tau|xorga_111~Beta Gamma Alpha|xorga_112~Beta Gamma Epsilon|xorga_113~Beta Gamma Nu|xorga_114~Beta Kappa Phi|xorga_115~Beta Kappa Psi|xorga_116~Beta Kappa Tau|xorga_117~Beta Lambda Chi|xorga_118~Beta Lambda Delta|xorga_119~Beta Lambda Sigma|xorga_120~Beta Mu Sigma|xorga_121~Beta Omega|xorga_122~Beta Omega Gamma|xorga_123~Beta Omega Phi|xorga_124~Beta Omega Sigma|xorga_125~Beta Phi|xorga_126~Beta Phi Beta|xorga_127~Beta Phi Chi|xorga_128~Beta Phi Omega|xorga_129~Beta Phi Pi|xorga_130~Beta Phi Upsilon|xorga_131~Beta Pi Epsilon|xorga_132~Beta Sigma|xorga_133~Beta Sigma Kappa|xorga_134~Beta Sigma Lambda|xorga_135~Beta Sigma Phi|xorga_136~Beta Sigma Psi|xorga_137~Beta Sigma Theta|xorga_138~Beta Tau|xorga_139~Beta Theta Gamma|xorga_140~Beta Theta Pi|xorga_141~Beta Upsilon Delta|xorga_142~Chi Alpha Delta|xorga_143~Chi Alpha Mu|xorga_144~Chi Alpha Nu|xorga_145~Chi Alpha Omega|xorga_146~Chi Alpha Tau|xorga_147~Chi Beta|xorga_148~Chi Beta Sigma|xorga_149~Chi Chi Chi|xorga_150~Chi Delta|xorga_151~Chi Delta Beta|xorga_152~Chi Delta Phi|xorga_153~Chi Delta Pi|xorga_154~Chi Delta Tau|xorga_155~Chi Delta Theta|xorga_156~Chi Gamma Iota|xorga_157~Chi Lambda|xorga_158~Chi Nu|xorga_159~Chi Omega|xorga_160~Chi Omega Rho|xorga_161~Chi Omega Tau|xorga_162~Chi Phi|xorga_163~Chi Phi Sigma|xorga_164~Chi Psi|xorga_165~Chi Psi Omega|xorga_166~Chi Rho Omicron|xorga_167~Chi Sigma Rho|xorga_168~Chi Sigma Tau|xorga_169~Chi Sigma Upsilon|xorga_170~Chi Theta Pi|xorga_171~Chi Upsilon Sigma|xorga_172~Chi Upsilon Zeta');
+sData[13][3]=new Array(4,'D-G',3,'xorga_173~Delta|xorga_174~Delta Alpha Gamma|xorga_175~Delta Alpha Nu|xorga_176~Delta Chi|xorga_177~Delta Chi Epsilon|xorga_178~Delta Chi Omega|xorga_179~Delta Delta|xorga_180~Delta Delta Delta|xorga_181~Delta Epsilon|xorga_182~Delta Epsilon Beta|xorga_183~Delta Epsilon Mu|xorga_184~Delta Epsilon Psi|xorga_185~Delta Epsilon Sigma Iota|xorga_186~Delta Gamma|xorga_187~Delta Gamma Iota|xorga_188~Delta Gamma Pi|xorga_189~Delta Gamma Theta|xorga_190~Delta Kappa Delta|xorga_191~Delta Kappa Epsilon|xorga_192~Delta Kappa Omicron|xorga_193~Delta Kappa Phi|xorga_194~Delta Kappa Sigma|xorga_195~Delta Kappa Tau|xorga_196~Delta Kappa Theta|xorga_197~Delta Lambda Phi|xorga_198~Delta Nu|xorga_199~Delta Nu Psi|xorga_200~Delta Omciron|xorga_201~Delta Omega|xorga_202~Delta Omega Chi|xorga_203~Delta Omega Delta|xorga_204~Delta Omega Epsilon|xorga_205~Delta Omega Nu|xorga_206~Delta Omega Phi|xorga_207~Delta Omega Sigma|xorga_208~Delta Omicron Chi|xorga_209~Delta Omicron Pi|xorga_210~Delta Phi|xorga_211~Delta Phi Chi|xorga_212~Delta Phi Epsilon|xorga_213~Delta Phi Kappa|xorga_214~Delta Phi Lambda|xorga_215~Delta Phi Mu|xorga_216~Delta Phi Omega|xorga_217~Delta Phi Sigma|xorga_218~Delta Phi Zeta|xorga_219~Delta Pi|xorga_220~Delta Pi Delta|xorga_221~Delta Psi|xorga_222~Delta Psi Alpha|xorga_223~Delta Psi Delta|xorga_224~Delta Psi Epsilon|xorga_225~Delta Psi Omega|xorga_226~Delta Psi Sigma|xorga_227~Delta Rho Upsilon|xorga_228~Delta Sigma Chi|xorga_229~Delta Sigma Iota|xorga_230~Delta Sigma Phi|xorga_231~Delta Sigma Pi|xorga_232~Delta Sigma Theta|xorga_233~Delta Tau Chi|xorga_234~Delta Tau Delta|xorga_235~Delta Tau Sigma|xorga_236~Delta Theta Epsilon|xorga_237~Delta Theta Kappa|xorga_238~Delta Theta Pi|xorga_239~Delta Theta Sigma|xorga_240~Delta Upsilon|xorga_241~Delta Xi Nu|xorga_242~Delta Xi Phi|xorga_243~Delta Zeta|xorga_244~Delta Zeta Phi|xorga_245~Epsilon Chi Nu|xorga_246~Epsilon Delta Tau|xorga_247~Epsilon Gamma Iota|xorga_248~Epsilon Kappa Omicron|xorga_249~Epsilon Sigma|xorga_250~Epsilon Sigma Alpha|xorga_251~Epsilon Sigma Rho|xorga_252~Epsilon Tau Pi|xorga_253~Epsilon Theta|xorga_259~Gamma Alpha Chi|xorga_260~Gamma Alpha Omega|xorga_261~Gamma Alpha Sigma|xorga_262~Gamma Alpha Zeta|xorga_263~Gamma Beta|xorga_264~Gamma Beta Delta|xorga_265~Gamma Chi|xorga_266~Gamma Chi Chi|xorga_267~Gamma Chi Epsilon|xorga_268~Gamma Chi Sigma|xorga_269~Gamma Delta|xorga_270~Gamma Delta Chi|xorga_271~Gamma Delta Phi|xorga_272~Gamma Gamma Gamma|xorga_273~Gamma Iota Sigma|xorga_274~Gamma Omega Delta|xorga_275~Gamma Omega Sigma|xorga_276~Gamma Omicron Delta|xorga_277~Gamma Phi|xorga_278~Gamma Phi Beta|xorga_279~Gamma Phi Delta|xorga_280~Gamma Phi Epsilon|xorga_281~Gamma Phi Eta|xorga_282~Gamma Phi Kappa|xorga_283~Gamma Phi Omega|xorga_284~Gamma Phi Theta|xorga_285~Gamma Psi Lambda|xorga_286~Gamma Psi Omega|xorga_287~Gamma Rho Phi|xorga_288~Gamma Sigma|xorga_289~Gamma Sigma Phi|xorga_290~Gamma Sigma Sigma|xorga_291~Gamma Sigma Tau|xorga_292~Gamma Tau Pi|xorga_293~Gamma Tau Upsilon|xorga_294~Gamma Xi|xorga_295~Gamma Zeta Alpha');
+sData[13][4]=new Array(5,'I-K',3,'xorga_296~Iota Beta Chi|xorga_297~Iota Chi Alpha|xorga_298~Iota Chi Rho|xorga_299~Iota Delta|xorga_300~Iota Delta Chi|xorga_301~Iota Delta Phi|xorga_302~Iota Epsilon Rho|xorga_303~Iota Gamma Upsilon|xorga_304~Iota Kappa|xorga_305~Iota Kappa Phi|xorga_306~Iota Nu Delta|xorga_307~Iota Phi Lambda|xorga_308~Iota Phi Theta|xorga_309~Iota Psi Phi|xorga_310~Kappa Alpha|xorga_311~Kappa Alpha Psi|xorga_312~Kappa Alpha Sigma|xorga_313~Kappa Alpha Theta|xorga_314~Kappa Beta Gamma|xorga_315~Kappa Chi|xorga_316~Kappa Chi Delta|xorga_317~Kappa Chi Epsilon|xorga_318~Kappa Delta|xorga_319~Kappa Delta Chi|xorga_320~Kappa Delta Epsilon|xorga_321~Kappa Delta Kappa|xorga_322~Kappa Delta Omega|xorga_323~Kappa Delta Phi|xorga_324~Kappa Delta Pi|xorga_325~Kappa Delta Rho|xorga_326~Kappa Delta Tau|xorga_327~Kappa Delta Theta|xorga_328~Kappa Eta Kappa|xorga_329~Kappa Gamma|xorga_330~Kappa Gamma Chi|xorga_331~Kappa Gamma Kappa|xorga_332~Kappa Iota|xorga_333~Kappa Iota Sigma|xorga_334~Kappa Kappa Gamma|xorga_335~Kappa Kappa Kappa|xorga_336~Kappa Kappa Psi|xorga_337~Kappa Lambda|xorga_338~Kappa Lambda Psi|xorga_339~Kappa Phi|xorga_340~Kappa Phi Alpha|xorga_341~Kappa Phi Beta|xorga_342~Kappa Phi Delta|xorga_343~Kappa Phi Gamma|xorga_344~Kappa Phi Iota|xorga_345~Kappa Phi Lambda|xorga_346~Kappa Phi Mu|xorga_347~Kappa Phi Omega|xorga_348~Kappa Phi Theta|xorga_349~Kappa Pi Alpha|xorga_350~Kappa Pi Iota|xorga_351~Kappa Pi Omega|xorga_352~Kappa Psi|xorga_353~Kappa Psi Delta|xorga_354~Kappa Psi Kappa|xorga_355~Kappa Psi Nu|xorga_356~Kappa Psi Omega|xorga_357~Kappa Sigma|xorga_358~Kappa Sigma Alpha|xorga_359~Kappa Sigma Delta|xorga_360~Kappa Sigma Epsilon|xorga_361~Kappa Sigma Phi|xorga_362~Kappa Sigma Rho|xorga_363~Kappa Sigma Theta|xorga_364~Kappa Sigma Upsilon|xorga_365~Kappa Tau Epsilon|xorga_366~Kappa Tau Gamma|xorga_367~Kappa Upsilon Chi|xorga_368~Kappa Zeta Phi|xorga_369~Kappa Zeta Pi|xorga_370~Kappa Zeta Psi');
+sData[13][5]=new Array(6,'L-O',3,'xorga_371~Lambda|xorga_372~Lambda Alpha Mu|xorga_373~Lambda Alpha Upsilon|xorga_374~Lambda Chi|xorga_375~Lambda Chi Alpha|xorga_376~Lambda Chi Iota|xorga_377~Lambda Chi Omega|xorga_378~Lambda Delta Alpha|xorga_379~Lambda Gamma Epsilon|xorga_380~Lambda Iota|xorga_381~Lambda Mu Sigma|xorga_382~Lambda Nu Mu|xorga_383~Lambda Omega Pi|xorga_384~Lambda Phi|xorga_385~Lambda Phi Delta|xorga_386~Lambda Phi Epsilon|xorga_387~Lambda Phi Lambda|xorga_388~Lambda Phi Nu|xorga_389~Lambda Phi Sigma|xorga_390~Lambda Pi Chi|xorga_391~Lambda Pi Upsilon|xorga_392~Lambda Psi Delta|xorga_393~Lambda Psi Iota|xorga_394~Lambda Psi Omega|xorga_395~Lambda Sigma Beta|xorga_396~Lambda Sigma Chi|xorga_397~Lambda Sigma Gamma|xorga_398~Lambda Sigma Phi|xorga_399~Lambda Sigma Pi|xorga_400~Lambda Sigma Tau|xorga_401~Lambda Sigma Upsilon|xorga_402~Lambda Tau Omega|xorga_403~Lambda Theta Alpha|xorga_404~Lambda Theta Delta|xorga_405~Lambda Theta Nu|xorga_406~Lambda Theta Phi|xorga_407~Lambda Upsilon Lambda|xorga_408~Mu Beta Psi|xorga_409~Mu Delta Chi|xorga_410~Mu Kappa Tau|xorga_411~Mu Phi Chi|xorga_412~Mu Phi Epsilon|xorga_413~Mu Phi Gamma|xorga_414~Mu Phi Lambda|xorga_415~Mu Rho Kappa|xorga_416~Mu Sigma Beta|xorga_417~Mu Sigma Chi|xorga_418~Mu Sigma Gamma|xorga_419~Mu Sigma Upsilon|xorga_420~Nu Alpha Kappa|xorga_421~Nu Alpha Phi|xorga_422~Nu Delta|xorga_423~Nu Epsilon Zeta|xorga_424~Nu Rho Sigma|xorga_425~Nu Sigma Alpha|xorga_426~Nu Sigma Chi|xorga_427~Omega Alpha|xorga_428~Omega Alpha Phi|xorga_429~Omega Beta Phi|xorga_430~Omega Chi|xorga_431~Omega Chi Lambda|xorga_432~Omega Chi Phi|xorga_433~Omega Delta|xorga_434~Omega Delta Iota|xorga_435~Omega Delta Phi|xorga_436~Omega Delta Sigma|xorga_437~Omega Epsilon|xorga_438~Omega Phi|xorga_439~Omega Phi Alpha|xorga_440~Omega Phi Beta|xorga_441~Omega Phi Chi|xorga_442~Omega Phi Delta|xorga_443~Omega Phi Gamma|xorga_444~Omega Phi Kappa|xorga_445~Omega Phi Sigma|xorga_446~Omega Phi Zeta|xorga_447~Omega Pi|xorga_448~Omega Psi Delta|xorga_449~Omega Psi Omega|xorga_450~Omega Psi Phi|xorga_451~Omega Sigma Tau|xorga_452~Omega Theta Chi|xorga_453~Omega Xi Delta|xorga_454~Omega Zeta Chi|xorga_455~Omicron Gamma Omega|xorga_456~Omicron Pi|xorga_457~Omicron Pi Omicron|xorga_458~Omicron Theta Chi|xorga_459~Omicron Xi');
+sData[13][6]=new Array(7,'P',3,'xorga_460~Phi Alpha Delta|xorga_461~Phi Alpha Psi|xorga_462~Phi Alpha Tau|xorga_463~Phi Beta|xorga_464~Phi Beta Chi|xorga_465~Phi Beta Epsilon|xorga_466~Phi Beta Gamma|xorga_467~Phi Beta Lambda|xorga_468~Phi Beta Sigma|xorga_469~Phi Beta Upsilon|xorga_470~Phi Chi Epsilon|xorga_471~Phi Chi Sigma|xorga_472~Phi Chi Theta|xorga_473~Phi Delta Chi|xorga_474~Phi Delta Epsilon|xorga_475~Phi Delta Phi|xorga_476~Phi Delta Psi|xorga_477~Phi Delta Sigma|xorga_478~Phi Delta Tau|xorga_479~Phi Delta Theta|xorga_480~Phi Epsilon Alpha|xorga_481~Phi Epsilon Pi|xorga_482~Phi Eta Psi|xorga_483~Phi Gamma Delta|xorga_484~Phi Gamma Nu|xorga_485~Phi Gamma Pi|xorga_486~Phi Gamma Psi|xorga_487~Phi Gamma Theta|xorga_488~Phi Iota Alpha|xorga_489~Phi Kappa Chi|xorga_490~Phi Kappa Epsilon|xorga_491~Phi Kappa Mu|xorga_492~Phi Kappa Nu|xorga_493~Phi Kappa Omega|xorga_494~Phi Kappa Pi|xorga_495~Phi Kappa Psi|xorga_496~Phi Kappa Sigma|xorga_497~Phi Kappa Tau|xorga_498~Phi Kappa Theta|xorga_499~Phi Kappa Upsilon|xorga_500~Phi Kappa Zeta|xorga_501~Phi Lambda Chi|xorga_502~Phi Lambda Delta|xorga_503~Phi Lambda Phi|xorga_504~Phi Lambda Rho|xorga_505~Phi Lambda Upsilon|xorga_506~Phi Mu|xorga_507~Phi Mu Alpha|xorga_508~Phi Mu Delta|xorga_509~Phi Nu Epsilon|xorga_510~Phi Omega Beta|xorga_511~Phi Omega Sigma|xorga_512~Phi Omega Tau|xorga_513~Phi Omicron Psi|xorga_514~Phi Pi Delta|xorga_515~Phi Pi Epsilon|xorga_516~Phi Rho Eta|xorga_517~Phi Rho Sigma|xorga_518~Phi Sigma Alpha|xorga_519~Phi Sigma Beta|xorga_520~Phi Sigma Chi|xorga_521~Phi Sigma Delta|xorga_522~Phi Sigma Kappa|xorga_523~Phi Sigma Phi|xorga_524~Phi Sigma Pi|xorga_525~Phi Sigma Rho|xorga_526~Phi Sigma Sigma|xorga_527~Phi Sigma Xi|xorga_528~Phi Tau|xorga_529~Phi Theta Pi|xorga_530~Phi Theta Sigma|xorga_531~Phi Zeta Chi|xorga_532~Phi Zeta Tau|xorga_533~Pi Alpha Nu|xorga_534~Pi Alpha Phi|xorga_535~Pi Alpha Psi|xorga_536~Pi Beta Phi|xorga_537~Pi Beta Sigma|xorga_538~Pi Delta|xorga_539~Pi Delta Psi|xorga_540~Pi Gamma Beta|xorga_541~Pi Gamma Psi|xorga_542~Pi Kappa Alpha|xorga_543~Pi Kappa Phi|xorga_544~Pi Kappa Pi|xorga_545~Pi Lambda Chi|xorga_546~Pi Lambda Phi|xorga_547~Pi Lambda Upsilon|xorga_548~Pi Nu Epsilon|xorga_549~Pi Omega|xorga_550~Pi Omega Psi|xorga_551~Pi Pi Rho|xorga_552~Pi Psi|xorga_553~Pi Rho Zeta|xorga_554~Pi Sigma Epsilon|xorga_555~Pi Sigma Omicron|xorga_556~Psi Chi Omega|xorga_557~Psi Chi Phi|xorga_558~Psi Delta|xorga_559~Psi Kappa Omega|xorga_560~Psi Omega Pi|xorga_561~Psi Omega Sigma|xorga_562~Psi Omega Upsilon|xorga_563~Psi Phi|xorga_564~Psi Sigma Phi|xorga_565~Psi Upsilon|xorga_566~Psi Xi Omicron');
+sData[13][7]=new Array(8,'R-S',3,'xorga_567~Rho|xorga_568~Rho Chi Upsilon|xorga_569~Rho Lambda Theta|xorga_570~Rho Sigma|xorga_571~Rho Zeta Omicron|xorga_572~Sigma|xorga_573~Sigma Alpha|xorga_574~Sigma Alpha Chi|xorga_575~Sigma Alpha Epsilon|xorga_576~Sigma Alpha Epsilon Pi|xorga_577~Sigma Alpha Iota|xorga_578~Sigma Alpha Mu|xorga_579~Sigma Alpha Omega|xorga_580~Sigma Alpha Phi|xorga_581~Sigma Alpha Sigma|xorga_582~Sigma Alpha Zeta|xorga_583~Sigma Beta|xorga_584~Sigma Beta Chi|xorga_585~Sigma Beta Rho|xorga_586~Sigma Beta Tau|xorga_587~Sigma Chi|xorga_588~Sigma Chi Beta|xorga_589~Sigma Chi Delta|xorga_590~Sigma Chi Nu|xorga_591~Sigma Chi Omega|xorga_592~Sigma Chi Zeta|xorga_593~Sigma Delta|xorga_594~Sigma Delta Alpha|xorga_595~Sigma Delta Chi|xorga_596~Sigma Delta Phi Epsilon|xorga_597~Sigma Delta Tau|xorga_598~Sigma Delta Xi|xorga_599~Sigma Epsilon|xorga_600~Sigma Gamma|xorga_601~Sigma Gamma Chi|xorga_602~Sigma Gamma Delta|xorga_603~Sigma Gamma Phi|xorga_604~Sigma Gamma Rho|xorga_605~Sigma Iota Alpha|xorga_606~Sigma Iota Beta|xorga_607~Sigma Iota Chi|xorga_608~Sigma Iota Omega|xorga_609~Sigma Iota Rho|xorga_610~Sigma Iota Sigma|xorga_611~Sigma Kappa|xorga_612~Sigma Kappa Chi|xorga_613~Sigma Kappa Delta|xorga_614~Sigma Kappa Omega|xorga_615~Sigma Kappa Phi|xorga_616~Sigma Kappa Pi|xorga_617~Sigma Kappa Zeta|xorga_618~Sigma Lambda|xorga_619~Sigma Lambda Beta|xorga_620~Sigma Lambda Epsilon|xorga_621~Sigma Lambda Gamma|xorga_622~Sigma Lambda Kappa|xorga_623~Sigma Lambda Pi|xorga_624~Sigma Lambda Sigma|xorga_625~Sigma Lambda Upsilon|xorga_626~Sigma Mu Delta|xorga_627~Sigma Mu Sigma|xorga_628~Sigma Nu|xorga_629~Sigma Nu Sigma|xorga_630~Sigma Omega|xorga_631~Sigma Omega Chi|xorga_632~Sigma Omega Epsilon|xorga_633~Sigma Omega Phi|xorga_634~Sigma Omicron Pi|xorga_635~Sigma Phi|xorga_636~Sigma Phi Chi|xorga_637~Sigma Phi Delta|xorga_638~Sigma Phi Epsilon|xorga_639~Sigma Phi Lambda|xorga_640~Sigma Phi Nu|xorga_641~Sigma Phi Omega|xorga_642~Sigma Phi Omicron|xorga_643~Sigma Phi Psi|xorga_644~Sigma Phi Rho|xorga_645~Sigma Pi|xorga_646~Sigma Pi Delta|xorga_647~Sigma Pi Rho|xorga_648~Sigma Psi|xorga_649~Sigma Psi Delta|xorga_650~Sigma Psi Eta|xorga_651~Sigma Psi Kappa|xorga_652~Sigma Psi Phi|xorga_653~Sigma Psi Zeta|xorga_654~Sigma Rho|xorga_655~Sigma Sigma|xorga_656~Sigma Sigma Rho|xorga_657~Sigma Sigma Sigma|xorga_658~Sigma Tau Gamma|xorga_659~Sigma Tau Nu|xorga_660~Sigma Tau Psi|xorga_661~Sigma Theta|xorga_662~Sigma Theta Chi|xorga_663~Sigma Theta Epsilon|xorga_664~Sigma Theta Kappa|xorga_665~Sigma Theta Pi|xorga_666~Sigma Theta Psi|xorga_667~Sigma Theta Tau');
+sData[13][8]=new Array(9,'T-Z',3,'xorga_668~Tau Beta Iota|xorga_669~Tau Beta Pi|xorga_670~Tau Beta Sigma|xorga_671~Tau Delta Chi|xorga_672~Tau Delta Phi|xorga_673~Tau Delta Sigma|xorga_674~Tau Epsilon Phi|xorga_675~Tau Gamma Phi|xorga_676~Tau Kappa Beta|xorga_677~Tau Kappa Epsilon|xorga_678~Tau Lambda Sigma|xorga_679~Tau Nu Kappa|xorga_680~Tau Phi Beta|xorga_681~Tau Phi Sigma|xorga_682~Tau Phi Upsilon|xorga_683~Tau Psi Omega|xorga_684~Tau Sigma Chi|xorga_685~Tau Tau Tau|xorga_686~Tau Theta Pi|xorga_687~Tau Zeta Phi|xorga_688~Theta Alpha Pi|xorga_689~Theta Alpha Zeta|xorga_690~Theta Chi|xorga_691~Theta Chi Epsilon|xorga_692~Theta Chi Omega|xorga_693~Theta Chi Upsilon|xorga_694~Theta Delta Beta|xorga_695~Theta Delta Chi|xorga_696~Theta Delta Sigma|xorga_697~Theta Gamma|xorga_698~Theta Gamma Epsilon|xorga_699~Theta Kappa Phi|xorga_700~Theta Kappa Pi|xorga_701~Theta Nu Epsilon|xorga_702~Theta Nu Kappa|xorga_703~Theta Nu Sigma|xorga_704~Theta Nu Xi|xorga_705~Theta Omega Phi|xorga_706~Theta Phi Alpha|xorga_707~Theta Phi Beta|xorga_708~Theta Pi|xorga_709~Theta Pi Gamma|xorga_710~Theta Sigma Alpha|xorga_711~Theta Sigma Tau|xorga_712~Theta Tau|xorga_713~Theta Xi|xorga_714~Upsilon Alpha Beta|xorga_715~Upsilon Kappa Delta|xorga_716~Upsilon Phi Upsilon|xorga_717~Upsilon Xi|xorga_718~Xi|xorga_719~Xi Chi Psi|xorga_720~Xi Chi Sigma|xorga_721~Xi Delta|xorga_722~Xi Delta Phi|xorga_723~Xi Gamma Phi|xorga_724~Xi Kappa Psi|xorga_725~Xi Omega Kappa|xorga_726~Xi Psi Omega|xorga_727~Xi Rho Zeta|xorga_728~Xi Theta|xorga_729~Zeta|xorga_730~Zeta Alpha Gamma Psi|xorga_731~Zeta Alpha Theta|xorga_732~Zeta Beta|xorga_733~Zeta Beta Tau|xorga_734~Zeta Chi|xorga_735~Zeta Chi Epsilon|xorga_736~Zeta Chi Phi|xorga_737~Zeta Chi Theta|xorga_738~Zeta Delta Xi|xorga_739~Zeta Epsilon Tau|xorga_740~Zeta Nu|xorga_741~Zeta Omega Psi|xorga_742~Zeta Omicron Pi|xorga_743~Zeta Phi|xorga_744~Zeta Phi Beta|xorga_745~Zeta Phi Epsilon|xorga_746~Zeta Phi Eta|xorga_747~Zeta Phi Gamma|xorga_748~Zeta Phi Omega|xorga_749~Zeta Phi Rho|xorga_750~Zeta Phi Zeta|xorga_751~Zeta Pi|xorga_752~Zeta Pi Lambda|xorga_753~Zeta Pi Omega|xorga_754~Zeta Psi|xorga_755~Zeta Psi Sigma|xorga_756~Zeta Sigma Chi|xorga_757~Zeta Sigma Delta|xorga_758~Zeta Sigma Phi|xorga_759~Zeta Sigma Psi|xorga_760~Zeta Tau Alpha|xorga_761~Zeta Tau Omega|xorga_762~Zeta Tau Zeta');
+sData[14][0]=new Array(1,'Patriotic',3,'x14_3_1~Flag|x14_3_6~God Bless America|x14_3_7~Home Of The Brave|29~Flag 2|x797~Flag 3|x321~Smiley Flag|x323~Eagle Flag|100~USA|x322~Eagle|x327~Uncle Smiley|x326~Uncle Sam|x959~Smiley Of Liberty|x145~Fireworks|26~Liberty Bell|27~Astronaut');
+sData[14][1]=new Array(2,'Military',3,'x1026~Helicopter|x1027~Helicopter 2|x1032~Parachute|x14_1_28~Plane|x320~Plane 2|x1034~Ship|x14_1_35~Submarine|x1029~Troop Smiley|x1035~Tank|x324~Tank 2|x1028~Jeep|x14_1_30~Army|x14_1_31~Navy|x14_1_32~Air Force|x14_1_33~Marines|101~Marine Bulldog|x14_1_34~Coast Guard|x6_5_52~POW Flag|100~Freedom Flag|x329~Star|x328~Medal|x1024~Soldier|x1023~Pilot|x1031~Sailor|x1030~Captain|x1025~Marine|x1033~Rambo');
+sData[14][2]=new Array(3,'Sept. 11',3,'2~Heart|3~Ribbon|4~Candle|x14_3_5~Never Forget|8~Towers');
+sData[15][0]=new Array(4,'Fun',3,'x340~Bandit|x345~Bandit 2|x349~Cowboy|x350~Cowboy 2|x343~Caveman|x363~Slingshot|x341~Pinocchio|x342~Pinocchio 2|x347~Devil|x15_1_65~She-devil|x15_1_66~Bagpipes|x15_1_62~Kilt|x15_1_60~Grim Reaper|x352~Hippie|x353~Pimp|x355~Father Smiley|x990~Yo|x1055~Run DM Smiley|x15_1_49~Breakin&#39; Smiley|x5_2_100~Mix Master|x15_1_50~Goth|x15_1_51~Punk|x15_1_52~Punk 2|x15_1_54~Woman With Dog|x96~Party Smiley|101~The Thinker|102~I&#39;ve Got It|x15_1_48~Knuckle Head|x170~Sleepy|x173~Chatty|x1060~Licky|x1059~Haircut|x1098~Wakka-wakka|x346~A-ha!|x15_1_61~Goofy|x1100~Gossip|x354~Smiley On The Go|x15_1_63~Peeking Over Fence|x15_1_64~Wheel Chair|x15_1_71~Crutches|x15_1_58~Sneezy|x1097~Sicky|100~Hospital Bed');
+sData[15][1]=new Array(1,'Famous',2,'x15_1_44~Elvis Smiley|x15_1_45~Smiley Chaplin|x15_1_47~Groucho Smiley|x15_1_57~Marilyn Smiley|x15_2_1~Britney Smiley|x15_2_2~Cher Smiley|x15_2_3~Elton Smiley|105~Fab 4|106~Yanni|x15_2_4~Stooges Smiley|x905~Supersmiley|46~Wondersmiley|100~Bat Smiley|101~Hulk Smiley|102~Spawn Smiley|103~Thor Smiley|104~Wolverine Smiley|x351~Abraham Smiley');
+sData[15][2]=new Array(2,'Family',2,'x15_1_55~It&#39;s A Smiley!|x1020~Mom And Kids|x15_1_59~Daughter & Father|x15_1_67~Family|x15_1_68~Family 2|x15_1_69~Family 3|100~Family 4|x15_1_56~Family Road Trip');
+sData[15][3]=new Array(3,'Fantasy',3,'1~King|2~Queen|3~Princess|4~Knight|5~Castle|6~Fairy|7~Dragon');
+sData[16][0]=new Array(1,'Cats',3,'x1067~Cat|x1069~Cat 2|x259~Cat 3|x1074~Cat 4|x1068~Cat 5|x260~Cat 6|7~Cat 7|8~Cat 8|9~Cat 9|10~Cat 10|11~Cat 11|12~Cat 12|14~Cat 13|15~Cat 14|x994~Petting');
+sData[16][1]=new Array(2,'Dogs',3,'x1072~Dog|x1070~Dog 2|x1073~Dog 3|x262~Dog 4|x1071~Dog 5|6~Dog 6|7~Dog 7|8~Dog 8|9~Dog 9|10~Dog 10|11~Dog 11|12~Dog 12');
+sData[16][2]=new Array(3,'Animals',2,'x1077~Fish|x1076~Fish 2|x238~Fish 3|x239~Fish 4|x1082~Parrot|33~Parrot 2|x249~Owl|x250~Owl 2|x906~Frog|x907~Frog 2|34~Leap Frogs|35~Turtle|x1084~Bunny|x1085~Bunny 2|x908~Monkey|x909~Bouncing Monkey|x263~Horse|x1079~Horse 2|x261~Cow|x1083~Pig|x1078~Gopher|x1080~Chameleon|x1075~Raccoon|x253~Snake|x252~Snake 2|x254~Spider|x241~Ladybug|x242~Ladybug 2|x230~Butterfly|x231~Butterfly 2|x232~Butterfly With Cocoon|x16_3_41~Dragonfly|x233~Crab|x234~Crab 2|x235~Crab 3|x244~Lobster|36~Angelic Mouse|37~Otter|38~Penguins|39~Lion|40~Elephant|42~Dolphin|45~Whale|43~Goose|44~Duck');
+sData[16][3]=new Array(4,'Nature',3,'x236~Flower|x240~Flower 2|14~Flower 3|15~Flower 4|16~Flower 5|x243~Leaf|x255~Sun|x245~Crescent Moon|x246~Moon|x247~Moon 2|x237~Fire|x248~Mountain|x257~Tree|x251~Cloud|x256~Tornado|x258~Volcano');
+sData[17][0]=new Array(1,'',2,'1~Democrat|2~Republican|3~Vote|x156~Election Day|4~Vote Braun|5~Vote Bush|6~Vote Dean|7~Vote Edwards|8~Vote Gephardt|9~Vote Graham|10~Vote Kerry|11~Vote Kucinich|12~Vote Lieberman|13~Vote McCain|14~Vote Sharpton');
+sData[18][0]=new Array(1,'Symbols',2,'x980~Bible|x983~Cross|x981~Celtic Cross|x982~Place Of Worship|x984~Dreidel|x986~Koran|x987~Menorah|x989~Star Of David|x988~Mosque|10~Prayer|11~Fish');
+sData[18][1]=new Array(2,'Bible Passages',1,'xquote01~Acts|xquote02~Acts|xquote03~Ecclesiastes|xquote04~Ecclesiastes|xquote05~Ephesians|xquote06~Ephesians|xquote07~Ephesians|xquote08~Genesis|xquote09~Hebrews|xquote10~Hebrews|xquote11~Chronicles|xquote12~Corinthians|xquote13~I Corinthians|xquote14~Corinthians|xquote15~Isaiah|xquote16~Isaiah|xquote17~Isaiah|xquote18~Isaiah|xquote19~Job|xquote20~Job|xquote22~John|xquote23~Mark|xquote24~Mark|xquote25~Matthew|xquote26~Matthew|xquote27~Matthew|xquote28~Matthew|xquote30~Matthew|xquote31~Matthew|xquote32~Matthew|xquote33~Philippians|xquote34~Philippians|xquote35~Proverbs|xquote36~Proverbs|xquote37~Proverbs|xquote38~Proverbs|xquote39~Proverbs|xquote40~Proverbs|xquote41~Psalms|xquote42~Psalms|xquote43~Psalms|xquote44~Psalms|xquote45~Psalms|xquote46~Psalms|xquote47~Psalms|xquote48~Psalms|xquote49~Psalms|xquote50~Psalms|xquote51~Revelation|xquote52~Song Of Solomon');
+sData[19][0]=new Array(1,'Big 4',2,'x510~Home Run!|x371~Bat & Ball|102~Football 2|x376~Baseball|101~Football|x515~Football 3|x378~Football 4|x7_1_51~Basketball|x511~Basketball 2|x377~Basketball 3|100~Hockey|x516~Hockey 2|x379~Puck|103~Cheerleader|x519~Ref|x512~Ref 2|x380~Ref Shirt|x385~Whistle');
+sData[19][1]=new Array(2,'Indoor',2,'100~Boxer|x7_1_101~Ping Pong|x513~Bowling|x384~Weightlifter|x517~Martial Arts|x7_1_55~Karate|x18_1_30~Wrestler');
+sData[19][2]=new Array(3,'Outdoor',2,'x18_1_27~Tennis|x521~Tennis 2|100~Soccer|x518~Soccer 2|x902~Golfer|x7_1_50~Volleyball|x381~Skateboarder|x520~Runner|x383~Flags|x382~Skiing|x18_1_31~Racecar|x18_1_32~Racecar 2|x18_1_33~Racecar 3');
+sData[19][3]=new Array(4,'Water',2,'x18_1_28~Water Polo|100~Swimming|x18_1_29~Surfer|x514~Diving|x7_1_47~Windsurfing|x1000~Boating|x1002~Fishing');
+sData[20][0]=new Array(1,'A-B',1,'x20_1_0~Aces|x20_1_1~Aggies|x20_1_2~Angels|x20_1_3~Anteaters|x20_1_4~Astros|x20_1_5~Athletics|x20_1_6~Avalanche|x20_1_7~Aztecs|x20_1_8~Badgers|122~Barons|x20_1_9~Bearcats|x20_1_10~Bearkats|x20_1_11~Bears|x20_1_12~Beavers|x20_1_13~Bengals|x20_1_14~Big-green|x20_1_15~Big-red|x20_1_16~Billikens|x20_1_17~Bills|x20_1_18~Bison|x20_1_19~Bisons|x20_1_20~Black-bears|x20_1_21~Black-knights|x20_1_22~Blackbirds|x20_1_23~Blackhawks|123~Blast|x20_1_24~Blazers|x20_1_25~Blue-demons|x20_1_26~Blue-devils|x20_1_27~Blue-jackets|x20_1_28~Blue-jays|x20_1_29~Blue-raiders|x20_1_30~Bluejays|x20_1_31~Blues|x20_1_32~Bobcats|x20_1_33~Boilermakers|x20_1_34~Bonnies|x20_1_35~Braves|x20_1_36~Brewers|x20_1_37~Broncos|x20_1_38~Browns|x20_1_39~Bruins|x20_1_40~Buccaneers|x20_1_41~Buckeyes|x20_1_42~Bucks|x20_1_43~Buffaloes|x20_1_44~Bulldogs|x20_1_45~Bulls');
+sData[20][1]=new Array(2,'C-D',1,'x20_1_46~Canadiens|x20_1_47~Canucks|x20_1_48~Capitals|x20_1_49~Cardinal|x20_1_50~Cardinals|x20_1_51~Catamounts|x20_1_52~Cavaliers|x20_1_53~Celtics|x20_1_54~Chanticleers|x20_1_55~Chargers|x20_1_56~Chiefs|x20_1_57~Chippewas|x20_1_58~Clippers|x20_1_59~Colonels|x20_1_60~Colonials|x20_1_61~Colts|x20_1_62~Comets|x20_1_63~Commodores|x20_1_64~Cornhuskers|x20_1_65~Cougars|x20_1_66~Cowboys|x20_1_67~Cowgirls|x20_1_68~Coyotes|x20_1_69~Crimson-tide|x20_1_70~Crimson|x20_1_71~Crusaders|x20_1_72~Cubs|x20_1_73~Cyclones|x20_1_74~Delta-devils|x20_1_75~Demon-deacons|x20_1_76~Demons|x20_1_77~Devil-rays|x20_1_78~Devils|x20_1_79~Diamondbacks|x20_1_80~Dodgers|x20_1_81~Dolphins|x20_1_82~Dons|x20_1_83~Dragons|x20_1_84~Ducks|x20_1_85~Dukes');
+sData[20][2]=new Array(3,'E-F',1,'x20_1_86~Eagles|x20_1_87~Explorers|x20_1_88~Expos|x20_1_89~Falcons|x20_1_90~Fever|x20_1_91~Fightin-blue-hens|x20_1_92~Fighting-camels|x20_1_93~Fighting-illini|x20_1_94~Fighting-irish|x20_1_95~Flames|x20_1_96~Flyers|x20_1_97~Forty Niners|x20_1_98~Friars');
+sData[20][3]=new Array(4,'G-H',1,'x20_1_99~Gaels|x20_1_100~Gamecocks|x20_1_101~Gators|x20_1_102~Gauchos|x20_1_103~Gentlemen|x20_1_104~Giants|x20_1_105~Golden-bears|x20_1_106~Golden-eagles|x20_1_107~Golden-eaglettes|x20_1_108~Golden-flashes|x20_1_109~Golden-gophers|x20_1_110~Golden-griffens|x20_1_111~Golden-grizzlies|x20_1_112~Golden-hurricane|x20_1_113~Golden-knights|x20_1_114~Golden-lionettes|x20_1_115~Golden-lions|x20_1_116~Golden-panthers|x20_1_117~Governors|x20_1_118~Great-danes|x20_1_119~Green-wave|x20_1_120~Greyhounds|x20_1_121~Grizzlies|x20_2_0~Hatters|x20_2_1~Hawkeyes|x20_2_2~Hawks|x20_2_3~Heat|x20_2_4~Highlanders|x20_2_5~Hilltoppers|x20_2_6~Hokies|x20_2_7~Hoosiers|x20_2_8~Horned-frogs|x20_2_9~Hornets|x20_2_10~Hoyas|x20_2_11~Hurricanes|x20_2_12~Huskies');
+sData[20][4]=new Array(5,'I-J',1,'x20_2_13~Indians|x20_2_14~Islanders|x20_2_15~Jaguars|x20_2_16~Jaspers|x20_2_17~Jayhawks|x20_2_18~Jazz|x20_2_19~Jets');
+sData[20][5]=new Array(6,'K-L',1,'x20_2_20~Kangaroos|x20_2_21~Keydets|x20_2_22~Kings|x20_2_23~Knicks|x20_2_24~Knights|x20_2_25~Ladies|x20_2_26~Lady Blue Devils|x20_2_27~Lady Govs|x20_2_28~Lady Indians|x20_2_29~Lady-aces|x20_2_30~Lady-aggies|x20_2_31~Lady-bears|x20_2_32~Lady-bisons|x20_2_33~Lady-braves|x20_2_34~Lady-broncs|x20_2_35~Lady-buccaneers|x20_2_36~Lady-bulldogs|x20_2_37~Lady-cajuns|x20_2_38~Lady-cats|x20_2_39~Lady-colonels|x20_2_40~Lady-demons|x20_2_41~Lady-dons|x20_2_42~Lady-dragons|x20_2_43~Lady-dukes|x20_2_44~Lady-eagles|x20_2_45~Lady-flames|x20_2_46~Lady-friars|x20_2_47~Lady-gamecocks|x20_2_48~Lady-golden-eagles|x20_2_49~Lady-govs|x20_2_50~Lady-grizzlies|x20_2_51~Lady-hawks|x20_2_52~Lady-indians|x20_2_53~Lady-jacks|x20_2_54~Lady-jaguars|x20_2_55~Lady-jaspers|x20_2_56~Lady-knights|x20_2_57~Lady-lions|x20_2_58~Lady-mocs|x20_2_59~Lady-monarchs|x20_2_60~Lady-paladins|x20_2_61~Lady-panthers|x20_2_62~Lady-pirates|x20_2_63~Lady-racers|x20_2_64~Lady-raiders|x20_2_65~Lady-rams|x20_2_66~Lady-razorbacks|x20_2_67~Lady-rebels|x20_2_68~Lady-seminoles|x20_2_69~Lady-techsters|x20_2_70~Lady-terriers|x20_2_71~Lady-tigers|x20_2_72~Lady-toppers|x20_2_73~Lady-volunteers|x20_2_74~Ladyjacks|x20_2_75~Lakers|x20_2_76~Leathernecks|x20_2_77~Leopards|x20_2_78~Liberty|x20_2_79~Lightning|x20_2_80~Lions|x20_2_81~Lobos|x20_2_82~Longhorns|x20_2_83~Lumberjacks|x20_2_84~Lynx');
+sData[20][6]=new Array(7,'M-N',1,'x20_2_85~Magic|x20_2_86~Maple-leafs|x20_2_87~Mariners|x20_2_88~Marlins|x20_2_89~Mastodons|x20_2_90~Matadors|x20_2_91~Mavericks|x20_2_92~Mercury|x20_2_93~Mets|x20_2_94~Midshipmen|x20_2_95~Mighty-ducks|x20_2_96~Miners|x20_2_97~Minutemen|x20_2_98~Minutewomen|x20_2_99~Mocs|x20_2_100~Monarchs|x20_2_101~Mountain-hawks|x20_2_102~Mountaineers|x20_2_103~Musketeers|x20_2_104~Mustangs|x20_2_105~Mystics|x20_2_106~Nets|x20_2_107~Nittany-lions|x20_2_108~Nuggets');
+sData[20][7]=new Array(8,'O-P',1,'x20_2_109~Oilers|x20_2_110~Orangemen|x20_2_111~Orangewomen|x20_2_112~Orioles|x20_2_113~Otahkians|x20_2_114~Owls|x20_3_0~Pacers|x20_3_1~Packers|x20_3_2~Padres|x20_3_3~Paladins|x20_3_4~Pantherettes|x20_3_5~Panthers|x20_3_6~Patriots|x20_3_7~Peacocks|x20_3_8~Peahens|x20_3_9~Penguins|x20_3_10~Phillies|x20_3_11~Phoenix|x20_3_12~Pilots|x20_3_13~Pioneer-women|x20_3_14~Pirates|x20_3_15~Pistons|x20_3_16~Predators|x20_3_17~Pride|x20_3_18~Privateers|x20_3_19~Purple-eagles');
+sData[20][8]=new Array(9,'Q-R',1,'x20_3_20~Quakers|x20_3_21~Racers|x20_3_22~Ragin-cajuns|x20_3_23~Raiders|x20_3_24~Ramblers|x20_3_25~Rams|x20_3_26~Rangers|x20_3_27~Raptors|x20_3_28~Rattlerettes|x20_3_29~Rattlers|x20_3_30~Ravens|x20_3_31~Razorbacks|x20_3_32~Rebels|x20_3_33~Red-flash|x20_3_34~Red-foxes|x20_3_35~Red-raiders|x20_3_36~Red-sox|x20_3_37~Red-storm|x20_3_38~Red-wings|x20_3_39~Redbirds|x20_3_40~Redhawks|x20_3_41~Reds|x20_3_42~Redskins|x20_3_43~Retreivers|x20_3_44~Roadrunners|x20_3_45~Rockers|x20_3_46~Rockets|x20_3_47~Rockies|x20_3_48~Royals|x20_3_49~Runnin-bulldogs');
+sData[20][9]=new Array(10,'S-T',1,'x20_3_50~Sabres|x20_3_51~Saints|x20_3_52~Salukis|x20_3_53~Scarlet-knights|x20_3_54~Seahawks|x20_3_55~Seawolves|x20_3_56~Seminoles|x20_3_57~Senators|x20_3_58~Seventy Sixers|x20_3_59~Sharks|x20_3_60~Shock|x20_3_61~Shockers|x20_3_62~Silver-stars|x20_3_63~Skyhawks|x20_3_64~Sooners|x20_3_65~Sparks|x20_3_66~Spartanettes|x20_3_67~Spartans|x20_3_68~Spiders|x20_3_69~Spurs|x20_3_70~Stags|x20_3_71~Stars|x20_3_72~Steelers|x20_3_73~Sting|x20_3_74~Storm|x20_3_75~Sun-devils|x20_3_76~Suns|x20_3_77~Supersonics|x20_3_78~Sycamores|x20_3_79~Tar-heels|x20_3_80~Terrapins|x20_3_81~Terriers|x20_3_82~Texans|x20_3_83~Thrashers|x20_3_84~Thunderbirds|x20_3_85~Thundering-herd|x20_3_86~Tigerettes|x20_3_87~Tigers|x20_3_88~Timberwolves|x20_3_89~Titans|x20_3_90~Toreros|46~Tronados|x20_3_91~Trail Blazers|x20_3_92~Tribe|x20_3_93~Trojans|x20_3_94~Twins');
+sData[20][10]=new Array(11,'U-Z',1,'x20_3_95~Utes|x20_3_96~Vandals|x20_3_97~Vikings|x20_3_98~Volunteers|x20_3_99~Warriors|x20_3_100~Waves|x20_3_101~Westerwinds|x20_3_102~White-sox|x20_3_103~Wild|x20_3_104~Wildcats|x20_3_105~Wizards|x20_3_106~Wolf-pack|x20_3_107~Wolfpack|x20_3_108~Wolverines|x20_3_109~Yankees|x20_3_110~Yellow-jackets|x20_3_111~Zips');
+sData[21][0]=new Array(1,'Space',2,'x406~Spaceman|x554~Spaceman 2|x407~Spacemen|x540~Alien|x395~Alien 2|x403~Blast Off|x404~Space Travel|x408~Lunar Landing|x548~Laser Gun');
+sData[21][1]=new Array(2,'Other',3,'x396~Video Camera|x398~Cell Phone|x542~Cell Phone 2|x556~Telescope|x552~Satellite Dish|x543~Desktop|x546~Joystick|x547~Laptop|x549~Chip|x550~Printer|x400~File|x553~Scanner');
+
+
+// ~~~~~~~~~~~~ PASTE GENERATED DATA ABOVE ~~~~~~~~~~~~
+
+ var s = '<table border=0 cellspacing=0 cellpadding=0 bgcolor=ffffff width=107><tr valign=middle><td width=5 bgcolor=#BCDEF4><img src="http://web.archive.org/web/2007im_/i1img.com/images/spacer.gif" width=5 height=1></td><td><table border=0 cellpadding=2 cellspacing=0 width=100%>'
+	var cHt = 19;
+
+
+    for (i = 0; i < sDataCat.length; i++) {
+	
+        s += '<tr height='+cHt+'><td id="cat'+i+'" valign=top onclick="showCat(' + i + ');" onmouseover="if(iCurCat != '+i+'){this.style.backgroundColor=\'#BCDEF4\';this.style.border=\'1px solid #003399\';}" onmouseout="if(iCurCat != '+i+'){this.style.backgroundColor=\'#FFFFFF\';this.style.borderColor=\'#ffffff\';}" style="border:1px solid #ffffff;"><font face=Verdana,Sans-Serif size=1 style="font-size:10px">&nbsp;<a href="javascript:showCat(' + i + ');" hidefocus="true" id="a'+i+'"><font color=003399 id="fnt'+i+'">' + sDataCat[i][1] + '</font></a></td></tr>';
+	 cHt = (i%4==0)?(19+1):19;
+	}
+		
+    s += '</table></td><td></td></tr></table>';
+    document.all.menu.innerHTML = s;
+}
+function hasEditableContent(doc)
+{
+    var nElements = doc.all.length;
+    for (j = 0; j < nElements; j++)
+    {
+        var vElement = doc.all(j);
+        if (vElement.getAttribute('contentEditable', 0) == 'true')
+        {
+            vElement.focus();
+            return true;
+        }
+    }
+
+    return false;
+}
+function findFrame(doc)
+{
+    if (doc == null)
+        return false;
+
+    if (doc.designMode.toLowerCase() == 'on')
+    {
+        vFrameDoc = doc;
+        return true;
+    }
+
+    sFrameName = SmileyCtl.GetFrameName(0, true);
+    if (sFrameName != null && sFrameName != '')
+    {
+        vFrameDoc = SmileyCtl.GetFrame(sFrameName);
+        return true;
+    }
+
+    if (hasEditableContent(doc))
+    {
+        vFrameDoc = doc;
+        return true;
+    }
+
+    var nFrames = SmileyCtl.GetNumFrames(false);
+    for (i = 0; i < nFrames; i++)
+    {
+        var sName = SmileyCtl.getFrameName(i, false);
+        var vFrame = SmileyCtl.GetFrame(sName);
+        if (hasEditableContent(vFrame))
+        {
+            vFrameDoc = vFrame;
+            sFrameName = sName;
+            return true;
+        }
+    }
+
+    return false;
+}
+function init()
+{
+    document.body.style.overflow = 'hidden';
+    document.body.scroll = 'no';
+	
+	
+
+    var sAppVersion = window.clientInformation.appVersion;
+    var asTokens = sAppVersion.split(' ');
+    for (i = 0; i < asTokens.length; i++)
+    {
+        if (asTokens[i] == 'MSIE')
+        {
+            sIEVersion = asTokens[i + 1];
+            var nMajor = new Number(sIEVersion.charAt(0));
+            var nMinor = new Number(sIEVersion.charAt(2));
+            if (nMajor > 5 || nMajor == 5 && nMinor >= 5)
+                bIE55 = true;
+            break;
+        }
+    }
+
+    if (bAutoClose)
+	 	document.all.top.document.all.chk1.src = "http://web.archive.org/web/2007im_/i1img.com/images/smileycentral/ss_autoclose_1.gif";
+
+    if (!findFrame(SmileyCtl.GetDocument()))
+    {
+		onPreview = true;
+		
+    }
+
+    setData();
+
+    showCat(0);
+	 document.all.menu.document.all.cat0.style.backgroundColor = "003399";
+		document.all.menu.document.all.cat0.style.borderColor = "003399";
+		document.all.menu.document.all.fnt0.color = "ffffff";
+		document.all.menu.document.all.a0.style.textDecoration = "none";
+	 if (isSetPopupSizeAvail)
+	    SmileyCtl.SetPopupSize(404, 420);
+}
+function openError() {
+	document.all.main.style.visibility = "visible";
+	document.all.main.innerHTML = '<table border=0 cellpadding=5 cellspacing=0 width=100% bgcolor=#FFF8DD height=308><tr><td valign=top><font face=Verdana,Sans-Serif size=2><p><table border=0 cellpadding=5 cellspacing=0 width=100%><tr><Td align=right width=80><img src="http://web.archive.org/web/2007im_/image.imgfarm.com/images/sorry-face.gif?v=3"></td><td><font face=Verdana,Sans-Serif size=3 style="font-size:16px"><b>Sorry, Smiley Central can\'t<BR>add smileys on this page.</td></tr><TR><td colspan=2><font size=1 style="font-size:10px"><img src="http://web.archive.org/web/2007im_/image.imgfarm.com/images/spacer.gif" width=4 height=2><BR></font><font size=2 face=Verdana,Sans-Serif size=2 style="font-size:12px">Please be sure that you are:<BR><img src="http://web.archive.org/web/2007im_/image.imgfarm.com/images/spacer.gif" width=4 height=8><BR>1) On a "Compose Message" webmail screen.<BR><img src="http://web.archive.org/web/2007im_/image.imgfarm.com/images/smiley_blue_hr.gif" vspace=10 width=100% height=1><BR>2) Using the rich media version of your webmail account (not the default "plain" version).<font size=1 style="font-size:10px"><BR><img src="http://web.archive.org/web/2007im_/image.imgfarm.com/images/spacer.gif" width=4 height=8><BR>MSN/Hotmail, Yahoo, Mail.com, iWon, Excite, and My Way users, please <a href="http://web.archive.org/web/2007im_/help.smileycentral.com/popups.html#5" target="new" onclick="closeWindow();">click here</a>.<BR><img src="http://web.archive.org/web/2007im_/image.imgfarm.com/images/smiley_blue_hr.gif" vspace=10 width=100% height=1><BR></font>3) Using a webmail interface compatible with<BR>Smiley Central.<font size=1 style="font-size:10px"><BR><img src="http://web.archive.org/web/2007im_/image.imgfarm.com/images/spacer.gif" width=4 height=8><Br>For a list, please <a href="http://web.archive.org/web/2007im_/www.smileycentral.com/complete_list_popup.html" target="new" onclick="closeWindow();">click here</a>.<BR><img src="http://web.archive.org/web/2007im_/image.imgfarm.com/images/smiley_blue_hr.gif" vspace=10 width=100% height=1><BR><center><a href="#" onclick="openPreview();">Click here</a> to preview the Smileys</td></tr></table></td></tr></table>';
+} 
+function openPreview() {
+	document.all.main.style.visibility = "hidden";
+}
+function openPreview1() {
+ 	setData();
+
+    showCat(0);
+	document.all.menu.document.all.cat0.style.backgroundColor = "003399";
+	document.all.menu.document.all.cat0.style.borderColor = "003399";
+	document.all.menu.document.all.fnt0.color = "ffffff";
+	document.all.menu.document.all.a0.style.textDecoration = "none";
+}
+
+function closeHelp() {
+	document.all.cover.filters[0].Apply();
+	document.all.help.style.visibility = "hidden";
+	document.all.cover.style.visibility = "hidden";
+	document.all.cover.filters[0].Play();
+}
+function openHelp() {
+	document.all.cover.style.backgroundColor = "#cccccc";
+	document.all.cover.filters[0].Apply();
+	document.all.cover.style.visibility = "visible";
+	document.all.cover.filters[0].Play();
+	document.all.help.style.visibility = "visible";
+}
+function doAutoClose()
+{
+    bAutoClose = !bAutoClose;
+    SmileyCtl.SetParameter(iPARAM_AUTO_CLOSE, bAutoClose ? '1' : '0');
+}
+function closeWindow()
+{
+    SmileyCtl.Close();
+}
+function setAutoClose()
+{
+	SmileyCtl.SetAutoClose(true);
+}
+function updateMRU(i,altTxt)
+{
+    var s = '' + i + '~' + unescape(altTxt);
+    if (sMRUList != null && sMRUList != '')
+    {
+        var a = sMRUList.split('|');
+        var n = a.length;
+        if (n >= iMAX_MRU_LEN)
+            n = iMAX_MRU_LEN - 1;
+        for (j = 0; j < n; j++)
+        {
+			var aTmpArr=a[j].split('~');
+            if (aTmpArr[0] != i)
+                s += '|' + a[j];
+            else if (n < a.length)
+                n++;
+        }
+    }
+    sMRUList = s;
+    SmileyCtl.SetParameter(iPARAM_MRU, sMRUList);
+}
+function inRect(x, y, left, top, right, bottom)
+{
+    return x >= left && x <= right && y >= top && y <= bottom;
+}
+function insert(i,altTxt)
+{
+	if (onPreview)
+    {
+        openError();
+        return;
+    }
+
+    if (vFrameDoc == null)
+        return;
+
+    var sImgSrc = sImgPath + i + '.gif';
+
+	 SmileyCtl.SetAutoClose(false);
+
+    var bTopLevel = sFrameName == null;
+
+     var iFrameLeft = 0;
+    var iFrameTop = 0;
+    var iFrameRight = 0;
+    var iFrameBottom = 0;
+
+    if (!bTopLevel)
+    {
+        var sParentName = '';
+        var asFrameNames = sFrameName.split('.');
+        for (j = 0; j < asFrameNames.length; j += 2)
+        {
+            if (j > 0)
+                sParentName += '.';
+            sParentName += asFrameNames[j] + '.' + asFrameNames[j + 1];
+            var vElement = SmileyCtl.GetFrameElement(sParentName);
+            if (vElement == null)
+                return;
+
+            if (j + 2 >= asFrameNames.length)
+            {
+	            iFrameRight = vElement.offsetWidth;
+	            iFrameBottom = vElement.offsetHeight;
+            }
+
+            while (vElement != null)
+            {
+                iFrameLeft += vElement.offsetLeft - vElement.scrollLeft;
+                iFrameTop += vElement.offsetTop - vElement.scrollTop;
+                vElement = vElement.offsetParent;
+            }
+        }
+        iFrameRight += iFrameLeft;
+        iFrameBottom += iFrameTop;
+    }
+
+	if (bIE55)
+	    vFrameDoc.focus();
+    var vSelection = vFrameDoc.selection;
+	
+	 var bTextSelection = (vSelection.type.toLowerCase() != 'control');
+
+    var tr = null;
+	if (bTextSelection)
+	{
+		tr = vSelection.createRange();
+        tr.scrollIntoView();
+
+		 if (bIE55 && !bTopLevel)
+		{
+		    var aRects = tr.getClientRects();
+		    var bInRect = false;
+		    for (j = 0; j < aRects.length; j++)
+		    {
+		        var rc = aRects[j];
+	            if (inRect(rc.left, rc.top, iFrameLeft, iFrameTop, iFrameRight, iFrameBottom) || inRect(rc.right, rc.bottom, iFrameLeft, iFrameTop, iFrameRight, iFrameBottom))
+		        {
+		            bInRect = true;
+		            break;
+		        }
+		    }
+		
+		    if (!bInRect)
+		    {
+				 tr = vFrameDoc.body.createTextRange();
+                tr.collapse();
+                tr.select();
+                tr.scrollIntoView();
+		    }
+		}
+	}
+
+    vFrameDoc.execCommand("InsertImage", false, sImgSrc);
+	if (bTextSelection)
+		sBookmark = tr.getBookmark();
+	var iHTML = vFrameDoc.body.innerHTML;
+	iHTML = iHTML.replace('<IMG src="'+sImgSrc+'">', "<a href='http://web.archive.org/web/2007im_/www.smileycentral.com/?partner=ZSzeb001' target='_new'><img src='"+sImgSrc+"' border=0 alt='Visit Smiley Central!'></a>");
+	vFrameDoc.body.innerHTML = iHTML;
+	if (bTextSelection)
+		tr.moveToBookmark(sBookmark);
+	if (bTextSelection)
+	{
+	    tr.collapse(false);
+	    tr.select();
+	}
+	if (bIE55)
+	    vFrameDoc.focus();
+    var sBookmark = null;
+	if (bTextSelection)
+		sBookmark = tr.getBookmark();
+
+     var sMsg = vFrameDoc.body.innerHTML;
+        if (sMsg != null && sMsg.indexOf(sSigTag) < 0)
+        {
+			 var iSig = Math.floor(Math.random()*2520) % nSigs;
+              s = '<A href="http://web.archive.org/web/2007im_/www.smileycentral.com/?partner=ZSzeb005" target="_new"><IMG src="http://web.archive.org/web/2007im_/www.smileycentral.com/sig.jsp?pc=ZSzeb005" border=0></A>';
+			tr = vFrameDoc.body.createTextRange();
+			tr.collapse(false);
+			tr.select();
+			tr.pasteHTML('<br><br><br><br><br><br>' + s);
+			if (bTextSelection)
+			{
+	            tr.moveToBookmark(sBookmark);
+	            tr.collapse(false);
+	            tr.select();
+			}
+			if (bIE55)
+	            vFrameDoc.focus();
+        }
+	 updateMRU(i,altTxt);
+
+	 var vReturnValueNotUsed = SmileyCtl.DownloadFile('http://web.archive.org/web/2007im_/i1img.com/images/tracking_pixels/smiley.gif?i=' + i);
+
+    if (bAutoClose)
+	{
+        closeWindow();
+		return;
+	}
+	 window.focus();
+	window.setTimeout('setAutoClose();', 100);
+}
+</script>
+
+<div id=top style="top:0;left:0;width:398px;height:27px;overflow:hidden">
+<table border=0 cellpadding=4 cellspacing=0 width=100%>
+	<tr height=27>
+		<td><table border=0 cellpadding=0 cellspacing=0 width=100%>
+			<tr height=18>
+				<td width=100% valign=top><a href="http://web.archive.org/web/2007im_/www.smileycentral.com/spreadtheword/SCSpreadTheWord.jsp"  hidefocus=true target="new" onclick="closeWindow();"><img src="http://web.archive.org/web/2007im_/i1img.com/images/smileycentral/ss_taf.gif" border=0></a><a href="http://web.archive.org/web/2007im_/help.smileycentral.com/" hidefocus=true target="new" onclick="closeWindow();"><img src="http://web.archive.org/web/2007im_/i1img.com/images/smileycentral/ss_helpandfeedback.gif" border=0></a></td>
+				<td valign=top></td>
+				<td width=90><img src="http://web.archive.org/web/2007im_/i1img.com/images/smileycentral/ss_autoclose_0.gif" align=top name=chk1 border=0 onclick="switchImg(document.all.top.document.all.chk1);"></td>
+				<td valign=top><a href="javascript:closeWindow();" hidefocus=true><img src="http://web.archive.org/web/2007im_/i1img.com/images/smileycentral/ss_xclose.gif" border=0></a></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+</div>
+<div id=top_prev style="top:0;left:0;width:382px;height:27px;position:absolute;overflow:hidden;visibility:hidden">
+<table border=0 cellpadding=2 cellspacing=0 width=100%>
+	<tr height=27>
+		<td><table border=0 cellpadding=0 cellspacing=0 width=100%>
+			<tr height=18>
+				<td width=100% align=center><font size=1 face=Verdana color="red" style="font-size:10px"><b>Preview Only - You Must Be On a Compose<BR>Message Page to Use Smileys</b></font></td>
+				<td valign=top></td>
+				<td width=90 valign=top></td>
+				<td valign=top><a href="javascript:closeWindow();" hidefocus=true><img src="http://web.archive.org/web/2007im_/i1img.com/images/smileycentral/ss_xclose.gif" border=0 vspace=2></a><img src='http://web.archive.org/web/2007im_/i1img.com/images/spacer.gif' width=2 height=1></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+</div>
+<div id=menu style="top:27;left:0;width:123;height:308;overflow-y:auto;scrollbar-3dlight-color:#003399;scrollbar-base-color:#BCDEF4">
+</DIV>
+<div id=catSubMenu style="top:27;left:125;width:272;height:18;position:absolute;overflow-x:hidden;overflow-y:hidden;"></div>
+<div id=cat style="top:45;left:125;width:272;height:290;position:absolute;overflow-x:hidden;overflow-y:auto;scrollbar-3dlight-color:#003399;scrollbar-base-color:#BCDEF4">
+<table border=0 cellpadding=0 cellspacing=0 width=100% bgcolor=ffffff height=308>
+<tr>
+	<td><img src='http://web.archive.org/web/2007im_/i1img.com/images/spacer.gif' width=3 height=308></td>
+</tr>
+</table>
+</div>
+
+<div id=main style="top:27;left:5;width:393;height:308;position:absolute;background-color:ffffff;visibility:hidden">
+<table border=0 cellpadding=0 cellspacing=0 width=100% height=308><tr height=308><td>&nbsp;</td></tr></table></div>
+<div id=cover style="top:0;left:0;width:382;height:394;position:absolute;background-color:cccccc;visibility:hidden;filter:progid:DXImageTransform.Microsoft.Fade(duration=0.5) progid:DXImageTransform.Microsoft.Alpha(opacity=50);">
+<table border=0 cellpadding=0 cellspacing=0 width=382 height=394><tr height=394><td>&nbsp;</td></tr></table></div>
+<div id=help style="top:40;left:40;width:250;height:250;position:absolute;background-color:#BCDEF4;visibility:hidden;border:1px solid #003399;filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray', Positive='true');">
+<table border=0 cellpadding=3 cellspacing=0 width=100%>
+<tr>
+	<td><font face=Verdana,Sans-Serif size=2><b>&nbsp;<font color=FF8400>?&nbsp;</font>Smiley Central Help</td>
+	<td align=right><a href="javascript:closeHelp();" hidefocus=true><img src="http://web.archive.org/web/2007im_/i1img.com/images/smileycentral/ss_xclose.gif" border=0></a></td>
+</tr>
+<tr bgcolor=ffffff height=234>
+	<td colspan=2 valign=top><font face=Verdana,Sans-Serif size=2><br><b>HELP!!!</td>
+</tr></table></div>
+<font size=1 style="font-size:10px"><br><br><br><br>
+<span style="background-color:#ffffff;padding:2px;"><font face=Verdana,Sans-Serif size=1 style="font-size:10px"><center>&nbsp;<a href="http://web.archive.org/web/2007im_/www.smileycentral.com/SubmitASmiley.html" target="new" onclick="closeWindow();">Submit your own smileys - click here!</a>&nbsp;</center></font></span>
+<font size=1 style="font-size:4px"><br></font>
+<font face=Verdana,Sans-Serif size=1 style="font-size:10px"><center>Copyright &copy; 2003 <a href="http://web.archive.org/web/2007im_/www.smileycentral.com" target="new" onclick="closeWindow();">SmileyCentral.com</a>. All Rights Reserved.</font>
+</font>
+
+</body>
+</html>
