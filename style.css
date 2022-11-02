@@ -8,25 +8,22 @@
 }
 body {
 	background-color: #000000;
-	background-image: url("Circleshallo.png");
+	background-image: url("Circles.png");
 	text-align: center;
 	font-family: "sans";
-	color: #fcfe4c;
-	text-shadow: 0 0 10px #ffaa00, 0 0 15px #ffaa00, 0 0 2px #ffaa00;
+	color: white;
+	text-shadow: 1px 1px 3px black;
 }
 table {
 	border-color: white;
 	table-align: center;
 }
 a {
-	color: #660066;
+	color: #ff00ff;
 	font-family: "sansbd";
 }
 .shadeless {
 	text-shadow: 0px 0px 0px black;
-}
-.voidx {
-	background-color: #ffffff;
 }
 h1 {
 	font-family: "sansbd";

@@ -8,25 +8,24 @@
 }
 body {
 	background-color: #00004e;
-	background-image: url("smileycentral/smilehallo.gif");
+	background-image: url("smileycentral/smileblue.gif");
 	text-align: center;
 	font-family: "sans";
 	color: white;
-	text-shadow: 0 0 10px #ffaa00, 0 0 15px #ffaa00, 0 0 2px #ffaa00;
 }
 table {
 	border-color: black;
 	table-align: center;
 }
 a {
-	color: #004400;
+	color: #ff00ff;
 	font-family: "sansbd";
 }
 .void {
 	background-color: #ffffff;
 }
 .void a {
-	color: #8800ff;
+	color: #0000aa;
 }
 h1 {
 	font-family: "sansbd";
