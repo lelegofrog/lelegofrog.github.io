@@ -25,6 +25,9 @@ a {
 .shadeless {
 	text-shadow: 0px 0px 0px black;
 }
+.smol {
+  font-size: 10px;
+}
 h1 {
 	font-family: "sansbd";
 }
