@@ -18,6 +18,11 @@ table {
 	border-color: white;
 	table-align: center;
 }
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
 a {
 	color: #ff00ff;
 	font-family: "sansbd";

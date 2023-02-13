@@ -27,6 +27,11 @@ a {
 .void a {
 	color: #0000aa;
 }
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
 h1 {
 	font-family: "sansbd";
 }

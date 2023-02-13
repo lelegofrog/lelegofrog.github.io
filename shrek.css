@@ -25,6 +25,11 @@ a {
 .shadeless {
 	text-shadow: 0px 0px 0px black;
 }
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
 h1 {
 	font-family: "sansbd";
 }

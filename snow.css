@@ -31,6 +31,11 @@ a {
 .voidx {
 	background-color: #ffffff;
 }
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
 h1 {
 	font-family: "sansbd";
 }
