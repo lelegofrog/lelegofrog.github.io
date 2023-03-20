@@ -6,6 +6,13 @@
     font-family: "sansbd";
     src: url("comicbd.ttf");
 }
+#logo {
+    background-image: url("brycespixlogo.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
 body {
 	background-color: #00004e;
 	background-image: url("smileycentral/smileblue.gif");

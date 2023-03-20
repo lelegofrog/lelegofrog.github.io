@@ -6,6 +6,13 @@
     font-family: "sansbd";
     src: url("comicbd.ttf");
 }
+#logo {
+    background-image: url("brycespixlogo.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
 body {
 	background-color: #000000;
 	background-image: url("Circles.png");
@@ -30,6 +37,11 @@ a {
 }
 .voidx {
 	background-color: #ffffff;
+	color: black;
+	text-shadow: 1px 1px 1px white;
+}
+.voidx a {
+	text-shadow: 1px 1px 1px white;
 }
 .pix {
 	image-rendering: pixelated;
