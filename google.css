@@ -1,0 +1,46 @@
+#logo {
+    background-image: url("brycespixlogogoogle.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #FFFFFF;
+	text-align: center;
+	font-family: sans-serif;
+	color: black;
+}
+a {
+	font-weight: normal;
+}
+table {
+	border-color: black;
+	table-align: center;
+}
+.smol {
+  font-size: 10px;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+h1 {
+	font-weight: normal;
+}
+h2 {
+	font-weight: normal;
+}
+h3 {
+	font-weight: normal;
+}
+h4 {
+	font-weight: normal;
+}
+h5 {
+	font-weight: normal;
+}
+h6 {
+	font-weight: normal;
+}

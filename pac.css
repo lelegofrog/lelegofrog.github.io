@@ -7,33 +7,42 @@
     src: url("comicbd.ttf");
 }
 #logo {
-    background-image: url("brycespixlogoorange.png");
+    background-image: url("brycespixlogopac.png");
     background-width: 210;
     background-height: 51;
 	background-repeat: no-repeat;
 	background-position: center; 
 }
 body {
-	background-color: #00004e;
-	background-image: url("smileycentral/smilehallo.gif");
+	background-color: #000000;
+	background-image: url("downloads/pac/pac.png");
 	text-align: center;
 	font-family: "sans";
 	color: white;
-	text-shadow: 0 0 10px #ffaa00, 0 0 15px #ffaa00, 0 0 2px #ffaa00;
+	text-shadow: 1px 1px 3px black;
 }
-table {
-	border-color: black;
+table, th, td {
+	border-color: #0000FF;
 	table-align: center;
+	border-radius: 5px;
 }
 a {
-	color: #004400;
+	color: #ff00ff;
 	font-family: "sansbd";
 }
-.void {
-	background-color: #ffffff;
+.shadeless {
+	text-shadow: 0px 0px 0px black;
 }
-.void a {
-	color: #8800ff;
+.smol {
+  font-size: 10px;
+}
+.voidx {
+	background-color: #ffffff;
+	color: black;
+	text-shadow: 1px 1px 1px white;
+}
+.voidx a {
+	text-shadow: 1px 1px 1px white;
 }
 .pix {
 	image-rendering: pixelated;

@@ -1,13 +1,13 @@
 @font-face {
     font-family: "sans";
-    src: url("comic.ttf");
+    src: url("nsmbu.ttf");
 }
 @font-face {
     font-family: "sansbd";
-    src: url("comicbd.ttf");
+    src: url("nsmbu.ttf");
 }
 #logo {
-    background-image: url("brycespixlogo.png");
+    background-image: url("brycespixlogomario.png");
     background-width: 210;
     background-height: 51;
 	background-repeat: no-repeat;
@@ -33,25 +33,32 @@ table {
 a {
 	color: #ff00ff;
 	font-family: "sansbd";
+	font-weight: normal;
 }
 .ng a {
 	color: #00ffff;
 }
 h1 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h2 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h3 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h4 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h5 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h6 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
