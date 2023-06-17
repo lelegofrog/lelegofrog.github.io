@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Providers>
+	
+	<name>JumpingRhymes</name>
+	<isLogging>false</isLogging>
+	
+	<!-- SPECIAL -->
+	<child type="PseudoProvider">
+		<name>Pseudo</name>
+		<isLogging>false</isLogging>
+		<isThrow>true</isThrow>
+	</child>
+	
+	<!-- INTERFACE -->
+	<child type="SwfProvider">
+		<name>Root</name>
+		<isLogging>false</isLogging>
+		<target>swf_ui</target>
+	</child>
+	
+	<!-- GAME UI -->
+	<child type="SwfProvider">
+		<name>GameUI</name>
+		<isLogging>false</isLogging>
+		<target>game_ui</target>
+	</child>
+	
+	<!-- AUDIO -->
+	<child type="SwfProvider">
+		<name>Audio</name>
+		<isLogging>false</isLogging>
+		<target>swf_sound</target>
+	</child>
+	
+	<!-- ALIAS -->
+	<child type="AliasProvider">
+		<name>JR</name>
+		<isLogging>false</isLogging>
+		<isThrow>true</isThrow>
+		
+		<!-- AUDIO -->
+		
+		<!-- instructions -->
+		<alias>Instructions			> JR_005D_F</alias>			<!-- Rosita: Click on the thing that rhymes with Abby and Zoe's words!  -->
+		<alias>Instructions			> JR_005D_ALT01_F</alias>	<!-- Rosita: Click on the thing that ends in the same sound as Abby and Zoe's words!  -->
+		<alias>Instructions			> JR_005D_ALT02_F</alias>	<!-- Rosita: one of these things rhymes with Abby and Zoe's words - click on it -->
+		
+		<alias>PauseDelay			> JR_006A_ALT01_F</alias>	<!-- plays after pauseon id - if there is a further 2 second delay when clicking -->
+		
+		<!-- wrong answer hint (1) -->
+		<alias>WA1.Hint.0			> JR_10_H1_ALT01_line136R_F</alias>		<!-- rosita: listen to the ending sound again and click ont he one that rhymes -->
+		<alias>WA1.Hint.0			> JR_10_H1_line133R_F</alias>			<!-- rosita: listen carefully then click on the one that rhymes -->
+		
+		<!-- wrong answer hint (2) -->
+		<alias>WA2.Hint.0			> aYouNeedToFindWord</alias> 			<!-- abby: Rosita! You need to find a word that ends in the sound... -->
+		<alias>WA2.Hint.1a			> JR_10_H2_ALT02_line144R_F</alias>		<!-- rosita: ok! hey, click on the correct one -->
+		<alias>WA2.Hint.1a			> JR_10_H2_line140R_F</alias> 			<!-- rosita: Ay Mama! Click on the right one! -->
+		<alias>WA2.Hint.1b			> JR_010_H2_ALT01_line142R_F</alias>	<!-- rosita: oh - click on the one that ends in the sound ... -->
+		<alias>WA2.Hint.1b			> JR_010_H2_ALT03_line146R_F</alias> 	<!-- rosita: oh! Click on the one that ends in the sound... -->
+		
+		<!-- wrong answer hint (3) -->
+		<alias>WA3.Hint.0			> JR_10_H3_line147A_F</alias>			<!-- abby: You can do it Rosita! Give it one more try! -->
+		<alias>WA3.Hint.1			> JR_10_H3_line148R_F_B</alias>			<!-- rosita: Click on this one! I really hope it rhymes -->
+			
+		<!--JR_006A_ALT01_F-->			<!-- rosita: hey! if you think that's the rhyme, click on it -->
+		<!--JR_10_H3_line148R_F_A-->	<!-- rosita: come on! go ahead -->
+			
+		
+		<!-- VIDEO -->
+		
+		<!-- intro -->
+		<alias>Intro.0			> JR_002_F</alias>
+		<alias>Intro.1    	 	> JR_001B_F</alias>
+		<alias>Intro.2			> JR_004A_F</alias>
+		<alias>Intro.2a			> JR_004A_ALT01_F</alias>
+		<alias>Intro.3			> JR_004C_F</alias>
+		
+		<!-- Rhyme -->
+		<alias>Rhyme.0.1S		> JR_005A_SYL1_ALT01_F</alias>		<!-- sync at 1.3, 4 -->
+		<alias>Rhyme.0.2S		> JR_005A_SYL2_ALT01_F</alias>
+		<alias>Rhyme.1.Long		> JR_005B_F</alias>
+		<alias>Rhyme.1.Short	> JR_005B_ALT01_F</alias>
+		
+		<!-- video timeouts -->
+		<alias>Timeout.Main		> JR_007_F</alias>
+		<alias>Timeout.Main		> JR_007_ALT01_F</alias>
+		<!-- audio timeouts -->
+		<alias>Timeout.Main		> JR_006B_F</alias> 		<!-- Move your star to one of these things, and I'll tell you what it is.  			-->
+		<alias>Timeout.Main		> JR_006B_ALT01_F</alias> 	<!-- If you want me to tell you what something is called, move your star onto it.  	-->
+		
+		<!-- if a video timeout plays then follow up with one of these (audio) -->
+		<alias>Timeout.vid.after	> JR_005D_F</alias>
+		<alias>Timeout.vid.after	> JR_005D_ALT01_F</alias>
+		
+		<!-- Responses -->
+		<alias>Response.1S		> JR_008A_1SYL_ALT01_F</alias>
+		<alias>Response.1S		> JR_008A_1SYL_ALT02_F</alias>
+		<alias>Response.2S		> JR_008A_2SYL_F</alias>
+		<alias>Response.2S		> JR_008A_2SYL_ALT01_F</alias>
+		
+		<!-- Wrong Answer -->
+		<alias>WA.1S			> JR_008B_9_SYL1_F</alias>
+		<alias>WA.2S			> JR_008B_9_SYL2_F</alias>
+		
+		<!-- Correct Answer -->
+		<alias>CA.1S			> JR_008B_11_SYL1_ALT01_F</alias>
+		<alias>CA.1S			> JR_008B_11_SYL1_ALT02_F</alias>
+		<alias>CA.2S			> JR_008B_11_SYL2_F</alias>
+		<alias>CA.2S			> JR_008B_11_SYL2_ALT01_F</alias>
+		
+		<!-- Repeat (next round) -->
+			
+		<!-- rosita -->
+		<alias>Repeat.0			> JR_012A_ALT02_F</alias>
+		<alias>Repeat.0			> JR_012A_ALT03_F</alias>
+		<alias>Repeat.0			> JR_012A_ALT04_F</alias>
+		<!-- zoe -->
+		<alias>Repeat.1			> JR_012B_ALT01_F</alias>
+		<alias>Repeat.1			> JR_012B_ALT02_F</alias>
+		<!-- abby -->
+		<alias>Repeat.2			> JR_012C_F</alias>
+		<alias>Repeat.2			> JR_012C_ALT03_F</alias>
+		
+		<!-- End (game over) -->
+		<alias>GameOver.0		> JR_014A_F</alias>
+		<alias>GameOver.1		> JR_014B_F</alias>
+		
+	</child>
+	
+	<!-- VIDEO -->
+	<child type="VideoProvider">
+		<name>Video</name>
+		<isLogging>false</isLogging>
+		<isVerbose>false</isVerbose>
+		
+		<buffer>4.99</buffer>
+		<mismatch>0.25</mismatch>
+		
+		<header>
+			<host>{asset_path}flv</host>
+			<frameRate>20</frameRate>
+			<timecodeUnits>HOURS:MINUTES:SECONDS.CENTISECONDS</timecodeUnits>
+			<volume>1.0</volume>
+		</header>
+		
+		<segment>
+			<id>JR_001B_F</id>
+			<location></location>
+			<duration>00:00:19.00</duration>
+		</segment>
+	
+		<segment>
+			<id>JR_002_F</id>
+			<location></location>
+			<duration>00:00:36.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_004A_ALT01_F</id>
+			<location></location>
+			<duration>00:00:10.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_004A_F</id>
+			<location></location>
+			<duration>00:00:10.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_004C_F</id>
+			<location></location>
+			<duration>00:00:03.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_005A_SYL1_ALT01_F</id>
+			<location></location>
+			<duration>00:00:10.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_005A_SYL2_ALT01_F</id>
+			<location></location>
+			<duration>00:00:09.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_005B_ALT01_F</id>
+			<location></location>
+			<duration>00:00:04.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_005B_F</id>
+			<location></location>
+			<duration>00:00:12.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_007_ALT01_F</id>
+			<location></location>
+			<duration>00:00:09.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_007_F</id>
+			<location></location>
+			<duration>00:00:12.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_008A_1SYL_ALT01_F</id>
+			<location></location>
+			<duration>00:00:05.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_008A_1SYL_ALT02_F</id>
+			<location></location>
+			<duration>00:00:04.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_008A_2SYL_ALT01_F</id>
+			<location></location>
+			<duration>00:00:04.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_008A_2SYL_F</id>
+			<location></location>
+			<duration>00:00:03.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_008B_9_SYL1_F</id>
+			<location></location>
+			<duration>00:00:19.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_008B_9_SYL2_F</id>
+			<location></location>
+			<duration>00:00:23.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_008B_11_SYL1_ALT01_F</id>
+			<location></location>
+			<duration>00:00:22.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_008B_11_SYL1_ALT02_F</id>
+			<location></location>
+			<duration>00:00:23.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_008B_11_SYL2_ALT01_F</id>
+			<location></location>
+			<duration>00:00:25.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_008B_11_SYL2_F</id>
+			<location></location>
+			<duration>00:00:24.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_012A_ALT02_F</id>
+			<location></location>
+			<duration>00:00:04.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_012A_ALT03_F</id>
+			<location></location>
+			<duration>00:00:06.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_012A_ALT04_F</id>
+			<location></location>
+			<duration>00:00:07.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_012B_ALT01_F</id>
+			<location></location>
+			<duration>00:00:03.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_012B_ALT02_F</id>
+			<location></location>
+			<duration>00:00:05.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_012C_ALT03_F</id>
+			<location></location>
+			<duration>00:00:03.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_012C_F</id>
+			<location></location>
+			<duration>00:00:05.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_014A_F</id>
+			<location></location>
+			<duration>00:00:07.00</duration>
+		</segment>
+		
+		<segment>
+			<id>JR_014B_F</id>
+			<location></location>
+			<duration>00:00:17.00</duration>
+		</segment>
+		
+	</child>
+	
+</Providers>

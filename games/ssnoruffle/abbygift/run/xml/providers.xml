@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Providers>
+	
+	<name>GiftRap</name>
+	<isLogging>false</isLogging>
+	
+	<!-- SPECIAL -->
+	<child type="PseudoProvider">
+		<name>Pseudo</name>
+		<isLogging>false</isLogging>
+		<isThrow>true</isThrow>
+	</child>
+	
+	<!-- global UI -->
+	<child type="SwfProvider">
+		<name>ui</name>
+		<isLogging>false</isLogging>
+		<target>swf_ui</target>
+	</child>
+	
+	<child type="AliasProvider">
+		<name>AudioAlias</name>
+		<isLogging>false</isLogging>
+		<isThrow>true</isThrow>
+		
+		<alias>RhymeTimeout &gt; RhymeTimeout_0</alias>
+		<alias>RhymeTimeout &gt; RhymeTimeout_1</alias>
+		<alias>RhymeTimeout &gt; RhymeTimeout_2</alias>
+		<alias>RhymeTimeout &gt; RhymeTimeout_3</alias>
+	</child>
+	
+	<!-- game UI -->
+	<child type="SwfProvider">
+		<name>game_ui</name>
+		<isLogging>false</isLogging>
+		<target>swf_game_ui</target>
+	</child>
+	
+	<!-- sound library -->
+	<child type="SwfProvider">
+		<name>Audio</name>
+		<isLogging>false</isLogging>
+		<target>swf_sound</target>
+	</child>
+	
+	<!-- progressive load video -->
+	<child type="VideoProvider">
+		<name>Video</name>
+		<isLogging>false</isLogging>
+		<isVerbose>false</isVerbose>
+		
+		<buffer>4.99</buffer>
+		<mismatch>0.15</mismatch>
+		
+		<header>
+			<host>{asset_path}/flv</host>
+			<frameRate>20</frameRate>
+			<timecodeUnits>HOURS:MINUTES:SECONDS.MILLISECONDS</timecodeUnits>
+			<volume>1.0</volume>
+		</header>
+		
+		<segment>
+			<id>GR_001A</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:31.000</duration>
+		</segment>
+		<segment>
+			<id>GR_001B</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:20.000</duration>
+		</segment>
+		<segment>
+			<id>GR_003B</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:04.000</duration>
+		</segment>
+		<segment>
+			<id>GR_004</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:44.000</duration>
+		</segment>
+		<!--
+		<segment>
+			<id>GR_004_ALT01</id>
+			<description></description>
+			<location>00:00:00:00</location>
+			<duration>00:00:38.000</duration>
+		</segment>
+		-->
+		<segment>
+			<id>GR_005B</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:18.000</duration>
+		</segment>
+		<segment>
+			<id>GR_005C_ALT01</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:18.000</duration>
+		</segment>
+		<segment>
+			<id>GR_005D</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:19.000</duration>
+		</segment>
+		<segment>
+			<id>GR_011A</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:10.000</duration>
+		</segment>
+		<!--
+		<segment>
+			<id>GR_011A_ALT02</id>
+			<description></description>
+			<location>00:00:00:00</location>
+			<duration>00:00:08.000</duration>
+		</segment>
+		-->
+		<segment>
+			<id>GR_012</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:08.000</duration>
+		</segment>
+		<segment>
+			<id>GR_013B</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:29.000</duration>
+		</segment>
+		<!--
+		<segment>
+			<id>GR_013B_ALT01</id>
+			<description></description>
+			<location>00:00:00:00</location>
+			<duration>00:00:28.000</duration>
+		</segment>
+		-->
+		<segment>
+			<id>GR_013C</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:34.000</duration>
+		</segment>
+		<segment>
+			<id>GR_014</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:23.000</duration>
+		</segment>
+		
+		<segment>
+			<id>GR_AMBIENT_01</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:19.000</duration>
+		</segment>
+		<segment>
+			<id>GR_AMBIENT_02</id>
+			<description/>
+			<location>00:00:00:00</location>
+			<duration>00:00:25.000</duration>
+		</segment>
+	</child>
+	
+	
+</Providers>

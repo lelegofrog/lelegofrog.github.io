@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Sequencer>
+	
+	<name>Sequencer</name>
+	<isLogging>false</isLogging>
+	<isThrow>true</isThrow>
+	<isBrowserCaching>false</isBrowserCaching>
+	<numChannels>20</numChannels>
+	<testLevel>0</testLevel>
+	
+</Sequencer>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BulkLoader>
+	
+	<name>AssetList</name>
+	<numConnections>5</numConnections>
+	<logLevel>10</logLevel>
+
+	<files>
+		
+		<!-- video definition -->
+		<file>
+			<id>xml_providers</id>
+			<url>{base_path}xml/providers.xml</url>
+			<type>xml</type>
+		</file>
+		
+		<!-- media sequencer -->
+		<file>
+			<id>xml_sequencer</id>
+			<url>{base_path}xml/sequencer.xml</url>
+			<type>xml</type>
+		</file>
+		
+		<!-- game scene definition -->
+		<file>
+			<id>xml_scenes</id>
+			<url>{base_path}xml/scenes.xml</url>
+			<type>xml</type>
+		</file>
+		
+		<!-- game scene definition (minigame) -->
+		<file>
+			<id>xml_scenes_minigame</id>
+			<url>{base_path}xml/scenes_minigame.xml</url>
+			<type>xml</type>
+		</file>
+		
+		<!-- game scene definition (debug) -->
+		<file>
+			<id>xml_scenes_debug</id>
+			<url>{base_path}xml/scenes_debug.xml</url>
+			<type>xml</type>
+		</file>
+		
+		<!-- interface SWF -->
+		<file>
+			<id>swf_ui</id>
+			<url>{base_path}swf/ui.swf</url>
+			<type>movieclip</type>
+		</file>
+		<file>
+			<id>swf_game_ui</id>
+			<url>{base_path}swf/game_ui.swf</url>
+			<type>movieclip</type>
+		</file>
+		
+		<!-- sound SWF -->
+		<file>
+			<id>swf_sound</id>
+			<url>{base_path}swf/sound.swf</url>
+			<type>movieclip</type>
+		</file>
+		
+		<!-- preload a couple of FLVs that we need to sync with -->
+		<file>
+			<id>flv_preload_1</id>
+			<url>{base_path}flv/GR_003B.flv</url>
+			<type>binary</type>
+		</file>
+		
+		<file>
+			<id>flv_preload_2</id>
+			<url>{base_path}flv/GR_013C.flv</url>
+			<type>binary</type>
+		</file>
+		<file>
+			<id>flv_preload_2</id>
+			<url>{base_path}flv/GR_005C_ALT01.flv</url>
+			<type>binary</type>
+		</file>
+		
+		<!-- other loaded assets -->
+		<!-- ... -->
+		<!-- ... -->
+		<!-- ... -->
+		
+	</files>
+	
+</BulkLoader>

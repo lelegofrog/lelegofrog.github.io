@@ -1,0 +1,99 @@
+
+<html>
+  <head>
+  <script type="text/javascript" src="js_bHixdNqIm_fGV7c3IlqVJl-OQXz4T0rdcigI0kCjuGg.js"></script>
+<script type="text/javascript" src="js_RLf7R3ESDjIcZTxbp4cAKLnNHS8tO9pUBudonBQId6w.js"></script>
+<script type="text/javascript" src="js_rsGiM5M1ffe6EhN-RnhM5f3pDyJ8ZAPFJNKpfjtepLk.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-4680963-1", {"cookieDomain":"auto","allowLinker":true});ga("require", "linker");ga("linker:autoLink", ["www.sesamestreet.org","interactive.sesameonline.net","sesamestreet.org"]);ga("set", "anonymizeIp", true);ga("set", "page", location.pathname + location.search + location.hash);ga("send", "pageview");
+//--><!]]>
+</script>
+<script type="text/javascript" src="js_fvr-mXo4MgpGYvXjWMRvPLaEBawHnAIGHJSn6iFvYrI.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"sesametheme","theme_token":"UqlKDkziUQCyP2HWuZsO66H3BOVlB44zLb3YCc5cMNQ","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/kaltura\/js\/kaltura.js":1,"sites\/all\/modules\/contrib\/kaltura\/js\/kaltura.behaviors.js":1,"sites\/all\/modules\/custom\/sesamestreet_parent_message\/js\/sesamestreet_parent_message.js":1,"sites\/all\/modules\/contrib\/google_analytics\/googleanalytics.js":1,"0":1,"sites\/all\/themes\/sesametheme\/js\/fastclick.js":1,"sites\/all\/themes\/sesametheme\/js\/jquery.touchswipe.js":1,"sites\/all\/themes\/sesametheme\/js\/enquire.min.js":1,"sites\/all\/themes\/sesametheme\/js\/jquery.jcarousel.js":1,"sites\/all\/themes\/sesametheme\/js\/jquery.control.js":1,"sites\/all\/themes\/sesametheme\/js\/slick\/slick.js":1,"sites\/all\/themes\/sesametheme\/js\/carousels.js":1,"sites\/all\/themes\/sesametheme\/js\/videojs\/video-js-5.16.0\/video.js":1,"sites\/all\/themes\/sesametheme\/js\/videojs\/videojs.ga.min.js":1,"sites\/all\/themes\/sesametheme\/js\/videojs\/sesame.videojs.controls.js":1,"sites\/all\/themes\/sesametheme\/js\/js.cookie.js":1,"sites\/all\/themes\/sesametheme\/js\/site.js":1,"sites\/all\/themes\/sesametheme\/js\/games.js":1,"sites\/all\/themes\/sesametheme\/js\/videopage.js":1,"sites\/all\/themes\/sesametheme\/js\/artmaker.js":1}},"baseUrl":"https:\/\/www.sesamestreet.org","googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackDomainMode":2,"trackCrossDomains":["www.sesamestreet.org","interactive.sesameonline.net","sesamestreet.org"],"trackUrlFragments":1}});
+//--><!]]>
+</script>
+  <script src="swfobject.js"></script>
+
+
+  <script>
+    var onMediaEvent = function(event) {
+      createEvent(event);
+    }
+
+    function createEvent(event) {
+      var eventFront = "game_" + event.media.uid;
+      pageTracker._trackEvent(eventFront, event.type, event.media.title);
+    }
+    function resizeGame(width, height, zoom) {
+      var dimArray = [];
+      var winWidth = jQuery("#flashcontent").width();
+      var winHeight = jQuery("#flashcontent").height();
+      var tooBig = (height*(zoom+1) > winHeight || width*(zoom+1) > winWidth) ? true : false ;
+
+      while(tooBig && zoom >=0) {
+        zoom = zoom-.1;
+        tooBig = (height*(zoom+1) > winHeight || width*(zoom+1) > winWidth) ? true : false ;
+
+      }
+
+        newWidth = width*(zoom+1);
+        newHeight = height*(zoom+1);
+
+        dimArray.push(newWidth);
+        dimArray.push(newHeight);
+
+      return dimArray;
+    }
+    var width = "600";
+    var height = "307";
+    var winWidth = jQuery(window).width();
+    var winHeight = jQuery(window).height();
+    var zoom = "3";
+
+    var gameState = {
+      gameAnalyticsOn : true,
+    }
+    var media = {
+      "title" : "Potty Time with Elmo",
+      "assetPath" : "run/",
+      "fileName" : "run/index.swf",
+      "type" : "game",
+      "width" : width,
+      "height" : height,
+      "gameState" : gameState,
+      "maxZoomFactor" : 3,
+    }
+    var SWF_FLASHVARS = {
+      media : escape(JSON.stringify(media)),
+      jsapi : onMediaEvent,
+    };
+
+
+    //resize - if game has a zoom factor, it's more than 0, and it's result is smaller than current height of the window
+      if (!zoom) { zoom = 3; }
+      if (zoom > 0) {
+        var dimensions = resizeGame(width, height, zoom);
+        width = dimensions[0];
+        height = dimensions[1];
+      }
+
+    //set dimensions to percentages in order to scale
+    height = ((height/winHeight)*100).toFixed(2) + "%";
+    width = ((width/winWidth)*100).toFixed(2) + "%";
+
+
+    swfobject.embedSWF("MediaPlayer.swf", "flashcontent", "100%", "100%", "10.0.0", false, SWF_FLASHVARS, {'allowScriptAccess':'always'});
+    //jQuery("#flashcontent").css({"height":height, "width":width});
+
+  </script>
+  </head>
+
+  <body bgcolor="#004477">
+       <div id="flashcontent">
+          FLASH REQUIRED
+       </div>
+  </body>
+</html>

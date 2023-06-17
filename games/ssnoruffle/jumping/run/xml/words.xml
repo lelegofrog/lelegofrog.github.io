@@ -1,0 +1,235 @@
+<WordData>
+
+	<!-- One-syllable words
+	NOTE: One- and two-syllable words don't have their own nodes because # of syllables is not a criterion that we choose words by.
+	-->
+	
+	<WordSet theme="" syllables="1">
+		<Abby>cook</Abby>
+		<Zoe>hook</Zoe>
+		<Rosita>book</Rosita>
+		<Sound>ook</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="" syllables="1">
+		<Abby>ox</Abby>
+		<Zoe>rocks</Zoe>
+		<Rosita>box</Rosita>
+		<Sound>ox</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="animals" syllables="1">
+		<Abby>swish</Abby>
+		<Zoe>mish</Zoe>
+		<Rosita>fish</Rosita>
+		<Sound>ish</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="" syllables="1">
+		<Abby>spoon</Abby>
+		<Zoe>noon</Zoe>
+		<Rosita>moon</Rosita>
+		<Sound>oon</Sound>
+		<badDistractors>spoon</badDistractors>
+	</WordSet>
+	
+	<WordSet theme="animals" syllables="1">
+		<Abby>fig</Abby>
+		<Zoe>big</Zoe>
+		<Rosita>pig</Rosita>
+		<Sound>ig</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="animals" syllables="1">
+		<Abby>ram</Abby>
+		<Zoe>ham</Zoe>
+		<Rosita>clam</Rosita>
+		<Sound>am</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+
+	<WordSet theme="food" syllables="1">
+		<Abby>fleas</Abby>
+		<Zoe>knees</Zoe>
+		<Rosita>cheese</Rosita>
+		<Sound>eese</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+
+	<WordSet theme="" syllables="1">
+		<Abby>van</Abby>
+		<Zoe>man</Zoe>
+		<Rosita>fan</Rosita>
+		<Sound>an</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="" syllables="1">
+		<Abby>rest</Abby>
+		<Zoe>vest</Zoe>
+		<Rosita>nest</Rosita>
+		<Sound>est</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="animals" syllables="1">
+		<Abby>bark</Abby>
+		<Zoe>park</Zoe>
+		<Rosita>shark</Rosita>
+		<Sound>ark</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="animals" syllables="1">
+		<Abby>deep</Abby>
+		<Zoe>keep</Zoe>
+		<Rosita>sheep</Rosita>
+		<Sound>eep</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+
+	<WordSet theme="" syllables="1">
+		<Abby>loon</Abby>
+		<Zoe>moon</Zoe>
+		<Rosita>spoon</Rosita>
+		<Sound>oon</Sound>
+		<badDistractors>moon</badDistractors>
+	</WordSet>
+	
+	<WordSet theme="" syllables="1">
+		<Abby>champ</Abby>
+		<Zoe>lamp</Zoe>
+		<Rosita>stamp</Rosita>
+		<Sound>amp</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<!-- Two-syllable words -->
+	
+	<WordSet theme="food" syllables="2">
+		<Abby>sandy</Abby>
+		<Zoe>fandy</Zoe>
+		<Rosita>candy</Rosita>
+		<Sound>andy</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="" syllables="2">
+		<Abby>saddle</Abby>
+		<Zoe>faddle</Zoe>
+		<Rosita>paddle</Rosita>
+		<Sound>addle</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="food" syllables="2">
+		<Abby>nickel</Abby>
+		<Zoe>tickle</Zoe>
+		<Rosita>pickle</Rosita>
+		<Sound>ickle</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="clothing" syllables="2">
+		<Abby>dipper</Abby>
+		<Zoe>lipper</Zoe>
+		<Rosita>slipper</Rosita>
+		<Sound>ipper</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="" syllables="2">
+		<Abby>power</Abby>
+		<Zoe>shower</Zoe>
+		<Rosita>flower</Rosita>
+		<Sound>ower</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="animals" syllables="2">
+		<Abby>gizzard</Abby>
+		<Zoe>wizard</Zoe>
+		<Rosita>lizard</Rosita>
+		<Sound>izard</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="clothing" syllables="2">
+		<Abby>kitten</Abby>
+		<Zoe>schmitten</Zoe>
+		<Rosita>mitten</Rosita>
+		<Sound>itten</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="animals" syllables="2">
+		<Abby>funky</Abby>
+		<Zoe>spunky</Zoe>
+		<Rosita>monkey</Rosita>
+		<Sound>onkey</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="animals" syllables="2">
+		<Abby>bony</Abby>
+		<Zoe>stony</Zoe>
+		<Rosita>pony</Rosita>
+		<Sound>ony</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="animals" syllables="2">
+		<Abby>guppy</Abby>
+		<Zoe>muppy</Zoe>
+		<Rosita>puppy</Rosita>
+		<Sound>uppy</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="" syllables="2">
+		<Abby>gibbon</Abby>
+		<Zoe>zibbon</Zoe>
+		<Rosita>ribbon</Rosita>
+		<Sound>ibbon</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="" syllables="2">
+		<Abby>pocket</Abby>
+		<Zoe>gocket</Zoe>
+		<Rosita>rocket</Rosita>
+		<Sound>ocket</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="animals" syllables="2">
+		<Abby>booster</Abby>
+		<Zoe>fooster</Zoe>
+		<Rosita>rooster</Rosita>
+		<Sound>ooster</Sound>
+		<badDistractors>turkey</badDistractors>
+	</WordSet>
+	
+	<WordSet theme="clothing" syllables="2">
+		<Abby>beaker</Abby>
+		<Zoe>leaker</Zoe>
+		<Rosita>sneaker</Rosita>
+		<Sound>eaker</Sound>
+		<badDistractors></badDistractors>
+	</WordSet>
+	
+	<WordSet theme="animals" syllables="2">
+		<Abby>murky</Abby>
+		<Zoe>shmirky</Zoe>
+		<Rosita>turkey</Rosita>
+		<Sound>urkey</Sound>
+		<badDistractors>rooster</badDistractors>
+	</WordSet>
+	
+
+	
+</WordData>

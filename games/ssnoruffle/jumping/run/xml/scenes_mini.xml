@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenes>
+	
+	<name>JumpingRhymes</name>
+	<isLogging>true</isLogging>
+	<lookahead>4</lookahead>
+	
+	<!-- PRECACHE -->
+	<child type="PrecacheScene">
+		<name>Precache</name>
+		<isLogging>false</isLogging>
+		<isResettable>false</isResettable>
+		<amount>40.0</amount>
+		<label>Buffering Video</label>
+		<asset>Preload</asset>
+	</child>
+	
+	<!-- HOLD TITLE SCREEN (3 sec) -->
+	<child type="PlaylistScene">
+		<name>HoldTitle</name>
+		<isLogging>false</isLogging>
+		<isClickSkip>false</isClickSkip>
+		<isCursorVisible>true</isCursorVisible>
+		<id>TitleScreen</id>
+		<id>{call|showCursor|true}</id>
+		<id>{Defer|3000}</id>
+	</child>
+	
+	<!-- SETUP -->
+	<child type="PlaylistScene">
+		<name>Intro</name>
+		<isLogging>false</isLogging>
+		<isClickSkip>false</isClickSkip>
+		<isCursorVisible>true</isCursorVisible>
+		<id>JR::Intro.0</id>
+		<id>JR::Intro.1</id>
+		<id>JR::Intro.2</id>
+		<id>JR::Intro.3</id>
+	</child>
+	
+	<!-- GAME -->
+	<child type="JumpingRhymesRhymeSelect">
+		<name>RhymeGame</name>
+		<isLogging>false</isLogging>
+		<ui>GameUI</ui>
+		
+		<!-- add this prefix to the end of the video intro (long first time around, short for subsequent rounds) -->
+		<prefix>JR::Rhyme.1.Long</prefix>
+		
+		<!-- 7 sec timeout -->
+		<timeout>
+			<content>JR::Timeout.Main</content>
+			<content>JR::Timeout.vid.after</content>
+			<period>7.0</period>
+		</timeout>
+		
+		<!-- events for word substitution -->
+		
+		<!-- prefix 1S -->
+		<event>
+			<id>JR::Rhyme.0.1S</id>
+			<time>1.3</time>
+			<method>exec</method>
+			<arg>sayWordAbby</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR::Rhyme.0.1S</id>
+			<time>4</time>
+			<method>exec</method>
+			<arg>sayWordZoe</arg>
+			<arg>e</arg>
+		</event>
+		
+		<!-- prefix 2S -->
+		<event>
+			<id>JR::Rhyme.0.2S</id>
+			<time>0.1</time>
+			<method>exec</method>
+			<arg>sayWordAbby</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR::Rhyme.0.2S</id>
+			<time>1.75</time>
+			<method>exec</method>
+			<arg>sayWordZoe</arg>
+			<arg>e</arg>
+		</event>
+		
+		<!-- timeout -->
+		<event>
+			<id>JR::Timeout.Main</id>
+			<time>6.5</time>
+			<method>exec</method>
+			<arg>sayWordAbby</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR::Timeout.Main</id>
+			<time>8.5</time>
+			<method>exec</method>
+			<arg>sayWordZoe</arg>
+			<arg>e</arg>
+		</event>
+		
+		<!-- Choice response (1S) -->
+		<event>
+			<id>JR::Response.1S</id>
+			<time>0.1</time>
+			<method>exec</method>
+			<arg>sayWordRosita</arg>
+			<arg>e</arg>
+		</event>
+		<!-- Choice response (2S) -->
+		<event>
+			<id>JR::Response.2S</id>
+			<time>0.2</time>
+			<method>exec</method>
+			<arg>sayWordRosita</arg>
+			<arg>e</arg>
+		</event>
+		
+		<!-- Wrong Answer (1S) -->
+		<event>
+			<id>JR::WA.1S</id>
+			<time>6.5</time>
+			<method>exec</method>
+			<arg>sayWordAbby</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR::WA.1S</id>
+			<time>7.5</time>
+			<method>exec</method>
+			<arg>sayWordZoe</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR::WA.1S</id>
+			<time>8.5</time>
+			<method>exec</method>
+			<arg>sayWordRosita</arg>
+			<arg>q</arg>
+		</event>
+		
+		<!-- Wrong Answer (2S) -->
+		<event>
+			<id>JR::WA.2S</id>
+			<time>7.3</time>
+			<method>exec</method>
+			<arg>sayWordAbby</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR::WA.2S</id>
+			<time>9.6</time>
+			<method>exec</method>
+			<arg>sayWordZoe</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR::WA.2S</id>
+			<time>11.9</time>
+			<method>exec</method>
+			<arg>sayWordRosita</arg>
+			<arg>q</arg>
+		</event>
+		
+		<!-- Correct Answer 1S (suffix) - alt1 -->
+		<event>
+			<id>JR_008B_11_SYL1_ALT01_F</id>
+			<time>8.7</time>
+			<method>exec</method>
+			<arg>sayWordAbby</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR_008B_11_SYL1_ALT01_F</id>
+			<time>10.1</time>
+			<method>exec</method>
+			<arg>sayWordZoe</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR_008B_11_SYL1_ALT01_F</id>
+			<time>11.6</time>
+			<method>exec</method>
+			<arg>sayWordRosita</arg>
+			<arg>e</arg>
+		</event>
+		
+		<!-- Correct Answer 1S (suffic) alt2 -->
+		<event>
+			<id>JR_008B_11_SYL1_ALT02_F</id>
+			<time>8.2</time>
+			<method>exec</method>
+			<arg>sayWordAbby</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR_008B_11_SYL1_ALT02_F</id>
+			<time>10.6</time>
+			<method>exec</method>
+			<arg>sayWordZoe</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR_008B_11_SYL1_ALT02_F</id>
+			<time>11.9</time>
+			<method>exec</method>
+			<arg>sayWordRosita</arg>
+			<arg>e</arg>
+		</event>
+		
+		<!-- Correct Answer 2S (suffix) alt1 -->
+		<event>
+			<id>JR_008B_11_SYL2_F</id>
+			<time>9.8</time>
+			<method>exec</method>
+			<arg>sayWordAbby</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR_008B_11_SYL2_F</id>
+			<time>12.1</time>
+			<method>exec</method>
+			<arg>sayWordZoe</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR_008B_11_SYL2_F</id>
+			<time>13.6</time>
+			<method>exec</method>
+			<arg>sayWordRosita</arg>
+			<arg>e</arg>
+		</event>
+		
+		<!-- Correct Answer 2S (suffix) alt2 -->
+		<event>
+			<id>JR_008B_11_SYL2_ALT01_F</id>
+			<time>10.3</time>
+			<method>exec</method>
+			<arg>sayWordAbby</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR_008B_11_SYL2_ALT01_F</id>
+			<time>12.8</time>
+			<method>exec</method>
+			<arg>sayWordZoe</arg>
+			<arg>e</arg>
+		</event>
+		<event>
+			<id>JR_008B_11_SYL2_ALT01_F</id>
+			<time>14.1</time>
+			<method>exec</method>
+			<arg>sayWordRosita</arg>
+			<arg>e</arg>
+		</event>
+	</child>
+	
+	<!-- GAME OVER (minigame only) -->
+	<child type="PlaylistScene">
+		<name>GameOver</name>
+		<isLogging>false</isLogging>
+		<isClickSkip>false</isClickSkip>
+		<isCursorVisible>true</isCursorVisible>
+		<id>GameOver.0</id>
+		<id>GameOver.1</id>
+	</child>
+	
+</scenes>

@@ -1,0 +1,22 @@
+﻿<config>
+	<scene id="0" file="pt_an_sc1.swf" conclusions="2" banters="3" conclusionPref="Conclusion_" banterPref="BanterSet_" timeout="5"/>
+	<scene id="1" file="pt_an_sc2.swf" conclusions="3" banters="4" conclusionPref="Conclusion_" banterPref="BanterSet_" timeout="5"/>
+	<scene id="2" file="pt_an_sc3_v1.swf" conclusions="3" banters="3" conclusionPref="Conclusion_" banterPref="BanterSet_" timeout="5"/>
+	<scene id="3" file="pt_an_sc3_v2.swf" conclusions="3" banters="3" conclusionPref="Conclusion_" banterPref="BanterSet_" timeout="5"/>
+	<scene id="4" file="pt_an_sc4.swf" conclusions="2" banters="3" conclusionPref="Conclusion_" banterPref="BanterSet_" timeout="5"/>
+	<scene id="5" file="pt_an_sc5.swf" conclusions="1" banters="3" conclusionPref="Conclusion_" banterPref="BanterSet_" timeout="5"/>
+	<scene id="6" file="pt_an_sc6_v1.swf" conclusions="1" banters="3" conclusionPref="Conclusion_" banterPref="BanterSet_" timeout="5"/>
+	<scene id="7" file="pt_an_sc6_v2.swf" conclusions="1" banters="3" conclusionPref="Conclusion_" banterPref="BanterSet_" timeout="5"/>
+	<scene id="8" file="pt_an_sc6_v3.swf" conclusions="1" banters="3" conclusionPref="Conclusion_" banterPref="BanterSet_" timeout="5"/>	
+	<mini name="carTrip" id="0"/>
+	<mini name="circus1" id="1"/>
+	<mini name="circus2" id="1"/>
+	<mini name="jumpRope1" id="2"/>
+	<mini name="jumpRope2" id="3"/>
+	<mini name="supermarket" id="4"/>
+	<mini name="preschool" id="5"/>
+	<mini name="familyTime1" id="6"/>
+	<mini name="familyTime2" id="7"/>
+	<mini name="familyTime3" id="8"/>
+	<mini name="random" id="null"/>
+</config>
