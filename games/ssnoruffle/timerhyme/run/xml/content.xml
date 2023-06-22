@@ -1,0 +1,251 @@
+<content>
+
+	<settings>
+	
+		<!-- SETTINGS PARAMS -->
+		<param id="whatever" value="whatever" />
+
+	</settings>
+
+	<pairs>
+		
+		<!-- DISPLAYS AMOUNT OF RHYMES TO WORK WITH -->
+
+		<pair name1="crown" name2="gown" />
+		<pair name1="moon" name2="spoon" />
+		<pair name1="pig" name2="wig" />
+		<pair name1="cat" name2="hat" />
+		<pair name1="cake" name2="rake" />
+		<pair name1="sax" name2="cone" />
+		<pair name1="orange" name2="orange" />
+		<pair name1="dog" name2="log" />	
+		<pair name1="socks" name2="fox" />
+		<pair name1="box" name2="socks"	/>
+		<pair name1="nest" name2="vest" />
+		<pair name1="fan" name2="can" />
+		<pair name1="bear1" name2="pear" />	
+		<pair name1="bear2" name2="chair" />		
+		<pair name1="goat1" name2="boat"	/>
+		<pair name1="goat2" name2="coat" />
+
+	</pairs>
+	<files>
+		
+		<Communal>
+			<file>IntroAlt/IntroAlt_0.flv</file>
+			<file>IntroAlt/IntroAlt_1.flv</file>
+			<file>IntroAlt/IntroAlt_2.flv</file>
+			<file>IntroAlt/IntroAlt_3.flv</file>
+			<file>IntroAlt/IntroAlt_4.flv</file>
+			<file>IntroAlt/IntroAlt_5.flv</file>
+			<file>SecondIntro/SecondIntro.flv</file>
+			<file>IntroTimeout/IntroTimeout_0_0.flv</file>
+			<file>IntroTimeout/IntroTimeout_0_1.flv</file>
+			<file>IntroTimeout/IntroTimeout_1_0.flv</file>
+			<file>IntroTimeout/IntroTimeout_1_1.flv</file>
+			<file>IntroTimeout/IntroTimeout_2_0.flv</file>
+			<file>IntroTimeout/IntroTimeout_2_1.flv</file>
+			<file>Congrats/Congrats_0.flv</file>
+			<file>Congrats/Congrats_1.flv</file>
+			<file>HepcatSetup/HepcatSetup_1.flv</file>
+		
+		
+		</Communal>
+		<A>
+			<file>FirstPartRhyme/bear1.flv</file>
+			<file>FirstPartRhyme/bear2.flv</file>
+			<file>FirstPartRhyme/box.flv</file>
+			<file>FirstPartRhyme/cake.flv</file>
+			<file>FirstPartRhyme/cat.flv</file>
+			<file>FirstPartRhyme/crown.flv</file>
+			<file>FirstPartRhyme/dog.flv</file>
+			<file>FirstPartRhyme/fan.flv</file>
+			<file>FirstPartRhyme/goat1.flv</file>
+			<file>FirstPartRhyme/goat2.flv</file>
+			<file>FirstPartRhyme/moon.flv</file>
+			<file>FirstPartRhyme/nest.flv</file>
+			<file>FirstPartRhyme/orange.flv</file>
+			<file>FirstPartRhyme/pig.flv</file>
+			<file>FirstPartRhyme/sax.flv</file>
+			<file>FirstPartRhyme/socks.flv</file>
+			<file>HootsObjects/bear1.flv</file>
+			<file>HootsObjects/bear2.flv</file>
+			<file>HootsObjects/box.flv</file>
+			<file>HootsObjects/cake.flv</file>
+			<file>HootsObjects/cat.flv</file>
+			<file>HootsObjects/crown.flv</file>
+			<file>HootsObjects/dog.flv</file>
+			<file>HootsObjects/fan.flv</file>
+			<file>HootsObjects/goat1.flv</file>
+			<file>HootsObjects/goat2.flv</file>
+			<file>HootsObjects/moon.flv</file>
+			<file>HootsObjects/nest.flv</file>
+			<file>HootsObjects/orange.flv</file>
+			<file>HootsObjects/pig.flv</file>
+			<file>HootsObjects/sax.flv</file>
+			<file>HootsObjects/socks.flv</file>
+			<file>InstrTimeouts_A/InstrTimeouts_A_0.flv</file>
+			<file>InstrTimeouts_A/InstrTimeouts_A_1.flv</file>
+			<file>InstrTimeouts_A/InstrTimeouts_A_2.flv</file>
+			<file>Instructions_A/Instructions_A_0.flv</file>
+			<file>Instructions_A/Instructions_A_1.flv</file>
+			<file>SecondSetUp_A/SecondSetUp_A_0.flv</file>
+			<file>SecondSetUp_A/SecondSetUp_A_1.flv</file>
+			<file>SecondSetUp_A/SecondSetUp_A_2.flv</file>
+			<file>SecondPartRhymePairs/boat.flv</file>
+			<file>SecondPartRhymePairs/can.flv</file>
+			<file>SecondPartRhymePairs/chair.flv</file>
+			<file>SecondPartRhymePairs/coat.flv</file>
+			<file>SecondPartRhymePairs/cone.flv</file>
+			<file>SecondPartRhymePairs/fox.flv</file>
+			<file>SecondPartRhymePairs/gown.flv</file>
+			<file>SecondPartRhymePairs/hat.flv</file>
+			<file>SecondPartRhymePairs/log.flv</file>
+			<file>SecondPartRhymePairs/orange.flv</file>
+			<file>SecondPartRhymePairs/pear.flv</file>
+			<file>SecondPartRhymePairs/rake.flv</file>
+			<file>SecondPartRhymePairs/socks.flv</file>
+			<file>SecondPartRhymePairs/spoon.flv</file>
+			<file>SecondPartRhymePairs/vest.flv</file>
+			<file>SecondPartRhymePairs/wig.flv</file>
+		</A>
+		<B>
+			
+			<file>ElmosObjects/bear1.flv</file>
+			<file>ElmosObjects/bear2.flv</file>
+			<file>ElmosObjects/boat.flv</file>
+			<file>ElmosObjects/box.flv</file>
+			<file>ElmosObjects/cake.flv</file>
+			<file>ElmosObjects/can.flv</file>
+			<file>ElmosObjects/cat.flv</file>
+			<file>ElmosObjects/chair.flv</file>
+			<file>ElmosObjects/coat.flv</file>
+			<file>ElmosObjects/crown.flv</file>
+			<file>ElmosObjects/cone.flv</file>
+			<file>ElmosObjects/dog.flv</file>
+			<file>ElmosObjects/fan.flv</file>
+			<file>ElmosObjects/fox.flv</file>
+			<file>ElmosObjects/goat1.flv</file>
+			<file>ElmosObjects/goat2.flv</file>
+			<file>ElmosObjects/gown.flv</file>
+			<file>ElmosObjects/hat.flv</file>
+			<file>ElmosObjects/log.flv</file>
+			<file>ElmosObjects/moon.flv</file>
+			<file>ElmosObjects/nest.flv</file>
+			<file>ElmosObjects/orange.flv</file>
+			<file>ElmosObjects/pear.flv</file>
+			<file>ElmosObjects/pig.flv</file>
+			<file>ElmosObjects/rake.flv</file>
+			<file>ElmosObjects/sax.flv</file>
+			<file>ElmosObjects/socks.flv</file>
+			<file>ElmosObjects/spoon.flv</file>
+			<file>ElmosObjects/vest.flv</file>
+			<file>ElmosObjects/wig.flv</file>
+			<file>Hints/hint1_0.flv</file>
+			<file>Hints/hint1_1.flv</file>
+			<file>Hints/hint1_2.flv</file>
+			<file>Hints/hint2.flv</file>
+			<file>Hints/hint2_1.flv</file>
+			<file>Hints/hint2_2.flv</file>
+			<file>Hints/hint2_3.flv</file>
+			<file>Hints/hint3_0.flv</file>
+			<file>Hints/hint3_1.flv</file>
+			<file>Instructions_B/Instructions_3.flv</file>
+			<file>Instructions_B/Instructions_0.flv</file>
+			<file>Instructions_B/Instructions_1.flv</file>
+			<file>Instructions_B/Instructions_2.flv</file>
+			<file>Nope/Nope_0.flv</file>
+			<file>Nope/Nope_1.flv</file>
+			<file>Nope/Nope_2.flv</file>
+			<file>Nope/Nope_3.flv</file>
+			
+			<file>SecondSetUp_B/SecondSetUp_B_0.flv</file>
+			<file>SecondSetUp_B/SecondSetUp_B_1.flv</file>
+			<file>SecondSetUp_B/SecondSetUp_B_2.flv</file>
+			<file>WrongAnswer/bear1.flv</file>
+			<file>WrongAnswer/bear2.flv</file>
+			<file>WrongAnswer/boat.flv</file>
+			<file>WrongAnswer/box.flv</file>
+			<file>WrongAnswer/cake.flv</file>
+			<file>WrongAnswer/can.flv</file>
+			<file>WrongAnswer/cat.flv</file>
+			<file>WrongAnswer/chair.flv</file>
+			<file>WrongAnswer/coat.flv</file>
+			<file>WrongAnswer/crown.flv</file>
+			<file>WrongAnswer/cone.flv</file>
+			<file>WrongAnswer/dog.flv</file>
+			<file>WrongAnswer/fan.flv</file>
+			<file>WrongAnswer/fox.flv</file>
+			<file>WrongAnswer/goat1.flv</file>
+			<file>WrongAnswer/goat2.flv</file>
+			<file>WrongAnswer/gown.flv</file>
+			<file>WrongAnswer/hat.flv</file>
+			<file>WrongAnswer/log.flv</file>
+			<file>WrongAnswer/moon.flv</file>
+			<file>WrongAnswer/nest.flv</file>
+			<file>WrongAnswer/orange.flv</file>
+			<file>WrongAnswer/pear.flv</file>
+			<file>WrongAnswer/pig.flv</file>
+			<file>WrongAnswer/rake.flv</file>
+			<file>WrongAnswer/sax.flv</file>
+			<file>WrongAnswer/socks.flv</file>
+			<file>WrongAnswer/spoon.flv</file>
+			<file>WrongAnswer/vest.flv</file>
+			<file>WrongAnswer/wig.flv</file>
+		</B>
+		<MiniItems>
+			<mini id="goat1">Payoff/boat.flv</mini>
+			<mini id="fan">Payoff/can.flv</mini>
+			<mini id="bear2">Payoff/chair.flv</mini>
+			<mini id="goat2">Payoff/coat.flv</mini>
+			<mini id="sax">Payoff/cone.flv</mini>
+			<mini id="socks">Payoff/fox.flv</mini>
+			<mini id="crown">Payoff/gown.flv</mini>
+			<mini id="cat">Payoff/hat.flv</mini>
+			<mini id="dog">Payoff/log.flv</mini>
+			<mini id="orange">Payoff/orange.flv</mini>
+			<mini id="bear1">Payoff/pear.flv</mini>
+			<mini id="cake">Payoff/rake.flv</mini>
+			<mini id="box">Payoff/socks.flv</mini>
+			<mini id="moon">Payoff/spoon.flv</mini>
+			<mini id="nest">Payoff/vest.flv</mini>
+			<mini id="pig">Payoff/wig.flv</mini>
+			<mini id="goat1">SecondPartRhymePairs/boat.flv</mini>
+			<mini id="fan">SecondPartRhymePairs/can.flv</mini>
+			<mini id="bear2">SecondPartRhymePairs/chair.flv</mini>
+			<mini id="goat2">SecondPartRhymePairs/coat.flv</mini>
+			<mini id="sax">SecondPartRhymePairs/cone.flv</mini>
+			<mini id="socks">SecondPartRhymePairs/fox.flv</mini>
+			<mini id="crown">SecondPartRhymePairs/gown.flv</mini>
+			<mini id="cat">SecondPartRhymePairs/hat.flv</mini>
+			<mini id="dog">SecondPartRhymePairs/log.flv</mini>
+			<mini id="orange">SecondPartRhymePairs/orange.flv</mini>
+			<mini id="bear1">SecondPartRhymePairs/pear.flv</mini>
+			<mini id="cake">SecondPartRhymePairs/rake.flv</mini>
+			<mini id="box">SecondPartRhymePairs/socks.flv</mini>
+			<mini id="moon">SecondPartRhymePairs/spoon.flv</mini>
+			<mini id="nest">SecondPartRhymePairs/vest.flv</mini>
+			<mini id="pig">SecondPartRhymePairs/wig.flv</mini>
+			
+		</MiniItems>
+		<Full>
+			<file>NextRound/NextRound_0.flv</file>
+			<file>NextRound/NextRound_1.flv</file>
+			<file>NextRound/NextRound_2.flv</file>
+		
+		</Full>
+		<Mini>
+			<file>Exit/Exit_0_0.flv</file>
+			<file>Exit/Exit_0_1.flv</file>
+			<file>Exit/Exit_1_0.flv</file>
+			<file>Exit/Exit_1_1.flv</file>
+			<file>Exit/Exit_2_0.flv</file>
+			<file>Exit/Exit_2_1.flv</file>
+			<file>Exit/Exit_3_0.flv</file>
+			<file>Exit/Exit_3_1.flv</file>
+		</Mini>
+		
+	</files>
+
+</content>
+
