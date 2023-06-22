@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GiftRapScenes>
+	
+	<name>GiftRap</name>
+	<isLogging>true</isLogging>
+	<lookahead>5</lookahead>
+	
+	<!-- ***************************************************************** -->
+	
+	<!-- This section is not replayed (first time through only) -->
+	<child type="SequentialOnceScene">
+		<name>FirstTimeScene</name>
+		<isLogging>true</isLogging>
+		<lookahead>5</lookahead>
+		
+		<!-- Precaching of on-demand content -->
+		<child type="PrecacheScene">
+			<name>Precache</name>
+			<isLogging>false</isLogging>
+			<isResettable>false</isResettable>
+			<amount>20.0</amount>
+			<label>Buffering Video</label>
+			<asset>Preload</asset>
+		</child>
+		
+		<child type="PlaylistScene">
+			<name>HoldTitle</name>
+			<isLogging>false</isLogging>
+			<isClickSkip>false</isClickSkip>
+			<isCursorVisible>true</isCursorVisible>
+			<id>Title</id>
+			<id>{call|showCursor|true}</id>
+			<id>{Defer|3000}</id>
+		</child>
+		
+		<!-- FIRST:  INTRO -->
+		<child type="GiftRapPlaylist">
+			<name>FirstIntro</name>
+			<isLogging>false</isLogging>
+			<isClickSkip>false</isClickSkip>
+			<isCursorVisible>true</isCursorVisible>
+			
+			<id>GR_001A</id>
+			<id>GR_001B</id>
+		</child>
+		
+		<!-- FIRST: click the bag -->
+		<child type="ClickSelect">
+			<name>FirstBagClick</name>
+			<isLogging>false</isLogging>
+			<ui>BagUI</ui>
+			<isCacheAll>false</isCacheAll>
+			<isCursorVisible>true</isCursorVisible>
+			<ambient>GR_AMBIENT_01</ambient>
+			<payoff>MouseClick</payoff>
+		</child>
+		
+		<!-- FIRST: identify and pumpkin the object -->
+		<child type="GiftRapPlaylist">
+			<name>FirstIdentifyObject</name>
+		<isLogging>false</isLogging>
+			<isClickSkip>false</isClickSkip>
+			<isCursorVisible>true</isCursorVisible>
+			
+			<id>GR_003B</id>
+			<id>GR_004</id>
+			<id>GR_005B</id>
+			<id>GR_005C_ALT01</id>
+			<id>GR_005D</id>
+			
+			<!-- oh look, it's a [object] -->
+			<event>
+				<id>GR_003B</id>
+				<time>3.4</time>
+				<method>exec</method>
+				<arg>sayGift</arg>
+				<arg>q</arg>
+			</event>
+			<!-- show gift after identifying it -->
+			<event>
+				<id>GR_004</id>
+				<time>0</time>
+				<method>exec</method>
+				<arg>showSparkles</arg>
+				<arg>true</arg>
+			</event>
+			<event>
+				<id>GR_004</id>
+				<time>0</time>
+				<method>exec</method>
+				<arg>showGift</arg>
+				<arg>true</arg>
+			</event>
+			<!-- turn gift into pumpkin -->
+			<event>
+				<id>GR_004</id>
+				<time>23</time>
+				<method>exec</method>
+				<arg>showPumpkin</arg>
+				<arg>true</arg>
+			</event>
+			<!-- hide the gift shortly after -->
+			<event>
+				<id>GR_004</id>
+				<time>23.5</time>
+				<method>exec</method>
+				<arg>showGift</arg>
+				<arg>false</arg>
+			</event>
+			<!-- hide everything -->
+			<event>
+				<id>GR_005B</id>
+				<time>0</time>
+				<method>exec</method>
+				<arg>clear</arg>
+			</event>
+			<!-- to change the pumpkin back into a [object] -->
+			<event>
+				<id>GR_005C_ALT01</id>
+				<time>2.8</time>
+				<method>exec</method>
+				<arg>sayGift</arg>
+				<arg>s</arg>
+			</event>
+		</child>
+		
+	</child>
+	
+	<!-- object game (select rhyming object) -->
+	<child type="GiftRapRhymeSelect">
+		<name>GiftRapRhymeSelect</name>
+		<isLogging>false</isLogging>
+		<isCursorVisible>true</isCursorVisible>
+		<timeout>
+			<content>RhymeTimeout<!-- not really used --></content>
+			<period>10.0</period>
+		</timeout>
+	</child>
+	
+	<!-- post game (present wrapped) -->
+	<child type="GiftRapPlaylist">
+		<name>Outro</name>
+		<isLogging>false</isLogging>
+		<isClickSkip>false</isClickSkip>
+		<isCursorVisible>true</isCursorVisible>
+		
+		<id>GR_011A</id>
+		<id>PresentAppears</id>
+		<id>GR_012</id>
+		<id>{call|reset}</id>
+		
+		<!-- show the original present before it gets wrapped -->
+		<event>
+			<id>PresentAppears</id>
+			<time>0</time>
+			<method>exec</method>
+			<arg>showOriginalGift</arg>
+			<arg>true</arg>
+		</event>
+		<event>
+			<id>PresentAppears</id>
+			<time>0.5</time>
+			<method>exec</method>
+			<arg>showOriginalGift</arg>
+			<arg>false</arg>
+		</event>
+	</child>
+	
+	<!--
+		Game repeats at this point with slightly different assets.
+		For mini game it should end here with the final video (GR_014)
+	-->
+	
+	<child type="ClickSelect">
+		<name>BagClick</name>
+		<ui>BagUI</ui>
+		<isCacheAll>false</isCacheAll>
+		<isCursorVisible>true</isCursorVisible>
+		<ambient>GR_AMBIENT_02</ambient>
+		<payoff>MouseClick</payoff>
+	</child>
+		
+	<!-- REPEAT: identify and pumpkin the object -->
+	<child type="GiftRapPlaylist">
+		<name>FirstIdentifyObject</name>
+		<isClickSkip>false</isClickSkip>
+		<isCursorVisible>true</isCursorVisible>
+		
+		<id>GR_003B</id>
+		<id>GR_013B</id>
+		<id>GR_013C</id>
+		
+		<!-- oh look, it's a [object] -->
+		<event>
+			<id>GR_003B</id>
+			<time>3.4</time>
+			<method>exec</method>
+			<arg>sayGift</arg>
+			<arg>q</arg>
+		</event>
+		<!-- show gift after identifying it -->
+		<event>
+			<id>GR_003B</id>
+			<time>-1</time>
+			<method>exec</method>
+			<arg>showSparkles</arg>
+			<arg>true</arg>
+		</event>
+		<event>
+			<id>GR_003B</id>
+			<time>-1</time>
+			<method>exec</method>
+			<arg>showGift</arg>
+			<arg>true</arg>
+		</event>
+		<!-- turn gift into pumpkin -->
+		<event>
+			<id>GR_013B</id>
+			<time>8.8</time>
+			<method>exec</method>
+			<arg>showPumpkin</arg>
+			<arg>true</arg>
+		</event>
+		<!-- hide the gift shortly after -->
+		<event>
+			<id>GR_013B</id>
+			<time>9.1</time>
+			<method>exec</method>
+			<arg>showGift</arg>
+			<arg>false</arg>
+		</event>
+		<!-- to change the pumpkin back into a [object] -->
+		<event>
+			<id>GR_013C</id>
+			<time>0</time>
+			<method>exec</method>
+			<arg>clear</arg>
+		</event>
+		<event>
+			<id>GR_013C</id>
+			<time>14.1</time>
+			<method>exec</method>
+			<arg>sayGift</arg>
+			<arg>s</arg>
+		</event>
+	</child>
+	
+</GiftRapScenes>
