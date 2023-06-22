@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<games>
+	<activities path="activities/dwidg_clap_hands.swf" />
+	<activities path="activities/dwidg_give_me_five.swf" />
+	<activities path="activities/dwidg_hallo_bye.swf" />
+	<activities path="activities/dwidg_hight.swf" />
+	<activities path="activities/dwidg_kiss.swf" />
+	<activities path="activities/dwidg_shake_head.swf" />
+	<activities path="activities/dwidg_so_big.swf" />
+</games>
