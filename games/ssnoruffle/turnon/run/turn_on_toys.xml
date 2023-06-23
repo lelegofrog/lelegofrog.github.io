@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<games>
+	<room id="bath">
+		<activities path="activities/dolphin_bath.swf" />
+		<activities path="activities/periscope_bath.swf" />
+		<activities path="activities/rubber_duckie_bath.swf" />
+		<activities path="activities/tug_boat_bath.swf" />
+		<activities path="activities/whale_bath.swf" />
+	</room>
+	<room id="backyard">		
+		<activities path="activities/firetruck_backyard.swf" />
+		<activities path="activities/bucket_shovel_backyard.swf" />		
+		<activities path="activities/digging_machine_backyard.swf" />
+		<activities path="activities/dinosaur_backyard_backyard.swf" />
+		<activities path="activities/ball_backyard.swf" />
+	</room>
+	<room id="playroom">
+		<activities path="activities/nutcracker_playroom.swf" />
+		<activities path="activities/spinning_top_playroom.swf" />
+		<activities path="activities/dancer_doll_playroom.swf" />
+		<activities path="activities/jack_in_the_box_playroom.swf" />
+		<activities path="activities/toy_train_playroom.swf" />
+	</room>
+</games>
+

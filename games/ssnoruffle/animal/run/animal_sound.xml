@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<games>	
+	<activities path="activities/cow_sound.swf" />
+	<activities path="activities/dog_sound.swf" />
+	<activities path="activities/duck_sound.swf" />
+	<activities path="activities/frog_sound.swf" />
+	<activities path="activities/horse_sound.swf" />
+	<activities path="activities/owl_sound.swf" />
+	<activities path="activities/pig_sound.swf" />
+	<activities path="activities/rooster_sound.swf" />
+	<activities path="activities/sheep_sound.swf" />
+	<activities path="activities/cat_sound.swf" />
+</games>

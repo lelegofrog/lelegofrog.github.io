@@ -1,0 +1,15 @@
+<coloringBook>	
+	<activities path="car/car_color.swf"/>
+	<activities path="jet/jet_color.swf"/>
+	<activities path="cat/cat_color.swf"/>
+	<activities path="dog/dog_color.swf"/>
+	<activities path="teddy/teddy_color.swf"/>
+	<activities path="rattle/rattle_color.swf"/>
+	<activities path="fish/fish_color.swf"/>
+	<activities path="flower/flowers_color.swf"/>
+	<activities path="fruit/fruit_color.swf"/>
+	
+	<activities path="mobile/mobile_color.swf"/>
+	<activities path="nest/nest_color.swf"/>
+	<activities path="phone/phone_color.swf"/>
+</coloringBook>
