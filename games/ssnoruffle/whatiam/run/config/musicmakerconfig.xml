@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<asset_base_url></asset_base_url>
+	<songdata>
+		<mashup>
+			<track>
+				<item id="0" time="0"/>
+			</track>
+			<track>
+				<item id="1" time="40.0"/>
+				<item id="2" time="42.2"/>
+				<item id="3" time="44.4"/>
+				<item id="1" time="46.8"/>
+				<item id="2" time="48.9"/>
+				<item id="3" time="51.0"/>
+			</track>
+		</mashup>
+	</songdata>
+	<languages>
+		<language name="English" code="en" yesword="Yes" noword="No">
+<words>
+<word difficulty="simple" name="Caring" src="media/MusicMaker_045.mp3" words="Caring means showing others love and kindness" color="0x8F00C2"/>
+<word difficulty="simple" name="Silly" src="media/MusicMaker_042.mp3" words="Silly means being really playful" color="0x01AEF0"/>
+<word difficulty="simple" name="Friendly" src="media/MusicMaker_047.mp3" words="If you’re a friendly person, you’re nice and helpful" color="0x23C100"/>
+<word difficulty="simple" name="Funny" src="media/MusicMaker_043_alt.mp3" words="If you’re funny, you must make people laugh a lot!" color="0xEA2F00"/>
+				<word difficulty="simple" name="Kind" src="media/MusicMaker_044.mp3" words="Kind means being gentle and nice" color="0x0600FE"/>
+				<word difficulty="simple" name="Helpful" src="media/MusicMaker_046.mp3" words="Helpful means being there for others when they need you" color="0x98ed11"/>
+				<word difficulty="simple" name="Loved" src="media/MusicMaker_040.mp3" words="Loved means that someone really cares about you" color="0xf561f5"/>
+				<word difficulty="simple" name="Special" src="media/MusicMaker_041.mp3" words="Special means really important" color="0x00EAFF"/>
+				<word difficulty="intermediate" name="Awesome" src="media/MusicMaker_049.mp3" words="Awesome means really great, wonderful, and terrific!" color="0x2BFF00"/>
+				<word difficulty="intermediate" name="Brave" src="media/MusicMaker_052.mp3" words="Brave means being strong and showing courage" color="0x00EAFF"/>
+				<word difficulty="intermediate" name="Cheerful" src="media/MusicMaker_053.mp3" words="Cheerful means you’re in a happy mood" color="0xfb64f2"/>
+				<word difficulty="intermediate" name="Different" src="media/MusicMaker_048.mp3" words="Different means that there are special things about you" color="0x1ed800"/>
+				<word difficulty="intermediate" name="Giving" src="media/MusicMaker_054.mp3" words="Giving means that you share what you have with others" color="0x4F0074"/>
+				<word difficulty="intermediate" name="Hopeful" src="media/MusicMaker_050.mp3" words="Hopeful means having good thoughts about the future" color="0xffba00"/>
+				<word difficulty="intermediate" name="Thoughtful" src="media/MusicMaker_051.mp3" words="Being thoughtful means thinking about how others might feel" color="0xbae800"/>
+				<word difficulty="intermediate" name="Strong" src="media/MusicMaker_055.mp3" words="Strong means being able to get through hard things that may come your way" color="0x65d4db"/>
+				<word difficulty="advanced" name="Creative" src="media/MusicMaker_060.mp3" words="Creative people have lots of ideas and use their imagination!" color="0x0006FF"/>
+				<word difficulty="advanced" name="Curious" src="media/MusicMaker_058.mp3" words="Curious means you really want to know more about something" color="0xa9eb1d"/>
+				<word difficulty="advanced" name="Persistent" src="media/MusicMaker_062.mp3" words="Being persistent means trying and trying again" color="0xEDD500"/>
+				<word difficulty="advanced" name="Valued" src="media/MusicMaker_061.mp3" words="Valued means that you’re really important to someone" color="0xF400BF"/>
+				<word difficulty="advanced" name="Determined" src="media/MusicMaker_063.mp3" words="Determined means that you won’t give up" color="0x3ccbeb"/>
+				<word difficulty="advanced" name="Thankful" src="media/MusicMaker_059.mp3" words="If you’re thankful about something, you’re glad it happened" color="0x2BFF00"/>
+				<word difficulty="advanced" name="Unique" src="media/MusicMaker_056.mp3" words="Unique is another way to say really special" color="0xEA2F00"/>
+				<word difficulty="advanced" name="Optimistic" src="media/MusicMaker_057.mp3" words="Optimistic means having good thoughts" color="0x00EAFF"/>
+			</words>
+			<vos>
+				<vo id="1" interruptible="false" src="media/MusicMaker_001.mp3" words="What We Are Music Maker!"/>
+				<vo id="1b" interruptible="false" src="media/MusicMaker_013.mp3" words="Hola! Welcome back! Mira! Look! New words! Let’s make another song!"/>
+				<vo id="2" animateobject="englishhiliter" interruptible="false" src="media/MusicMaker_002.mp3" words="To play in English, click on the COLOR button"/>
+				<vo id="2" animateobject="spanishhiliter" interruptible="false" src="media/MusicMaker_003sp.mp3" words="To play in Spanish, click on the COLOR button"/>
+				<vo id="3" interruptible="false" src="media/MusicMaker_008.mp3" words="Hola! It’s me, Rosita, and this is my music-making friend, Bobby Tunebot!"/>
+				<vo id="4" animateobject="bobbymouth" interruptible="false" src="media/MusicMaker_009.mp3" words="(CHEERFUL TONES) Beep. Boop. Beep."/>
+				<vo id="4" interruptible="false" src="media/MusicMaker_010.mp3" words="He loves to make songs!"/>
+				<vo id="4" animateobject="bobbymouth" interruptible="false" src="media/MusicMaker_011.mp3" words="(“LET’S MAKE ONE TOGETHER!”) Beep. Beep. Boop. Beep!"/>
+				<vo id="4" interruptible="false" animateobject="monitors" src="media/MusicMaker_012.mp3" words="Bobby says you can make your own song with him! Si! Let's get started!"/>
+				<vo id="5" interruptible="false" src="media/MusicMaker_014.mp3" words="To start making your sing, choose three words!"/>
+				<vo id="8a" group="true" src="media/MusicMaker_115.mp3" words="Great word choice!"/>
+				<vo id="8a" group="true" src="media/MusicMaker_116.mp3" words="Que bien"/>
+				<vo id="8a" group="true" src="media/MusicMaker_117.mp3" words="Fantasico, amigo"/>
+				<vo id="8a" group="true" src="media/MusicMaker_118.mp3" words="Way to go"/>
+				<vo id="8a" group="true" src="media/MusicMaker_119.mp3" words="You chose a great word"/>
+				<vo id="8a" group="true" src="media/MusicMaker_120.mp3" words="I love the word you chose"/>
+				<vo id="8a" group="true" src="media/MusicMaker_121.mp3" words="Wonderful word, amigo"/>
+				<vo id="8a" group="true" src="media/MusicMaker_122.mp3" words="Keep going, amigo! Choose two more words to add to your song!"/>
+				<vo id="8b" group="true" src="media/MusicMaker_123.mp3" words="You're almost finished! Choose one more word!"/>
+				<vo id="8b" group="true" src="media/MusicMaker_124.mp3" words="I can't wait to listen to your song, amigo! Choose one more word!"/>
+				<vo id="8b" group="true" src="media/MusicMaker_125.mp3" words="Your song is almost ready, amigo! Choose one more word!"/>
+				<vo id="8c" animateobject="playhiliter" src="media/MusicMaker_160.mp3" words="click the green button."/>
+				<vo id="9" animateobject="playagainhiliter" interruptible="false" src="media/MusicMaker_186.mp3" words="To listen to your song again, tap on this button!"/>
+				<vo id="9" animateobject="newbuttonhiliter" interruptible="false" src="media/MusicMaker_189.mp3" words="To make a new song, tap on this button!"/>
+			</vos>
+			<tos>
+				<to id="5" group="true" src="media/MusicMaker_016_019.mp3" words="to find a word, click on a picture"/>
+				<to id="5" group="true" src="media/MusicMaker_016_024.mp3" words="to find a word, click on one of the pictures"/>
+				<to id="5" group="true" src="media/MusicMaker_135.mp3" words="just click on a word"/>
+				<to id="5" group="true" src="media/MusicMaker_137.mp3" words="just click on a picture"/>
+				<to id="7a" delay="1500" animateobject="yeshiliter" group="true" src="media/MusicMaker_104_106.mp3" words="to choose this word for your song, click on the green button! "/>
+				<to id="7a" delay="1500" animateobject="nohiliter" group="true" src="media/MusicMaker_108_110.mp3" words="to choose a different word, click on the red button"/>
+				<to id="7b" delay="1500" animateobject="yeshiliter" group="true" src="media/MusicMaker_105_106.mp3" words="to choose this word, click on the green button! "/>
+				<to id="7b" delay="1500" animateobject="nohiliter" group="true" src="media/MusicMaker_109_110.mp3" words="If you don't want to choose this word, click on the red button"/>
+				<to id="8" animateobject="xbuttonhiliter" group="true" src="media/MusicMaker_126_127.mp3" words="if you want to change a word in your song click on the red x next to the word."/>
+				<to id="8" animateobject="xbuttonhiliter" group="true" src="media/MusicMaker_126_129.mp3" words="if you want to change a word in your song click on the red x next to the word on bobby's belly."/>
+			</tos>
+			<pos>
+				<po id="englishbtn" src="media/MusicMaker_006.mp3"/>
+				<po id="spanishbtn" src="media/MusicMaker_007.mp3"/>
+			</pos>
+			<narations>
+				<phrase id="youalreadychosethatword" src="media/MusicMaker_139.mp3" words="oops, you already chose that word!"/>
+				<phrase id="clickonadifferent" src="media/MusicMaker_140.mp3" words="click on a different word"/>
+				<phrase id="clickonadifferent" src="media/MusicMaker_142.mp3" words="click on a different picture"/>
+				<phrase id="welldoneyouchose" src="media/MusicMaker_176.mp3"/>
+				<phrase id="and" src="media/MusicMaker_177.mp3"/>
+				<phrase id="thisword" src="media/MusicMaker_039.mp3"/>
+				<phrase id="youchose" src="media/MusicMaker_156.mp3" words="you chose the words..."/>
+				<phrase id="listenforthem" src="media/MusicMaker_listen_for_them.mp3" words="listen for them in your song"/>
+				<phrase id="drums" src="media/MusicMaker_167.mp3" words="Mira! You can play these drums to hear your words!"/>
+				<phrase id="drums" src="media/MusicMaker_168.mp3" words="Mira! You can play along!"/>
+				<phrase id="gobobby" src="media/MusicMaker_175.mp3" words="Ready? Hit it, Bobby!"/>
+				<phrase id="welldone" src="media/MusicMaker_178.mp3" words="That was maravilloso! You made a beautiful song! Great job, my friend! "/>
+				<phrase id="welldone" src="media/MusicMaker_179.mp3" words="That was a really cool song that you made! You rock, amigo!"/>
+				<phrase id="welldone" src="media/MusicMaker_181.mp3" words="Oh, I loved that song!  And I love the words you chose! ¡Fantastico!"/>
+				<phrase id="welldone" src="media/MusicMaker_182.mp3" words="(CHEERFUL BEEPS – “Good job!”) Beep boop!"/>
+				<phrase id="playedalong" src="media/MusicMaker_180.mp3" words="And you played along very well! Muy bien! "/>
+				<phrase id="playedalong" src="media/MusicMaker_183.mp3" words="Great job playing along, too!"/>
+				<phrase id="bobby" src="media/MusicMaker_009.mp3"/>
+				<phrase id="bobby" src="media/MusicMaker_011.mp3"/>
+				<phrase id="bobby" src="media/MusicMaker_114.mp3"/>
+				<phrase id="bobby" src="media/MusicMaker_155.mp3"/>
+				<phrase id="bobby" src="media/MusicMaker_182.mp3"/>
+			</narations>
+			<media>
+				<item id="vid_en" track="2" type="video" file="media/WhatWeAreAnthem_en.flv" duration="77.29"/>
+				<item id="Special_en" track="3" type="swf" file="media/Special_en.swf" duration="2"/>
+				<item id="Silly_en" track="3" type="swf" file="media/Silly_en.swf" duration="2"/>
+				<item id="Kind_en" track="3" type="swf" file="media/Kind_en.swf" duration="2"/>
+				<item id="Caring_en" track="3" type="swf" file="media/Caring_en.swf" duration="2"/>
+				<item id="Helpful_en" track="3" type="swf" file="media/Helpful_en.swf" duration="2"/>
+				<item id="Loved_en" track="3" type="swf" file="media/Loved_en.swf" duration="2"/>
+				<item id="Friendly_en" track="3" type="swf" file="media/Friendly_en.swf" duration="2"/>
+				<item id="Funny_en" track="3" type="swf" file="media/Funny_en.swf" duration="2"/>
+				<item id="Awesome_en" track="3" type="swf" file="media/Awesome_en.swf" duration="2"/>
+				<item id="Brave_en" track="3" type="swf" file="media/Brave_en.swf" duration="2"/>
+				<item id="Cheerful_en" track="3" type="swf" file="media/Cheerful_en.swf" duration="2"/>
+				<item id="Different_en" track="3" type="swf" file="media/Different_en.swf" duration="2"/>
+				<item id="Giving_en" track="3" type="swf" file="media/Giving_en.swf" duration="2"/>
+				<item id="Hopeful_en" track="3" type="swf" file="media/Hopeful_en.swf" duration="2"/>
+				<item id="Strong_en" track="3" type="swf" file="media/Strong_en.swf" duration="2"/>
+				<item id="Thoughtful_en" track="3" type="swf" file="media/Thoughtful_en.swf" duration="2"/>
+				<item id="Creative_en" track="3" type="swf" file="media/Creative_en.swf" duration="2"/>
+				<item id="Curious_en" track="3" type="swf" file="media/Curious_en.swf" duration="2"/>
+				<item id="Determined_en" track="3" type="swf" file="media/Determined_en.swf" duration="2"/>
+				<item id="Optimistic_en" track="3" type="swf" file="media/Optimistic_en.swf" duration="2"/>
+				<item id="Persistent_en" track="3" type="swf" file="media/Persistent_en.swf" duration="2"/>
+				<item id="Thankful_en" track="3" type="swf" file="media/Thankful_en.swf" duration="2"/>
+				<item id="Unique_en" track="3" type="swf" file="media/Unique_en.swf" duration="2"/>
+				<item id="Valued_en" track="3" type="swf" file="media/Valued_en.swf" duration="2"/>
+			</media>
+		</language>
+		<language name="Spanish" code="es" yesword="Si" noword="No">
+			<words>
+				<word difficulty="simple" name="Graciosos" src="media/MusicMaker_042sp.mp3" words="Silly means being really playful" color="0x01AEF0"/>
+				<word difficulty="simple" name="Amigables" src="media/MusicMaker_047sp.mp3" words="If you’re a friendly person, you’re nice and helpful" color="0x23C100"/>
+				<word difficulty="simple" name="Chistosos" src="media/MusicMaker_043sp.mp3" words="If you’re funny, you must make people laugh a lot!" color="0xEA2F00"/>
+				<word difficulty="simple" name="Amables" src="media/MusicMaker_044sp.mp3" words="Kind means being gentle and nice" color="0x0600FE"/>
+				<word difficulty="simple" name="Amados" src="media/MusicMaker_040sp.mp3" words="Loved means that someone really cares about you" color="0xf561f5"/>
+				<word difficulty="simple" name="Felices" src="media/MusicMaker_046sp.mp3" words="Cheerful means you’re in a happy mood" color="0xfb64f2"/>
+				<word difficulty="simple" name="Diferentes" src="media/MusicMaker_041sp.mp3" words="Different means that there are special things about you" color="0x1ed800"/>
+				<word difficulty="simple" name="Fuertes" src="media/MusicMaker_045sp.mp3" words="Strong means being able to get through hard things that may come your way" color="0x65d4db"/>
+				<word difficulty="intermediate" name="Bondadosos" src="media/MusicMaker_050sp.mp3" words="Caring means showing others love and kindness" color="0x8F00C2"/>
+				<word difficulty="intermediate" name="Especiales" src="media/MusicMaker_064sp.mp3" words="Special means really important" color="0x00EAFF"/>
+				<word difficulty="intermediate" name="Maravillosos" src="media/MusicMaker_052sp.mp3" words="Awesome means really great, wonderful, and terrific!" color="0x2BFF00"/>
+				<word difficulty="intermediate" name="Valientes" src="media/MusicMaker_051sp.mp3" words="Brave means being strong and showing courage" color="0x00EAFF"/>
+				<word difficulty="intermediate" name="Atentos" src="media/MusicMaker_054sp.mp3" words="Being thoughtful means thinking about how others might feel" color="0xbae800"/>
+				<word difficulty="intermediate" name="Creativos" src="media/MusicMaker_055sp.mp3" words="Creative people have lots of ideas and use their imagination!" color="0x0006FF"/>
+				<word difficulty="intermediate" name="Curiosos" src="media/MusicMaker_049sp.mp3" words="Curious means you really want to know more about something" color="0xa9eb1d"/>
+				<word difficulty="intermediate" name="Agradecidos" src="media/MusicMaker_053sp.mp3" words="If you’re thankful about something, you’re glad it happened" color="0x2BFF00"/>
+				<word difficulty="advanced" name="Serviciales" src="media/MusicMaker_060sp.mp3" words="Helpful means being there for others when they need you" color="0x98ed11"/>
+				<word difficulty="advanced" name="Generosos" src="media/MusicMaker_058sp.mp3" words="Giving means that you share what you have with others" color="0x4F0074"/>
+				<word difficulty="advanced" name="Esperanzados" src="media/MusicMaker_059sp.mp3" words="Hopeful means having good thoughts about the future" color="0xffba00"/>
+				<word difficulty="advanced" name="Persistentes" src="media/MusicMaker_062sp.mp3" words="Being persistent means trying and trying again" color="0xEDD500"/>
+				<word difficulty="advanced" name="Valiosos" src="media/MusicMaker_061sp.mp3" words="Valued means that you’re really important to someone" color="0xF400BF"/>
+				<word difficulty="advanced" name="Resueltos" src="media/MusicMaker_063sp.mp3" words="Determined means that you won’t give up" color="0x3ccbeb"/>
+				<word difficulty="advanced" name="Unicos" src="media/MusicMaker_056sp.mp3" words="Unique is another way to say really special" color="0xEA2F00"/>
+				<word difficulty="advanced" name="Optimistas" src="media/MusicMaker_057sp.mp3" words="Optimistic means having good thoughts" color="0x00EAFF"/>
+			</words>
+			<vos>
+				<vo id="1" interruptible="false" src="media/MusicMaker_001.mp3" words="What We Are Music Maker!"/>
+				<vo id="1b" interruptible="false" src="media/MusicMaker_013sp.mp3" words="Hola! Welcome back! Mira! Look! New words! Let’s make another song!"/>
+				<vo id="2" animateobject="englishhiliter" interruptible="false" src="media/MusicMaker_002.mp3" words="To play in English, click on the COLOR button"/>
+				<vo id="2" animateobject="spanishhiliter" interruptible="false" src="media/MM_003sp.mp3" words="To play in Spanish, click on the COLOR button"/>
+				<vo id="3" interruptible="false" src="media/MusicMaker_008sp.mp3" words="Hola! It’s me, Rosita, and this is my music-making friend, Bobby Tunebot!"/>
+				<vo id="4" animateobject="bobbymouth" interruptible="false" src="media/MusicMaker_009.mp3" words="(CHEERFUL TONES) Beep. Boop. Beep."/>
+				<vo id="4" interruptible="false" src="media/MusicMaker_010sp.mp3" words="He loves to make songs!"/>
+				<vo id="4" animateobject="bobbymouth" interruptible="false" src="media/MusicMaker_011.mp3" words="(“LET’S MAKE ONE TOGETHER!”) Beep. Beep. Boop. Beep!"/>
+				<vo id="4" interruptible="false" animateobject="monitors" src="media/MusicMaker_012sp.mp3" words="Bobby says you can make your own song with him! Si! Let's get started!"/>
+				<vo id="5" interruptible="false" src="media/MusicMaker_014sp.mp3" words="To start making your sing, choose three words!"/>
+				<vo id="8a" group="true" src="media/MusicMaker_115sp.mp3" words="Great word choice!"/>
+				<vo id="8a" group="true" src="media/MusicMaker_116.mp3" words="Que bien"/>
+				<vo id="8a" group="true" src="media/MusicMaker_117.mp3" words="Fantasico, amigo"/>
+				<vo id="8a" group="true" src="media/MusicMaker_118sp.mp3" words="Way to go"/>
+				<vo id="8a" group="true" src="media/MusicMaker_119sp.mp3" words="You chose a great word"/>
+				<vo id="8a" group="true" src="media/MusicMaker_120sp.mp3" words="I love the word you chose"/>
+				<vo id="8a" group="true" src="media/MusicMaker_121sp.mp3" words="Wonderful word, amigo"/>
+				<vo id="8a" group="true" src="media/MusicMaker_122sp_alt.mp3" words="Keep going, amigo! Choose tow more words to add to your song!"/>
+				<vo id="8b" group="true" src="media/MusicMaker_123sp.mp3" words="You're almost finished! Choose one more word!"/>
+				<vo id="8b" group="true" src="media/MusicMaker_124sp.mp3" words="I can't wait to listen to your song, amigo! Choose one more word!"/>
+				<vo id="8b" group="true" src="media/MusicMaker_125sp.mp3" words="Your song is almost ready, amigo! Choose one more word!"/>
+				<vo id="8c" animateobject="playhiliter" src="media/MusicMaker_160sp.mp3" words="Now click Bobby's nose to hear your song."/>
+				<vo id="9" animateobject="playagainhiliter" interruptible="false" src="media/MusicMaker_186sp.mp3" words="To listen to your song again, tap on this button!"/>
+				<vo id="9" animateobject="newbuttonhiliter" interruptible="false" src="media/MusicMaker_189sp.mp3" words="To make a new song, tap on this button!"/>
+			</vos>
+			<tos>
+				<to id="5" group="true" src="media/MusicMaker_016_019sp.mp3" words="to find a word, click on a picture"/>
+				<to id="5" group="true" src="media/MusicMaker_016_024sp.mp3" words="to find a word, click on one of the pictures"/>
+				<to id="5" group="true" src="media/MusicMaker_135sp.mp3" words="just click on a word"/>
+				<to id="5" group="true" src="media/MusicMaker_137sp.mp3" words="just click on a picture"/>
+				<to id="7a" delay="5000" animateobject="yeshiliter" group="true" src="media/MusicMaker_104_106sp.mp3" words="to choose this word for your song, click on the green button! "/>
+				<to id="7a" delay="5000" animateobject="nohiliter" group="true" src="media/MusicMaker_108_110sp.mp3" words="to choose a different word, click on the red button"/>
+				<to id="7b" delay="5000" animateobject="yeshiliter" group="true" src="media/MusicMaker_105_106sp.mp3" words="to choose this word, click on the green button! "/>
+				<to id="7b" delay="5000" animateobject="nohiliter" group="true" src="media/MusicMaker_109_110sp.mp3" words="If you don't want to choose this word, click on the red button"/>
+				<to id="8" animateobject="xbuttonhiliter" group="true" src="media/MusicMaker_126_127sp.mp3" words="if you want to change a word in your song click on the red x next to the word."/>
+				<to id="8" animateobject="xbuttonhiliter" group="true" src="media/MusicMaker_126_129sp.mp3" words="if you want to change a word in your song click on the red x next to the word on bobby's belly."/>
+			</tos>
+			<pos>
+				<po id="englishbtn" src="media/MusicMaker_006.mp3"/>
+				<po id="spanishbtn" src="media/MusicMaker_007.mp3"/>
+			</pos>
+			<narations>
+				<phrase id="youalreadychosethatword" src="media/MusicMaker_139sp_alt.mp3" words="oops, you already chose that word!"/>
+				<phrase id="clickonadifferent" src="media/MusicMaker_140sp.mp3" words="click on a different word"/>
+				<phrase id="clickonadifferent" src="media/MusicMaker_142sp.mp3" words="click on a different picture"/>
+				<phrase id="welldoneyouchose" src="media/MusicMaker_176sp.mp3"/>
+				<phrase id="and" src="media/MusicMaker_177sp.mp3"/>
+				<phrase id="thisword" src="media/MusicMaker_039sp_alt.mp3"/>
+				<phrase id="youchose" src="media/MusicMaker_156sp.mp3" words="you chose the words..."/>
+				<phrase id="listenforthem" src="media/MusicMaker_168sp.mp3" words="listen for them in your song"/>
+				<phrase id="drums" src="media/MusicMaker_167sp.mp3" words="Mira! You can play these drums to hear your words!"/>
+				<phrase id="drums" src="media/MusicMaker_168sp.mp3" words="Mira! You can play along!"/>
+				<phrase id="gobobby" src="media/MusicMaker_175sp.mp3" words="Ready? Hit it, Bobby!"/>
+				<phrase id="welldone" src="media/MusicMaker_178sp.mp3" words="That was maravilloso! You made a beautiful song! Great job, my friend! "/>
+				<phrase id="welldone" src="media/MusicMaker_179sp.mp3" words="That was a really cool song that you made! You rock, amigo!"/>
+				<phrase id="welldone" src="media/MusicMaker_181sp.mp3" words="Oh, I loved that song!  And I love the words you chose! ¡Fantastico!"/>
+				<phrase id="welldone" src="media/MusicMaker_182.mp3" words="(CHEERFUL BEEPS – “Good job!”) Beep boop!"/>
+				<phrase id="playedalong" src="media/MusicMaker_180sp.mp3" words="And you played along very well! Muy bien! "/>
+				<phrase id="playedalong" src="media/MusicMaker_183sp.mp3" words="Great job playing along, too!"/>
+				<phrase id="bobby" src="media/MusicMaker_009.mp3"/>
+				<phrase id="bobby" src="media/MusicMaker_011.mp3"/>
+				<phrase id="bobby" src="media/MusicMaker_114.mp3"/>
+				<phrase id="bobby" src="media/MusicMaker_155.mp3"/>
+				<phrase id="bobby" src="media/MusicMaker_182.mp3"/>
+			</narations>
+			<media>
+				<item id="vid_es" track="2" type="video" file="media/WhatWeAreAnthem_es.flv" duration="77.29"/>
+				<item id="Unicos_es" track="3" type="swf" file="media/Unicos_es.swf" duration="2"/>
+				<item id="Resueltos_es" track="3" type="swf" file="media/Resueltos_es.swf" duration="2"/>
+				<item id="Valiosos_es" track="3" type="swf" file="media/Valiosos_es.swf" duration="2"/>
+				<item id="Persistentes_es" track="3" type="swf" file="media/Persistentes_es.swf" duration="2"/>
+				<item id="Esperanzados_es" track="3" type="swf" file="media/Esperanzados_es.swf" duration="2"/>
+				<item id="Generosos_es" track="3" type="swf" file="media/Generosos_es.swf" duration="2"/>
+				<item id="Serviciales_es" track="3" type="swf" file="media/Serviciales_es.swf" duration="2"/>
+				<item id="Agradecidos_es" track="3" type="swf" file="media/Agradecidos_es.swf" duration="2"/>
+				<item id="Curiosos_es" track="3" type="swf" file="media/Curiosos_es.swf" duration="2"/>
+				<item id="Creativos_es" track="3" type="swf" file="media/Creativos_es.swf" duration="2"/>
+				<item id="Atentos_es" track="3" type="swf" file="media/Atentos_es.swf" duration="2"/>
+				<item id="Valientes_es" track="3" type="swf" file="media/Valientes_es.swf" duration="2"/>
+				<item id="Maravillosos_es" track="3" type="swf" file="media/Maravillosos_es.swf" duration="2"/>
+				<item id="Especiales_es" track="3" type="swf" file="media/Especiales_es.swf" duration="2"/>
+				<item id="Bondadosos_es" track="3" type="swf" file="media/Bondadosos_es.swf" duration="2"/>
+				<item id="Fuertes_es" track="3" type="swf" file="media/Fuertes_es.swf" duration="2"/>
+				<item id="Diferentes_es" track="3" type="swf" file="media/Diferentes_es.swf" duration="2"/>
+				<item id="Felices_es" track="3" type="swf" file="media/Felices_es.swf" duration="2"/>
+				<item id="Amados_es" track="3" type="swf" file="media/Amados_es.swf" duration="2"/>
+				<item id="Amables_es" track="3" type="swf" file="media/Amables_es.swf" duration="2"/>
+				<item id="Chistosos_es" track="3" type="swf" file="media/Chistosos_es.swf" duration="2"/>
+				<item id="Amigables_es" track="3" type="swf" file="media/Amigables_es.swf" duration="2"/>
+				<item id="Graciosos_es" track="3" type="swf" file="media/Graciosos_es.swf" duration="2"/>
+				<item id="Optimistas_es" track="3" type="swf" file="media/Optimistas_es.swf" duration="2"/>
+			</media>
+		</language>
+	</languages>
+</data>
