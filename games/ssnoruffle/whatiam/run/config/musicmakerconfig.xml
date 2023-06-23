@@ -169,7 +169,7 @@
 				<vo id="1" interruptible="false" src="media/MusicMaker_001.mp3" words="What We Are Music Maker!"/>
 				<vo id="1b" interruptible="false" src="media/MusicMaker_013sp.mp3" words="Hola! Welcome back! Mira! Look! New words! Let’s make another song!"/>
 				<vo id="2" animateobject="englishhiliter" interruptible="false" src="media/MusicMaker_002.mp3" words="To play in English, click on the COLOR button"/>
-				<vo id="2" animateobject="spanishhiliter" interruptible="false" src="media/MM_003sp.mp3" words="To play in Spanish, click on the COLOR button"/>
+				<vo id="2" animateobject="spanishhiliter" interruptible="false" src="media/MusicMaker_003sp.mp3" words="To play in Spanish, click on the COLOR button"/>
 				<vo id="3" interruptible="false" src="media/MusicMaker_008sp.mp3" words="Hola! It’s me, Rosita, and this is my music-making friend, Bobby Tunebot!"/>
 				<vo id="4" animateobject="bobbymouth" interruptible="false" src="media/MusicMaker_009.mp3" words="(CHEERFUL TONES) Beep. Boop. Beep."/>
 				<vo id="4" interruptible="false" src="media/MusicMaker_010sp.mp3" words="He loves to make songs!"/>
@@ -222,14 +222,14 @@
 				<phrase id="welldone" src="media/MusicMaker_178sp.mp3" words="That was maravilloso! You made a beautiful song! Great job, my friend! "/>
 				<phrase id="welldone" src="media/MusicMaker_179sp.mp3" words="That was a really cool song that you made! You rock, amigo!"/>
 				<phrase id="welldone" src="media/MusicMaker_181sp.mp3" words="Oh, I loved that song!  And I love the words you chose! ¡Fantastico!"/>
-				<phrase id="welldone" src="media/MusicMaker_182.mp3" words="(CHEERFUL BEEPS – “Good job!”) Beep boop!"/>
+				<phrase id="welldone" src="media/MusicMaker_114.mp3" words="(CHEERFUL BEEPS – “Good job!”) Beep boop!"/>
 				<phrase id="playedalong" src="media/MusicMaker_180sp.mp3" words="And you played along very well! Muy bien! "/>
 				<phrase id="playedalong" src="media/MusicMaker_183sp.mp3" words="Great job playing along, too!"/>
 				<phrase id="bobby" src="media/MusicMaker_009.mp3"/>
 				<phrase id="bobby" src="media/MusicMaker_011.mp3"/>
 				<phrase id="bobby" src="media/MusicMaker_114.mp3"/>
 				<phrase id="bobby" src="media/MusicMaker_155.mp3"/>
-				<phrase id="bobby" src="media/MusicMaker_182.mp3"/>
+				<phrase id="bobby" src="media/MusicMaker_114.mp3"/>
 			</narations>
 			<media>
 				<item id="vid_es" track="2" type="video" file="media/WhatWeAreAnthem_es.flv" duration="77.29"/>
