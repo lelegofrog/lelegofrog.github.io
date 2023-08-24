@@ -19,14 +19,16 @@ body {
 	text-align: center;
 	font-family: "sans";
 	color: #00ff00;
-	text-shadow: 1px 1px 3px #00aa00;
+	text-shadow: 2px 2px 3px #00aa00;
+	cursor:url('downloads/cursormania/10915a.gif'),auto;
 }
 table {
 	border-color: white;
 	table-align: center;
 }
 a {
-	color: #ffbb00;
+	color: #cc9900;
+	text-shadow: 2px 2px 3px #663300;
 	font-family: "sansbd";
 }
 .pix {

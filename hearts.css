@@ -19,7 +19,8 @@ body {
 	text-align: center;
 	font-family: "sans";
 	color: #ffddff;
-	text-shadow: 1px 1px 3px #ff0000;
+	text-shadow: 2px 2px 3px #ff0000;
+	cursor:url('downloads/cursormania/7627.gif'),auto;
 }
 table {
 	border-color: white;
@@ -28,6 +29,7 @@ table {
 a {
 	color: #ff0000;
 	font-family: "sansbd";
+	text-shadow: 2px 2px 3px #aa0000;
 }
 .pix {
 	image-rendering: pixelated;

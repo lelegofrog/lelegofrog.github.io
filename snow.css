@@ -18,8 +18,9 @@ body {
 	background-image: url("Circlessnow.png");
 	text-align: center;
 	font-family: "sans";
-	color: white;
+	color: #d0ffff;
 	text-shadow: 2px 2px 3px #0000aa;
+	cursor:url('downloads/cursormania/1492.gif'),auto;
 }
 table {
 	border-color: white;

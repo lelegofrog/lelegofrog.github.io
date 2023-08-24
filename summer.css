@@ -1,0 +1,65 @@
+@font-face {
+    font-family: "sans";
+    src: url("comic.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("comicbd.ttf");
+}
+#logo {
+    background-image: url("brycespixlogosummer.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("Circlessummer.png");
+	text-align: center;
+	font-family: "sans";
+	color: yellow;
+	text-shadow: 2px 2px 3px #666600;
+	cursor:url('downloads/cursormania/1480.gif'),auto;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+a {
+	color: #00ffff;
+	font-family: "sansbd";
+	text-shadow: 2px 2px 3px #006666;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+.shadeless {
+	text-shadow: 0px 0px 0px white;
+}
+.smol {
+  font-size: 10px;
+}
+.voidx {
+	background-color: #ffffff;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}

@@ -19,7 +19,7 @@ body {
 	text-align: center;
 	font-family: "sans";
 	color: white;
-	text-shadow: 1px 1px 3px black;
+	text-shadow: 2px 2px 3px black;
 }
 table {
 	border-color: white;
@@ -37,6 +37,11 @@ a {
 }
 .voidx {
 	background-color: #ffffff;
+	color: black;
+	text-shadow: 1px 1px 1px white;
+}
+.voidax {
+	background-color: #cccccc;
 	color: black;
 	text-shadow: 1px 1px 1px white;
 }

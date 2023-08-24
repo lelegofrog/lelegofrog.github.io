@@ -19,18 +19,21 @@ body {
 	text-align: center;
 	font-family: "sans";
 	color: white;
-	text-shadow: 1px 1px 3px black;
+	text-shadow: 2px 2px 3px black;
+	cursor:url('downloads/cursormania/2190.gif'),auto;
 }
 table {
 	border-color: white;
 	table-align: center;
 }
 a {
-	color: #ff00ff;
-	font-family: "sansbd";
+	color: #FFFFFF;
+	background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet); 
+    font-family: "sansbd";
 }
 .shadeless {
-	text-shadow: 0px 0px 0px black;
+	color: #000000;
+	text-shadow: 2px 2px 3px black;
 }
 .smol {
   font-size: 10px;

@@ -38,6 +38,9 @@ a {
 .ng a {
 	color: #00ffff;
 }
+.smol {
+  font-size: 10px;
+}
 h1 {
 	font-family: "sansbd";
 	font-weight: normal;
