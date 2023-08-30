@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Providers>
+	
+	<name>ElmoZoeHats</name>
+	<isLogging>false</isLogging>
+	
+	<!-- SPECIAL -->
+	<child type="PseudoProvider">
+		<name>Pseudo</name>
+		<isLogging>false</isLogging>
+		<isThrow>true</isThrow>
+	</child>
+	
+	<!-- INTERFACE -->
+	<child type="SwfProvider">
+		<name>ui.swf</name>
+		<isLogging>false</isLogging>
+		<target>swf_ui</target>
+	</child>
+	
+	<child type="SwfProvider">
+		<name>hatgame_ui.swf</name>
+		<isLogging>false</isLogging>
+		<target>swf_hatgame_ui</target>
+	</child>
+	
+	<!-- AUDIO -->
+	<child type="SwfProvider">
+		<name>sound.swf</name>
+		<isLogging>false</isLogging>
+		<target>swf_sound</target>
+	</child>
+	
+	<!-- VIDEO -->
+	<child type="VideoProvider">
+		<name>Video</name>
+		<isLogging>false</isLogging>
+		<isVerbose>false</isVerbose>
+		
+		<buffer>4.99</buffer>
+		<mismatch>0.15</mismatch>
+		
+		<header>
+			<host>{asset_path}/flv</host>
+			<frameRate>20</frameRate>
+			<timecodeUnits>HOURS:MINUTES:SECONDS:FRAMES</timecodeUnits>
+			<volume>1.0</volume>
+		</header>
+		
+		<segment>
+			<id>CLIP_01</id>
+			<description></description>
+			<location>00:00:05:01</location>
+			<duration>00:00:09:03</duration>
+		</segment>
+		<segment>
+			<id>CLIP_02</id>
+			<description></description>
+			<location>00:00:14:04</location>
+			<duration>00:00:23:27</duration>
+		</segment>
+		<segment>
+			<id>CLIP_03</id>
+			<description></description>
+			<location>00:00:38:02</location>
+			<duration>00:00:03:07</duration>
+		</segment>
+		<segment>
+			<id>CLIP_04</id>
+			<description></description>
+			<location>00:00:41:10</location>
+			<duration>00:00:03:11</duration>
+		</segment>
+		<segment>
+			<id>CLIP_05</id>
+			<description></description>
+			<location>00:00:44:22</location>
+			<duration>00:00:14:04</duration>
+		</segment>
+		<segment>
+			<id>CLIP_06</id>
+			<description></description>
+			<location>00:00:58:27</location>
+			<duration>00:00:14:03</duration>
+		</segment>
+		<segment>
+			<id>CLIP_07</id>
+			<description></description>
+			<location>00:01:13:01</location>
+			<duration>00:00:25:16</duration>
+		</segment>
+		<segment>
+			<id>CLIP_08</id>
+			<description></description>
+			<location>00:01:38:18</location>
+			<duration>00:00:05:12</duration>
+		</segment>
+		<segment>
+			<id>CLIP_09</id>
+			<description></description>
+			<location>00:01:44:02</location>
+			<duration>00:00:02:26</duration>
+		</segment>
+		<segment>
+			<id>CLIP_10</id>
+			<description></description>
+			<location>00:01:46:29</location>
+			<duration>00:01:12:21</duration>
+		</segment>
+		<segment>
+			<id>CLIP_11</id>
+			<description></description>
+			<location>00:02:59:19</location>
+			<duration>00:01:03:23</duration>
+		</segment>
+		<segment>
+			<id>CLIP_12</id>
+			<description></description>
+			<location>00:03:56:13</location>
+			<duration>00:00:15:09</duration>
+		</segment>
+		<segment>
+			<id>CLIP_13</id>
+			<description></description>
+			<location>00:04:11:23</location>
+			<duration>00:00:52:19</duration>
+		</segment>
+		<segment>
+			<id>CLIP_14</id>
+			<description></description>
+			<location>00:05:03:13</location>
+			<duration>00:00:13:17</duration>
+		</segment>
+		<segment>
+			<id>CLIP_15</id>
+			<description></description>
+			<location>00:05:19:29</location>
+			<duration>00:00:04:28</duration>
+		</segment>
+		<segment>
+			<id>CLIP_17</id>
+			<description></description>
+			<location>00:05:31:25</location>
+			<duration>00:00:05:07</duration>
+		</segment>
+		<segment>
+			<id>CLIP_18</id>
+			<description></description>
+			<location>00:05:37:03</location>
+			<duration>00:00:05:10</duration>
+		</segment>
+		<segment>
+			<id>CLIP_19</id>
+			<description></description>
+			<location>00:05:42:13</location>
+			<duration>00:00:03:21</duration>
+		</segment>
+		<segment>
+			<id>CLIP_20</id>
+			<description></description>
+			<location>00:05:55:11</location>
+			<duration>00:00:06:17</duration>
+		</segment>
+		<segment>
+			<id>CLIP_21</id>
+			<description></description>
+			<location>00:06:18:18</location>
+			<duration>00:00:06:27</duration>
+		</segment>
+		<segment>
+			<id>CLIP_22</id>
+			<description></description>
+			<location>00:06:25:16</location>
+			<duration>00:00:03:13</duration>
+		</segment>
+		
+	</child>
+	
+</Providers>

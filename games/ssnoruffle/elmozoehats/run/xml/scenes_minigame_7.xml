@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenes>
+	
+	<name>ElmoZoeHatsScenes</name>
+	<isLogging>true</isLogging>
+	<lookahead>3</lookahead>
+	
+	<!-- Precaching of on-demand content -->
+	<child type="PrecacheScene">
+		<name>Precache</name>
+		<isLogging>false</isLogging>
+		<isResettable>false</isResettable>
+		<amount>20.0</amount>
+		<label>Buffering Video</label>
+		<asset>Preload</asset>
+	</child>
+	<child type="PlaylistScene">
+		<name>Setup</name>
+		<isLogging>false</isLogging>
+		<id>Title</id>
+		<id>{call|showCursor|true}</id>
+	</child>
+
+	<!-- game 7 elmo+Zeo 3-6 superhats -->
+	<child type="MultiHat">
+		<name>Game7</name>
+		<isLogging>false</isLogging>
+		
+		<prefix>CLIP_17</prefix>
+		<suffix>CLIP_13</suffix>
+		<suffix>CLIP_14</suffix>
+		
+		<character>elmo</character>
+		<character>zoe</character>
+		
+		<isExtended>true</isExtended>
+		<spacing>45</spacing>
+		<hatsInitial>0</hatsInitial>
+		<hatsLimit>3-6</hatsLimit>
+	</child>
+
+</scenes>

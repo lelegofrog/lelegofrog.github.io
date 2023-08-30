@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BulkLoader>
+	
+	<name>AssetList</name>
+	<numConnections>5</numConnections>
+	<logLevel>10</logLevel>
+
+	<files>
+		
+		<!-- video definition -->
+		<file>
+			<id>xml_providers</id>
+			<url>{base_path}xml/providers.xml</url>
+			<type>xml</type>
+		</file>
+		
+		<!-- media sequencer -->
+		<file>
+			<id>xml_sequencer</id>
+			<url>{base_path}xml/sequencer.xml</url>
+			<type>xml</type>
+		</file>
+		
+		<!-- game scene definition -->
+		<file>
+			<id>xml_scenes</id>
+			<url>{base_path}xml/scenes.xml</url>
+			<type>xml</type>
+		</file><br/>
+		
+		<!-- minigame scene defs -->
+		<file>
+			<id>xml_scenes_minigame_5</id>
+			<url>{base_path}xml/scenes_minigame_5.xml</url>
+			<type>xml</type>
+		</file>
+		<file>
+			<id>xml_scenes_minigame_6</id>
+			<url>{base_path}xml/scenes_minigame_6.xml</url>
+			<type>xml</type>
+		</file>
+		<file>
+			<id>xml_scenes_minigame_7</id>
+			<url>{base_path}xml/scenes_minigame_7.xml</url>
+			<type>xml</type>
+		</file>
+		
+		<!-- interface SWF -->
+		<file>
+			<id>swf_ui</id>
+			<url>{base_path}swf/ui.swf</url>
+			<type>movieclip</type>
+		</file>
+		<file>
+			<id>swf_hatgame_ui</id>
+			<url>{base_path}swf/hatgame_ui.swf</url>
+			<type>movieclip</type>
+		</file>
+		
+		<!-- sound SWF -->
+		<file>
+			<id>swf_sound</id>
+			<url>{base_path}swf/sound.swf</url>
+			<type>movieclip</type>
+		</file>
+		
+		<!-- other loaded assets -->
+		<!-- ... -->
+		<!-- ... -->
+		<!-- ... -->
+		
+	</files>
+	
+</BulkLoader>

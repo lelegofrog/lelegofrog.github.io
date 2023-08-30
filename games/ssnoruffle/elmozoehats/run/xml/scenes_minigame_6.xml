@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<scenes>
+	
+	<name>ElmoZoeHatsScenes</name>
+	<isLogging>true</isLogging>
+	<lookahead>3</lookahead>
+	
+	<!-- Precaching of on-demand content -->
+	<child type="PrecacheScene">
+		<name>Precache</name>
+		<isLogging>false</isLogging>
+		<isResettable>false</isResettable>
+		<amount>20.0</amount>
+		<label>Buffering Video</label>
+		<asset>Preload</asset>
+	</child>
+	<child type="PlaylistScene">
+		<name>Setup</name>
+		<isLogging>false</isLogging>
+		<id>Title</id>
+		<id>{call|showCursor|true}</id>
+	</child>
+	
+	<!-- game 6a elmo 10 hats -->
+	<child type="SingleHat">
+		<name>Game6a</name>
+		<isLogging>false</isLogging>
+		
+		<prefix>CLIP_17</prefix>
+		<suffix>CLIP_21</suffix>
+		
+		<character>elmo</character>
+		<isExtended>true</isExtended>
+		<spacing>13</spacing>
+		<hatsInitial>2-9</hatsInitial>
+		<hatsLimit>5-10</hatsLimit>
+	</child>
+	
+	<!-- game 6b zoe 10 hats -->
+	<child type="SingleHat">
+		<name>Game6b</name>
+		<isLogging>false</isLogging>
+		
+		<!-- no prefix -->
+		<suffix>CLIP_14</suffix>
+		
+		<character>zoe</character>
+		<isExtended>true</isExtended>
+		<spacing>13</spacing>
+		<hatsInitial>2-9</hatsInitial>
+		<hatsLimit>5-10</hatsLimit>
+	</child>
+	
+</scenes>

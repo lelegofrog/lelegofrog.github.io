@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenes>
+	
+	<name>ElmoZoeHatsScenes</name>
+	<isLogging>true</isLogging>
+	<lookahead>5</lookahead>
+	
+	<!-- This section is not replayed -->
+	<child type="SequentialOnceScene">
+		
+		<name>OnceOnlySection</name>
+		<isLogging>true</isLogging>
+		<lookahead>5</lookahead>
+		
+		<!-- Precaching of on-demand content -->
+		<child type="PrecacheScene">
+			<name>Precache</name>
+			<isLogging>false</isLogging>
+			<isResettable>false</isResettable>
+			<amount>40.0</amount>
+			<label>Buffering Video</label>
+			<asset>Preload</asset>
+		</child>
+		<child type="PlaylistScene">
+			<name>Setup</name>
+			<isLogging>false</isLogging>
+			<id>Title</id>
+			<id>{call|showCursor|true}</id>
+		</child>
+		
+		<!-- game 1a elmo 4 hats -->
+		<child type="SingleHat">
+			<name>Game1a</name>
+			<isLogging>false</isLogging>
+			
+			<prefix>CLIP_01</prefix>
+			<prefix>CLIP_02</prefix>
+			<prefix>CLIP_03</prefix>
+			
+			<suffix>CLIP_04</suffix>
+			
+			<character>elmo</character>
+			<isExtended>false</isExtended>
+			<spacing>20</spacing>
+			<hatsInitial>0</hatsInitial>
+			<hatsLimit>4</hatsLimit>
+		</child>
+		
+		<!-- game 1b zoe 4 hats -->
+		<child type="SingleHat">
+			<name>Game1b</name>
+			<isLogging>false</isLogging>
+			
+			<!-- no prefix -->
+			<suffix>CLIP_05</suffix>
+			<suffix>CLIP_06</suffix>
+			<suffix>CLIP_07</suffix>
+			
+			<character>zoe</character>
+			<isExtended>false</isExtended>
+			<spacing>20</spacing>
+			<hatsInitial>0</hatsInitial>
+			<hatsLimit>4</hatsLimit>
+		</child>
+		
+		<!-- game 2a elmo 7 hats -->
+		<child type="SingleHat">
+			<name>Game2a</name>
+			<isLogging>false</isLogging>
+			
+			<prefix>CLIP_08</prefix>
+			<suffix>CLIP_09</suffix>
+			
+			<character>elmo</character>
+			<continueFrom>Game1a</continueFrom>
+			<isExtended>false</isExtended>
+			<spacing>18</spacing>
+			<hatsInitial>4</hatsInitial>
+			<hatsLimit>7</hatsLimit>
+		</child>
+		
+		<!-- game 2b zoe 7 hats -->
+		<child type="SingleHat">
+			<name>Game2b</name>
+			<isLogging>false</isLogging>
+			
+			<!-- no prefix -->
+			<suffix>CLIP_10</suffix>
+			<suffix>CLIP_11</suffix>
+			
+			<character>zoe</character>
+			<continueFrom>Game1b</continueFrom>
+			<isExtended>false</isExtended>
+			<spacing>18</spacing>
+			<hatsInitial>4</hatsInitial>
+			<hatsLimit>7</hatsLimit>
+		</child>
+		
+		<!-- game 3a elmo 10 hats -->
+		<child type="SingleHat">
+			<name>Game3a</name>
+			<isLogging>false</isLogging>
+			
+			<prefix>CLIP_03</prefix>
+			<suffix>CLIP_09</suffix>
+			
+			<character>elmo</character>
+			<continueFrom>Game2a</continueFrom>
+			<isExtended>false</isExtended>
+			<spacing>13</spacing>
+			<hatsInitial>7</hatsInitial>
+			<hatsLimit>10</hatsLimit>
+		</child>
+		
+		<!-- game 3b zoe 10 hats -->
+		<child type="SingleHat">
+			<name>Game3b</name>
+			<isLogging>false</isLogging>
+			
+			<!-- no prefix -->
+			<suffix>CLIP_12</suffix>
+			
+			<character>zoe</character>
+			<continueFrom>Game2b</continueFrom>
+			<isExtended>false</isExtended>
+			<spacing>13</spacing>
+			<hatsInitial>7</hatsInitial>
+			<hatsLimit>10</hatsLimit>
+		</child>
+		
+		<!-- game 4 elmo+Zeo 3-6 superhats -->
+		<child type="MultiHat">
+			<name>Game4</name>
+			<isLogging>false</isLogging>
+			
+			<!-- no prefix -->
+			<suffix>CLIP_13</suffix>
+			
+			<character>elmo</character>
+			<character>zoe</character>
+			
+			<isExtended>false</isExtended>
+			<spacing>45</spacing>
+			<hatsInitial>0</hatsInitial>
+			<hatsLimit>3-6</hatsLimit>
+		</child>
+		
+	</child>
+
+	<!-- game 5a elmo 2-9 hats -->
+	<child type="SingleHat">
+		<name>Game5a</name>
+		<isLogging>false</isLogging>
+		
+		<prefix>CLIP_22</prefix>
+		<suffix>CLIP_18</suffix>
+		
+		<character>elmo</character>
+		<isExtended>true</isExtended>
+		<timeoutFraction>0.5</timeoutFraction>
+		<spacing>15</spacing>
+		<hatsInitial>0</hatsInitial>
+		<hatsLimit>2-9</hatsLimit>
+	</child>
+	
+	<!-- game 5b zoe 2-9 hats -->
+	<child type="SingleHat">
+		<name>Game5b</name>
+		<isLogging>false</isLogging>
+		
+		<!-- no prefix -->
+		<suffix>CLIP_20</suffix>
+		
+		<character>zoe</character>
+		<isExtended>true</isExtended>
+		<timeoutFraction>0.5</timeoutFraction>
+		<spacing>15</spacing>
+		<hatsInitial>0</hatsInitial>
+		<hatsLimit>2-9</hatsLimit>
+	</child>
+
+	<!-- game 6a elmo 10 hats -->
+	<child type="SingleHat">
+		<name>Game6a</name>
+		<isLogging>false</isLogging>
+		
+		<!-- no prefix -->
+		<suffix>CLIP_21</suffix>
+		
+		<character>elmo</character>
+		<continueFrom>Game5a</continueFrom>
+		<isExtended>true</isExtended>
+		<spacing>13</spacing>
+		<hatsInitial>2-9</hatsInitial>
+		<hatsLimit>5-10</hatsLimit>
+	</child>
+	
+	<!-- game 6b zoe 10 hats -->
+	<child type="SingleHat">
+		<name>Game6b</name>
+		<isLogging>false</isLogging>
+		
+		<!-- no prefix -->
+		<suffix>CLIP_19</suffix>
+		
+		<character>zoe</character>
+		<continueFrom>Game5b</continueFrom>
+		<isExtended>true</isExtended>
+		<spacing>13</spacing>
+		<hatsInitial>2-9</hatsInitial>
+		<hatsLimit>5-10</hatsLimit>
+	</child>
+
+	<!-- game 7 elmo+Zeo 3-6 superhats -->
+	<child type="MultiHat">
+		<name>Game7</name>
+		<isLogging>false</isLogging>
+		
+		<!-- no prefix -->
+		<suffix>CLIP_13</suffix>
+		
+		<character>elmo</character>
+		<character>zoe</character>
+		
+		<isExtended>true</isExtended>
+		<spacing>45</spacing>
+		<hatsInitial>0</hatsInitial>
+		<hatsLimit>3-6</hatsLimit>
+	</child>
+
+</scenes>
