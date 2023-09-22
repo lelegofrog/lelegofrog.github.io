@@ -1,6 +1,6 @@
 @font-face {
     font-family: "sansbd";
-    src: url("/comicbd.ttf");
+    src: url("comicbd.ttf");
 }
 body {
 	background-color: #000000;
@@ -10,9 +10,7 @@ body {
 	color: white;
 }
 a {
-	color: #0000aa;
+	color: #ff00ff;
+	background-color: #000000;
 	font-family: "sansbd";
-}
-.void {
-	background-color: #ffffff;
 }
