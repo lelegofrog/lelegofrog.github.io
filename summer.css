@@ -20,7 +20,7 @@ body {
 	font-family: "sans";
 	color: yellow;
 	text-shadow: 2px 2px 3px #666600;
-	cursor:url('downloads/cursormania/1480.gif'),auto;
+	cursor:url('downloads/cursormania/4740.gif'),auto;
 }
 table {
 	border-color: white;
@@ -44,6 +44,11 @@ a {
 }
 .voidx {
 	background-color: #ffffff;
+}
+.voidax {
+	background-color: #cccccc;
+	color: black;
+	text-shadow: 1px 1px 1px white;
 }
 h1 {
 	font-family: "sansbd";

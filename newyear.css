@@ -7,7 +7,7 @@
     src: url("comicbd.ttf");
 }
 #logo {
-    background-image: url("brycespixlogothanks.png");
+    background-image: url("brycespixlogonewyear.png");
     background-width: 210;
     background-height: 51;
 	background-repeat: no-repeat;
@@ -15,34 +15,32 @@
 }
 body {
 	background-color: #000000;
-	background-image: url("Circlesthanks.png");
+	background-image: url("Circlesnewyear.gif");
 	text-align: center;
 	font-family: "sans";
-	color: yellow;
-	text-shadow: 2px 2px 3px #cc0000;
-	cursor:url('downloads/cursormania/1470.gif'),auto;
+	color: #ffffdd;
+	text-shadow: 0 0 25px #ffff00;
+	cursor:url('2112e.gif'),auto;
 }
 table {
 	border-color: white;
 	table-align: center;
 }
 a {
-	color: orange;
-	font-family: "sansbd";
+	color: #eccb13;
+	background-image: linear-gradient(to right, #eccb13, #8c7a19);
+	-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "sansbd";
 }
 .shadeless {
-	text-shadow: 0px 0px 0px black;
+	text-shadow: 2px 2px 3px black;
 }
 .smol {
   font-size: 10px;
 }
 .voidx {
 	background-color: #ffffff;
-}
-.voidax {
-	background-color: #cccccc;
-	color: black;
-	text-shadow: 1px 1px 1px white;
 }
 .pix {
 	image-rendering: pixelated;

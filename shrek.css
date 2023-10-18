@@ -18,7 +18,7 @@ body {
 	background-image: url("downloads/shrek/Boiling_Point.jpg");
 	text-align: center;
 	font-family: "sans";
-	color: white;
+	color: #ffffcc;
 	text-shadow: 1px 1px 3px black;
 }
 table {
@@ -26,7 +26,7 @@ table {
 	table-align: center;
 }
 a {
-	color: #00ff00;
+	color: #bbcc00;
 	font-family: "sansbd";
 }
 .shadeless {

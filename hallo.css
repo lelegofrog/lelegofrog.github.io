@@ -7,7 +7,7 @@
     src: url("comicbd.ttf");
 }
 #logo {
-    background-image: url("brycespixlogoorange.png");
+    background-image: url("brycespixlogohallo.png");
     background-width: 210;
     background-height: 51;
 	background-repeat: no-repeat;
@@ -20,7 +20,7 @@ body {
 	font-family: "sans";
 	color: #fcfe4c;
 	text-shadow: 0 0 10px #ffaa00, 0 0 15px #ffaa00, 0 0 2px #ffaa00;
-	cursor:url('downloads/cursormania/8304a.gif'),auto;
+	cursor:url('8304.gif'),auto;
 }
 table {
 	border-color: white;
@@ -43,6 +43,19 @@ a {
 }
 .voidx {
 	background-color: #ffffff;
+}
+.voidax {
+	background-color: #cccccc;
+	color: black;
+	text-shadow: 1px 1px 1px white;
+}
+.ghost {
+	width: 105px;
+	height: 96px;
+	background-image: url("THEGHOST.gif"); 
+}
+.ghost:hover {
+	background-image: url("THEGHOSTe.gif"); 
 }
 h1 {
 	font-family: "sansbd";
