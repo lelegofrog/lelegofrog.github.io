@@ -6,6 +6,10 @@
     font-family: "sansbd";
     src: url("tahomabd.ttf");
 }
+@font-face {
+    font-family: "sanstitle";
+    src: url("trebucbd.ttf");
+}
 #logo {
     background-image: url("brycespixlogowinxp.png");
     background-width: 210;
@@ -35,21 +39,27 @@ a {
 	font-family: "sansbd";
 	font-weight: normal;
 }
+.smol {
+  font-size: 10px;
+}
+.cur {
+	background-color: #666666;
+}
 h1 {
-	font-family: "sansbd";
+	font-family: "sanstitle";
 }
 h2 {
-	font-family: "sansbd";
+	font-family: "sanstitle";
 }
 h3 {
-	font-family: "sansbd";
+	font-family: "sanstitle";
 }
 h4 {
-	font-family: "sansbd";
+	font-family: "sanstitle";
 }
 h5 {
-	font-family: "sansbd";
+	font-family: "sanstitle";
 }
 h6 {
-	font-family: "sansbd";
+	font-family: "sanstitle";
 }

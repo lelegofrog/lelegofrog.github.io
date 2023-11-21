@@ -1,10 +1,10 @@
 @font-face {
     font-family: "sans";
-    src: url("tahoma.ttf");
+    src: url("vgasys.ttf");
 }
 @font-face {
     font-family: "sansbd";
-    src: url("tahomabd.ttf");
+    src: url("vgasys.ttf");
 }
 #logo {
     background-image: url("brycespixlogowinxp.png");
@@ -18,6 +18,7 @@ body {
 	background-image: url("downloads/win/3/PYRAMID.png");
 	text-align: center;
 	font-family: "sans";
+	font-weight: normal;
 	color: white;
 	text-shadow: 1px 1px 3px black;
 }
@@ -37,19 +38,25 @@ a {
 }
 h1 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h2 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h3 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h4 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h5 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h6 {
 	font-family: "sansbd";
+	font-weight: normal;
 }

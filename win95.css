@@ -1,10 +1,10 @@
 @font-face {
     font-family: "sans";
-    src: url("tahoma.ttf");
+    src: url("micross.ttf");
 }
 @font-face {
     font-family: "sansbd";
-    src: url("tahomabd.ttf");
+    src: url("microssbd.ttf");
 }
 #logo {
     background-image: url("brycespixlogowinxp.png");
