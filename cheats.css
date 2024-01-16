@@ -1,0 +1,60 @@
+@font-face {
+    font-family: "sans";
+    src: url("cour.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("courbd.ttf");
+}
+@font-face {
+    font-family: "sansbi";
+    src: url("courbi.ttf");
+}
+#logo {
+    background-image: url("brycespixlogocheats.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("Circlescheats.png");
+	text-align: center;
+	font-family: "sans";
+	color: #00ff00;
+}
+table {
+	border-color: #00ff00;
+	table-align: center;
+}
+a {
+	color: #ffffff;
+	font-family: "sansbd";
+}
+.smol {
+  font-size: 10px;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}
