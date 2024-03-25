@@ -18,7 +18,7 @@ body {
 	background-image: url("downloads/sb/sp.jpg");
 	text-align: center;
 	font-family: "sans";
-	color: white;
+	color: #ffff00;
 	text-shadow: 1px 1px 3px black;
 }
 table {
@@ -31,8 +31,14 @@ table {
     image-rendering: crisp-edges;
 }
 a {
-	color: #aaaa00;
+	color: #ec6194;
 	font-family: "sansbd";
+}
+.shadeless {
+	text-shadow: 0px 0px 0px black;
+}
+.cur {
+	background-color: #666666;
 }
 h1 {
 	font-family: "sansbd";
