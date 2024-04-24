@@ -47,6 +47,9 @@ a {
 	font-family: "sansbdbackup";
 	display: inline;
 }
+.gallery {
+	height: 92vh;
+}
 h1 {
 	font-family: "sansbd";
 }
