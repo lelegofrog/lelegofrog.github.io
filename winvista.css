@@ -1,0 +1,69 @@
+@font-face {
+    font-family: "sans";
+    src: url("segoeui.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("segoeui.ttf");
+}
+@font-face {
+    font-family: "sanstitle";
+    src: url("segoeui.ttf");
+}
+#logo {
+    background-image: url("brycespixlogowinxp.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("downloads/win/vista.jpg");
+	background-repeat:no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: 1px 1px 3px black;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #aaaaff;
+	font-family: "sansbd";
+	font-weight: normal;
+}
+.smol {
+  font-size: 10px;
+}
+.cur {
+	background-color: #666666;
+}
+h1 {
+	font-family: "sanstitle";
+}
+h2 {
+	font-family: "sanstitle";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}
