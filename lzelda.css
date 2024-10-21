@@ -1,0 +1,70 @@
+@font-face {
+    font-family: "sans";
+    src: url("ReggaeOne-Regular.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("ReggaeOne-Regular.ttf");
+}
+#logo {
+    background-image: url("brycespixlogolzelda.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("downloads/lzelda/lzelda.png");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: 1px 1px 3px black;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #dd0000;
+	font-family: "sansbd";
+	font-weight: normal;
+}
+.ng a {
+	color: #00ffff;
+}
+.cur {
+	background-color: #666666;
+}
+.smol {
+  font-size: 10px;
+}
+h1 {
+	font-family: "sansbd";
+	font-weight: normal;
+}
+h2 {
+	font-family: "sansbd";
+	font-weight: normal;
+}
+h3 {
+	font-family: "sansbd";
+	font-weight: normal;
+}
+h4 {
+	font-family: "sansbd";
+	font-weight: normal;
+}
+h5 {
+	font-family: "sansbd";
+	font-weight: normal;
+}
+h6 {
+	font-family: "sansbd";
+	font-weight: normal;
+}

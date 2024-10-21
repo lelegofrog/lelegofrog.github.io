@@ -53,6 +53,9 @@ a {
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 }
+.cur {
+	background-color: #666666;
+}
 h1 {
 	font-family: "sansbd";
 }

@@ -38,6 +38,9 @@ a {
 .ng a {
 	color: #00ffff;
 }
+.cur {
+	background-color: #666666;
+}
 .smol {
   font-size: 10px;
 }

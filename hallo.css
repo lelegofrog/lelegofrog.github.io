@@ -19,7 +19,7 @@ body {
 	text-align: center;
 	font-family: "sans";
 	color: #fcfe4c;
-	text-shadow: 0 0 10px #ffaa00, 0 0 15px #ffaa00, 0 0 2px #ffaa00;
+	text-shadow: 0 0 10px #ffa500, 0 0 15px #ffa500, 0 0 2px #ffa500;
 	cursor:url('8304.gif'),auto;
 }
 table {
@@ -27,7 +27,8 @@ table {
 	table-align: center;
 }
 a {
-	color: #660066;
+	color: #00cc00;
+	text-shadow: 0 0 10px #ff00ff, 0 0 15px #660066, 0 0 2px #660066;
 	font-family: "sansbd";
 }
 .pix {
