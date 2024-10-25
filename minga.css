@@ -1,0 +1,57 @@
+@font-face {
+    font-family: "sans";
+    src: url("comic.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("comicbd.ttf");
+}
+#logo {
+    background-image: url("brycespixlogominga.png");
+    background-width: 224;
+    background-height: 56;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("games/mingabg.png");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: 1px 1px 3px black;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #ff00ff;
+	font-family: "sansbd";
+}
+.shadeless {
+	text-shadow: 0px 0px 0px black;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}
