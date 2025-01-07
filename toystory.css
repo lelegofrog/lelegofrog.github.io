@@ -1,0 +1,76 @@
+@font-face {
+    font-family: "sans";
+    src: url("comic.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("comicbd.ttf");
+}
+#logo {
+    background-image: url("brycespixlogotoystory.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #134c70;
+	background-image: url("downloads/toystory/clouds_wallpaper.gif");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: 3px 3px 0px #00000080;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+a {
+	color: #fcdf0a;
+	font-family: "sansbd";
+}
+.shadeless {
+	text-shadow: 0px 0px 0px black;
+}
+.smol {
+  font-size: 10px;
+}
+.voidx {
+	background-color: #ffffff;
+	color: black;
+	text-shadow: 1px 1px 1px white;
+}
+.voidax {
+	background-color: #cccccc;
+	color: black;
+	text-shadow: 1px 1px 1px white;
+}
+.voidx a {
+	text-shadow: 1px 1px 1px white;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+.cur {
+	background-color: #666666;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}

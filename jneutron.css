@@ -1,0 +1,75 @@
+@font-face {
+    font-family: "sans";
+    src: url("RAYGUN.TTF");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("RAYGUN.TTF");
+}
+@font-face {
+    font-family: "sansbdbackup";
+    src: url("comicbd.ttf");
+}
+#logo {
+    background-image: url("brycespixlogojneutron.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: linear-gradient(#000000,#000000,#000000,#000055);
+	background-size: 100vw 100vh;
+	background-attachment: fixed;
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: 1px 1px 3px black;
+	background-repeat: no-repeat;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+.backup {
+	font-family: "sansbdbackup";
+	display: inline;
+	font-size: 20px;
+}
+a {
+	color: #0082f7;
+	font-family: "sansbd";
+}
+.ng a {
+	color: #00ffff;
+}
+.cur {
+	background-color: #666666;
+}
+.smol {
+  font-size: 10px;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}
