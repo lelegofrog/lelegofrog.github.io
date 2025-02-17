@@ -1,0 +1,65 @@
+@font-face {
+    font-family: "sans";
+    src: url("F-ZeroSNES.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("F-ZeroSNES.ttf");
+}
+#logo {
+    background-image: url("brycespixlogofzero.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("downloads/fzero/fz.png");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: 1px 1px 0px #000000;
+	background-repeat: repeat;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #f3fe47;
+	font-family: "sansbd";
+	font-size: 23px;
+}
+.cur {
+	background-color: #666666;
+}
+h1 {
+	font-family: "sansbd";
+	font-size: 40px;
+}
+h2 {
+	font-family: "sansbd";
+	font-size: 30px;
+}
+h3 {
+	font-family: "sansbd";
+	font-size: 26px;
+}
+h4 {
+	font-family: "sansbd";
+	font-size: 23px;
+}
+h5 {
+	font-family: "sansbd";
+	font-size: 23px;
+}
+h6 {
+	font-family: "sansbd";
+	font-size: 23px;
+}
