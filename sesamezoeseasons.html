@@ -21,6 +21,23 @@
 			</script>
 			<!--end of Navigation bar-->
 		<h1>Zoe's Silly Seasons</h1>
-		<embed type="text/html" src="games/sesamestreet/zoeseasons/zoeseasons.html" width="600" height="312">
+        <div id='ruffle'></div>
+        <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+        <script>
+var swfobject = {};
+
+swfobject.embedSWF = function(url, cont, width, height){
+    var ruffle = window.RufflePlayer.newest(),
+        player = Object.assign(document.getElementById(cont).appendChild(ruffle.createPlayer()), {
+            width: width,
+            height: height,
+            style: 'width: ' + width + 'px; height: ' + height + 'px',
+        });
+    
+    player.load({ url: url });
+}
+
+swfobject.embedSWF('main_game-1.swf', 'ruffle', 600, 306);
+        </script>
 	</body>
 </html>
