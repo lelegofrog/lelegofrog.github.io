@@ -31,8 +31,18 @@ a {
 .void {
 	background-color: #ffffff;
 }
+.voidtalk {
+	background-color: #ffffff;
+}
 .void a {
 	color: #0000aa;
+}
+.voidtalk a {
+	color: #000000;
+	text-decoration: none;
+}
+.smol {
+  font-size: 10px;
 }
 .pix {
 	image-rendering: pixelated;
