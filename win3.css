@@ -19,6 +19,7 @@ body {
 	text-align: center;
 	font-family: "sans";
 	font-weight: normal;
+/*	font-size: 13px;*/
 	color: white;
 	text-shadow: 1px 1px 3px black;
 }
@@ -30,6 +31,9 @@ table {
 	image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
+}
+.cur {
+	background-color: #666666;
 }
 a {
 	color: #aaaaff;

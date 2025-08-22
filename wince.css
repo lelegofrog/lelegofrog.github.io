@@ -33,6 +33,9 @@ table {
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 }
+.cur {
+	background-color: #666666;
+}
 a {
 	color: #aaaaff;
 	font-family: "sansbd";
