@@ -6,6 +6,10 @@
     font-family: "sansbd";
     src: url("comicbd.ttf");
 }
+@font-face {
+    font-family: "sc";
+    src: url("verdana.ttf");
+}
 #logo {
     background-image: url("brycespixlogoeggs.png");
     background-width: 210;
@@ -48,6 +52,18 @@ a {
 .voidax {
 	background-color: #cccccc;
 	color: black;
+	text-shadow: 1px 1px 1px white;
+}
+.voidtalk {
+	background-color: #ffffff;
+}
+.voidtalk a {
+	color: #000000;
+	text-decoration: none;
+	background-image: linear-gradient(white);
+	font-family: "sc";
+    font-size: 10pt;
+	font-weight: normal;
 	text-shadow: 1px 1px 1px white;
 }
 h1 {

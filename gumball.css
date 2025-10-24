@@ -1,25 +1,26 @@
 @font-face {
     font-family: "sans";
-    src: url("micross.ttf");
+    src: url("comic.ttf");
 }
 @font-face {
     font-family: "sansbd";
-    src: url("microssbd.ttf");
+    src: url("comicbd.ttf");
 }
 #logo {
-    background-image: url("brycespixlogowinxp.png");
-    background-width: 210;
-    background-height: 51;
+    background-image: url("brycespixlogogumball.png");
+    background-width: 288;
+    background-height: 32;
 	background-repeat: no-repeat;
 	background-position: center; 
 }
 body {
 	background-color: #000000;
-	background-image: url("lelegodlex/win/bubbles.png");
+	background-image: url("downloads/gumball/stars.png");
 	text-align: center;
 	font-family: "sans";
 	color: white;
 	text-shadow: 1px 1px 3px black;
+	background-repeat: repeat;
 }
 table {
 	border-color: white;
@@ -30,13 +31,15 @@ table {
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 }
+a {
+	color: #e74e0e;
+	font-family: "sansbd";
+}
 .cur {
 	background-color: #666666;
 }
-a {
-	color: #aaaaff;
-	font-family: "sansbd";
-	font-weight: normal;
+.smol {
+  font-size: 10px;
 }
 h1 {
 	font-family: "sansbd";
