@@ -1,0 +1,96 @@
+<link rel="stylesheet" type="text/css" href="/css/global.css" />
+<link rel="stylesheet" type="text/css" href="/css/globalnetscape.css.php" />
+<style type="text/css"><!--@import url("/css/globalnav.css");--></style>
+<script type="text/javascript" src="/css/globalnav.js"></script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+ <title>Oops! Looking for something?</title>
+ <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+ <meta name="Description" content="Oops! Looking for something?" />
+ <meta name="Keywords" content="Oops! Looking for something?" />
+ <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<body>
+<div id="globalbranding">
+<h1 id="globallogo" title="Sesame Workshop is the nonprofit educational organization behind Sesame Street and so much more."><a href="http://www.sesameworkshop.org/"><span>Sesame Workshop is the nonprofit educational organization behind Sesame Street and so much more.</span></a></h1>
+<div id="globalnav"><div id="gnav">
+	<div id="gnavtop">
+		<div id="gnavdate" class="home"><a href="http://www.sesameworkshop.org/"  onmouseover="img('gnavhome',1);return false;" onmouseout="img('gnavhome',0);"><img id="gnavhome" src="/images/globalnav/home_off.gif" width="31" height="12" alt="Home" /></a></div>
+		<div id="gnsearch">
+			<img src="/images/globalnav/search_title.gif" width="34" height="9" alt="Search" />
+			<form id="gnavsearchform" action="/search/index.new.php" method="get">
+				<p><input id="gnavsearchfield" type="text" name="q" /></p>
+			</form>
+			<a href="#" onclick="gnavsearchsubmit();return false;"  onmouseover="img('gnavsearch',1);return false;" onmouseout="img('gnavsearch',0);"><img id="gnavsearch" src="/images/globalnav/search_off.gif" width="17" height="17" alt="Go" /></a>
+		</div>
+		<div id="gnrule"></div>
+	</div>
+	<div id="gnsitemap"><a href="http://www.sesameworkshop.org/aboutus/involved_sitemap.php"  onmouseover="img('gnavsitemap',1);return false;" onmouseout="img('gnavsitemap',0);"><img id="gnavsitemap" src="/images/globalnav/sitemap_off.gif" width="38" height="10" alt="Site Map" /></a></div>
+	<div id="gnpolicy"><a href="http://www.sesameworkshop.org/aboutus/involved_privacy_policy.php"  onmouseover="img('gnavpolicy',1);return false;" onmouseout="img('gnavpolicy',0);"><img id="gnavpolicy" src="/images/globalnav/policy_off.gif" width="60" height="10" alt="Privacy Policy" /></a></div>
+	<div id="gnavsections" class="sections"><ul class="sections">			<li class="workshop first"><a id="gnavworkshop" href="http://www.sesameworkshop.org/aboutus/"  onmouseover="gnavtoggle('workshop',1);return false;"><span>Workshop</span></a></li>
+			<li class="street"><a id="gnavstreet" href="http://www.sesameworkshop.org/sesamestreet/"  onmouseover="gnavtoggle('street',1);return false;"><span>Games &amp; More</span></a></li>
+			<li class="international"><a id="gnavinternational" href="http://www.sesameworkshop.org/international/"  onmouseover="gnavtoggle('international',1);return false;"><span>International</span></a></li>
+			<li class="parents"><a id="gnavparents" href="http://www.sesameworkshop.org/parents/"  onmouseover="gnavtoggle('parents',1);return false;"><span>Parents</span></a></li>
+			<li class="events"><a id="gnavevents" href="http://www.sesameworkshop.org/inyourneighborhood/"  onmouseover="gnavtoggle('events',1);return false;"><span>In Your Neighborhood</span></a></li>
+			<li class="store"><a id="gnavstore" href="http://www.sesameworkshop.org/newshop/"  onmouseover="gnavtoggle('store',1);return false;"><span>Sesame Store</span></a></li>
+		</ul>
+	</div>	<ul id="gnavsubworkshop" class="section">
+		<li class="first"><a href="http://www.sesameworkshop.org/aboutus/intro.php"  >Our Mission</a></li>
+		<li><a href="http://www.sesameworkshop.org/edonations"  >Support Us</a></li>
+		<li><a href="http://www.sesameworkshop.org/aboutus/newsletter/register_new.php"  >Free Newsletter</a></li>
+		<li><a href="http://www.sesameworkshop.org/aboutus/involved_products.php"  >Partners</a></li>
+		<li><a href="http://www.sesameworkshop.org/aboutus/involved_sponsors.php"  >Sponsors</a></li>
+		<li><a href="http://www.sesameworkshop.org/aboutus/inside_press.php"  >Press Room</a></li>
+		<li><a href="http://www.sesameworkshop.org/aboutus/inside_contact.php"  >Contact Us</a></li>
+	</ul>	<ul id="gnavsubstreet" class="section">
+		<li class="first"><a href="http://www.sesameworkshop.org/sesamestreet/games/"  >Games</a></li>
+		<li><a href="http://www.sesameworkshop.org/pinkydinkydoo/"  >Pinky Dinky Doo</a></li>
+		<li><a href="http://www.sesameworkshop.org/sesamestreet/stories/"  >Stories</a></li>
+		<li><a href="http://www.sesameworkshop.org/sesamestreet/art/"  >Art</a></li>
+		<li><a href="http://www.sesameworkshop.org/sesamestreet/music/"  >Music</a></li>
+		<li><a href="http://www.sesameworkshop.org/sesamestreet/mail/"  >Mail</a></li>
+		<li><a href="http://www.sesameworkshop.org/sesamestreet/elmosworld/"  >Elmo's World!</a></li>
+		<li><a href="http://www.sesameworkshop.org/dragontales/"  >Dragontales</a></li>
+		<li><a href="http://www.sesameworkshop.org/sagwa/"  >Sagwa</a></li>
+		<li><a href="http://www.sesameworkshop.org/stickerworld/"  >Stickerworld</a></li>
+	</ul>	<ul id="gnavsubinternational" class="section">
+		<li class="first">
+		<a href="http://www.sesameworkshop.org/international/"  >Sesame Street Around the World</a></li>
+	</ul>	<ul id="gnavsubparents" class="section">
+		<li class="first"><a href="http://www.sesameworkshop.org/parents/advice/"  >Advice</a></li>
+		<li><a href="http://www.sesameworkshop.org/parents/activity/"  >Activities</a></li>
+		<li><a href="http://www.sesameworkshop.org/parents/"  >Sesame Solutions</a></li>
+		<li><a href="http://www.sesameworkshop.org/sesamestreet/funtogo/"  >Fun To-Go</a></li>
+		<li><a href="http://www.sesameworkshop.org/sesamebeginnings/"  >Sesame Beginnings</a></li>
+		<li><a href="http://www.sesameworkshop.org/healthyhabits/"  >Healthy Habits</a></li>
+	</ul>	<ul id="gnavsubevents" class="section">
+		<li class="first"><a href="http://www.sesameworkshop.org/inyourneighborhood/"  >In Your Neighborhood</a></li>
+	</ul>	<ul id="gnavsubstore" class="section">
+		<li class="first"><a href="http://www.sesameworkshop.org/EducationalResources/"  >Educational Resources</a></li>
+		<li><a href="http://mobilestore.sesameworkshop.org/SesameStreet/"  >Ringtones & Wallpapers</a></li>
+		<li><a href="https://secure.uvoxnetworks.com/elmo/affhome.html?affno=74"  >It's Elmo Calling</a></li>
+		<li><a href="/newshop/"  >SESAME STORE - Now OPEN!</a></li>
+    </ul></div></div></div>
+<div id="wrapper">
+ <div id="content">
+  <h1><img src="images/h1-looking_for_something.gif" alt="Looking for something ?" /></h1>
+  <p>We're sorry, but the page you requested could not be found.</p>
+  <p>If you got here by typing a URL, please make sure the spelling, capitalization, and punctuation are correct.<br />
+  If you got here by following a link on one of our pages, please <a href="/tpr/">let us know</a> so we can fix it.</p>
+  <p class="start_again"><a href="/"><img src="images/start_again.gif" alt="start again at our home pagez" /></a></p>
+  <h2>Looking for something more?</h2>
+  <p>Visit the new <strong>SESAME STORE</strong> for fun and educational products featuring your favorite Sesame Street friends. Your purchases help fund Sesame Street and so much more!</p>
+  <p class="sesame_store"><a href="http://store.sesameworkshop.org/"><img src="images/go_to_sesame_store.gif" alt="go to sesame store" /></a></p>
+ </div>
+ <div id="footer"><a href="/copyright.php">Copyright 1998-2007 Sesame Workshop</a>. <a href="/terms.php">Terms of Use.</a></div>
+</div>
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"> 
+    </script> 
+    <script type="text/javascript"> 
+      _uacct = "UA-297002-2";
+      _udn="sesameworkshop.org"; 
+      urchinTracker(); 
+    </script>
+</body>
+</html>

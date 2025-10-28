@@ -20,23 +20,15 @@
 			</script>
 			<!--end of Navigation bar-->
 		<h1>A Spotty Day on Sesame Street</h1>
-        <div id='ruffle'></div>
-        <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-        <script>
-var swfobject = {};
-
-swfobject.embedSWF = function(url, cont, width, height){
-    var ruffle = window.RufflePlayer.newest(),
-        player = Object.assign(document.getElementById(cont).appendChild(ruffle.createPlayer()), {
-            width: width,
-            height: height,
-            style: 'width: ' + width + 'px; height: ' + height + 'px',
-        });
-    
-    player.load({ url: url });
-}
-
-swfobject.embedSWF('games/sesamestreet/spotty/main_game-1.swf', 'ruffle', 600, 306);
-        </script>
+		<h2>Select Version</h2>
+		<table border="1" align="center">
+    				<thead>
+       					 <tr>
+          						  <th><br><br><a href="sesamespottyeng.html"><img src="games/sesamestreet/spotty/spotty.png" width="210" height="111"><br>English<br><img src="smileycentral/cat/26/26_6_7.gif"></a></th>
+          						  <th><a href="sesamespottyar.html"><img src="games/sesamestreet/spotty/spottyDayarab.png" width="210" height="158"><br>Arabic (العربية)<br><img src="smileycentral/cat/6/6_14_9.gif"></a></th>
+          						  <th><a href="sesamespottyhe.html"><img src="games/sesamestreet/spotty/spottyDayHeb.png" width="210" height="158"><br>Hebrew (עִברִית)<br><img src="smileycentral/cat/6/6_14_8.gif"></a></th>
+						 </tr>
+	</thead>
+		</table>
 	</body>
 </html>
