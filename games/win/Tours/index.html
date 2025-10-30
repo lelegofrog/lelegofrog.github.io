@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Windows XP Tour</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#080836" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"  text="#ffffff" link="#dddddd" vlink="#88dddd">
+        <div id='ruffle'></div>
+        <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+        <script>
+var swfobject = {};
+
+swfobject.embedSWF = function(url, cont, width, height){
+    var ruffle = window.RufflePlayer.newest(),
+        player = Object.assign(document.getElementById(cont).appendChild(ruffle.createPlayer()), {
+            width: width,
+            height: height,
+            style: 'width: ' + width + 'px; height: ' + height + 'px',
+        });
+    
+    player.load({ url: url });
+}
+
+swfobject.embedSWF('background.swf', 'ruffle', 800, 600);
+        </script>
+</body>
+</html>
