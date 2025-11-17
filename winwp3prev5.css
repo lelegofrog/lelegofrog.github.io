@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "sansbd";
+    src: url("comicbd.ttf");
+}
+body {
+	background-color: #000000;
+	background-image: url("lelegodlex/win/3/RIBBONS.BMP");
+	text-align: center;
+	font-family: "sansbd";
+	color: white;
+}
+a {
+	color: #ff00ff;
+	background-color: #000000;
+	font-family: "sansbd";
+}

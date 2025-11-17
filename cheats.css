@@ -19,7 +19,8 @@
 }
 body {
 	background-color: #000000;
-	background-image: url("Circlescheats.png");
+	background-image: url("Circlescheats.gif");
+	background-attachment: fixed;
 	text-align: center;
 	font-family: "sans";
 	color: #00ff00;
