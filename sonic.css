@@ -1,10 +1,10 @@
 @font-face {
     font-family: "sans";
-    src: url("comic.ttf");
+    src: url("impress.ttf");
 }
 @font-face {
     font-family: "sansbd";
-    src: url("comicbd.ttf");
+    src: url("gaslight.ttf");
 }
 #logo {
     background-image: url("brycespixlogosonic.png");
@@ -32,23 +32,53 @@ table {
 }
 a {
 	color: #ff00ff;
-	font-family: "sansbd";
+	font-family: "sans";
 }
 h1 {
 	font-family: "sansbd";
+	text-transform: uppercase;
+}
+h1 a {
+	font-family: "sansbd";
+	text-transform: uppercase;
 }
 h2 {
 	font-family: "sansbd";
+	text-transform: uppercase;
+}
+h2 a {
+	font-family: "sansbd";
+	text-transform: uppercase;
 }
 h3 {
 	font-family: "sansbd";
+	text-transform: uppercase;
+}
+h3 a {
+	font-family: "sansbd";
+	text-transform: uppercase;
 }
 h4 {
 	font-family: "sansbd";
+	text-transform: uppercase;
+}
+h4 a {
+	font-family: "sansbd";
+	text-transform: uppercase;
 }
 h5 {
 	font-family: "sansbd";
+	text-transform: uppercase;
+}
+h5 a {
+	font-family: "sansbd";
+	text-transform: uppercase;
 }
 h6 {
 	font-family: "sansbd";
+	text-transform: uppercase;
+}
+h6 a {
+	font-family: "sansbd";
+	text-transform: uppercase;
 }

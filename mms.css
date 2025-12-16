@@ -34,6 +34,12 @@ a {
 	color: #ffaa00;
 	font-family: "sansbd";
 }
+.cur {
+	background-color: #666666;
+}
+.smol {
+  font-size: 10px;
+}
 h1 {
 	font-family: "sansbd";
 }

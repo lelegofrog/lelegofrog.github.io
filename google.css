@@ -26,6 +26,15 @@ table {
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 }
+.squish {
+	line-height: 0px;
+}
+.gry {
+	background-color: #B8B8B8;
+}
+.blk {
+	background-color: #000000;
+}
 h1 {
 	font-weight: normal;
 }

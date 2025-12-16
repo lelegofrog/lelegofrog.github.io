@@ -43,6 +43,10 @@ a {
 .voidx {
 	background-color: #ffffff;
 }
+.voidx h2 {
+	color: black;
+	text-shadow: 0px 0px 0px white;
+}
 .voidax {
 	background-color: #cccccc;
 	color: black;
