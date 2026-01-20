@@ -1,0 +1,68 @@
+@font-face {
+    font-family: "sans";
+    src: url("COOPBL.TTF");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("COOPBL.TTF");
+}
+#logo {
+    background-image: url("brycespixlogotootsie.png");
+    background-width: 288;
+    background-height: 32;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("downloads/tootsie/tootie.png");
+	background-size: 100vw 100vh;
+	background-attachment: fixed;
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	font-size: 19px;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+img {
+	image-rendering: auto;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #e2211c;
+	font-family: "sansbd";
+}
+.cur {
+	background-color: #666666;
+}
+.smol {
+  font-size: 10px;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}

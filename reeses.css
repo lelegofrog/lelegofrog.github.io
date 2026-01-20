@@ -1,0 +1,60 @@
+@font-face {
+    font-family: "sans";
+    src: url("comic.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("comicbd.ttf");
+}
+#logo {
+    background-image: url("brycespixlogoreeses.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #120900;
+	background-image: url("downloads/reeses/reeses.png");
+	text-align: center;
+	font-family: "sans";
+	color: #fff200;
+	text-shadow: 2px 2px 0px #5a2500;
+}
+table {
+	border-color: #f66f00;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #f66f00;
+	font-family: "sansbd";
+}
+.cur {
+	background-color: #666666;
+}
+.smol {
+  font-size: 10px;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}

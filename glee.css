@@ -1,0 +1,64 @@
+@font-face {
+    font-family: "sans";
+    src: url("Tw Cen MT.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("Tw Cen MT.ttf");
+}
+#logo {
+    background-image: url("brycespixlogoglee.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: radial-gradient(#777777, #444477, #222277, #000077);
+	background-size: 100vw 100vh;
+	background-attachment: fixed;
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: -2px 2px 0px black;
+	font-size: 20px;
+	text-transform: lowercase;
+}
+table {
+	border-color: yellow;
+	table-align: center;
+}
+a {
+	color: #ffcc00;
+	font-family: "sansbd";
+}
+.smol {
+  font-size: 10px;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+.cur {
+	background-color: #666666;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}

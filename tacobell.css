@@ -1,0 +1,62 @@
+@font-face {
+    font-family: "sans";
+    src: url("Latino Rumba.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("Latino Rumba.ttf");
+}
+#logo {
+    background-image: url("brycespixlogotacobell.png");
+    background-width: 288;
+    background-height: 32;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("downloads/tacobell/triangle.png");
+	text-align: center;
+	font-family: "sans";
+	color: yellow;
+	text-shadow: -2.5px 2.5px 0px #7000b0;
+	background-repeat: repeat;
+	font-size: 20px;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #ff0066;
+	font-family: "sansbd";
+}
+.cur {
+	background-color: #666666;
+}
+.smol {
+  font-size: 10px;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}

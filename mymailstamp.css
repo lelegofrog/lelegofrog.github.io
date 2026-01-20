@@ -29,6 +29,12 @@ a {
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 }
+.void {
+	background-color: #ffffff;
+}
+.void a {
+	color: #0000aa;
+}
 .voidax {
 	background-color: #cccccc;
 	color: black;

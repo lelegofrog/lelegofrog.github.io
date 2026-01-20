@@ -56,7 +56,7 @@ a {
 .voidtalk a {
 	color: #000000;
 	text-decoration: none;
-	background-image: linear-gradient(white);
+	background-image: linear-gradient(to right, white,white);
 	font-family: "sc";
     font-size: 10pt;
 	font-weight: normal;
