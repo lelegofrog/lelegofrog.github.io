@@ -38,8 +38,9 @@ a {
 .cur {
 	background-color: #666666;
 }
-.smol {
-  font-size: 10px;
+.ismol {
+	font-size: 13px;
+	display: inline;
 }
 h1 {
 	font-family: "sansbd";
