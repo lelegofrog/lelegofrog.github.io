@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "sansbd";
+    src: url("verdana.ttf");
+}
+body {
+	background-color: #000000;
+	background-image: url("smileycentral/wp/manga_bg.gif");
+	text-align: center;
+	font-family: "sansbd";
+	color: white;
+}
+a {
+	color: #0000aa;
+	background-color: #ffffff;
+    font-size: 10pt;
+	font-weight: normal;
+}
+.void {
+	background-color: #ffffff;
+}

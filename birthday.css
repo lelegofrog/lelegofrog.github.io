@@ -28,11 +28,12 @@ body {
 }
 table {
 	border-color: white;
+	background-image: linear-gradient(to right, #DD0000,#DD8800,#DDDD00,#00DD00,#00DDDD,#0000DD,#8800DD,#DD00DD,#DD0000); 
 	table-align: center;
 }
 a {
-	color: #FFFFFF;
-	background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet); 
+	color: #BBFFBB;
+	text-shadow: 0px 0px 4px black;
     font-family: "sansbd";
 }
 .shadeless {
@@ -52,6 +53,7 @@ a {
 }
 .voidtalk {
 	background-color: #ffffff;
+	background-image: linear-gradient(to right, white,white); 
 }
 .voidtalk a {
 	color: #000000;

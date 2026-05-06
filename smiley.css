@@ -1,10 +1,10 @@
 @font-face {
     font-family: "sans";
-    src: url("comic.ttf");
+    src: url("verdana.ttf");
 }
 @font-face {
     font-family: "sansbd";
-    src: url("comicbd.ttf");
+    src: url("myriadprob.ttf");
 }
 @font-face {
     font-family: "sc";
@@ -25,14 +25,22 @@ body {
 	color: white;
 }
 table {
-	border-color: black;
+	border-color: white;
 	table-align: center;
+}
+th, td {
+	border: 0px white;
 }
 a {
 	color: #ff00ff;
 	font-family: "sansbd";
 }
 .void {
+	color: #000000;
+	text-decoration: none;
+	font-family: "sans";
+    font-size: 10pt;
+	font-weight: normal;
 	background-color: #ffffff;
 }
 .voidtalk {
@@ -40,6 +48,8 @@ a {
 }
 .void a {
 	color: #0000aa;
+	font-family: "sc";
+	font-weight: normal;
 }
 .voidtalk a {
 	color: #000000;

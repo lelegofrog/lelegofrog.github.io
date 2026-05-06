@@ -16,8 +16,6 @@
 body {
 	background-color: #000000;
 	background-image: radial-gradient(#777777, #444477, #222277, #000077);
-	background-size: 100vw 100vh;
-	background-attachment: fixed;
 	text-align: center;
 	font-family: "sans";
 	color: white;
@@ -32,6 +30,10 @@ table {
 a {
 	color: #ffcc00;
 	font-family: "sansbd";
+	font-weight: normal;
+}
+th {
+	font-weight: normal;
 }
 .smol {
   font-size: 10px;
@@ -46,19 +48,25 @@ a {
 }
 h1 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h2 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h3 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h4 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h5 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
 h6 {
 	font-family: "sansbd";
+	font-weight: normal;
 }
