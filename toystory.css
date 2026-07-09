@@ -1,10 +1,10 @@
 @font-face {
     font-family: "sans";
-    src: url("comic.ttf");
+    src: url("Lubalin Graph Regular.ttf");
 }
 @font-face {
     font-family: "sansbd";
-    src: url("comicbd.ttf");
+    src: url("Gill Sans Nova ExtraBold.ttf");
 }
 #logo {
     background-image: url("brycespixlogotoystory.png");
@@ -17,9 +17,10 @@ body {
 	background-color: #134c70;
 	background-image: url("downloads/toystory/clouds_wallpaper.gif");
 	text-align: center;
-	font-family: "sans";
+	font-family: "sansbd";
 	color: white;
 	text-shadow: 3px 3px 0px #00000080;
+	text-transform: lowercase;
 }
 table {
 	border-color: white;
@@ -28,6 +29,7 @@ table {
 a {
 	color: #fcdf0a;
 	font-family: "sansbd";
+	font-size: 18px;
 }
 .shadeless {
 	text-shadow: 0px 0px 0px black;
@@ -54,23 +56,23 @@ a {
     image-rendering: crisp-edges;
 }
 .cur {
-	background-color: #666666;
+	background-color: #444488;
 }
 h1 {
-	font-family: "sansbd";
+	font-family: "sans";
 }
 h2 {
-	font-family: "sansbd";
+	font-family: "sans";
 }
 h3 {
-	font-family: "sansbd";
+	font-family: "sans";
 }
 h4 {
-	font-family: "sansbd";
+	font-family: "sans";
 }
 h5 {
-	font-family: "sansbd";
+	font-family: "sans";
 }
 h6 {
-	font-family: "sansbd";
+	font-family: "sans";
 }

@@ -1,0 +1,62 @@
+@font-face {
+    font-family: "sans";
+    src: url("Frankfurter Medium Std Regular.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("Bukhari Script.ttf");
+}
+#logo {
+    background-image: url("brycespixlogocec.png");
+    background-width: 127;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #150000;
+	background-image: url("downloads/cec/thetiles.png");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: 3px 3px 0px #017040;
+	background-repeat: repeat;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #ffd100;
+	font-family: "sans";
+}
+.cur {
+	background-color: #444488;
+}
+.ismol {
+	font-size: 13px;
+	display: inline;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}

@@ -1,10 +1,10 @@
 @font-face {
     font-family: "sans";
-    src: url("comic.ttf");
+    src: url("spongeboyTT1.ttf");
 }
 @font-face {
     font-family: "sansbd";
-    src: url("comicbd.ttf");
+    src: url("spongeboyTT1.ttf");
 }
 #logo {
     background-image: url("brycespixlogosb.png");
@@ -20,6 +20,7 @@ body {
 	font-family: "sans";
 	color: #ffff00;
 	text-shadow: 1px 1px 3px black;
+	font-size: 13px;
 }
 table {
 	border-color: black;
@@ -38,7 +39,7 @@ a {
 	text-shadow: 0px 0px 0px black;
 }
 .cur {
-	background-color: #666666;
+	background-color: #444488;
 }
 h1 {
 	font-family: "sansbd";

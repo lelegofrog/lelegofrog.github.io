@@ -1,0 +1,77 @@
+@font-face {
+    font-family: "sans";
+    src: url("conbrushbold.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("conbrushbold.ttf");
+}
+#logo {
+    background-image: url("brycespixlogofg.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #440011;
+	background-image: url("downloads/fg/cooch.png");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: -1px 1px 0px black, -2px 2px 0px black;
+	font-size: 19px;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+a {
+	color: #fcb131;
+	font-family: "sansbd";
+}
+.shadeless {
+	text-shadow: 0px 0px 0px black;
+}
+.smol {
+  font-size: 10px;
+}
+.voidx {
+	background-color: #ffffff;
+	color: black;
+	text-shadow: 1px 1px 1px white;
+}
+.voidax {
+	background-color: #cccccc;
+	color: black;
+	text-shadow: 1px 1px 1px white;
+}
+.voidx a {
+	text-shadow: 1px 1px 1px white;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+.cur {
+	background-color: #444488;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}

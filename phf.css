@@ -1,0 +1,65 @@
+@font-face {
+    font-family: "sans";
+    src: url("GraphiteStd-Light.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("GraphiteStd-Bold.ttf");
+}
+#logo {
+    background-image: url("brycespixlogophf.png");
+    background-width: 127;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("downloads/phf/triangle.png");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	background-repeat: repeat;
+	font-size: 20px;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #ac1120;
+	font-family: "sansbd";
+  background: -webkit-linear-gradient(#ffef13, #fe8e10);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.cur {
+	background-color: #444488;
+}
+.ismol {
+	font-size: 13px;
+	display: inline;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}

@@ -1,0 +1,64 @@
+@font-face {
+    font-family: "sans";
+    src: url("UniversCnBold.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("BADABB__.TTF");
+}
+#logo {
+    background-image: url("brycespixlogolzt.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("downloads/lzt/fvs.png");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: 2px 2px 0px black;
+	background-repeat: repeat;
+	font-size: 19px;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #ff00ff;
+	font-family: "sans";
+}
+.cur {
+	background-color: #444488;
+}
+.smol {
+  font-size: 10px;
+}
+h1 {
+	font-family: "sansbd";
+	font-size: 42px;
+}
+h2 {
+	font-family: "sansbd";
+	font-size: 32px;
+}
+h3 {
+	font-family: "sans";
+}
+h4 {
+	font-family: "sans";
+}
+h5 {
+	font-family: "sans";
+}
+h6 {
+	font-family: "sans";
+}

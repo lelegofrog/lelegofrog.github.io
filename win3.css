@@ -27,13 +27,16 @@ table {
 	border-color: white;
 	table-align: center;
 }
+th {
+	font-weight: normal;
+}
 .pix {
 	image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 }
 .cur {
-	background-color: #666666;
+	background-color: #444488;
 }
 a {
 	color: #aaaaff;

@@ -1,0 +1,63 @@
+@font-face {
+    font-family: "sans";
+    src: url("PedroRegular.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("PedroRegular.ttf");
+}
+#logo {
+    background-image: url("brycespixlogodinosaurs.png");
+    background-width: 127;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("downloads/dinosaurs/dinoleather.png");
+	text-align: center;
+	font-family: "sans";
+	color: #fecf7e;
+	text-shadow: 3px 3px 0px black;
+	background-repeat: repeat;
+	font-size: 20px;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #c8c588;
+	font-family: "sans";
+}
+.cur {
+	background-color: #444488;
+}
+.ismol {
+	font-size: 13px;
+	display: inline;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sans";
+}
+h4 {
+	font-family: "sans";
+}
+h5 {
+	font-family: "sans";
+}
+h6 {
+	font-family: "sans";
+}

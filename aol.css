@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "sans";
+    src: url("times.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("timesbd.ttf");
+}
+#logo {
+    background-image: url("brycespixlogoaol.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #1f1600;
+	background-image: url("downloads/aol/run.png");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #353dff;
+	font-family: "sans";
+}
+h1 {
+	font-family: "sansbd";
+	color: #ff0000;
+}
+h2 {
+	font-family: "sansbd";
+	color: #ff0000;
+}
+h3 {
+	font-family: "sansbd";
+	color: #353dff;
+}
+h4 {
+	font-family: "sansbd";
+	color: #ff0000;
+}
+h5 {
+	font-family: "sansbd";
+	color: #353dff;
+}
+h6 {
+	font-family: "sansbd";
+	color: #ff0000;
+}

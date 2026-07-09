@@ -35,6 +35,13 @@ a {
 .smol {
 	font-size: 10px;
 }
+.s {
+	display: inline-block;
+}
+.smols {
+	font-size: 11px;
+	display: inline-block;
+}
 .smoll {
 	font-size: 12px;
 }
@@ -57,7 +64,7 @@ a {
     image-rendering: crisp-edges;
 }
 .cur {
-	background-color: #666666;
+	background-color: #444488;
 }
 h1 {
 	font-family: "sansbd";

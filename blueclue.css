@@ -1,0 +1,62 @@
+@font-face {
+    font-family: "sans";
+    src: url("HP-Kids Heavy Bold.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("BluesClues.ttf");
+}
+#logo {
+    background-image: url("brycespixlogoblueclue.png");
+    background-width: 127;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("downloads/blueclue/paws2bg.gif");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: 2px 2px 0px black;
+	background-repeat: repeat;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #ffff00;
+	font-family: "sans";
+}
+.cur {
+	background-color: #444488;
+}
+.ismol {
+	font-size: 13px;
+	display: inline;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sans";
+}
+h6 {
+	font-family: "sans";
+}
