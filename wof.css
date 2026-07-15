@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "sans";
+    src: url("ChesterfieldCondensed Regular.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("ChesterfieldCondensed Regular.ttf");
+}
+#logo {
+    background-image: url("brycespixlogowof.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #360042;
+	background-image: url("downloads/wof/wof.png");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #00ff00;
+	font-family: "sansbd";
+}
+.shadeless {
+	text-shadow: 0px 0px 0px black;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}

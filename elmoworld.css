@@ -1,0 +1,72 @@
+@font-face {
+    font-family: "sans";
+    src: url("stanton.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("stanton.ttf");
+}
+@font-face {
+    font-family: "sansbdbackup";
+    src: url("comicbd.ttf");
+}
+#logo {
+    background-image: url("brycespixlogoelmoworld.png");
+    background-width: 250;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000044;
+	background-image: url("lelegodlex2/sesame/elmotile.png");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	font-size: 20px;
+	line-height: 20px;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+a {
+	color: #ff0000;
+	font-family: "sansbd";
+}
+.sesamvoid {
+	background-color: #FFFFFF;
+	color: black;
+	text-shadow: 0px 0px 0px white;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+.backup {
+	font-family: "sansbdbackup";
+	display: inline;
+	font-size: 27px;
+}
+.gallery {
+	height: 92vh;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}
