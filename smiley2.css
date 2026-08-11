@@ -1,0 +1,93 @@
+@font-face {
+    font-family: "sans";
+    src: url("verdana.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("myriadprob.ttf");
+}
+@font-face {
+    font-family: "sc";
+    src: url("verdana.ttf");
+}
+@font-face {
+    font-family: "sansbdbackup";
+    src: url("comicbd.ttf");
+}
+#logo {
+    background-image: url("brycespixlogosmiley.png");
+    background-width: 210;
+    background-height: 51;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #00004e;
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 1) 100%), url("smileblue.gif");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+th, td {
+	border: 0px white;
+}
+a {
+	color: #ff00ff;
+	font-family: "sansbd";
+}
+.void {
+	color: #000000;
+	text-decoration: none;
+	font-family: "sans";
+    font-size: 10pt;
+	font-weight: normal;
+	background-color: #ffffff;
+}
+.voidtalk {
+	background-color: #ffffff;
+}
+.void a {
+	color: #0000aa;
+	font-family: "sc";
+	font-weight: normal;
+}
+.voidtalk a {
+	color: #000000;
+	text-decoration: none;
+	font-family: "sc";
+    font-size: 10pt;
+	font-weight: normal;
+}
+.smol {
+  font-size: 10px;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+.backup {
+	font-family: "sansbdbackup";
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}

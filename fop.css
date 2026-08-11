@@ -1,10 +1,10 @@
 @font-face {
     font-family: "sans";
-    src: url("comic.ttf");
+    src: url("fairlyoddfont.ttf");
 }
 @font-face {
     font-family: "sansbd";
-    src: url("comicbd.ttf");
+    src: url("fairlyoddfont.ttf");
 }
 #logo {
     background-image: url("brycespixlogofop.png");
@@ -21,6 +21,8 @@ body {
 	color: white;
 	text-shadow: 1px 1px 3px black;
 	background-repeat: repeat;
+	font-size: 23px;
+	line-height: 0.9;
 }
 table {
 	border-color: white;
@@ -46,9 +48,11 @@ a {
 }
 h1 {
 	font-family: "sansbd";
+	line-height: 0.1;
 }
 h2 {
 	font-family: "sansbd";
+	line-height: 0.25;
 }
 h3 {
 	font-family: "sansbd";

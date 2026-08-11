@@ -1,10 +1,10 @@
 @font-face {
     font-family: "sans";
-    src: url("comic.ttf");
+    src: url("akbar.ttf");
 }
 @font-face {
     font-family: "sansbd";
-    src: url("comicbd.ttf");
+    src: url("akbar.ttf");
 }
 #logo {
     background-image: url("brycespixlogosimpson.png");

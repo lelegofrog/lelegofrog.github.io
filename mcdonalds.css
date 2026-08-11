@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "sans";
+    src: url("LovinSansWeb-Regular.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("LovinSansWeb-Bold.ttf");
+}
+#logo {
+    background-image: url("brycespixlogomcdonalds.png");
+    background-width: 224;
+    background-height: 56;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #aa0000;
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: 3px 3px 0px #0000aa;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #fab217;
+	font-family: "sansbd";
+}
+.shadeless {
+	text-shadow: 0px 0px 0px black;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}

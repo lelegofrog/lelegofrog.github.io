@@ -1,0 +1,58 @@
+@font-face {
+    font-family: "sans";
+    src: url("Harlow Solid Std Regular.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("BAUHS93.TTF");
+}
+#logo {
+    background-image: url("brycespixlogochuzzle.png");
+    background-width: 224;
+    background-height: 56;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("downloads/chuzzle/chuzzle21.png");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: 1px 1px 3px black;
+	font-size: 20px;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #cc00ff;
+	font-family: "sans";
+}
+.shadeless {
+	text-shadow: 0px 0px 0px black;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sans";
+}
+h3 {
+	font-family: "sans";
+}
+h4 {
+	font-family: "sans";
+}
+h5 {
+	font-family: "sans";
+}
+h6 {
+	font-family: "sans";
+}

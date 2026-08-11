@@ -1,10 +1,10 @@
 @font-face {
     font-family: "sans";
-    src: url("comic.ttf");
+    src: url("Monster AG.ttf");
 }
 @font-face {
     font-family: "sansbd";
-    src: url("comicbd.ttf");
+    src: url("Monster AG.ttf");
 }
 #logo {
     background-image: url("brycespixlogomonstinc.png");
@@ -20,6 +20,9 @@ body {
 	font-family: "sans";
 	color: white;
 	text-shadow: 3px 3px 0px #00000080;
+	font-size: 22px;
+	line-height: 0.9;
+	letter-spacing: 1px;
 }
 table {
 	border-color: white;
@@ -28,6 +31,7 @@ table {
 a {
 	color: #00ff00;
 	font-family: "sansbd";
+	text-transform: lowercase;
 }
 .shadeless {
 	text-shadow: 0px 0px 0px black;
@@ -64,13 +68,17 @@ h2 {
 }
 h3 {
 	font-family: "sansbd";
+	text-transform: lowercase;
 }
 h4 {
 	font-family: "sansbd";
+	text-transform: lowercase;
 }
 h5 {
 	font-family: "sansbd";
+	text-transform: lowercase;
 }
 h6 {
 	font-family: "sansbd";
+	text-transform: lowercase;
 }

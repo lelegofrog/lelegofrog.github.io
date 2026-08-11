@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "sans";
+    src: url("corporatus_regular.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("BankGothic Bold.ttf");
+}
+#logo {
+    background-image: url("brycespixlogonintendo.png");
+    background-width: 224;
+    background-height: 56;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("downloads/nintendo/brik.png");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: 1px 1px 3px black;
+}
+table, th, td {
+	border-color: #00ff00;
+	table-align: center;
+	border-radius: 5px;
+	background-color: #000000;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #8888ff;
+	font-family: "sans";
+}
+.shadeless {
+	text-shadow: 0px 0px 0px black;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}
