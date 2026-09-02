@@ -30,7 +30,7 @@ table {
     image-rendering: crisp-edges;
 }
 a {
-	color: #353dff;
+	color: #555dff;
 	font-family: "sans";
 }
 h1 {
@@ -43,7 +43,7 @@ h2 {
 }
 h3 {
 	font-family: "sansbd";
-	color: #353dff;
+	color: #555dff;
 }
 h4 {
 	font-family: "sansbd";
@@ -51,7 +51,7 @@ h4 {
 }
 h5 {
 	font-family: "sansbd";
-	color: #353dff;
+	color: #555dff;
 }
 h6 {
 	font-family: "sansbd";
