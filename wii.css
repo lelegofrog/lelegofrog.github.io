@@ -1,0 +1,58 @@
+@font-face {
+    font-family: "sans";
+    src: url("FOT-Greco Std DB.ttf");
+}
+@font-face {
+    font-family: "sansbd";
+    src: url("FOT-NewRodin Pro EB.ttf");
+}
+#logo {
+    background-image: url("brycespixlogowii.png");
+    background-width: 224;
+    background-height: 56;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+body {
+	background-color: #000000;
+	background-image: url("downloads/wii/system.png");
+	text-align: center;
+	font-family: "sans";
+	color: white;
+	text-shadow: 1px 1px 3px black;
+	line-height: 1.3;
+}
+table {
+	border-color: white;
+	table-align: center;
+}
+.pix {
+	image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+a {
+	color: #feac00;
+	font-family: "sansbd";
+}
+.shadeless {
+	text-shadow: 0px 0px 0px black;
+}
+h1 {
+	font-family: "sansbd";
+}
+h2 {
+	font-family: "sansbd";
+}
+h3 {
+	font-family: "sansbd";
+}
+h4 {
+	font-family: "sansbd";
+}
+h5 {
+	font-family: "sansbd";
+}
+h6 {
+	font-family: "sansbd";
+}

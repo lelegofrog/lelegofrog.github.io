@@ -1,10 +1,10 @@
 @font-face {
     font-family: "sans";
-    src: url("comici.ttf");
+    src: url("OleoScript-Regular.ttf");
 }
 @font-face {
     font-family: "sansbd";
-    src: url("comicz.ttf");
+    src: url("OleoScript-Bold.ttf");
 }
 #logo {
     background-image: url("brycespixlogochipsahoy.png");
@@ -46,14 +46,14 @@ h2 {
 	font-family: "sansbd";
 }
 h3 {
-	font-family: "sansbd";
+	font-family: "sans";
 }
 h4 {
-	font-family: "sansbd";
+	font-family: "sans";
 }
 h5 {
-	font-family: "sansbd";
+	font-family: "sans";
 }
 h6 {
-	font-family: "sansbd";
+	font-family: "sans";
 }
